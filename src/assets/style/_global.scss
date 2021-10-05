@@ -1,0 +1,109 @@
+html{
+  box-sizing: border-box;
+  // scroll-behavior: smooth;
+}
+*, *:before, *:after{
+  box-sizing: inherit;
+}
+a{
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+p{
+  margin: 0;
+}
+ul{
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+}
+ul,
+li{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+h1, h2, h3, h4, h5, h6{
+  margin: 0;
+  font-weight: unset;
+  display: block;
+  font-size: unset;
+  margin-block-start: unset;
+  margin-block-end: unset;
+}
+
+body{
+  font-size: 14px;
+  line-height: 17px;
+  font-family: "Acrom", sans-serif;
+  font-weight: 500;
+  overflow-x: hidden;
+  min-width: 320px;
+  color: $grey;
+  // display: flex;
+  // flex-direction: column;
+  // min-height: 100vh;
+}
+
+img{
+  object-fit: cover;
+  max-width: 100%;
+}
+
+.container{
+  // max-width: 1110px; ширина контейнера, не считая отступы
+  max-width: 1140px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+button{
+  padding: 0;
+}
+
+.btn{
+  border-radius: 220px;
+  border: none;
+  height: 40px;
+  font-weight: 700;
+  cursor: pointer;
+  padding-top: 11px;
+  padding-bottom: 10px;
+  &--pink{
+    background-color: $pink;
+    color: #fff;
+  }
+  &--blue{
+    border: 2px solid $blue;
+    color: $blue;
+    background-color: transparent;
+  }
+  &--linear{
+    
+  }
+  &--big{
+    height: 50px;
+    font-weight: 800;
+  }
+  &-clear{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.input{
+  background-color: $grey-bg;
+  height: 40px;
+  border-radius: 220px;
+  border: none;
+  font-size: 16px;
+  line-height: 19px;
+  padding: 0 20px;
+  &::placeholder{
+    font-size: 16px;
+    line-height: 19px;
+    font-family: "Acrom", sans-serif;
+    font-weight: 400;
+  }
+}

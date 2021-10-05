@@ -1,0 +1,45 @@
+// Acrom 700, 400, 500, 800
+
+@font-face {
+  font-family: "Acrom";
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src:    local("Acrom-ExtraBold"),
+          local("Acrom ExtraBold"),
+          url("./assets/fonts/Acrom-ExtraBold.woff2") format("woff2"),
+          url("./assets/fonts/Acrom-ExtraBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Acrom";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src:    local("Acrom-Bold"),
+          local("Acrom Bold"),
+          url("./assets/fonts/Acrom-Bold.woff2") format("woff2"),
+          url("./assets/fonts/Acrom-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Acrom";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src:    local("Acrom-Medium"),
+          local("Acrom Medium"),
+          url("./assets/fonts/Acrom-Medium.woff2") format("woff2"),
+          url("./assets/fonts/Acrom-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Acrom";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src:    local("Acrom-Regular"),
+          local("Acrom Regular"),
+          url("./assets/fonts/Acrom-Regular.woff2") format("woff2"),
+          url("./assets/fonts/Acrom-Regular.woff") format("woff");
+}

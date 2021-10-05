@@ -1,0 +1,102 @@
+<template>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__info">
+          <app-logo></app-logo>
+          <p class="footer__descr">
+            Nft marketplace with the ability to create cases with a random prize.
+          </p>
+        </div>
+        <nav class="footer__navigation">
+          <ul class="footer__navigation-list">
+            <li class="footer__navigation-item footer__navigation-title">
+              Links
+            </li>
+            <li class="footer__navigation-item">
+              <router-link class="footer__navigation-link" to='#'>
+                Explore
+              </router-link>
+            </li>
+            <li class="footer__navigation-item">
+              <router-link class="footer__navigation-link" to='#'>
+                How it works
+              </router-link>
+            </li>
+            <li class="footer__navigation-item">
+              <router-link class="footer__navigation-link" to='#'>
+                Help Center
+              </router-link>
+            </li>
+          </ul>
+          <ul class="footer__navigation-list">
+            <li class="footer__navigation-item footer__navigation-title">
+              My account
+            </li>
+            <li class="footer__navigation-item">
+              <router-link class="footer__navigation-link" to='#'>
+                My Profile
+              </router-link>
+            </li>
+            <li class="footer__navigation-item">
+              <router-link class="footer__navigation-link" to='#'>
+                My Collections
+              </router-link>
+            </li>
+            <li class="footer__navigation-item">
+              <router-link class="footer__navigation-link" to='#'>
+                My Account Settings
+              </router-link>
+            </li>
+          </ul>
+        </nav>
+        <div class="footer__news">
+          <form class='footer__form'>
+            <label class="footer__news-label">
+              <span class="footer__news-title">
+                Get the latest news to your email.
+              </span> 
+              <input class="footer__news-input input" type='email'
+              placeholder="Your e-mail"
+              required
+              >
+              <app-button
+              title='Send'
+              ></app-button>
+            </label>
+          </form>
+          <ul class="footer__social-list">
+            <li class="footer__social-item">
+              <router-link class='footer__social-link' to='#'>
+                <img src="@/assets/images/instagram.svg" alt="">
+              </router-link>
+            </li>
+            <li class="footer__social-item">
+              <router-link class='footer__social-link' to='#'>
+                <img src="@/assets/images/twitter.svg" alt="">
+              </router-link>
+            </li>
+            <li class="footer__social-item">
+              <router-link class='footer__social-link' to='#'>
+                <img src="@/assets/images/telegram.svg" alt="">
+              </router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="footer__copyright">
+      © OnlineOcean, All rights reserved.
+    </p>
+  </footer>
+</template>
+
+<script>
+import AppLogo from '@/components/App/AppLogo.vue'
+
+export default {
+  components:{
+    AppLogo
+  }
+}
+</script>
