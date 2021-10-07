@@ -411,3 +411,25 @@
     }
   }
 }
+
+.auction{
+  &__items{
+    display: flex;
+  }
+  &__item{
+    & + &{
+      margin-left: 22px;
+    }
+  }
+  &__numb{
+    margin-bottom: 6px;
+    font-size: 25px;
+    line-height: 30px;
+    font-weight: 700;
+    color: $black;
+  }
+  &__time{
+    font-size: 22px;
+    line-height: 26px;
+  }
+}  

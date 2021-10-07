@@ -40,10 +40,10 @@
               <ul class="auction__items">
                 <li class="auction__item">
                   <p class="auction__numb">
-
+                    {{ localeDate }}
                   </p>
                   <p class="auction__time">
-
+                    Hours
                   </p>
                 </li>
                 <li class="auction__item">
@@ -51,7 +51,7 @@
 
                   </p>
                   <p class="auction__time">
-                    
+                    Minutes
                   </p>
                 </li>
                 <li class="auction__item">
@@ -59,7 +59,7 @@
 
                   </p>
                   <p class="auction__time">
-                    
+                    Seconds
                   </p>
                 </li>
               </ul>
@@ -100,6 +100,29 @@ export default {
       required: true, 
     },
   },
+  data() {
+    return {
+      endAuction: '20:26:12',
+      currTime: 0,
+    }
+  },
+  mounted () {
+    
+  },
+  unmounted () {
+    // if (this.intervalId) clearInterval(this.intervalId)
+  },
+  created() {
+    // this.intervalId = setInterval(() => this.currTime = Date.now(), 1000);
+  },
+  methods: {
+    startTimer(){
+      
+    },
+    stopTimer(){
+
+    },
+  },
   computed: {
     productName() {
       const currId = this.$route.params.boxId
@@ -111,7 +134,10 @@ export default {
       }
       const stringWithId = this.name.replace(/id/i, '#' + rightID)
       return stringWithId
-    }
+    },
+    localeDate() {
+      return (new Date(this.currTime)).toLocaleDateString() 
+    },
   },
 }
 </script>
