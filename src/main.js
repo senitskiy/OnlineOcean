@@ -3,13 +3,14 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-const app = createApp(App)
-
 // Libs
 
 import "normalize.css"
 
 // Libs
+
+const app = createApp(App)
+
 
 // Global Components
 

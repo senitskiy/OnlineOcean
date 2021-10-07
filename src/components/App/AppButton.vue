@@ -2,7 +2,7 @@
   <button
   v-if='!link'
   class='btn'
-  :class='useStyle'
+  :class='[useStyle, this.big ? "btn--big" : ""]'
   >
     {{ title }}
   </button>
@@ -10,7 +10,7 @@
   <router-link
   v-else
   class='btn'
-  :class='useStyle'
+  :class='[useStyle, this.big ? "btn--big" : ""]'
   :to='href'
   >
     {{ title }}
@@ -36,6 +36,10 @@ export default {
       type: String,
       default: 'pink',
     },
+    big:{
+      type: Boolean,
+      default: false,
+    }
   },
   computed: {
     useStyle() {

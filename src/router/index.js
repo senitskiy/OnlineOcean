@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Index from '../views/Index.vue'
+import Box from '../views/Box.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Index',
     component: Index
+  },
+  {
+    path: '/box/:boxId',
+    name: 'Box',
+    component: Box
   },
   {
     path: '/about',
