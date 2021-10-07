@@ -40,7 +40,8 @@
               <ul class="auction__items">
                 <li class="auction__item">
                   <p class="auction__numb">
-                    {{ localeDate }}
+                    {{ lastHours }}
+                    <!-- {{ lastTrueHours }} -->
                   </p>
                   <p class="auction__time">
                     Hours
@@ -48,7 +49,7 @@
                 </li>
                 <li class="auction__item">
                   <p class="auction__numb">
-
+                    {{ lastMins }}
                   </p>
                   <p class="auction__time">
                     Minutes
@@ -56,13 +57,14 @@
                 </li>
                 <li class="auction__item">
                   <p class="auction__numb">
-
+                    {{ lastSeconds }}
                   </p>
                   <p class="auction__time">
                     Seconds
                   </p>
                 </li>
               </ul>
+              
             </div>
           </div>
           <div class="product-info__buttons">
@@ -89,6 +91,8 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   props: {
     name: {
@@ -102,18 +106,41 @@ export default {
   },
   data() {
     return {
-      endAuction: '20:26:12',
-      currTime: 0,
+      moment: 0,
+
+      endAuction: '2021-10-09T00:00:00',
+
+      currTime: null,
+      difference: null,
+
+      lastHours: null,
+      lastMins: null,
+      lastSeconds: null,
     }
   },
   mounted () {
     
   },
   unmounted () {
-    // if (this.intervalId) clearInterval(this.intervalId)
+    if (this.intervalId) clearInterval(this.intervalId)
   },
   created() {
-    // this.intervalId = setInterval(() => this.currTime = Date.now(), 1000);
+    // Init moment.js
+    this.moment = moment
+
+    let currDate = new Date();
+    
+
+    this.currTime = this.moment(currDate)
+    this.endAuction = this.moment(this.endAuction)
+
+    this.lastHours = this.endAuction.diff(this.currTime, 'hours')
+    // this.lastTrueHours = this.endAuction.diff(this.currTime, 'hours', true)
+    this.lastMins = this.endAuction.diff(this.currTime, 'minutes') - this.lastHours * 60
+    this.lastSeconds = this.endAuction.diff(this.currTime, 'seconds') - this.lastHours * 3600
+
+
+    this.intervalId = setInterval(() => this.currTime = Date.now(), 1000);
   },
   methods: {
     startTimer(){
@@ -129,15 +156,14 @@ export default {
       let rightID = currId
       if (currId.length < 3){
         const needZero = 3 - currId.length
-        console.log(needZero)
         rightID = '0'.repeat(needZero) + currId 
       }
       const stringWithId = this.name.replace(/id/i, '#' + rightID)
       return stringWithId
     },
-    localeDate() {
-      return (new Date(this.currTime)).toLocaleDateString() 
-    },
+    // localeDate() {
+    //   return (new Date(this.currTime))
+    // },
   },
 }
 </script>

@@ -383,6 +383,9 @@
     justify-content: space-between;
     margin-bottom: 41px;
   }
+  &__content{
+    position: relative;
+  }
   &__subtitle{
     font-size: 22px;
     line-height: 27px;
@@ -433,3 +436,9 @@
     line-height: 26px;
   }
 }  
+
+.dots{
+  position: absolute;
+  right: 12px;
+  top: 87px;
+}

@@ -26,9 +26,7 @@
     href='/lk'
     ></app-button>
   </div>
-  <div class="nots__pad"
-  @click='showMe'
-  ></div>
+  <div class="nots__pad"></div>
 </template>
 
 <script>
@@ -45,9 +43,6 @@ export default {
     notsState() {
       return this.openedNots ? 'nots--active' : ''
     },
-    showMe(){
-      return console.log(1)
-    }
   },
   components: {
     AppNot,
