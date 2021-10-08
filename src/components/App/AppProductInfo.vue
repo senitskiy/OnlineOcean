@@ -137,8 +137,10 @@ export default {
     this.lastHours = this.endAuction.diff(this.currTime, 'hours')
     // this.lastTrueHours = this.endAuction.diff(this.currTime, 'hours', true)
     this.lastMins = this.endAuction.diff(this.currTime, 'minutes') - this.lastHours * 60
-    this.lastSeconds = this.endAuction.diff(this.currTime, 'seconds') - this.lastHours * 3600
+    // this.lastSeconds = this.endAuction.diff(this.currTime, 'seconds') / 3600
+    this.lastSeconds = (this.endAuction.diff(this.currTime, 'seconds') - this.lastHours * 3600) - (this.lastMins * 60)
 
+    console.log([this.endAuction.diff(this.currTime, 'seconds'), this.lastHours * 3600])
 
     this.intervalId = setInterval(() => this.currTime = Date.now(), 1000);
   },

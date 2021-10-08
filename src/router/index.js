@@ -9,7 +9,7 @@ const routes = [
     component: Index
   },
   {
-    path: '/box/:boxId',
+    path: '/box/:boxId(\\d+)',
     name: 'Box',
     component: Box
   },
