@@ -2,11 +2,10 @@
   <router-link class="nots__item"
   to='/lk'
   >
-    <span class="nots__imgwrapper"
-    :class='accountState'
-    >
-      <img src="@/assets/images/temp/user-big-1.jpg" alt="">
-    </span>
+    <app-profile
+    userId='43'
+    view='nots'
+    ></app-profile>
     <span class="nots__content">
       <p class="nots__name">
         {{ name }}
@@ -19,6 +18,8 @@
 </template>
 
 <script>
+import AppProfile from '@/components/App/AppProfile.vue';
+
 export default {
   props: {
     name: {
@@ -29,18 +30,14 @@ export default {
       type: String,
       required: true,
     },
-    verified:{
-      type: Boolean,
-      default: false,
-    }
   },
   computed: {
     shortText() {
       return this.text.substring(0, 60) + '...'
     },
-    accountState(){
-      return this.verified ? "nots__imgwrapper--verified" : ""
-    }
+  },
+  components: {
+    AppProfile,
   },
 }
 </script>

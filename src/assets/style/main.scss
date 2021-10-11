@@ -176,30 +176,6 @@
     padding: 26px 15px;
     background: #FFFFFF;
     border-radius: 15px; 
-    &--active{
-      .row__slide-like{
-        color: $pink;
-        svg{
-          path{
-            fill: $pink;
-          }
-        }
-      }
-    }
-    &--verified{
-      .row__slide-autorwrapper{
-        position: relative;
-        &:after{
-          content: '';
-          position: absolute;
-          bottom: 3px;
-          right: 3px;
-          width: 16px;
-          height: 16px;
-          background-image: url('./assets/images/success.svg');
-        }
-      }
-    }
   }
   &__slide-title{
     font-size: 16px;
@@ -308,34 +284,6 @@
     margin-bottom: 10px;
     text-align: left;
   }
-  &__imgwrapper{
-    margin-right: 13px;
-    max-width: 42px;
-    max-height: 42px;
-    width: 100%;
-    height: 100%;
-    margin-top: 4px;
-    position: relative;
-    &:after{
-      content: '';
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 12px;
-      height: 12px;
-      background-image: url('./assets/images/success.svg');
-      background-size: 100% 100%;
-      display: none;
-    }
-    &--verified{
-      &:after{
-        display: unset;
-      }
-    }
-    img{
-      border-radius: 50%;
-    }
-  }
   &__name{
     font-size: 16px;
     line-height: 20px;
@@ -355,15 +303,71 @@
 }
 
 .product-cover{
-  margin: 30px 0 85px;
+  margin: 30px 0 32px;
   &__imgwrapper{
+    max-height: 300px;
     img{
       border-radius: 25px;
+    }
+  }
+  .row__slide-autorwrapper{
+    width: 110px;
+    height: 110px;
+    padding: 5px;
+    position: relative;
+    img{
+      width: 100px;
+      height: 100px;
+    }
+    &:after{
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      width: 29px;
+      height: 29px;
+      background-image: url('./assets/images/success.svg');
+      background-size: 100% 100%;
     }
   }
 }
 
 .product-info{
+  &__inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    margin-bottom: 59px;
+  }
+  &__videowrapper{
+    height: 540px;
+    width: 540px;
+    position: relative;
+    border-radius: 25px;
+  }
+  &__video{
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+  }
+  &__play{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    svg{
+      width: 22px;
+      height: 22px;
+      margin-left: 15px;
+    }
+  }
   &__name{
     font-weight: 700;
     font-size: 48px;
@@ -385,6 +389,7 @@
   }
   &__content{
     position: relative;
+    margin-bottom: 15px;
   }
   &__subtitle{
     font-size: 22px;
@@ -440,5 +445,6 @@
 .dots{
   position: absolute;
   right: 12px;
-  top: 87px;
+  top: 65px;
+  z-index: 2;
 }

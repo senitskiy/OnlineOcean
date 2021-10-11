@@ -3,18 +3,38 @@
     <div class="container">
       <div class="product-info__inner">
         <div class="product-info__videowrapper">
-
+          <video class='product-info__video' src="@/assets/videos/ex-1.mp4"
+          muted loop
+          ref='productVideo'
+          ></video>
+          <button class="product-info__play btn-clear"
+          @click='toggleVideo()'
+          >
+            <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.5766 1.07545C2.5159 -0.106593 0.845215 0.861755 0.845215 3.23659V20.7618C0.845215 23.139 2.5159 24.1061 4.5766 22.9252L19.8945 14.1405C21.9559 12.958 21.9559 11.0422 19.8945 9.86004L4.5766 1.07545Z" fill="#EA4C89"/>
+            </svg>
+          </button>
+          <app-profile
+          userId='22'
+          view='product-info'
+          ></app-profile>
+          <app-likes
+          view='big'
+          :liked='likedBox'
+          @loadLike='setLike(value)'
+          @toggledLike='toggleLike()'
+          ></app-likes>
+        </div>
+        <div class="dots">
+          <button class="btn-clear">
+            <svg width="25" height="6" viewBox="0 0 25 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="22" cy="3" r="3" transform="rotate(-90 22 3)" fill="#C0C0C0"/>
+              <circle cx="13" cy="3" r="3" transform="rotate(-90 13 3)" fill="#C0C0C0"/>
+              <circle cx="3" cy="3" r="3" transform="rotate(-90 3 3)" fill="#C0C0C0"/>
+            </svg>
+          </button>
         </div>
         <div class="product-info__content">
-          <div class="product-info__dots dots">
-            <button class="btn-clear">
-              <svg width="25" height="6" viewBox="0 0 25 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="22" cy="3" r="3" transform="rotate(-90 22 3)" fill="#C0C0C0"/>
-                <circle cx="13" cy="3" r="3" transform="rotate(-90 13 3)" fill="#C0C0C0"/>
-                <circle cx="3" cy="3" r="3" transform="rotate(-90 3 3)" fill="#C0C0C0"/>
-              </svg>
-            </button>
-          </div>
           <h1 class="product-info__name">
             {{ productName }}
           </h1>
@@ -33,38 +53,44 @@
                 $ 48.85
               </p>
             </div>
-            <div class="product-info__auction auction">
+            <div class="product-info__auction auction"
+            v-show='auctionIsActive'
+            >
               <p class="auction__text product-info__subtitle">
                 Auction ending in
               </p>
-              <ul class="auction__items">
-                <li class="auction__item">
-                  <p class="auction__numb">
-                    {{ lastHours }}
-                    <!-- {{ lastTrueHours }} -->
-                  </p>
-                  <p class="auction__time">
-                    Hours
-                  </p>
-                </li>
-                <li class="auction__item">
-                  <p class="auction__numb">
-                    {{ lastMins }}
-                  </p>
-                  <p class="auction__time">
-                    Minutes
-                  </p>
-                </li>
-                <li class="auction__item">
-                  <p class="auction__numb">
-                    {{ lastSeconds }}
-                  </p>
-                  <p class="auction__time">
-                    Seconds
-                  </p>
-                </li>
-              </ul>
-              
+              <vue-countdown
+              :time='difference'
+              v-slot="{ hours, minutes, seconds }"
+              @end='onTimerEnd'
+              >
+                <ul class="auction__items">
+                  <li class="auction__item">
+                    <p class="auction__numb">
+                      {{ hours }}
+                    </p>
+                    <p class="auction__time">
+                      Hours
+                    </p>
+                  </li>
+                  <li class="auction__item">
+                    <p class="auction__numb">
+                      {{ minutes }}
+                    </p>
+                    <p class="auction__time">
+                      Minutes
+                    </p>
+                  </li>
+                  <li class="auction__item">
+                    <p class="auction__numb">
+                      {{ seconds }}
+                    </p>
+                    <p class="auction__time">
+                      Seconds
+                    </p>
+                  </li>
+                </ul>
+              </vue-countdown>
             </div>
           </div>
           <div class="product-info__buttons">
@@ -91,7 +117,10 @@
 </template>
 
 <script>
-import moment from 'moment'
+import VueCountdown from '@chenfengyuan/vue-countdown';
+
+import AppProfile from '@/components/App/AppProfile.vue';
+import AppLikes from '@/components/App/AppLikes.vue';
 
 export default {
   props: {
@@ -106,51 +135,19 @@ export default {
   },
   data() {
     return {
-      moment: 0,
+      endAuction: '2021-10-10T22:53:30',
+      dateNow: 0,
+      difference: 0,
 
-      endAuction: '2021-10-09T00:00:00',
-
-      currTime: null,
-      difference: null,
-
-      lastHours: null,
-      lastMins: null,
-      lastSeconds: null,
+      auctionIsActive: true,
+      videoActive: false,
+      likedBox: null,
     }
   },
-  mounted () {
-    
-  },
-  unmounted () {
-    if (this.intervalId) clearInterval(this.intervalId)
-  },
-  created() {
-    // Init moment.js
-    this.moment = moment
-
-    let currDate = new Date();
-    
-
-    this.currTime = this.moment(currDate)
-    this.endAuction = this.moment(this.endAuction)
-
-    this.lastHours = this.endAuction.diff(this.currTime, 'hours')
-    // this.lastTrueHours = this.endAuction.diff(this.currTime, 'hours', true)
-    this.lastMins = this.endAuction.diff(this.currTime, 'minutes') - this.lastHours * 60
-    // this.lastSeconds = this.endAuction.diff(this.currTime, 'seconds') / 3600
-    this.lastSeconds = (this.endAuction.diff(this.currTime, 'seconds') - this.lastHours * 3600) - (this.lastMins * 60)
-
-    console.log([this.endAuction.diff(this.currTime, 'seconds'), this.lastHours * 3600])
-
-    this.intervalId = setInterval(() => this.currTime = Date.now(), 1000);
-  },
-  methods: {
-    startTimer(){
-      
-    },
-    stopTimer(){
-
-    },
+  created () {
+    this.dateNow = new Date()
+    this.dateNeed = new Date(this.endAuction)
+    this.difference = this.dateNeed - this.dateNow
   },
   computed: {
     productName() {
@@ -163,9 +160,32 @@ export default {
       const stringWithId = this.name.replace(/id/i, '#' + rightID)
       return stringWithId
     },
-    // localeDate() {
-    //   return (new Date(this.currTime))
-    // },
+  },
+  methods: {
+    onTimerEnd() {
+      this.auctionIsActive = false
+    },
+    toggleVideo(){
+      if (this.videoActive === false){
+        this.$refs.productVideo.play()
+        this.videoActive = true
+      } else{
+        this.$refs.productVideo.pause()
+        this.videoActive = false
+      }
+    },
+    setLike(value){
+      this.likedBox = value
+    },
+    toggleLike(){
+      this.likedBox = !this.likedBox
+    }
+  },
+  
+  components: {
+    VueCountdown,
+    AppProfile,
+    AppLikes
   },
 }
 </script>

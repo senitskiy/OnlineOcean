@@ -1,10 +1,10 @@
 <template>
   <app-header></app-header>
   <router-view/>
-  <button class='btn btn--pink'>Это тест</button>
+  <!-- <button class='btn btn--pink'>Это тест</button>
   <button class='btn btn--blue'>Это тест</button>
   <button class='btn btn--linear'>Это тест</button>
-  <button class='btn btn--big'>Это тест</button>
+  <button class='btn btn--big'>Это тест</button> -->
   <app-footer></app-footer>
 </template>
 

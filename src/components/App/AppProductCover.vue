@@ -5,7 +5,8 @@
         <img src="@/assets/images/temp/product-banner.jpg" alt="">
       </div>
       <app-profile
-      
+      user-id='233'
+      view='cover'
       ></app-profile>
     </div>
   </div>
