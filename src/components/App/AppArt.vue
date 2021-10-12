@@ -83,9 +83,21 @@ export default {
   methods: {
     showChars() {
       this.$refs.chars.classList.add('art__chars--active')
+
+      // let allArts = document.querySelectorAll('.art')
+
+      // for (let i = 0; i < allArts.length; i++){
+      //   allArts[i].classList.add('art--less')
+      // }
     },
     hideChars(){
       this.$refs.chars.classList.remove('art__chars--active')
+
+      // let allArts = document.querySelectorAll('.art')
+
+      // for (let i = 0; i < allArts.length; i++){
+      //   allArts[i].classList.remove('art--less')
+      // }
     }
   },
   computed: {

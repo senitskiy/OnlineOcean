@@ -95,6 +95,7 @@
           </div>
           <div class="product-info__buttons">
             <app-button
+            v-if="box"
             title='Open'
             view='purple'
             big
@@ -134,6 +135,10 @@ export default {
       type: String,
       required: true, 
     },
+    box:{
+      type: Boolean,
+      default: false,
+    }
   },
   data() {
     return {
@@ -153,7 +158,7 @@ export default {
   },
   computed: {
     productName() {
-      const currId = this.$route.params.boxId
+      const currId = this.$route.params.itemId
       let rightID = currId
       if (currId.length < 3){
         const needZero = 3 - currId.length
@@ -163,7 +168,7 @@ export default {
       return stringWithId
     },
     boxOpenLink(){
-      return this.$route.params.boxId + '/open/'
+      return this.$route.params.itemId + '/open/'
     }
   },
   methods: {
