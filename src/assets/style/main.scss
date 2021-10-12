@@ -448,3 +448,148 @@
   top: 65px;
   z-index: 2;
 }
+
+.art{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #D3D3D6;
+  border-radius: 15px;
+  box-sizing: border-box;
+  position: relative;
+  &__imgwrapper{
+    position: relative;
+    border-radius: 15px;
+    width: 100%;
+    img{
+      border-radius: 15px;
+      width: 100%;
+    }
+  }
+  &__price{
+    position: absolute;
+    bottom: 13px;
+    right: -9px;
+    padding: 3px 8px 3px 10px;
+    background-color: $pink;
+    border-radius: 15px;
+    font-weight: 700;
+    color: #fff;
+  }
+  &__descr{
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 700;
+  }
+  &--short{
+    text-align: center;
+    .art__descr{
+      display: block;
+      padding: 9px 0 18px;
+    }
+  }
+  &__chars{
+    position: absolute;
+    display: block;
+    bottom: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    padding: 18px 26px 16px 21px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .3s;
+    z-index: 2;
+    &--active{
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+  &__transfericon{
+    display: block;
+    margin: -40px auto 0;
+  }
+  &__list{
+    display: flex;
+    margin-top: 16px;
+  }
+  &__item-title,
+  &__item-text{
+    font-size: 16px;
+    line-height: 19px;
+  }
+  &__item + &__item{
+    margin-left: 38px;
+  }
+  &__item-title{
+    margin-bottom: 18px;
+    display: block;
+  }
+  &__item-text{
+    color: #916EDD;  
+    font-weight: 700;
+  }
+}
+
+.panel{
+  margin-bottom: 20px;
+  &__inner{
+    background-color: $grey-bg;
+    padding: 28px 30px 43px;
+    border-radius: 15px;
+  }
+  &__items{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 20px;
+    row-gap: 20px;
+  }
+  &__title{
+    font-size: 24px;
+    line-height: 28px;
+    color: $black;
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+  .art{
+    &__descr{
+      color: #808080;
+    }
+    &__transfericon{
+      path{
+        fill: #808080;
+      }
+    }
+    &:nth-child(n + 4){
+      .art__descr{
+        color: #0085FF;
+      }
+      .art__transfericon{
+        path{
+          fill: #0085FF;
+        }
+      }
+    }
+    &:nth-child(n + 7){
+      .art__descr{
+        color: #9C39EB;
+      }
+      .art__transfericon{
+        path{
+          fill: #9C39EB;
+        }
+      }
+    }
+    &:nth-child(n + 10){
+      .art__descr{
+        color: #EA3333;
+      }
+      .art__transfericon{
+        path{
+          fill: #EA3333;
+        }
+      }
+    }
+  }
+}

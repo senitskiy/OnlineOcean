@@ -98,6 +98,8 @@
             title='Open'
             view='purple'
             big
+            link
+            :href='boxOpenLink'
             ></app-button>
             <app-button
             title='Sell'
@@ -160,6 +162,9 @@ export default {
       const stringWithId = this.name.replace(/id/i, '#' + rightID)
       return stringWithId
     },
+    boxOpenLink(){
+      return this.$route.params.boxId + '/open/'
+    }
   },
   methods: {
     onTimerEnd() {
