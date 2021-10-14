@@ -8,6 +8,11 @@
     </span>
     <span class="profile__name">
       {{ user.name }}
+      <span class="profile__slot"
+      v-if='contentSlot.length !== 0'
+      >
+        {{ contentSlot }}
+      </span>
     </span>
   </router-link>
 </template>
@@ -23,6 +28,10 @@ export default {
       type: String,
       required: false,
     },
+    contentSlot:{
+      type: String,
+      default: '',
+    }
   },
   data() {
     return {

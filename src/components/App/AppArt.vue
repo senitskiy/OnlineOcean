@@ -13,6 +13,8 @@
     <span class="art__info">
       <app-profile
       v-if='!short'
+      :contentSlot='artDescr'
+      view='hasDescr'
       ></app-profile>
       <span class="art__descr"
       v-else
@@ -58,6 +60,8 @@
 </template>
 
 <script>
+import AppProfile from '@/components/App/AppProfile.vue';
+
 export default {
   props: {
     artId: {
@@ -67,6 +71,10 @@ export default {
     short:{
       type: Boolean,
       default: false,
+    },
+    hasSlot:{
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -83,21 +91,9 @@ export default {
   methods: {
     showChars() {
       this.$refs.chars.classList.add('art__chars--active')
-
-      // let allArts = document.querySelectorAll('.art')
-
-      // for (let i = 0; i < allArts.length; i++){
-      //   allArts[i].classList.add('art--less')
-      // }
     },
     hideChars(){
       this.$refs.chars.classList.remove('art__chars--active')
-
-      // let allArts = document.querySelectorAll('.art')
-
-      // for (let i = 0; i < allArts.length; i++){
-      //   allArts[i].classList.remove('art--less')
-      // }
     }
   },
   computed: {
@@ -110,6 +106,9 @@ export default {
     artDescr(){
       return this.art.descr.substring(0, 11) + '...'
     }
+  },
+  components: {
+    AppProfile,
   },
 }
 </script>

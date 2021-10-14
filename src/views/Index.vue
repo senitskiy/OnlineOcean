@@ -1,4 +1,6 @@
 <template>
+  <index-cover></index-cover>
+  <index-live-tape></index-live-tape>
   <app-row
   
   ></app-row>
@@ -6,12 +8,14 @@
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
+import IndexCover from '@/components/Index/IndexCover.vue'
+import IndexLiveTape from '@/components/Index/IndexLiveTape.vue'
 
 export default {
   name: 'Index',
   components: {
-    // HelloWorld
+    IndexLiveTape,
+    IndexCover
   }
 }
 </script>
