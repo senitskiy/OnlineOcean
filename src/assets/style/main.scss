@@ -820,6 +820,11 @@
     background-color: $grey-bg;
     padding: 63px 95px 39px;
   }
+  .btn--back{
+    font-size: 18px;
+    line-height: 22px;
+    top: 34px;
+  }
   &__imgwrapper,
   &__title{
     text-align: center;
@@ -918,8 +923,80 @@
   }
 }
 
-.box-items{
+.box-loot{
   margin-bottom: 46px;
+  &__items{
+    display: grid;
+    grid-template-columns: repeat(5, 158px);
+    column-gap: 23px;
+    row-gap: 23px;
+    margin-bottom: 14px;
+  }
+  &__add{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    position: relative;
+    &:after{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('./assets/images/border-dashed.svg');
+    }
+  }
+  &__add-descr{
+    margin-top: 7px;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 700;
+    color: $pink;
+  }
+  &__descr{
+    font-size: 16px;
+    line-height: 19px;
+    color: #A9A8A8;
+    position: relative;
+    padding-left: 26px;
+    &:before{
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background-color: #A9A8A8;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 10px;
+      border-radius: 50%;
+    }
+  }
+  .art,
+  &__add{
+    max-height: 203px;
+  }
+  .art{
+    background-color: rgba(#EA3333, .15);
+    border: 1px solid #EA3333;
+    .art__descr{
+      color: #EA3333;
+    }
+    &:nth-child(odd){
+      background-color: rgba(#9C39EB, .15);
+      border: 1px solid #9C39EB;
+      .art__descr{
+        color: #9C39EB;
+      }
+      .art__transfericon{
+        path{
+          fill: #9C39EB;
+        }
+      }
+    }
+  }
 }
 
 .create-chars{
