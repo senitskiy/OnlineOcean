@@ -293,3 +293,13 @@ button{
     color: $pink;
   }
 }
+
+.label{
+  color: $black;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 700;
+  .input{
+    width: 100%;
+  }
+}
