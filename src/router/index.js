@@ -3,6 +3,7 @@ import Index from '../views/Index.vue'
 import Box from '../views/Box.vue'
 import Art from '../views/Art.vue'
 import Create from '../views/Create.vue'
+import CreateBox from '../views/CreateBox.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/create/',
     name: 'Create',
     component: Create
+  },
+  {
+    path: '/create/box',
+    name: 'CreateBox',
+    component: CreateBox
   },
 ]
 

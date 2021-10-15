@@ -4,6 +4,7 @@
   class='btn'
   :class='[useStyle, this.big ? "btn--big" : ""]'
   >
+    <slot></slot>
     {{ title }}
   </button>
 
@@ -13,6 +14,7 @@
   :class='[useStyle, this.big ? "btn--big" : ""]'
   :to='href'
   >
+    <slot></slot>
     {{ title }}
   </router-link>
 </template>

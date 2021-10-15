@@ -317,6 +317,18 @@
       border-radius: 50%;
     }
   }
+  &__arrow{
+    background: #fff;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    &--prev{
+      img{
+        transform: rotate(180deg);
+      }
+    }
+  }
 }
 
 .nots{
@@ -720,5 +732,83 @@
         background-color: rgba(#EA3333, .15);
       }
     }
+  }
+}
+
+.create{
+  padding: 37px 0 41px;
+  &__inner{
+    background-color: $grey-bg;
+    border-radius: 25px;
+    text-align: center;
+    padding: 75px 0 72px;
+    position: relative;
+  }
+  &__title{
+    font-size: 24px;
+    line-height: 29px;
+    color: $black;
+    margin-bottom: 7px;
+    font-weight: 700;
+  }
+  &__info,
+  &__descr{
+    max-width: 396px;
+    margin: 0 auto;
+  }
+  &__items{
+    margin: 26px 0;
+    display: flex;
+    justify-content: center;
+  }
+  &__imgwrapper{
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, rgba(232, 136, 240, 0.05) 0.69%, rgba(238, 168, 244, 0.28) 100%);
+    border: 1px solid #F4CDF8;
+    border-radius: 10px;
+    width: 145px;
+    height: 145px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__item{
+    padding: 26px 0 22px;
+    max-width: 230px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFF;
+    border: 1px solid #EEA9F4;
+    color: #BD75EC;
+    font-weight: 700;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.03);
+    border-radius: 20px;
+    & + &{
+      margin-left: 20px;
+    }
+    &:nth-child(2){
+      border-color: #F2B1B6;
+      color: #E85B67;
+      .create__imgwrapper{
+        background: linear-gradient(135deg, rgba(240, 136, 144, 0.12) 0.69%, rgba(244, 168, 174, 0.46) 100%);
+        border-color: rgba(230, 100, 110, 0.19);
+      }
+    }
+    &:nth-child(3){
+      border-color: #B0F3B7;
+      color: #70D17B;
+      .create__imgwrapper{
+        background: linear-gradient(135deg, rgba(136, 240, 146, 0.05) 0.69%, rgba(168, 244, 176, 0.4) 100%);
+        border-color: #B0F3B7;
+      }
+    }
+  }
+  .btn{
+    position: absolute;
+    top: 30px;
+    left: 190px;
   }
 }
