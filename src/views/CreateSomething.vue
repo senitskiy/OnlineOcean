@@ -58,14 +58,13 @@
             </div>
           </div>
           <div class="create-modal__preview">
-            <app-row-slide
+            <app-big-art
             
-            ></app-row-slide>
+            ></app-big-art>
           </div>
         </div>
-        <div class="create-modal__chars">
-          
-        </div>
+        <create-box-items></create-box-items>
+        <create-chars></create-chars>
       </div>
     </div>
   </section>
@@ -73,9 +72,11 @@
 
 <script>
 import AppInput from '@/components/App/AppInput.vue';
-import AppRowSlide from '@/components/App/AppRowSlide.vue';
+import AppBigArt from '@/components/App/AppBigArt.vue';
 // import AppSelect from '@/components/App/AppSelect.vue';
 import CreateChoose from '@/components/Create/CreateChoose.vue';
+import CreateBoxItems from '@/components/Create/CreateBoxItems.vue';
+import CreateChars from '@/components/Create/CreateChars.vue';
 
 export default {
   data() {
@@ -124,8 +125,10 @@ export default {
   },
   components: {
     AppInput,
-    AppRowSlide,
+    AppBigArt,
     CreateChoose,
+    CreateBoxItems,
+    CreateChars,
     // AppSelect,
   },
 }

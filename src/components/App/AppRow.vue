@@ -26,65 +26,65 @@
         ref='rowSlider'
         >
           <swiper-slide>
-            <app-row-slide
+            <app-big-art
             title='Abstract 3D work'
             owner='artstudio'
             price='0.034 ETH'
             autor='@artstudio'
             verifiedAccount
-            ></app-row-slide>
+            ></app-big-art>
           </swiper-slide>
           <swiper-slide>
-            <app-row-slide
+            <app-big-art
             title='Abstract 3D work'
             owner='artstudio'
             price='0.034 ETH'
             autor='@artstudio'
             verifiedAccount
-            ></app-row-slide>
+            ></app-big-art>
           </swiper-slide>
           <swiper-slide>
-            <app-row-slide
+            <app-big-art
             title='Abstract 3D work'
             owner='artstudio'
             price='0.034 ETH'
             autor='@artstudio'
             verifiedAccount
-            ></app-row-slide>
+            ></app-big-art>
           </swiper-slide>
           <swiper-slide>
-            <app-row-slide
+            <app-big-art
             title='Abstract 3D work'
             owner='artstudio'
             price='0.034 ETH'
             autor='@artstudio'
             verifiedAccount
-            ></app-row-slide>
+            ></app-big-art>
           </swiper-slide>
           <swiper-slide>
-            <app-row-slide
+            <app-big-art
             title='Abstract 3D work'
             owner='artstudio'
             price='0.034 ETH'
             autor='@artstudio'
             verifiedAccount
-            ></app-row-slide>
+            ></app-big-art>
           </swiper-slide>
           <swiper-slide>
-            <app-row-slide
+            <app-big-art
             title='Abstract 3D work'
             owner='artstudio'
             price='0.034 ETH'
             autor='@artstudio'
             verifiedAccount
-            ></app-row-slide>
+            ></app-big-art>
           </swiper-slide>
-          <!-- <app-row-slide
+          <!-- <app-big-art
           title=''
           owner=''
           price=''
           autor=''
-          ></app-row-slide> -->
+          ></app-big-art> -->
         </swiper>
       </div>
     </div>
@@ -92,7 +92,7 @@
 </template>
 
 <script>
-import AppRowSlide from '@/components/App/AppRowSlide.vue'
+import AppBigArt from '@/components/App/AppBigArt.vue'
 
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide} from 'swiper/vue';
@@ -126,7 +126,7 @@ export default {
     },
   },
   components: {
-    AppRowSlide,
+    AppBigArt,
     Swiper,
     SwiperSlide
   },

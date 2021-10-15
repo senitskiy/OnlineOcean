@@ -831,8 +831,13 @@
     color: $black;
     margin: 10px 0 52px;
   }
+  &__info{
+    display: flex;
+    margin-bottom: 45px;
+  }
   &__content{
     max-width: 375px;
+    margin-right: 100px;
     .label{
       display: block;
       .input{
@@ -910,5 +915,56 @@
       color: #fff;
       background-color: $pink;
     }
+  }
+}
+
+.box-items{
+  margin-bottom: 46px;
+}
+
+.create-chars{
+  &__row{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 160px 1fr 1fr;
+    position: relative;
+    color: #7B7B7B;
+    padding: 16px 73px 17px 20px;
+    &:after{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      background: rgba(169, 168, 168, 0.4);
+      border-radius: 10px;
+    }
+    &:first-child{
+      background: #FFFFFF;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.03);
+      border-radius: 10px;
+      padding: 15px 73px 14px 20px;
+      font-size: 13px;
+      line-height: 16px;
+      color: $black;
+      font-weight: 700;
+      text-transform: capitalize;
+      &:after{
+        display: none;
+      }
+      .create-chars__price{
+        color: $black;
+      }
+    }
+  }
+  &__col{
+    display: flex;
+    justify-content: center;
+    &:first-child{
+      justify-content: flex-start;
+    }
+  }
+  &__price{
+    color: $pink;
   }
 }

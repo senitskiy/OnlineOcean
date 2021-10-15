@@ -3,7 +3,7 @@ import Index from '../views/Index.vue'
 import Box from '../views/Box.vue'
 import Art from '../views/Art.vue'
 import Create from '../views/Create.vue'
-import CreateBox from '../views/CreateBox.vue'
+import CreateSomething from '../views/CreateSomething.vue'
 
 const routes = [
   {
@@ -28,8 +28,8 @@ const routes = [
   },
   {
     path: '/create/box',
-    name: 'CreateBox',
-    component: CreateBox
+    name: 'CreateSomething',
+    component: CreateSomething
   },
 ]
 
