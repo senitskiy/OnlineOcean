@@ -820,10 +820,18 @@
     background-color: $grey-bg;
     padding: 63px 95px 39px;
   }
+  .btn--submit{
+    background-color: $pink;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: #fff;
+    margin-right: 0;
+    margin-left: auto;
+    display: block;
+  }
   .btn--back{
     font-size: 18px;
     line-height: 22px;
-    top: 34px;
   }
   &__imgwrapper,
   &__title{
@@ -861,8 +869,33 @@
   }
   &__info-fee{
     margin-bottom: 33px;
+    position: relative;
     .input{
       margin-bottom: 5px;
+    }
+  }
+  .multiselect{
+    position: absolute;
+    right: 0;
+    top: 13px;
+    color: #A9A8A8;
+    width: auto;
+    font-size: 14px;
+    line-height: 17px;
+    text-transform: uppercase;
+    padding: 0 16px;
+    .multiselect-single-label{
+      display: block;
+      width: unset;
+    }
+    .multiselect-clear{
+      display: none;
+    }
+    .multiselect-option.is-selected{
+      display: none;
+    }
+    .multiselect-caret{
+      margin: 0;
     }
   }
   &__info-inputs{
@@ -1000,9 +1033,10 @@
 }
 
 .create-chars{
+  margin-bottom: 49px;
   &__row{
     display: grid;
-    grid-template-columns: 120px 91px 1fr 160px 110px 1fr;
+    grid-template-columns: minmax(max-content, 125px) minmax(91px, 91px) 1fr 1fr 1fr minmax(30px, 30px);
     position: relative;
     color: #7B7B7B;
     padding: 16px 73px 17px 20px;

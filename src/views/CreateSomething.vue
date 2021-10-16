@@ -82,6 +82,10 @@
         </div>
         <create-box-loot></create-box-loot>
         <create-chars></create-chars>
+        <app-button
+        title='Create box'
+        view='submit'
+        ></app-button>
       </div>
     </div>
   </section>

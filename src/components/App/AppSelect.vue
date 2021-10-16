@@ -1,15 +1,15 @@
 <template>
-  <vue-select
+  <multiselect
   v-model="currValue"
   :options="options"
-  close-on-select
-  placeholder="Pick some"
-  ></vue-select>
+  hideSelected
+  ></multiselect>
 </template>
 
 <script>
-import VueSelect from 'vue-next-select'
-import 'vue-next-select/dist/index.min.css'
+import Multiselect from '@vueform/multiselect'
+
+import '@vueform/multiselect/themes/default.css'
 
 export default {
   props: {
@@ -24,7 +24,7 @@ export default {
     }
   },
   components: {
-    VueSelect,
+    Multiselect,
   },
 }
 </script>
