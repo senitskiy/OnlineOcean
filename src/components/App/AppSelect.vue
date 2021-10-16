@@ -3,6 +3,7 @@
   v-model="currValue"
   :options="options"
   close-on-select
+  placeholder="Pick some"
   ></vue-select>
 </template>
 

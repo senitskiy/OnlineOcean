@@ -45,6 +45,7 @@
               placeholderText='Write the price of your offer'
               view='lined'
               @typed='typedPrice'
+              type='number'
               ></app-input>
               <app-select
               :options='info.currency'
@@ -122,7 +123,7 @@ export default {
         name: '',
         descr: '',
         willGetMoney: '',
-        chooses: '',
+        type: '',
         boxPrice: null,
         classifications: [],
       }
@@ -133,7 +134,7 @@ export default {
       this.$router.go(-1)
     },
     setChoosed(value) {
-      this.data.chooses = value
+      this.data.type = value
     },
     typedName(value){
       this.data.name = value

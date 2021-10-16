@@ -1,7 +1,8 @@
 <template>
   <label class="label">
     {{ descr }}
-    <input class='input' type="text"
+    <input class='input' 
+    :type="type"
     :placeholder="placeholderText"
     :class='viewStyle'
     v-model="inputValue"
@@ -25,6 +26,10 @@ export default {
       type: String,
       required: false,
     },
+    type:{
+      type: String,
+      default: 'text'
+    }
   },
   data() {
     return {
