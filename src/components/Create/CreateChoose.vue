@@ -7,9 +7,9 @@
     >
       <input class="choose__input" type="radio" name='choose-input'
       :checked='choose.checked'
-      @click='choosedOption(choose)'
+      @change='choosedOption(choose)'
       :value='choose.text'
-      :v-model='currData'
+      v-model='currData'
       >
       <span class="choose__text"
       >
@@ -31,6 +31,15 @@ export default {
     return {
       currData: '',
     }
+  },
+  mounted () {
+    let current = this.chooses
+    function findChecked(choose){
+      return choose.checked === true
+    }
+    let needValue = current.find(findChecked)
+    this.currData = needValue.text
+    this.$emit('choosed', this.currData)
   },
   methods: {
     choosedOption() {

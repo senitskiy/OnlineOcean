@@ -18,6 +18,7 @@
         <h1 class="create-modal__title">
           {{ info.title }}
         </h1>
+        {{ data }}
         <div class="create-modal__info">
           <div class="create-modal__content">
             <div class="create-modal__info-inputs">
@@ -25,24 +26,29 @@
               descr='The name of your box'
               placeholderText='Enter the name of your box'
               view='lined'
+              @typed='typedName'
               ></app-input>
               <app-input
               descr='Description'
               placeholderText='Write a description of your box'
               view='lined'
+              @typed='typedDescr'
               ></app-input>
             </div>
             <create-choose
             :chooses='info.chooses'
-            @choosed='setChoosed()'
+            @choosed='setChoosed'
             ></create-choose>
             <div class="create-modal__info-fee">
               <app-input
               descr='Price'
               placeholderText='Write the price of your offer'
               view='lined'
-              @typed='typedText'
+              @typed='typedPrice'
               ></app-input>
+              <app-select
+              :options='info.currency'
+              ></app-select>
               <p class="create-modal__text">
                 Service fee 
                 <span>
@@ -83,7 +89,7 @@
 <script>
 import AppInput from '@/components/App/AppInput.vue';
 import AppBigArt from '@/components/App/AppBigArt.vue';
-// import AppSelect from '@/components/App/AppSelect.vue';
+import AppSelect from '@/components/App/AppSelect.vue';
 import CreateChoose from '@/components/Create/CreateChoose.vue';
 import CreateBoxLoot from '@/components/Create/CreateBoxLoot.vue';
 import CreateChars from '@/components/Create/CreateChars.vue';
@@ -107,12 +113,18 @@ export default {
             checked: false,
           },
         ],
+        currency: [
+          'eth', 'btc', 'etc'
+        ],
         siteFee: '2.5%',
       },
       data:{
+        name: '',
+        descr: '',
+        willGetMoney: '',
         chooses: '',
         boxPrice: null,
-        willGetMoney: '',
+        classifications: [],
       }
     }
   },
@@ -121,12 +133,17 @@ export default {
       this.$router.go(-1)
     },
     setChoosed(value) {
-      console.log(value)
-      // this.data.chooses = value
+      this.data.chooses = value
     },
-    typedText(value){
+    typedName(value){
+      this.data.name = value
+    },
+    typedDescr(value){
+      this.data.descr = value
+    },
+    typedPrice(value){
       this.data.boxPrice = Number(value)
-    }
+    },
   },
   computed: {
     willGet(){
@@ -142,7 +159,7 @@ export default {
     CreateChoose,
     CreateBoxLoot,
     CreateChars,
-    // AppSelect,
+    AppSelect,
   },
 }
 </script>

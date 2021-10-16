@@ -2,6 +2,7 @@
   <vue-select
   v-model="currValue"
   :options="options"
+  close-on-select
   ></vue-select>
 </template>
 
@@ -10,12 +11,15 @@ import VueSelect from 'vue-next-select'
 import 'vue-next-select/dist/index.min.css'
 
 export default {
+  props: {
+    options: {
+      type: Array,
+      required: true, 
+    },
+  },
   data() {
     return {
       currValue: '',
-      options:[
-        'ETH', 'btc', 'etc'
-      ]
     }
   },
   components: {
