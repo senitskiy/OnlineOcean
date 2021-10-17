@@ -395,6 +395,15 @@
   }
 }
 
+.cataloge{
+  &__rows{
+    display: grid;
+    grid-template-columns: repeat(5, 158px);
+    column-gap: 21px;
+    
+  }
+}
+
 .product-cover{
   margin: 30px 0 32px;
   &__imgwrapper{

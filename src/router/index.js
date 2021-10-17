@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Index from '../views/Index.vue'
+import Cataloge from '../views/Cataloge.vue'
 import Box from '../views/Box.vue'
 import Art from '../views/Art.vue'
 import Create from '../views/Create.vue'
@@ -10,6 +11,11 @@ const routes = [
     path: '/',
     name: 'Index',
     component: Index
+  },
+  {
+    path: '/cataloge',
+    name: 'Cataloge',
+    component: Cataloge
   },
   {
     path: '/box/:itemId(\\d+)',
