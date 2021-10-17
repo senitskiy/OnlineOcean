@@ -51,15 +51,18 @@
           </ul>
         </nav>
         <div class="footer__news">
-          <form class='footer__form'>
+          <form class='footer__form'
+          @submit.prevent='sendData()'
+          >
             <label class="footer__news-label">
               <span class="footer__news-title">
                 Get the latest news to your email.
               </span> 
-              <input class="footer__news-input input" type='email'
-              placeholder="Your e-mail"
-              required
-              >
+              <app-input
+              type='email'
+              placeholderText='Your e-mail'
+              @typedText='setEmailAdress'
+              ></app-input>
               <app-button
               title='Send'
               ></app-button>
@@ -93,10 +96,31 @@
 
 <script>
 import AppLogo from '@/components/App/AppLogo.vue'
+import AppInput from '@/components/App/AppInput.vue'
+
+import axios from 'axios';
 
 export default {
+  data() {
+    return {
+      emailAdress: '',
+    }
+  },
+  methods: {
+    setEmailAdress(value) {
+      this.emailAdress = value
+    },
+    sendData(){
+      axios
+        .post('https://google.com')
+        .then(
+          this.emailAdress = ''
+        )
+    }
+  },
   components:{
-    AppLogo
-  }
+    AppLogo,
+    AppInput,
+  },
 }
 </script>

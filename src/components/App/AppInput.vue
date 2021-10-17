@@ -4,7 +4,7 @@
     <input class='input' 
     :type="type"
     :placeholder="placeholderText"
-    :class='viewStyle'
+    :class='view ? viewStyle : ""'
     v-model="inputValue"
     @input='typedText()'
     >

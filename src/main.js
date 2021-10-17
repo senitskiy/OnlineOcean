@@ -11,7 +11,6 @@ import "normalize.css"
 
 const app = createApp(App)
 
-
 // Global Components
 
 import AppButton from './components/App/AppButton'
@@ -21,11 +20,5 @@ app.component('AppButton', AppButton)
 app.component('AppRow', AppRow)
 
 // Global Components
-
-// Libs
-
-
-
-// Libs
 
 app.use(store).use(router).mount('#app')
