@@ -417,16 +417,15 @@
     }
   }
   .art{
-    // z-index: 10;
+    // Есть баг
     // &:before{
     //   content: '';
     //   position: absolute;
-    //   left: -24px;
+    //   left: -12px;
     //   top: -21px;
-    //   width: calc(100% + 48px);
-    //   height: calc(100% + 42px);
+    //   width: calc(100% + 24px);
+    //   height: calc(100% + 21px);
     //   background-color: $grey-bg;
-    //   z-index: -1;
     // }
   }
   &__current{

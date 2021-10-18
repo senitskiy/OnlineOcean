@@ -1,5 +1,7 @@
 <template>
-  <label class="label">
+  <label class="label"
+  v-if='!radio'
+  >
     {{ descr }}
     <input class='input' 
     :type="type"
@@ -7,6 +9,17 @@
     :class='view ? viewStyle : ""'
     v-model="inputValue"
     @input='typedText()'
+    >
+  </label>
+
+  <label class="label"
+  v-else
+  >
+    <slot></slot>
+    {{ descr }}
+    <input class='radio' type="radio"
+    :value="radioValue"
+    
     >
   </label>
 </template>
@@ -29,6 +42,14 @@ export default {
     type:{
       type: String,
       default: 'text'
+    },
+    radio:{
+      type: Boolean,
+      default: false,
+    },
+    radioValue:{
+      type: String,
+      required: false,
     }
   },
   data() {

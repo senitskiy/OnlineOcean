@@ -25,8 +25,17 @@
           Blockchain
           <img src="@/assets/images/arrow-down.svg" alt="">
         </button>
-        <div class="filters__item-body">
-
+        <div class="filters__item-body"
+        v-for='blockchain in data.blockchains'
+        :key="blockchain"
+        >
+          <app-input
+          :descr='blockchain.text'
+          :radioValue='blockchain.value'
+          radio
+          >
+            <img src="@/assets/images/temp/ethereum.svg" alt="">
+          </app-input>
         </div>
       </li>
     </ul>
@@ -34,11 +43,23 @@
 </template>
 
 <script>
+import AppInput from '@/components/App/AppInput.vue';
+
 export default {
   data() {
     return {
       filtersOpened: true,
       data:{
+        blockchains:[
+          {
+            text: 'Ethereum',
+            value: 'eth',
+          },
+          {
+            text: 'Bitcoin',
+            value: 'btc'
+          },
+        ],
       }
     }
   },
@@ -52,6 +73,9 @@ export default {
     filtersView() {
       return this.filtersOpened ? '' : 'filters--hidden'
     }
+  },
+  components: {
+    AppInput,
   },
 }
 </script>

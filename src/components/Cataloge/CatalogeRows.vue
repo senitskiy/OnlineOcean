@@ -28,11 +28,6 @@
 import AppArt from '@/components/App/AppArt.vue';
 
 export default {
-  // computed: {
-  //   countOfCols(){
-  //     return this.showMoreCols ? 'cataloge__rows--more' : ''
-  //   }
-  // },
   components: {
     AppArt,
   },
