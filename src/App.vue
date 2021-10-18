@@ -14,7 +14,8 @@ import AppFooter from '@/components/App/AppFooter.vue'
 
 export default {
   components:{
-    AppHeader, AppFooter
+    AppHeader, 
+    AppFooter,
   }
 }
 </script>

@@ -4,14 +4,15 @@
       <div class="cover__inner">
         <div class="cover__info">
           <p class="cover__desc">
-            The Larget NFT Marketplace
+            {{ data.descr }}
           </p>
           <h1 class="cover__title">
-            Discover & Collect
-            rate Digital Artwork
+            {{ data.title }}
           </h1>
           <app-button
-          title='Explore'
+          :title='data.btnName'
+          link
+          :href='data.btnHref'
           ></app-button>
         </div>
         <div class="cover__imgwrapper">
@@ -26,6 +27,16 @@
 import AppButton from '@/components/App/AppButton.vue';
 
 export default {
+  data() {
+    return {
+      data:{
+        descr: 'The Larget NFT Marketplace',
+        title: 'Discover & Collect rate Digital Artwork',
+        btnName: 'Explore',
+        btnHref: '/cataloge',
+      }
+    }
+  },
   components: {
     AppButton,
   },

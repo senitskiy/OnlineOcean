@@ -1,8 +1,12 @@
 <template>
   <div class="cataloge">
-    <cataloge-filters></cataloge-filters>
+    <cataloge-filters
+    @clicked='changeView()'
+    ></cataloge-filters>
     <cataloge-current-filters></cataloge-current-filters>
-    <cataloge-rows></cataloge-rows>
+    <cataloge-rows
+    :showMoreCols='showMoreCols'
+    ></cataloge-rows>
   </div>
 </template>
 
@@ -12,6 +16,16 @@ import CatalogeCurrentFilters from '@/components/Cataloge/CatalogeCurrentFilters
 import CatalogeRows from '@/components/Cataloge/CatalogeRows.vue';
 
 export default {
+  data() {
+    return {
+      showMoreCols: false,
+    }
+  },
+  methods: {
+    changeView() {
+      this.showMoreCols = !this.showMoreCols
+    },
+  },
   components: {
     CatalogeFilters,
     CatalogeCurrentFilters,
