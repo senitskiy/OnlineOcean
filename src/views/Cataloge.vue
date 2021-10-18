@@ -1,12 +1,16 @@
 <template>
   <div class="cataloge">
-    <cataloge-filters
-    @clicked='changeView()'
-    ></cataloge-filters>
-    <cataloge-current-filters></cataloge-current-filters>
-    <cataloge-rows
-    :showMoreCols='showMoreCols'
-    ></cataloge-rows>
+    <div class="cataloge__wrapper">
+      <cataloge-filters
+      @clicked='changeView()'
+      ></cataloge-filters>
+      <div class="cataloge__inner"
+      :class='countOfCols'
+      >
+        <cataloge-current-filters></cataloge-current-filters>
+        <cataloge-rows></cataloge-rows>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -25,6 +29,11 @@ export default {
     changeView() {
       this.showMoreCols = !this.showMoreCols
     },
+  },
+  computed: {
+    countOfCols(){
+      return this.showMoreCols ? 'cataloge__inner--more' : ''
+    }
   },
   components: {
     CatalogeFilters,

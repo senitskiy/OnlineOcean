@@ -3,8 +3,8 @@
   :class='filtersView'
   >
     <ul class="filters__list">
-      <li class="filters__item">
-        <button class="filters__toggle filters__item-head btn-clear"
+      <li class="filters__item filters__toggle">
+        <button class="filters__item-head btn-clear"
         @click='toggleFilters()'
         >
           Close Filters
@@ -37,20 +37,20 @@
 export default {
   data() {
     return {
+      filtersOpened: true,
       data:{
-        filtersOpened: true,
       }
-    }
-  },
-  computed: {
-    filtersView() {
-      return this.filtersOpened ? '' : 'filters--hidden'
     }
   },
   methods: {
     toggleFilters() {
       this.filtersOpened = !this.filtersOpened
-      this.$emit('clicked', this.filtersOpened)
+      this.$emit('clicked')
+    }
+  },
+  computed: {
+    filtersView() {
+      return this.filtersOpened ? '' : 'filters--hidden'
     }
   },
 }
