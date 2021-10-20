@@ -40,6 +40,15 @@
           </app-input>
         </div>
       </li>
+      <li class="filters__item">
+        <button class="filters__item-head btn-clear">
+          Price
+          <img src="@/assets/images/arrow-down.svg" alt="">
+        </button>
+        <div class="filters__item-body">
+
+        </div>
+      </li>
     </ul>
   </aside>
 </template>

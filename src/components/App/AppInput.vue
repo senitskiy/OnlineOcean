@@ -16,9 +16,10 @@
   v-else
   >
     <slot></slot>
-    {{ descr }}
+    <span class='label-text'>
+      {{ descr }}
+    </span>
     <input class='radio' type="radio"
-    :class='radioView'
     v-model="inputValue"
     :value="radioValue"
     :name='checkboxName'
@@ -78,16 +79,10 @@ export default {
       this.$emit('choosed', this.inputValue)
     }
   },
-  mounted () {
-    this.checkboxChecked ? this.inputValue = this.radioValue : null
-  },
   computed: {
     viewStyle() {
       return 'input--' + this.view
     },
-    radioView(){
-      return this.radioValue === this.inputValue ? 'radio--checked' : ''
-    }
   },
 }
 </script>

@@ -486,15 +486,9 @@
         font-weight: 500;
         padding: 15px 28px 17px;
         background: rgba(15, 0, 77, 0.05);
-      }
-      .radio{
-        opacity: 0;
-        &--checked{
-          opacity: 1;
+        img{
+          margin-right: 7px;
         }
-      }
-      img{
-        margin-right: 7px;
       }
     }
   }

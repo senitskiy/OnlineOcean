@@ -21,7 +21,7 @@
           <app-likes
           view='big'
           :liked='likedBox'
-          @loadLike='setLike(value)'
+          @loadLike='setLike()'
           @toggledLike='toggleLike()'
           ></app-likes>
         </div>
@@ -61,13 +61,13 @@
               </p>
               <vue-countdown
               :time='difference'
-              v-slot="{ hours, minutes, seconds }"
+              v-slot="{ days, hours, minutes, seconds }"
               @end='onTimerEnd'
               >
                 <ul class="auction__items">
                   <li class="auction__item">
                     <p class="auction__numb">
-                      {{ hours }}
+                      {{ (days * 24) + hours }}
                     </p>
                     <p class="auction__time">
                       Hours
@@ -142,7 +142,7 @@ export default {
   },
   data() {
     return {
-      endAuction: '2021-10-10T22:53:30',
+      endAuction: '2021-10-22T22:53:30',
       dateNow: 0,
       difference: 0,
 
