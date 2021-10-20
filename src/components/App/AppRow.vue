@@ -1,7 +1,10 @@
 <template>
   <div class='row'>
     <div class="container">
-      <div class="row__inner">
+      <div class="row__inner"
+      ref='slidesRow'
+      :style='needHeight'
+      >
         <h6 class="row__title">
           {{ title }}
         </h6>
@@ -18,6 +21,7 @@
         :space-between="20"
         :modules='modules'
         navigation
+        :watchSlidesVisibility='true'
         >
           <swiper-slide>
             <app-big-art
@@ -104,6 +108,24 @@ export default {
     return {
       modules: [Navigation],
     };
+  },
+  data() {
+    return {
+      needHeight: null,
+    }
+  },
+  mounted () {
+    this.setHeight()
+  },
+  methods: {
+    setHeight() {
+      let currRow = this.$refs.slidesRow
+      let currHeight = currRow.offsetHeight
+
+      this.needHeight = "height: " + (currHeight + 12) + 'px'
+
+      console.log(currHeight)
+    }
   },
   components: {
     AppBigArt,

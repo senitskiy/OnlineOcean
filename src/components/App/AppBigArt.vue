@@ -1,6 +1,8 @@
 <template>
   <router-link class="row__slide" to='/product-n'
   :class='activeState'
+  @mouseover='showChars()'
+  @mouseleave="hideChars()"
   >
     <span class="row__slide-top row-top">
       <span class="row-top__left">
@@ -28,12 +30,18 @@
       view='slider'
       ></app-profile>
     </span>
+    <app-chars
+    :chars='chars'
+    ref='chars'
+    :viewStyle='charsView'
+    ></app-chars>
   </router-link>
 </template>
 
 <script>
 import AppProfile from '@/components/App/AppProfile.vue';
 import AppLikes from '@/components/App/AppLikes.vue';
+import AppChars from '@/components/App/AppChars.vue';
 
 export default {
   props: {
@@ -53,12 +61,24 @@ export default {
   data() {
     return {
       liked: false,
+      charsView: false,
+      chars:{
+        amount: '126',
+        probability: '8%',
+        rank: 'Legendary',
+      },
     }
   },
   methods:{
     toggleFavourite(){
       this.liked = !this.liked
-    }
+    },
+    showChars() {
+      this.charsView = true
+    },
+    hideChars(){
+      this.charsView = false
+    },
   },
   computed: {
     activeState() {
@@ -67,7 +87,8 @@ export default {
   },
   components: {
     AppProfile,
-    AppLikes
+    AppLikes,
+    AppChars,
   },
 };
 </script>
