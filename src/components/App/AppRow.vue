@@ -21,6 +21,7 @@
         :space-between="20"
         :modules='modules'
         navigation
+        :watchSlidesProgress='true'
         :watchSlidesVisibility='true'
         >
           <swiper-slide>

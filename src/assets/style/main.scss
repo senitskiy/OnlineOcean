@@ -334,24 +334,26 @@
     overflow-y: auto;
     padding-bottom: 200px;
   }
-  .swiper-slide-visible{
-    &:first-child{
-      .art__chars{
-        left: 20px;
-        transform: unset;
+  .swiper-wrapper{
+    .swiper-slide.swiper-slide-visible{
+      &.swiper-slide-active{
+        .art__chars{
+          left: 20px;
+          transform: unset;
+        }
+        .art__transfericon{
+          margin: -40px auto 0 5px;
+        }
       }
-      .art__transfericon{
-        margin: -40px auto 0 5px;
-      }
-    }
-    &:nth-child(4){
-      .art__chars{
-        right: 20px;
-        left: unset;
-        transform: unset;
-      }
-      .art__transfericon{
-        margin: -40px 5px 0 auto;
+      &:last-child{
+        .art__chars{
+          right: 20px;
+          left: unset;
+          transform: unset;
+        }
+        .art__transfericon{
+          margin: -40px 5px 0 auto;
+        }
       }
     }
   }
