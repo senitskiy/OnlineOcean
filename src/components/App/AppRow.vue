@@ -6,12 +6,10 @@
           {{ title }}
         </h6>
         <button class="row__arrow row__arrow--prev btn-clear"
-        @click='setPrevSlide()'
         >
           <img src="@/assets/images/arrow-right.svg" alt="">
         </button>
         <button class="row__arrow row__arrow--next btn-clear"
-        @click='setNextSlide()'
         >
           <img src="@/assets/images/arrow-right.svg" alt="">
         </button>
@@ -19,11 +17,7 @@
         :slides-per-view="4"
         :space-between="20"
         :modules='modules'
-        :navigation="{
-          nextEl: '.row__arrow--next',
-          prevEl: '.row__arrow--prev',
-        }"
-        ref='rowSlider'
+        navigation
         >
           <swiper-slide>
             <app-big-art
@@ -94,9 +88,8 @@
 <script>
 import AppBigArt from '@/components/App/AppBigArt.vue'
 
-import { Navigation } from 'swiper';
-import { Swiper, SwiperSlide} from 'swiper/vue';
-
+import { Navigation } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/swiper.min.css'
 import 'swiper/components/navigation/navigation.min.css'
 
@@ -107,28 +100,15 @@ export default {
       default: 'The hottest products of this week',
     },
   },
-  setup () {
-    return{
-      modules: [Navigation],
-    }
-  },
-  data() {
+  setup() {
     return {
-      rowSwiper: this.$refs.rowSlider,
-    }
-  },
-  methods: {
-    setPrevSlide() {
-      this.$refs.rowSlider.slidePrev()
-    },
-    setNextSlide() {
-      this.$refs.rowSlider.slideNext()
-    },
+      modules: [Navigation],
+    };
   },
   components: {
     AppBigArt,
     Swiper,
-    SwiperSlide
+    SwiperSlide,
   },
 }
 </script>

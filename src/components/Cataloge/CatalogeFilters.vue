@@ -20,7 +20,7 @@
 
         </div>
       </li>
-      <li class="filters__item">
+      <li class="filters__item filters__item--blockchain">
         <button class="filters__item-head btn-clear">
           Blockchain
           <img src="@/assets/images/arrow-down.svg" alt="">
@@ -32,6 +32,8 @@
           <app-input
           :descr='blockchain.text'
           :radioValue='blockchain.value'
+          :checkboxName='blockchain.checkboxName'
+          :checkboxChecked='blockchain.checked'
           radio
           >
             <img src="@/assets/images/temp/ethereum.svg" alt="">
@@ -54,10 +56,13 @@ export default {
           {
             text: 'Ethereum',
             value: 'eth',
+            checkboxName: 'cataloge-blockchains',
+            checked: true,
           },
           {
             text: 'Bitcoin',
-            value: 'btc'
+            value: 'btc',
+            checkboxName: 'cataloge-blockchains',
           },
         ],
       }

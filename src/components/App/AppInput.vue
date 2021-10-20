@@ -4,10 +4,10 @@
   >
     {{ descr }}
     <input class='input' 
+    v-model="inputValue"
     :type="type"
     :placeholder="placeholderText"
     :class='view ? viewStyle : ""'
-    v-model="inputValue"
     @input='typedText()'
     >
   </label>
@@ -18,8 +18,13 @@
     <slot></slot>
     {{ descr }}
     <input class='radio' type="radio"
+    :class='radioView'
+    v-model="inputValue"
     :value="radioValue"
-    
+    :name='checkboxName'
+    :checked='checkboxChecked'
+    @changed='choosedRadio()'
+    ref='radio'
     >
   </label>
 </template>
@@ -50,7 +55,15 @@ export default {
     radioValue:{
       type: String,
       required: false,
-    }
+    },
+    checkboxName:{
+      type: String,
+      required: true,
+    },
+    checkboxChecked:{
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -60,11 +73,20 @@ export default {
   methods: {
     typedText() {
       this.$emit('typed', this.inputValue)
+    },
+    choosedRadio(){
+      this.$emit('choosed', this.inputValue)
     }
+  },
+  mounted () {
+    this.checkboxChecked ? this.inputValue = this.radioValue : null
   },
   computed: {
     viewStyle() {
       return 'input--' + this.view
+    },
+    radioView(){
+      return this.radioValue === this.inputValue ? 'radio--checked' : ''
     }
   },
 }
