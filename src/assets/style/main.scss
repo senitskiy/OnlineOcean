@@ -247,6 +247,14 @@
     background-color: $grey-bg;
     color: $black;
     border-radius: 25px;
+    z-index: 0;
+    position: relative;
+    transition: z-index .4s;
+  }
+  &--hover{
+    .row__inner{
+      z-index: 1;
+    }
   }
   &__title{
     font-size: 20px;

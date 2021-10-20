@@ -1,5 +1,7 @@
 <template>
-  <div class='row'>
+  <div class='row'
+  ref='parentRow'
+  >
     <div class="container">
       <div class="row__inner"
       ref='slidesRow'
@@ -24,66 +26,18 @@
         :watchSlidesProgress='true'
         :watchSlidesVisibility='true'
         >
-          <swiper-slide>
+          <swiper-slide
+          @mouseenter="increaseIndex()"
+          @mouseleave="reduceIndex()"
+          v-for='slide in data'
+          :key='slide'
+          >
             <app-big-art
-            title='Abstract 3D work'
-            owner='artstudio'
-            price='0.034 ETH'
-            autor='@artstudio'
-            verifiedAccount
+            :title='slide.title'
+            :owner='slide.owner'
+            :price='slide.price'
             ></app-big-art>
           </swiper-slide>
-          <swiper-slide>
-            <app-big-art
-            title='Abstract 3D work'
-            owner='artstudio'
-            price='0.034 ETH'
-            autor='@artstudio'
-            verifiedAccount
-            ></app-big-art>
-          </swiper-slide>
-          <swiper-slide>
-            <app-big-art
-            title='Abstract 3D work'
-            owner='artstudio'
-            price='0.034 ETH'
-            autor='@artstudio'
-            verifiedAccount
-            ></app-big-art>
-          </swiper-slide>
-          <swiper-slide>
-            <app-big-art
-            title='Abstract 3D work'
-            owner='artstudio'
-            price='0.034 ETH'
-            autor='@artstudio'
-            verifiedAccount
-            ></app-big-art>
-          </swiper-slide>
-          <swiper-slide>
-            <app-big-art
-            title='Abstract 3D work'
-            owner='artstudio'
-            price='0.034 ETH'
-            autor='@artstudio'
-            verifiedAccount
-            ></app-big-art>
-          </swiper-slide>
-          <swiper-slide>
-            <app-big-art
-            title='Abstract 3D work'
-            owner='artstudio'
-            price='0.034 ETH'
-            autor='@artstudio'
-            verifiedAccount
-            ></app-big-art>
-          </swiper-slide>
-          <!-- <app-big-art
-          title=''
-          owner=''
-          price=''
-          autor=''
-          ></app-big-art> -->
         </swiper>
       </div>
     </div>
@@ -113,6 +67,57 @@ export default {
   data() {
     return {
       needHeight: null,
+      data:[
+        {
+          title: 'Abstract 3D work',
+          owner: 'artstudio',
+          price: '0.034 ETH',
+          autor: '@artstudio',
+          verifiedAccount: true,
+        },
+        {
+          title: 'Abstract 3D work',
+          owner: 'artstudio',
+          price: '0.034 ETH',
+          autor: '@artstudio',
+          verifiedAccount: true,
+        },
+        {
+          title: 'Abstract 3D work',
+          owner: 'artstudio',
+          price: '0.034 ETH',
+          autor: '@artstudio',
+          verifiedAccount: true,
+        },
+        {
+          title: 'Abstract 3D work',
+          owner: 'artstudio',
+          price: '0.034 ETH',
+          autor: '@artstudio',
+          verifiedAccount: true,
+        },
+        {
+          title: 'Abstract 3D work',
+          owner: 'artstudio',
+          price: '0.034 ETH',
+          autor: '@artstudio',
+          verifiedAccount: true,
+        },
+        {
+          title: 'Abstract 3D work',
+          owner: 'artstudio',
+          price: '0.034 ETH',
+          autor: '@artstudio',
+          verifiedAccount: true,
+        },
+        {
+          title: 'Abstract 3D work',
+          owner: 'artstudio',
+          price: '0.034 ETH',
+          autor: '@artstudio',
+          verifiedAccount: true,
+        },
+      ]
     }
   },
   mounted () {
@@ -124,8 +129,12 @@ export default {
       let currHeight = currRow.offsetHeight
 
       this.needHeight = "height: " + (currHeight + 12) + 'px'
-
-      console.log(currHeight)
+    },
+    increaseIndex(){
+      this.$refs.parentRow.classList.add('row--hover')
+    },
+    reduceIndex(){
+      this.$refs.parentRow.classList.remove('row--hover')
     }
   },
   components: {
