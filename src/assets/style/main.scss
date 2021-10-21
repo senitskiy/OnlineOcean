@@ -331,16 +331,36 @@
       border-radius: 50%;
     }
   }
-  &__arrow{
+  .splide__arrow{
     background: #fff;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     width: 60px;
     height: 60px;
-    &--prev{
-      img{
-        transform: rotate(180deg);
+    opacity: 1;
+    right: -15px;
+    top: calc(50% - 90px);
+    &:hover{
+      opacity: 1;
+    }
+    svg{
+      width: unset;
+      height: unset;
+      transform: translate(13px, 5px);
+      path{
+        width: 16px;
+        height: 28px;
+        fill: $pink;
       }
+    }
+    &--prev{
+      left: -15px;
+      svg{
+        transform: translate(-13px, -5px) rotate(180deg);
+      }
+    }
+    &.hidden{
+      opacity: 0;
     }
   }
   .splide__track{

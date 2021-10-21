@@ -12,7 +12,9 @@
         </h6>
         <splide
         :options='options'
+        @splide:mounted='sliderMounted'
         @splide:move='sliderMove'
+        @splide:dragged='sliderMove'
         ref='splide'
         >
           <splide-slide
@@ -39,8 +41,6 @@ import AppBigArt from '@/components/App/AppBigArt.vue'
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 
-import { onMounted, ref } from 'vue';
-
 export default {
   props: {
     title: {
@@ -49,28 +49,40 @@ export default {
     },
   },
   setup() {
-    const splide = ref();
-
-    onMounted( () => {
-      if ( splide.value && splide.value.splide ) {
-        console.log( splide.value.splide.length );
-      }
-    } );
-
     let options = {
       gap: 20,
       pagination: false,
       perPage: 4,
       perMove: 1,
       speed: 500,
+      waitForTransition: false,
       arrowPath: 'M16.5533 15.0926L4.09294 27.5527C3.80475 27.8411 3.42003 28 3.00983 28C2.59962 28 2.21491 27.8411 1.92671 27.5527L1.00909 26.6353C0.411993 26.0375 0.411993 25.0659 1.00909 24.4691L11.4724 14.0058L0.997484 3.53093C0.709292 3.24251 0.550171 2.85803 0.550171 2.44805C0.550171 2.03761 0.709292 1.65312 0.997484 1.36448L1.9151 0.447313C2.20352 0.158894 2.58801 0 2.99822 0C3.40842 0 3.79314 0.158894 4.08133 0.447313L16.5533 12.9188C16.8422 13.2082 17.0008 13.5945 16.9999 14.0051C17.0008 14.4174 16.8422 14.8035 16.5533 15.0926Z',
     };
-    function sliderMove(splide, prev, next){
-      console.log([splide.length, prev, next])
+    function sliderMounted(splide){
+      let prevArrow = splide._Components.Arrows.arrows.prev
+      prevArrow.classList.add('hidden')
+    }
+
+    function sliderMove(splide){
+      let currSlide = splide.index,
+          sliderLength = splide.length,
+          prevArrow = splide._Components.Arrows.arrows.prev,
+          nextArrow = splide._Components.Arrows.arrows.next
+
+      if (currSlide === 0){
+        prevArrow.classList.add('hidden')
+        nextArrow.classList.remove('hidden')
+      } else if (currSlide + options.perPage === sliderLength){
+        nextArrow.classList.add('hidden')
+        prevArrow.classList.remove('hidden')
+      } else{
+        prevArrow.classList.remove('hidden')
+        nextArrow.classList.remove('hidden')
+      }
     }
     return {
-      splide,
       options,
+      sliderMounted,
       sliderMove,
     };
   },
