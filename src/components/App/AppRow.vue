@@ -1,55 +1,18 @@
 <template>
-  <div class='row'
+  <div class="row"
   ref='parentRow'
   >
-    <div class="container">
-      <div class="row__inner"
-      
-      >
-        <h6 class="row__title">
-          {{ title }}
-        </h6>
-        <button class="row__arrow row__arrow--prev btn-clear"
-        >
-          <img src="@/assets/images/arrow-right.svg" alt="">
-        </button>
-        <button class="row__arrow row__arrow--next btn-clear"
-        >
-          <img src="@/assets/images/arrow-right.svg" alt="">
-        </button>
-        <swiper class="row__slider"
-        :slides-per-view="4"
-        :space-between="20"
-        :modules='modules'
-        navigation
-        :watchSlidesProgress='true'
-        :watchSlidesVisibility='true'
-        >
-          <swiper-slide
-          @mouseenter="increaseIndex()"
-          @mouseleave="reduceIndex()"
-          v-for='slide in data'
-          :key='slide'
-          >
-            <app-big-art
-            :title='slide.title'
-            :owner='slide.owner'
-            :price='slide.price'
-            ></app-big-art>
-          </swiper-slide>
-        </swiper>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
     <div class="container">
       <div class="row__inner"
       ref='slidesRow'
       :style='needHeight'
       >
+        <h6 class="row__title">
+          {{ title }}
+        </h6>
         <splide
         :options='sliderOptions'
+        @splide:scrolled='hideNextArrow()'
         >
           <splide-slide
           v-for='slide in data'
@@ -72,11 +35,6 @@
 <script>
 import AppBigArt from '@/components/App/AppBigArt.vue'
 
-import { Navigation } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import 'swiper/swiper.min.css'
-import 'swiper/components/navigation/navigation.min.css'
-
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 
@@ -89,7 +47,7 @@ export default {
   },
   setup() {
     return {
-      modules: [Navigation],
+      
     };
   },
   data() {
@@ -99,6 +57,8 @@ export default {
         pagination: false,
         perPage: 4,
         perMove: 1,
+        speed: 500,
+        arrowPath: 'M16.5533 15.0926L4.09294 27.5527C3.80475 27.8411 3.42003 28 3.00983 28C2.59962 28 2.21491 27.8411 1.92671 27.5527L1.00909 26.6353C0.411993 26.0375 0.411993 25.0659 1.00909 24.4691L11.4724 14.0058L0.997484 3.53093C0.709292 3.24251 0.550171 2.85803 0.550171 2.44805C0.550171 2.03761 0.709292 1.65312 0.997484 1.36448L1.9151 0.447313C2.20352 0.158894 2.58801 0 2.99822 0C3.40842 0 3.79314 0.158894 4.08133 0.447313L16.5533 12.9188C16.8422 13.2082 17.0008 13.5945 16.9999 14.0051C17.0008 14.4174 16.8422 14.8035 16.5533 15.0926Z',
       },
       needHeight: null,
       data:[
@@ -169,12 +129,17 @@ export default {
     },
     reduceIndex(){
       this.$refs.parentRow.classList.remove('row--hover')
+    },
+    hidePrevArrow(){
+
+    },
+    hideNextArrow(){
+      alert(1)
+      this.$refs.parentRow.classList.add('row--hide-next-arrow')
     }
   },
   components: {
     AppBigArt,
-    Swiper,
-    SwiperSlide,
     Splide,
     SplideSlide,
   },

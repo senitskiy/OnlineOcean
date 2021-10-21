@@ -313,7 +313,7 @@ input[type=number] {
   }
 }
 
-.row .swiper-wrapper .swiper-slide-active,
+.row .splide__slide.is-active,
 .live__items .art:first-child,
 .panel__items .art:nth-child(1),
 .panel__items .art:nth-child(6n + 1),
@@ -330,7 +330,7 @@ input[type=number] {
   }
 }
 
-.row .swiper-wrapper .swiper-slide-next + .swiper-slide + .swiper-slide,
+.row .splide__slide.is-next + .splide__slide + .splide__slide,
 .live__items .art:last-child,
 .panel__items .art:nth-child(6n),
 .box-loot__items .art:nth-child(5n),

@@ -256,6 +256,11 @@
       z-index: 1;
     }
   }
+  &--hide-next-arrow{
+    .splide__arrow--next{
+      opacity: 0;
+    }
+  }
   &__title{
     font-size: 20px;
     line-height: 24px;
@@ -337,10 +342,6 @@
         transform: rotate(180deg);
       }
     }
-  }
-  .swiper-container{
-    overflow-y: auto;
-    padding-bottom: 200px;
   }
   .splide__track{
     overflow-y: auto;
