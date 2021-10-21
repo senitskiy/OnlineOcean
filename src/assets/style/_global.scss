@@ -312,3 +312,36 @@ input[type=number] {
     width: 100%;
   }
 }
+
+.row .swiper-wrapper .swiper-slide-active,
+.live__items .art:first-child,
+.panel__items .art:nth-child(1),
+.panel__items .art:nth-child(6n + 1),
+.box-loot__items .art:nth-child(1),
+.box-loot__items .art:nth-child(5n + 1),
+.cataloge__rows .art:nth-child(1),
+.cataloge__rows .art:nth-child(5n + 1){
+  .art__chars{
+    left: 20px;
+    transform: unset;
+  }
+  .art__transfericon{
+    margin: -40px auto 0 5px;
+  }
+}
+
+.row .swiper-wrapper .swiper-slide-next + .swiper-slide + .swiper-slide,
+.live__items .art:last-child,
+.panel__items .art:nth-child(6n),
+.box-loot__items .art:nth-child(5n),
+.cataloge__rows .art:nth-child(5n)
+{
+  .art__chars{
+    right: 20px;
+    left: unset;
+    transform: unset;
+  }
+  .art__transfericon{
+    margin: -40px 5px 0 auto;
+  }
+}
