@@ -4,8 +4,7 @@
   >
     <div class="container">
       <div class="row__inner"
-      ref='slidesRow'
-      :style='needHeight'
+      
       >
         <h6 class="row__title">
           {{ title }}
@@ -42,6 +41,32 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="container">
+      <div class="row__inner"
+      ref='slidesRow'
+      :style='needHeight'
+      >
+        <splide
+        :options='sliderOptions'
+        >
+          <splide-slide
+          v-for='slide in data'
+          :key='slide'
+          @mouseenter="increaseIndex()"
+          @mouseleave="reduceIndex()"
+          >
+            <app-big-art
+            :title='slide.title'
+            :owner='slide.owner'
+            :price='slide.price'
+            ></app-big-art>
+          </splide-slide>
+        </splide> 
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -51,6 +76,9 @@ import { Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/swiper.min.css'
 import 'swiper/components/navigation/navigation.min.css'
+
+import { Splide, SplideSlide } from '@splidejs/vue-splide';
+import '@splidejs/splide/dist/css/splide.min.css';
 
 export default {
   props: {
@@ -66,6 +94,12 @@ export default {
   },
   data() {
     return {
+      sliderOptions:{
+        gap: 20,
+        pagination: false,
+        perPage: 4,
+        perMove: 1,
+      },
       needHeight: null,
       data:[
         {
@@ -141,6 +175,8 @@ export default {
     AppBigArt,
     Swiper,
     SwiperSlide,
+    Splide,
+    SplideSlide,
   },
 }
 </script>
