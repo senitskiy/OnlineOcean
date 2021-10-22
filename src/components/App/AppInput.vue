@@ -15,18 +15,18 @@
   <label class="label"
   v-else
   >
-    <slot></slot>
-    <span class='label-text'>
-      {{ descr }}
-    </span>
     <input class='radio' type="radio"
     v-model="inputValue"
     :value="radioValue"
     :name='checkboxName'
     :checked='checkboxChecked'
-    @changed='choosedRadio()'
+    @change='choosedRadio()'
     ref='radio'
     >
+    <slot></slot>
+    <span class='label-text'>
+      {{ descr }}
+    </span>
   </label>
 </template>
 
@@ -70,6 +70,10 @@ export default {
     return {
       inputValue: '',
     }
+  },
+  mounted () {
+    this.inputValue = this.radioValue
+    this.$emit('choosed', this.inputValue)
   },
   methods: {
     typedText() {

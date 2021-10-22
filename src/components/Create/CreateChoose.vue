@@ -7,7 +7,7 @@
     >
       <input class="choose__input" type="radio" name='choose-input'
       :checked='choose.checked'
-      @change='choosedOption(choose)'
+      @change='choosedOption()'
       :value='choose.text'
       v-model='currData'
       >

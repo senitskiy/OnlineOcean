@@ -522,10 +522,22 @@
         align-items: center;
         color: rgba(62, 62, 62, 0.7);
         font-weight: 500;
-        padding: 15px 28px 17px;
-        background: rgba(15, 0, 77, 0.05);
         img{
           margin-right: 7px;
+          position: absolute;
+          left: 28px;
+        }
+      }
+      .label-text{
+        padding: 15px 28px 17px 63px;
+        width: 100%;
+        opacity: background .4s;
+      }
+      .radio{
+        position: absolute;
+        opacity: 0;
+        &:checked ~ .label-text{
+          background: rgba(15, 0, 77, 0.05);
         }
       }
     }

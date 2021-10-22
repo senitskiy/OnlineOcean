@@ -35,6 +35,7 @@
           :checkboxName='blockchain.checkboxName'
           :checkboxChecked='blockchain.checked'
           radio
+          @choosed='setBlockchain'
           >
             <img src="@/assets/images/temp/ethereum.svg" alt="">
           </app-input>
@@ -50,6 +51,7 @@
         </div>
       </li>
     </ul>
+    {{ filters }}
   </aside>
 </template>
 
@@ -74,14 +76,21 @@ export default {
             checkboxName: 'cataloge-blockchains',
           },
         ],
-      }
+      },
+      filters:{
+        or: '',
+        blockchain: '',
+      },
     }
   },
   methods: {
     toggleFilters() {
       this.filtersOpened = !this.filtersOpened
       this.$emit('clicked')
-    }
+    },
+    setBlockchain(value){
+      this.filters.blockchain = value
+    },
   },
   computed: {
     filtersView() {
