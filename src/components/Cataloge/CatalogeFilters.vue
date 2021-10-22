@@ -16,14 +16,8 @@
       ></cataloge-filter-item>
       <cataloge-filter-item
       title='Blockchain'
+      view='blockchain'
       >
-      
-      </cataloge-filter-item>
-      <li class="filters__item filters__item--blockchain">
-        <button class="filters__item-head btn-clear">
-          Blockchain
-          <img src="@/assets/images/arrow-down.svg" alt="">
-        </button>
         <div class="filters__item-body"
         v-for='blockchain in data.blockchains'
         :key="blockchain"
@@ -40,30 +34,17 @@
             <img src="@/assets/images/temp/ethereum.svg" alt="">
           </app-input>
         </div>
-      </li>
-      <li class="filters__item">
-        <button class="filters__item-head btn-clear">
-          Price
-          <img src="@/assets/images/arrow-down.svg" alt="">
-        </button>
-        <div class="filters__item-body">
-
-        </div>
-      </li>
-      <li class="filters__item">
-        <button class="filters__item-head btn-clear">
-          Collections
-          <img src="@/assets/images/arrow-down.svg" alt="">
-        </button>
-        <div class="filters__item-body">
-
-        </div>
-      </li>
-      <li class="filters__item filters__item--categories">
-        <button class="filters__item-head btn-clear">
-          Categories
-          <img src="@/assets/images/arrow-down.svg" alt="">
-        </button>
+      </cataloge-filter-item>
+      <cataloge-filter-item
+      title='Price'
+      ></cataloge-filter-item>
+      <cataloge-filter-item
+      title='Collections'
+      ></cataloge-filter-item>
+      <cataloge-filter-item
+      title='Categories'
+      view='categories'
+      >
         <div class="filters__item-body"
         v-for='category in data.categories'
         :key="category"
@@ -72,14 +53,13 @@
           :descr='category.text'
           :checkboxValue='category.value'
           :checkboxName='category.checkboxName'
-          type='checkbox'
-          radio
+          checkbox
           @choosed='setCategories'
           >
             <img src="@/assets/images/temp/ethereum.svg" alt="">
           </app-input>
         </div>
-      </li>
+      </cataloge-filter-item>
     </ul>
     {{ filters }}
   </aside>
@@ -142,6 +122,13 @@ export default {
       this.filters.blockchain = value
     },
     setCategories(value){
+      // if (this.filters.categories.indexOf(value) > -1){
+      //   this.filters.categories.filter(function(ele){ 
+      //       return ele != value; 
+      //   });
+      // } else{
+      //   this.filters.categories.push(value)
+      // }
       this.filters.categories = value
     },
   },

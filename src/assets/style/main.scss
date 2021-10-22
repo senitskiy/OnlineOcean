@@ -512,6 +512,18 @@
   &__item{
     background-color: #fff;
     transition: all .4s;
+    &--active{
+      .filters__item-head{
+        img{
+          transform: rotate(180deg);
+        }
+      }
+      .filters__item-body{
+        max-height: 1000px;
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
     & + &{
       margin-top: 2px;
     }
@@ -534,7 +546,7 @@
         width: 100%;
         opacity: background .4s;
       }
-      .radio{
+      .checkbox{
         position: absolute;
         opacity: 0;
         &:checked ~ .label-text{
@@ -557,6 +569,12 @@
     img{
       transition: all .4s;
     }
+  }
+  &__item-body{
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .4s;
   }
   &__toggle{
     .filters__item-head{

@@ -1,6 +1,38 @@
 <template>
   <label class="label"
-  v-if='!radio'
+  v-if='radio'
+  >
+    <input class='checkbox' type='radio'
+    v-model="inputValue"
+    :value="checkboxValue"
+    :name='checkboxName'
+    :checked='checkboxChecked'
+    @change='toggledCheckbox()'
+    >
+    <slot></slot>
+    <span class='label-text'>
+      {{ descr }}
+    </span>
+  </label>
+
+  <label class="label"
+  v-else-if='checkbox'
+  >
+    <input class='checkbox' type='checkbox'
+    v-model="checkedValues"
+    :value="checkboxValue"
+    :name='checkboxName'
+    checked='false'
+    @change='toggledCheckbox()'
+    >
+    <slot></slot>
+    <span class='label-text'>
+      {{ descr }}
+    </span>
+  </label>
+
+  <label class="label"
+  v-else
   >
     {{ descr }}
     <input class='input' 
@@ -12,23 +44,7 @@
     >
   </label>
 
-  <label class="label"
-  v-else
-  >
-    <input class='radio' 
-    :type="type"
-    v-model="inputValue"
-    :value="checkboxValue"
-    :name='checkboxName'
-    :checked='checkboxChecked'
-    @change='choosedRadio()'
-    ref='radio'
-    >
-    <slot></slot>
-    <span class='label-text'>
-      {{ descr }}
-    </span>
-  </label>
+  {{ checkedValues }}
 </template>
 
 <script>
@@ -54,6 +70,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    checkbox:{
+      type: Boolean,
+      default: false,
+    },
     checkboxValue:{
       type: String,
       required: false,
@@ -70,11 +90,12 @@ export default {
   data() {
     return {
       inputValue: '',
+      checkedValues: [],
     }
   },
   mounted () {
-    if (this.radio){
-      this.inputValue = this.radioValue
+    if (this.radio & this.checkboxChecked){
+      this.inputValue = this.checkboxValue
       this.$emit('choosed', this.inputValue)
     }
   },
@@ -82,8 +103,12 @@ export default {
     typedText() {
       this.$emit('typed', this.inputValue)
     },
-    choosedRadio(){
-      this.$emit('choosed', this.inputValue)
+    toggledCheckbox(){
+      if (this.checkbox){
+        this.$emit('choosed', this.checkedValues)
+      } else{
+        this.$emit('choosed', this.inputValue)
+      }
     }
   },
   computed: {
@@ -91,5 +116,8 @@ export default {
       return 'input--' + this.view
     },
   },
+  emits:[
+    'typed', 'choosed'
+  ],
 }
 </script>

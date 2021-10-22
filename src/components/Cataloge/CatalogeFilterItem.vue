@@ -1,12 +1,13 @@
 <template>
-  <li class="filters__item">
+  <li class="filters__item"
+  :class='[itemView, activeState]'
+  @click="toggleItem()"
+  >
     <button class="filters__item-head btn-clear">
-      Art or Games
+      {{ title }}
       <img src="@/assets/images/arrow-down.svg" alt="">
     </button>
-    <div class="filters__item-body">
-      <slot></slot>
-    </div>
+    <slot></slot>
   </li>
 </template>
 
@@ -16,6 +17,28 @@ export default {
     title: {
       type: String,
       required: true,
+    },
+    view:{
+      type: String,
+      default: '',
+    }
+  },
+  data() {
+    return {
+      isActive: false,
+    }
+  },
+  methods: {
+    toggleItem() {
+      this.isActive = !this.isActive
+    }
+  },
+  computed: {
+    itemView() {
+      return 'filters__item--' + this.view 
+    },
+    activeState(){
+      return this.isActive ? 'filters__item--active' : ''
     },
   },
 }
