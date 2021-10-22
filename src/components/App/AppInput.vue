@@ -15,9 +15,10 @@
   <label class="label"
   v-else
   >
-    <input class='radio' type="radio"
+    <input class='radio' 
+    :type="type"
     v-model="inputValue"
-    :value="radioValue"
+    :value="checkboxValue"
     :name='checkboxName'
     :checked='checkboxChecked'
     @change='choosedRadio()'
@@ -53,13 +54,13 @@ export default {
       type: Boolean,
       default: false,
     },
-    radioValue:{
+    checkboxValue:{
       type: String,
       required: false,
     },
     checkboxName:{
       type: String,
-      required: true,
+      required: false,
     },
     checkboxChecked:{
       type: Boolean,
@@ -72,8 +73,10 @@ export default {
     }
   },
   mounted () {
-    this.inputValue = this.radioValue
-    this.$emit('choosed', this.inputValue)
+    if (this.radio){
+      this.inputValue = this.radioValue
+      this.$emit('choosed', this.inputValue)
+    }
   },
   methods: {
     typedText() {

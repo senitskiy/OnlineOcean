@@ -515,7 +515,8 @@
     & + &{
       margin-top: 2px;
     }
-    &--blockchain{
+    &--blockchain,
+    &--categories{
       .label{
         cursor: pointer;
         display: flex;

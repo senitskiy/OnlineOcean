@@ -11,15 +11,14 @@
           <img src="@/assets/images/arrow-down.svg" alt="">
         </button>
       </li>
-      <li class="filters__item">
-        <button class="filters__item-head btn-clear">
-          Art or Games
-          <img src="@/assets/images/arrow-down.svg" alt="">
-        </button>
-        <div class="filters__item-body">
-
-        </div>
-      </li>
+      <cataloge-filter-item
+      title='Art or Games'
+      ></cataloge-filter-item>
+      <cataloge-filter-item
+      title='Blockchain'
+      >
+      
+      </cataloge-filter-item>
       <li class="filters__item filters__item--blockchain">
         <button class="filters__item-head btn-clear">
           Blockchain
@@ -31,10 +30,11 @@
         >
           <app-input
           :descr='blockchain.text'
-          :radioValue='blockchain.value'
+          :checkboxValue='blockchain.value'
           :checkboxName='blockchain.checkboxName'
           :checkboxChecked='blockchain.checked'
           radio
+          type='radio'
           @choosed='setBlockchain'
           >
             <img src="@/assets/images/temp/ethereum.svg" alt="">
@@ -50,6 +50,36 @@
 
         </div>
       </li>
+      <li class="filters__item">
+        <button class="filters__item-head btn-clear">
+          Collections
+          <img src="@/assets/images/arrow-down.svg" alt="">
+        </button>
+        <div class="filters__item-body">
+
+        </div>
+      </li>
+      <li class="filters__item filters__item--categories">
+        <button class="filters__item-head btn-clear">
+          Categories
+          <img src="@/assets/images/arrow-down.svg" alt="">
+        </button>
+        <div class="filters__item-body"
+        v-for='category in data.categories'
+        :key="category"
+        >
+          <app-input
+          :descr='category.text'
+          :checkboxValue='category.value'
+          :checkboxName='category.checkboxName'
+          type='checkbox'
+          radio
+          @choosed='setCategories'
+          >
+            <img src="@/assets/images/temp/ethereum.svg" alt="">
+          </app-input>
+        </div>
+      </li>
     </ul>
     {{ filters }}
   </aside>
@@ -57,6 +87,7 @@
 
 <script>
 import AppInput from '@/components/App/AppInput.vue';
+import CatalogeFilterItem from '@/components/Cataloge/CatalogeFilterItem.vue';
 
 export default {
   data() {
@@ -76,10 +107,29 @@ export default {
             checkboxName: 'cataloge-blockchains',
           },
         ],
+        categories:[
+          {
+            text: 'Music',
+            value: 'music',
+            checkboxName: 'cataloge-categories',
+          },
+          {
+            text: 'Art',
+            value: 'art',
+            checkboxName: 'cataloge-categories',
+          },
+          {
+            text: 'Box',
+            value: 'box',
+            checkboxName: 'cataloge-categories',
+          },
+        ]
       },
       filters:{
         or: '',
         blockchain: '',
+        collections: [],
+        categories: [],
       },
     }
   },
@@ -91,6 +141,9 @@ export default {
     setBlockchain(value){
       this.filters.blockchain = value
     },
+    setCategories(value){
+      this.filters.categories = value
+    },
   },
   computed: {
     filtersView() {
@@ -99,6 +152,7 @@ export default {
   },
   components: {
     AppInput,
+    CatalogeFilterItem,
   },
 }
 </script>
