@@ -55,7 +55,22 @@
       ></cataloge-filter-item>
       <cataloge-filter-item
       title='Collections'
-      ></cataloge-filter-item>
+      view='collections'
+      >
+        <div class="filters__item-body"
+        v-for='collection in data.collections'
+        :key="collection.id"
+        >
+          <app-input
+          :descr='collection.text'
+          :checkboxValue='collection.id'
+          checkbox
+          ref='collectionInput'
+          >
+            <img src="@/assets/images/temp/ethereum.svg" alt="">
+          </app-input>
+        </div>
+      </cataloge-filter-item>
       <cataloge-filter-item
       title='Categories'
       view='categories'
@@ -71,6 +86,23 @@
           @choosed='setCategories'
           >
             <img src="@/assets/images/temp/ethereum.svg" alt="">
+          </app-input>
+        </div>
+      </cataloge-filter-item>
+      <cataloge-filter-item
+      title='Rarity'
+      view='rarity'
+      >
+        <div class="filters__item-body"
+        v-for='item in data.rarity'
+        :key="item"
+        >
+          <app-input
+          :descr='item.text'
+          :checkboxValue='item.value'
+          checkbox
+          @choosed='setRarity'
+          >
           </app-input>
         </div>
       </cataloge-filter-item>
@@ -94,8 +126,8 @@ export default {
             value: 'art',
           },
           {
-            text: 'Box',
-            value: 'box',
+            text: 'Games',
+            value: 'games',
           },
         ],
         blockchains:[
@@ -113,20 +145,34 @@ export default {
         ],
         collections:[
           {
-            text: '',
-            
+            text: 'Doodles art',
+            id: 111,
+            verified: true,
+            type: 'art',
           },
           {
-
+            text: 'Doodles art',
+            id: 101,
+            verified: false,
+            type: 'art',
           },
           {
-
+            text: 'Doodles game',
+            id: 1,
+            verified: false,
+            type: 'game',
           },
           {
-
+            text: 'Doodles game',
+            id: 11,
+            verified: true,
+            type: 'game',
           },
           {
-
+            text: 'Doodles art',
+            id: 45,
+            verified: true,
+            type: 'art',
           },
         ],
         categories:[
@@ -143,12 +189,27 @@ export default {
             value: 'box',
           },
         ],
+        rarity:[
+          {
+            text: 'Legendary',
+            value: 'legendary'
+          },
+          {
+            text: 'Common',
+            value: 'common'
+          },
+          {
+            text: 'Epic',
+            value: 'epic'
+          },
+        ],
       },
       filters:{
         or: [],
         blockchain: '',
         collections: [],
         categories: [],
+        rarity: [],
       },
     }
   },
@@ -174,6 +235,14 @@ export default {
         this.filters.categories.splice(index, 1)
       } else{
         this.filters.categories.push(value)
+      }
+    },
+    setRarity(value){
+      let index = this.filters.rarity.indexOf(value)
+      if (index !== -1){
+        this.filters.rarity.splice(index, 1)
+      } else{
+        this.filters.rarity.push(value)
       }
     },
   },

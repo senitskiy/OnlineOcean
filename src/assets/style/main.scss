@@ -567,6 +567,25 @@
   &__item{
     background-color: #fff;
     transition: all .4s;
+    .label{
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      color: rgba(62, 62, 62, 0.7);
+      font-weight: 500;
+    }
+    .label-text{
+      padding: 15px 28px 17px 63px;
+      width: 100%;
+      opacity: background .4s;
+    }
+    .checkbox{
+      position: absolute;
+      opacity: 0;
+      &:checked ~ .label-text{
+        background: rgba(15, 0, 77, 0.05);
+      }
+    }
     &--active{
       .filters__item-head{
         img{
@@ -584,7 +603,8 @@
     }
     &--blockchain,
     &--categories,
-    &--or{
+    &--or,
+    &--collections{
       .label{
         cursor: pointer;
         display: flex;
@@ -595,18 +615,7 @@
           margin-right: 7px;
           position: absolute;
           left: 28px;
-        }
-      }
-      .label-text{
-        padding: 15px 28px 17px 63px;
-        width: 100%;
-        opacity: background .4s;
-      }
-      .checkbox{
-        position: absolute;
-        opacity: 0;
-        &:checked ~ .label-text{
-          background: rgba(15, 0, 77, 0.05);
+          transition: all .4s;
         }
       }
     }
@@ -645,6 +654,9 @@
     // box-shadow: unset;
     .filters__item{
       opacity: 0;
+      img{
+        left: -150%;
+      }
     }
     .filters__toggle{
       opacity: 1;
