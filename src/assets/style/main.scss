@@ -300,6 +300,9 @@
     .art{
       margin-right: 20px;
       max-width: 150px;
+      .profile--hasDescr .profile__slot{
+        white-space: nowrap;
+      }
     }
   }
 }
