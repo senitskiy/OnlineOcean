@@ -52,7 +52,6 @@
           <app-input
           :descr='category.text'
           :checkboxValue='category.value'
-          :checkboxName='category.checkboxName'
           checkbox
           @choosed='setCategories'
           >
@@ -91,17 +90,14 @@ export default {
           {
             text: 'Music',
             value: 'music',
-            checkboxName: 'cataloge-categories',
           },
           {
             text: 'Art',
             value: 'art',
-            checkboxName: 'cataloge-categories',
           },
           {
             text: 'Box',
             value: 'box',
-            checkboxName: 'cataloge-categories',
           },
         ]
       },

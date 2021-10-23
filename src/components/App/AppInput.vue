@@ -21,8 +21,6 @@
     <input class='checkbox' type='checkbox'
     v-model="checkedValues"
     :value="checkboxValue"
-    :name='checkboxName'
-    checked='false'
     @change='toggledCheckbox()'
     >
     <slot></slot>

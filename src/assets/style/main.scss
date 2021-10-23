@@ -33,8 +33,7 @@
   }
   &__buttons{
     display: flex;
-    margin-right: 50px;
-    margin-left: 50px;
+    margin: 0 50px;
     *:first-child{
       padding-left: 38px;
       padding-right: 38px;
@@ -53,6 +52,7 @@
     margin-right: 24px;
     position: relative;
     height: 32px;
+    min-width: 26px;
     &:after{
       content: '';
       position: absolute;
@@ -74,8 +74,28 @@
   &__account-link,
   &__account-link img{
     border-radius: 50%;
-    width: 40px;
+    min-width: 40px;
     height: 40px;
+  }
+  &__menu-btn{
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 26px;
+    min-width: 26px;
+    margin-left: 18px;
+    span{
+      height: 3px;
+      width: 100%;
+      display: block;
+      background-color: #9E9EA7;
+      border-radius: 10px;
+    }
+  }
+  &__menu{
+    position: fixed;
+    right: 0;
+    top: 80px;
   }
 }
 
