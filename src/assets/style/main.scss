@@ -276,8 +276,8 @@
     padding: 20px 0;
   }
   &__label{
-    height: 100px;
-    width: 100px;
+    min-height: 100px;
+    min-width: 100px;
     background-color: #fff;
     border-radius: 50%;
     display: flex;
