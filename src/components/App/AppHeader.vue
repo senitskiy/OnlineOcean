@@ -19,12 +19,14 @@
     ref='menu'
     >
       <header-content></header-content>
+      <app-social></app-social>
     </menu>
   </header>
 </template>
 
 <script>
 import AppLogo from '@/components/App/AppLogo.vue'
+import AppSocial from '@/components/App/AppSocial.vue'
 import HeaderContent from '@/components/Header/HeaderContent.vue';
 
 export default {
@@ -35,6 +37,7 @@ export default {
   },
   components:{
     AppLogo,
+    AppSocial,
     HeaderContent,
   },
 }

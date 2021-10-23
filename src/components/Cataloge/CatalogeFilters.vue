@@ -104,6 +104,7 @@
           @choosed='setRarity'
           >
           </app-input>
+          <span class="checkbox-style"></span>
         </div>
       </cataloge-filter-item>
     </ul>

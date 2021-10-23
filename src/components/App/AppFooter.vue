@@ -68,23 +68,7 @@
               ></app-button>
             </label>
           </form>
-          <ul class="footer__social-list">
-            <li class="footer__social-item">
-              <router-link class='footer__social-link' to='#'>
-                <img src="@/assets/images/instagram.svg" alt="">
-              </router-link>
-            </li>
-            <li class="footer__social-item">
-              <router-link class='footer__social-link' to='#'>
-                <img src="@/assets/images/twitter.svg" alt="">
-              </router-link>
-            </li>
-            <li class="footer__social-item">
-              <router-link class='footer__social-link' to='#'>
-                <img src="@/assets/images/telegram.svg" alt="">
-              </router-link>
-            </li>
-          </ul>
+          <app-social></app-social>
         </div>
       </div>
     </div>
@@ -97,6 +81,7 @@
 <script>
 import AppLogo from '@/components/App/AppLogo.vue'
 import AppInput from '@/components/App/AppInput.vue'
+import AppSocial from '@/components/App/AppSocial.vue'
 
 import axios from 'axios';
 
@@ -121,6 +106,7 @@ export default {
   components:{
     AppLogo,
     AppInput,
+    AppSocial,
   },
 }
 </script>

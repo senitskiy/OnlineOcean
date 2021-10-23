@@ -1,6 +1,7 @@
 <template>
   <app-header></app-header>
-  <router-view/>
+  <div class="header-gap"></div>
+  <!-- <router-view/> -->
   <!-- <button class='btn btn--pink'>Это тест</button>
   <button class='btn btn--blue'>Это тест</button>
   <button class='btn btn--linear'>Это тест</button>
