@@ -38,6 +38,20 @@
 import AppNots from '@/components/App/AppNots.vue'
 
 export default {
+  data() {
+    return {
+      notifications: 1,
+      openedNots: false,
+    }
+  },
+  methods: {
+    removePopUpNots(){
+      this.openedNots = false
+    },
+    togglePopUpNots() {
+      this.openedNots = !this.openedNots
+    },
+  },
   components: {
     AppNots,
   },

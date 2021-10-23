@@ -6,14 +6,20 @@
   background: #fff;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid #F3F3F4;
-  position: relative;
+  position: fixed;
   z-index: 3;
+  height: 80px;
+  width: 100vw;
+
+  display: none;
   &__inner{
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-height: 80px;
     height: 80px;
+    position: relative;
+    z-index: 3;
   }
   &__search-wrapper{
     position: relative;
@@ -94,8 +100,37 @@
   }
   &__menu{
     position: fixed;
+    z-index: 2;
     right: 0;
     top: 80px;
+    width: 320px;
+    background-color: #fff;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.05);
+    transform: translateX(320px);
+    transition: all .4s;
+    &--active{
+      display: unset;
+      transform: unset;
+    }
+    .header__account{
+      display: none;
+    }
+    .header__search-wrapper{
+      margin: 20px;
+      max-width: 100%;
+      width: auto;
+      display: none;
+    }
+    .header__buttons{
+      margin: 15px 20px;
+      flex-direction: column;
+      .btn{
+      }
+      .btn--blue{
+        margin-left: 0;
+        margin-top: 10px;
+      }
+    }
   }
 }
 
@@ -965,12 +1000,18 @@
 
 .create{
   padding: 37px 0 41px;
-  &__inner{
+  &__wrapper{
     background-color: $grey-bg;
     border-radius: 25px;
+    padding: 30px 0 72px;
+    display: flex;
+    justify-content: center;
+  }
+  &__inner{
     text-align: center;
-    padding: 75px 0 72px;
-    position: relative;
+    max-width: 730px;
+    width: 100%;
+    margin: 0 25px;
   }
   &__title{
     font-size: 24px;
@@ -1035,9 +1076,7 @@
     }
   }
   .btn{
-    position: absolute;
-    top: 30px;
-    left: 190px;
+    margin-bottom: 30px;
   }
 }
 

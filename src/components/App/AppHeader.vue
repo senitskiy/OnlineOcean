@@ -28,21 +28,9 @@ import AppLogo from '@/components/App/AppLogo.vue'
 import HeaderContent from '@/components/Header/HeaderContent.vue';
 
 export default {
-  data() {
-    return {
-      notifications: 1,
-      openedNots: false,
-    }
-  },
   methods: {
-    removePopUpNots(){
-      this.openedNots = false
-    },
-    togglePopUpNots() {
-      this.openedNots = !this.openedNots
-    },
     toggleMenu(){
-
+      this.$refs.menu.classList.toggle('header__menu--active')
     },
   },
   components:{
