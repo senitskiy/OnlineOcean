@@ -13,7 +13,22 @@
       </li>
       <cataloge-filter-item
       title='Art or Games'
-      ></cataloge-filter-item>
+      view='or'
+      >
+        <div class="filters__item-body"
+        v-for='item in data.or'
+        :key="item"
+        >
+          <app-input
+          :descr='item.text'
+          :checkboxValue='item.value'
+          checkbox
+          @choosed='setOr'
+          >
+            <img src="@/assets/images/temp/ethereum.svg" alt="">
+          </app-input>
+        </div>
+      </cataloge-filter-item>
       <cataloge-filter-item
       title='Blockchain'
       view='blockchain'
@@ -73,6 +88,16 @@ export default {
     return {
       filtersOpened: true,
       data:{
+        or:[
+          {
+            text: 'Art',
+            value: 'art',
+          },
+          {
+            text: 'Box',
+            value: 'box',
+          },
+        ],
         blockchains:[
           {
             text: 'Ethereum',
@@ -84,6 +109,24 @@ export default {
             text: 'Bitcoin',
             value: 'btc',
             checkboxName: 'cataloge-blockchains',
+          },
+        ],
+        collections:[
+          {
+            text: '',
+            
+          },
+          {
+
+          },
+          {
+
+          },
+          {
+
+          },
+          {
+
           },
         ],
         categories:[
@@ -99,10 +142,10 @@ export default {
             text: 'Box',
             value: 'box',
           },
-        ]
+        ],
       },
       filters:{
-        or: '',
+        or: [],
         blockchain: '',
         collections: [],
         categories: [],
@@ -114,18 +157,24 @@ export default {
       this.filtersOpened = !this.filtersOpened
       this.$emit('clicked')
     },
+    setOr(value){
+      let index = this.filters.or.indexOf(value)
+      if (index !== -1){
+        this.filters.or.splice(index, 1)
+      } else{
+        this.filters.or.push(value)
+      }
+    },
     setBlockchain(value){
       this.filters.blockchain = value
     },
     setCategories(value){
-      // if (this.filters.categories.indexOf(value) > -1){
-      //   this.filters.categories.filter(function(ele){ 
-      //       return ele != value; 
-      //   });
-      // } else{
-      //   this.filters.categories.push(value)
-      // }
-      this.filters.categories = value
+      let index = this.filters.categories.indexOf(value)
+      if (index !== -1){
+        this.filters.categories.splice(index, 1)
+      } else{
+        this.filters.categories.push(value)
+      }
     },
   },
   computed: {

@@ -19,7 +19,6 @@
   v-else-if='checkbox'
   >
     <input class='checkbox' type='checkbox'
-    v-model="checkedValues"
     :value="checkboxValue"
     @change='toggledCheckbox()'
     >
@@ -41,8 +40,6 @@
     @input='typedText()'
     >
   </label>
-
-  {{ checkedValues }}
 </template>
 
 <script>
@@ -88,7 +85,6 @@ export default {
   data() {
     return {
       inputValue: '',
-      checkedValues: [],
     }
   },
   mounted () {
@@ -102,11 +98,7 @@ export default {
       this.$emit('typed', this.inputValue)
     },
     toggledCheckbox(){
-      if (this.checkbox){
-        this.$emit('choosed', this.checkedValues)
-      } else{
-        this.$emit('choosed', this.inputValue)
-      }
+      this.$emit('choosed', this.checkboxValue)
     }
   },
   computed: {
