@@ -101,6 +101,7 @@
           :checkboxValue='category.value'
           checkbox
           @choosed='setCategories'
+          view='verified'
           >
             <img src="@/assets/images/temp/ethereum.svg" alt="">
           </app-input>
@@ -241,10 +242,10 @@ export default {
       filters:{
         or: [],
         blockchain: '',
+        price: '',
         collections: [],
         categories: [],
         rarity: [],
-        price: '',
       },
     }
   },
