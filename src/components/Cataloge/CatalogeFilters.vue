@@ -67,25 +67,27 @@
       title='Collections'
       view='fill'
       >
-        <div class="filters__item-body filters__item-body--collections">
+        <div class="filters__item-body filters__item-body collections">
           <app-input
           view='filter-collection'
           :placeholderText='data.collectionSearchPlaceholder'
           ></app-input>
-          <div class="filters__item-list"
-          v-for='collection in data.collections'
-          :key="collection.id"
-          >
-            <app-input
-            :descr='collection.text'
-            :checkboxValue='collection.id'
-            checkbox
-            ref='collectionInput'
-            @choosed='setCollections'
+          <ul class="filters__item-list collections__list">
+            <li class="collections__list-item"
+            v-for='collection in data.collections'
+            :key="collection.id"
             >
-              <img src="@/assets/images/temp/ethereum.svg" alt="">
-            </app-input>
-          </div>
+              <app-input
+              :descr='collection.text'
+              :checkboxValue='collection.id'
+              checkbox
+              ref='collectionInput'
+              @choosed='setCollections'
+              >
+                <img src="@/assets/images/temp/ethereum.svg" alt="">
+              </app-input>
+            </li>
+          </ul>
         </div>
       </cataloge-filter-item>
       <cataloge-filter-item

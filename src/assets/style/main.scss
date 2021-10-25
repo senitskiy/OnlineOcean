@@ -519,6 +519,37 @@
       margin-left: 178px;
       .cataloge__rows{
         grid-template-columns: repeat(6, 158px);
+        .art:nth-child(5n),
+        .art:nth-child(5n + 1){
+          .art__chars{
+            left: 50%;
+            transform: translateX(-50%);
+            right: unset;
+          }
+          .art__transfericon{
+            margin: -40px auto 0;
+          }
+        }
+        .art:nth-child(6n + 1),
+        .art:first-child{
+          .art__chars{
+            left: 20px;
+            transform: unset;
+          }
+          .art__transfericon{
+            margin: -40px auto 0 5px;
+          }
+        }
+        .art:nth-child(6){
+          .art__chars{
+            right: 20px;
+            left: unset;
+            transform: unset;
+          }
+          .art__transfericon{
+            margin: -40px 5px 0 auto;
+          }
+        }
       }
     }
   }
@@ -643,7 +674,7 @@
         opacity: 1;
         position: relative;
         pointer-events: all;
-        &--collections{
+        &.collections{
           padding-top: 13px;
         }
       }
@@ -713,7 +744,7 @@
         transition: 0s;
       }
     }
-    &--collections{
+    &.collections{
       .label{
         img{
           transform: translateY(-2px);
@@ -1278,9 +1309,8 @@
     font-size: 14px;
     line-height: 17px;
     text-transform: uppercase;
-    padding: 0 16px;
+    padding: 0 26px;
     .multiselect-single-label{
-      display: block;
       width: unset;
     }
     .multiselect-clear{
@@ -1291,6 +1321,15 @@
     }
     .multiselect-caret{
       margin: 0;
+    }
+    .multiselect-dropdown{
+      &::-webkit-scrollbar{
+        width: 10px;
+        background-color: $grey-bg;
+      }
+      &::-webkit-scrollbar-thumb{
+        background-color: $grey;
+      }
     }
   }
   &__info-inputs{

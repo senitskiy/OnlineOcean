@@ -2,6 +2,7 @@
   <multiselect
   v-model="currValue"
   :options="options"
+  :limit='5'
   hideSelected
   ></multiselect>
 </template>
