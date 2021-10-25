@@ -116,7 +116,37 @@ menu{
     background: #4EC84C;
   }
   &--linear{
-    
+    margin: 32px auto 30px;
+    display: block;
+    padding-left: 35px;
+    padding-right: 35px;
+    background: -webkit-linear-gradient(89.93deg, #4CA8EA 0.06%, #E84D8A 101.62%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+    &:before,
+    &:after{
+      content: '';
+      position: absolute;
+      border-radius: 220px;
+    }
+    &:before{
+      top: 0;
+      left: 0;
+      background: linear-gradient(90deg, #4CA8EA 0%, #EA4C89 100%);
+      z-index: -2;
+      width: 100%;
+      height: 100%;
+    }
+    &:after{
+      background: #fff;
+      z-index: -1;
+      top: 2px;
+      left: 2px;
+      width: calc(100% - 5px);
+      height: calc(100% - 5px);
+    }
   }
   &--big{
     height: 50px;

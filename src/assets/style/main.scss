@@ -339,6 +339,7 @@
     padding: 26px 15px;
     background: #FFFFFF;
     border-radius: 15px; 
+    width: 100%;
   }
   &__slide-title{
     font-size: 16px;
@@ -357,7 +358,10 @@
   &__slide-imgwrapper{
     display: block;
     margin: 13px 0 12px;
+    width: 100%;
     img{
+      width: 100%;
+      height: 100%;
       border-radius: 15px;
     }
   }
