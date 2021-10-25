@@ -600,7 +600,7 @@
       border: 1px solid #6A6A6A;
       background: transparent;
       position: absolute;
-      top: 20px;
+      top: 13px;
       left: 28px;
       pointer-events: none;
       svg{
@@ -634,15 +634,15 @@
         opacity: 1;
         position: relative;
         pointer-events: all;
+        &--collections{
+          padding-top: 13px;
+        }
       }
     }
     & + &{
       margin-top: 2px;
     }
-    &--blockchain,
-    &--categories,
-    &--or,
-    &--collections{
+    &--fill{
       .label{
         cursor: pointer;
         display: flex;
@@ -658,9 +658,9 @@
         }
       }
     }
-    &--rarity{
+    &--checkmark{
       .label-text{
-        padding-left: 55px;
+        padding: 12px 28px 15px 55px;
       }
       .checkbox{
         &:checked ~ .label-text{
@@ -688,7 +688,46 @@
     max-height: 0;
     opacity: 0;
     pointer-events: none;
-    transition: all .4s;
+    transition: max-height .4s, opacity .4s;
+    &--collections{
+      .label{
+        img{
+          transform: translateY(-2px);
+        }
+        &:first-child{
+          position: relative;
+          margin: 0 18px 13px;
+          &:before{
+            content: '';
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background-image: url('./assets/images/search.svg');
+          }
+        }
+      }
+      .filters__item-list{
+        .label{
+          &:before{
+            display: none;
+          }
+          &:first-child{
+            margin: 0;
+          }
+        }
+      }
+      .label-text{
+        padding: 14px 28px 17px 63px;
+      }
+    }
+  }
+  .input--filter-collection{
+    background-color: #fff;
+    border: 1px solid rgba($grey, .8);
+
   }
   &__toggle{
     .filters__item-head{
@@ -1003,60 +1042,60 @@
   }
   .art{
     border: 1px solid #D3D3D6;
-    &__descr{
-      color: #808080;
-    }
-    &__transfericon{
-      path{
-        fill: #808080;
-      }
-    }
-    &:hover{
-      border-color: #808080;
-      background-color: rgba(#808080, .15);
-    }
-    &:nth-child(n + 4){
-      .art__descr{
-        color: #0085FF;
-      }
-      .art__transfericon{
-        path{
-          fill: #0085FF;
-        }
-      }
-      &:hover{
-        border-color: #0085FF;
-        background-color: rgba(#0085FF, .15);
-      }
-    }
-    &:nth-child(n + 7){
-      .art__descr{
-        color: #9C39EB;
-      }
-      .art__transfericon{
-        path{
-          fill: #9C39EB;
-        }
-      }
-      &:hover{
-        border-color: #9C39EB;
-        background-color: rgba(#9C39EB, .15);
-      }
-    }
-    &:nth-child(n + 10){
-      .art__descr{
-        color: #EA3333;
-      }
-      .art__transfericon{
-        path{
-          fill: #EA3333;
-        }
-      }
-      &:hover{
-        border-color: #EA3333;
-        background-color: rgba(#EA3333, .15);
-      }
-    }
+    // &__descr{
+    //   color: #808080;
+    // }
+    // &__transfericon{
+    //   path{
+    //     fill: #808080;
+    //   }
+    // }
+    // &:hover{
+    //   border-color: #808080;
+    //   background-color: rgba(#808080, .15);
+    // }
+    // &:nth-child(n + 4){
+    //   .art__descr{
+    //     color: #0085FF;
+    //   }
+    //   .art__transfericon{
+    //     path{
+    //       fill: #0085FF;
+    //     }
+    //   }
+    //   &:hover{
+    //     border-color: #0085FF;
+    //     background-color: rgba(#0085FF, .15);
+    //   }
+    // }
+    // &:nth-child(n + 7){
+    //   .art__descr{
+    //     color: #9C39EB;
+    //   }
+    //   .art__transfericon{
+    //     path{
+    //       fill: #9C39EB;
+    //     }
+    //   }
+    //   &:hover{
+    //     border-color: #9C39EB;
+    //     background-color: rgba(#9C39EB, .15);
+    //   }
+    // }
+    // &:nth-child(n + 10){
+    //   .art__descr{
+    //     color: #EA3333;
+    //   }
+    //   .art__transfericon{
+    //     path{
+    //       fill: #EA3333;
+    //     }
+    //   }
+    //   &:hover{
+    //     border-color: #EA3333;
+    //     background-color: rgba(#EA3333, .15);
+    //   }
+    // }
   }
 }
 

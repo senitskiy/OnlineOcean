@@ -1,9 +1,9 @@
 <template>
   <li class="filters__item"
   :class='[itemView, activeState]'
-  @click="toggleItem()"
   >
-    <button class="filters__item-head btn-clear">
+    <button class="filters__item-head btn-clear"
+    @click="toggleItem()">
       {{ title }}
       <img src="@/assets/images/arrow-down.svg" alt="">
     </button>

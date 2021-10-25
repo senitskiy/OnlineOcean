@@ -13,7 +13,7 @@
       </li>
       <cataloge-filter-item
       title='Art or Games'
-      view='or'
+      view='fill'
       >
         <div class="filters__item-body"
         v-for='item in data.or'
@@ -31,7 +31,7 @@
       </cataloge-filter-item>
       <cataloge-filter-item
       title='Blockchain'
-      view='blockchain'
+      view='fill'
       >
         <div class="filters__item-body"
         v-for='blockchain in data.blockchains'
@@ -52,28 +52,45 @@
       </cataloge-filter-item>
       <cataloge-filter-item
       title='Price'
-      ></cataloge-filter-item>
+      view='price'
+      >
+        <div class="filters__item-body">
+          <Multiselect
+          v-model='filters.price'
+          :options='data.currency'
+          >
+            
+          </Multiselect>
+        </div>
+      </cataloge-filter-item>
       <cataloge-filter-item
       title='Collections'
-      view='collections'
+      view='fill'
       >
-        <div class="filters__item-body"
-        v-for='collection in data.collections'
-        :key="collection.id"
-        >
+        <div class="filters__item-body filters__item-body--collections">
           <app-input
-          :descr='collection.text'
-          :checkboxValue='collection.id'
-          checkbox
-          ref='collectionInput'
+          view='filter-collection'
+          :placeholderText='data.collectionSearchPlaceholder'
+          ></app-input>
+          <div class="filters__item-list"
+          v-for='collection in data.collections'
+          :key="collection.id"
           >
-            <img src="@/assets/images/temp/ethereum.svg" alt="">
-          </app-input>
+            <app-input
+            :descr='collection.text'
+            :checkboxValue='collection.id'
+            checkbox
+            ref='collectionInput'
+            @choosed='setCollections'
+            >
+              <img src="@/assets/images/temp/ethereum.svg" alt="">
+            </app-input>
+          </div>
         </div>
       </cataloge-filter-item>
       <cataloge-filter-item
       title='Categories'
-      view='categories'
+      view='fill'
       >
         <div class="filters__item-body"
         v-for='category in data.categories'
@@ -91,7 +108,7 @@
       </cataloge-filter-item>
       <cataloge-filter-item
       title='Rarity'
-      view='rarity'
+      view='checkmark'
       >
         <div class="filters__item-body"
         v-for='item in data.rarity'
@@ -120,11 +137,16 @@
 import AppInput from '@/components/App/AppInput.vue';
 import CatalogeFilterItem from '@/components/Cataloge/CatalogeFilterItem.vue';
 
+
+import Multiselect from '@vueform/multiselect';
+import '@vueform/multiselect/themes/default.css';
+
 export default {
   data() {
     return {
       filtersOpened: true,
       data:{
+        collectionSearchPlaceholder: 'Search',
         or:[
           {
             text: 'Art',
@@ -146,6 +168,13 @@ export default {
             text: 'Bitcoin',
             value: 'btc',
             checkboxName: 'cataloge-blockchains',
+          },
+        ],
+        currency:[
+          {
+            value: 'eth',
+            text: 'Etherum',
+            src: '',
           },
         ],
         collections:[
@@ -215,6 +244,7 @@ export default {
         collections: [],
         categories: [],
         rarity: [],
+        price: '',
       },
     }
   },
@@ -223,32 +253,28 @@ export default {
       this.filtersOpened = !this.filtersOpened
       this.$emit('clicked')
     },
-    setOr(value){
-      let index = this.filters.or.indexOf(value)
+    toggleInArray(array, value){
+      let index = array.indexOf(value)
       if (index !== -1){
-        this.filters.or.splice(index, 1)
+        array.splice(index, 1)
       } else{
-        this.filters.or.push(value)
-      }
+        array.push(value)
+      } 
+    },
+    setOr(value){
+      this.toggleInArray(this.filters.or, value)
     },
     setBlockchain(value){
       this.filters.blockchain = value
     },
+    setCollections(value){
+      this.toggleInArray(this.filters.collections, value)
+    },
     setCategories(value){
-      let index = this.filters.categories.indexOf(value)
-      if (index !== -1){
-        this.filters.categories.splice(index, 1)
-      } else{
-        this.filters.categories.push(value)
-      }
+      this.toggleInArray(this.filters.categories, value)
     },
     setRarity(value){
-      let index = this.filters.rarity.indexOf(value)
-      if (index !== -1){
-        this.filters.rarity.splice(index, 1)
-      } else{
-        this.filters.rarity.push(value)
-      }
+      this.toggleInArray(this.filters.rarity, value)
     },
   },
   computed: {
@@ -259,6 +285,7 @@ export default {
   components: {
     AppInput,
     CatalogeFilterItem,
+    Multiselect,
   },
 }
 </script>
