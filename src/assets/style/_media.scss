@@ -517,17 +517,34 @@
   .product-info__descr{
     max-width: unset;
   }
+  .open__inner{
+    padding-bottom: 30px;
+  }
 
   // Product
 }
 
 @media (max-width: 425px){
+  // Product
+
   .product-info__buttons{
     .btn{
       width: 110px;
     }
   }
+  .open{
+    .btn{
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+    }
+  }
+  .open__title{
+    font-size: 20px;
+    line-height: 24px;
+  }
 
+  // Product
 }
 
 
