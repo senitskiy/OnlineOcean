@@ -1393,13 +1393,101 @@
     width: 100%;
     .row__slide{
       box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
-      padding-top: 34px;
+      padding: 34px 21px 36px;
       .art__chars{
         display: none;
       }
+      .likes{
+        svg{
+          width: 25px;
+          height: 23px;
+        }
+        .likes__count{
+          font-size: 18px;
+          line-height: 22px;
+        }
+      }
+      .row__slide-title,
+      .row__slide-owner,
+      .row__slide-bid,
+      .row__slide-price,
+      .profile__name{
+        font-size: 18px;
+        line-height: 22px;
+      }
+      .profile__name{
+        color: $black;
+      }
+    }
+    .row__slide-imgwrapper{
+      position: relative;
+      img{
+        opacity: 0;
+      }
+    }
+    .upload{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(134.53deg, #C4C4C4 0.86%, rgba(222, 184, 184, 0) 99.89%);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: opacity .4s;
+      &__title{
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 25px;
+        color: rgba(62, 62, 62, 0.51);
+        text-align: center;
+        max-width: 209px;
+      }
+      .btn{
+        font-size: 18px;
+        line-height: 22px;
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+      &:after{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: #C4C4C4;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        border-radius: 15px;
+        opacity: 1;
+        transition: opacity .4s;
+      }
+      input[type='file']{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
     }
     &--preview{
-      
+      .row__slide-imgwrapper{
+        img{
+          opacity: 1;
+        }
+      }
+      .upload{
+        opacity: 0;
+        pointer-events: none;
+        &:after{
+          opacity: 0;
+        }
+      }
     }
   }
   &__preview-btn{
