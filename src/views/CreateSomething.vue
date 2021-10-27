@@ -49,6 +49,7 @@
               ></app-input>
               <app-select
               :options='info.currency'
+              @selectedBlockchain='changeBlockchain'
               ></app-select>
               <p class="create-modal__text">
                 Service fee 
@@ -59,7 +60,7 @@
               <p class="create-modal__text">
                 You will receive
                 <span>
-                  {{ willGet }}
+                  {{ willGet + ' ' + data.blockchain}}
                 </span>
               </p>
             </div>
@@ -126,9 +127,10 @@ export default {
       data:{
         name: '',
         descr: '',
-        willGetMoney: '',
+        boxPrice: '',
+        willGet: '',
+        blockchain: '',
         type: '',
-        boxPrice: null,
         classifications: [],
       }
     }
@@ -148,6 +150,10 @@ export default {
     },
     typedPrice(value){
       this.data.boxPrice = Number(value)
+      this.data.willGet = this.willGet
+    },
+    changeBlockchain(value){
+      this.data.blockchain = value
     },
   },
   computed: {

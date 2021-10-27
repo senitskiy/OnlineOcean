@@ -4,6 +4,8 @@
   :options="options"
   :limit='5'
   hideSelected
+  ref='select'
+  @change='changedValue'
   ></multiselect>
 </template>
 
@@ -19,13 +21,25 @@ export default {
       required: true, 
     },
   },
+  mounted () {
+    this.$refs.select.select(this.options[0])
+    this.changedValue()
+  },
   data() {
     return {
       currValue: '',
     }
   },
+  methods: {
+    changedValue() {
+      this.$emit('selectedBlockchain', this.currValue)
+    }
+  },
   components: {
     Multiselect,
   },
+  emits:[
+    'selectedBlockchain'
+  ],
 }
 </script>
