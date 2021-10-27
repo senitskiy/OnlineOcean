@@ -1316,26 +1316,59 @@
   .multiselect{
     position: absolute;
     right: 0;
-    top: 13px;
+    top: 32px;
     color: #A9A8A8;
     width: auto;
-    font-size: 14px;
-    line-height: 17px;
     text-transform: uppercase;
-    padding: 0 26px;
-    .multiselect-single-label{
-      width: unset;
+    min-height: unset;
+    height: 21px;
+    padding: 0;
+    border: 0px solid;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    &.is-active{
+      box-shadow: none;
+      .multiselect-single-label:after{
+        transform: rotate(180deg);
+        top: 4px;
+      }
     }
     .multiselect-clear{
       display: none;
     }
+    .multiselect-option{
+      font-size: 14px;
+      line-height: 17px;
+      display: flex;
+      justify-content: center;
+    }
     .multiselect-option.is-selected{
       display: none;
     }
-    .multiselect-caret{
-      margin: 0;
+    .multiselect-single-label{
+      width: 100%;
+      position: relative;
+      padding: 2px 14px 2px 12px;
+      font-weight: 500;
+      border: 0px solid;
+      background: transparent;
+      outline: none;
+      box-shadow: none;
+      &:after{
+        content: '';
+        position: absolute;
+        top: 7px;
+        right: 0;
+        width: 10px;
+        height: 10px;
+        background-image: url('./assets/images/select-caret.svg');
+        background-repeat: no-repeat;
+        transition: all .4s;
+      }
     }
     .multiselect-dropdown{
+      overflow-y: auto;
       &::-webkit-scrollbar{
         width: 10px;
         background-color: $grey-bg;

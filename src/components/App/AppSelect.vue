@@ -5,7 +5,8 @@
   :limit='5'
   hideSelected
   ref='select'
-  @change='changedValue'
+  @select='changedValue'
+  :caret='false'
   ></multiselect>
 </template>
 
