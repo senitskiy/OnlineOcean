@@ -308,15 +308,15 @@
 }
 
 .row{
-  // 526
   &__inner{
-    margin-bottom: 20px;
     padding: 20px;
     background-color: $grey-bg;
     color: $black;
     border-radius: 25px;
     z-index: 0;
     position: relative;
+    max-height: 100%;
+    margin-bottom: 20px;
     transition: z-index .4s;
   }
   &--hover{
@@ -340,6 +340,7 @@
     background: #FFFFFF;
     border-radius: 15px; 
     width: 100%;
+    position: relative;
   }
   &__slide-title{
     font-size: 16px;
@@ -435,9 +436,11 @@
       opacity: 0;
     }
   }
+  .splide__slide{
+    padding-bottom: 204px;
+  }
   .splide__track{
     overflow-y: auto;
-    padding-bottom: 200px;
   }
 }
 

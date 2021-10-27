@@ -5,9 +5,10 @@
     <div class="container">
       <div class="row__inner"
       ref='slidesRow'
-      :style='needHeight'
       >
-        <h6 class="row__title">
+        <h6 class="row__title"
+        ref='title'
+        >
           {{ title }}
         </h6>
         <splide
@@ -155,14 +156,18 @@ export default {
     }
   },
   mounted () {
-    this.setHeight()
+    setTimeout(() => {
+      this.setHeight()
+    }, 1)
   },
   methods: {
     setHeight() {
-      let currRow = this.$refs.slidesRow
-      let currHeight = currRow.offsetHeight
+      let trackHeight = this.$refs.splide.$el.offsetHeight
 
-      this.needHeight = "height: " + (currHeight + 12) + 'px'
+      let splide = document.querySelectorAll('.splide')
+      for (let i = 0; i < splide.length; i++){
+        splide[i].style.height = trackHeight + 'px'
+      }
     },
     increaseIndex(){
       this.$refs.parentRow.classList.add('row--hover')
