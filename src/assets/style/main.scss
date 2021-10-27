@@ -970,7 +970,7 @@
 .dots{
   position: absolute;
   right: 12px;
-  top: 65px;
+  top: 15px;
   z-index: 2;
 }
 
@@ -1569,6 +1569,44 @@
         }
       }
     }
+  }
+}
+
+.open{
+  &__inner{
+    background: linear-gradient(90deg, #472D5B 0%, #2C3262 100%);
+    border-radius: 25px;
+    padding: 17px 17px 60px;
+    text-align: center;
+  }
+  &__imgwrapper{
+    margin: 32px auto 24px;
+    border: 3px solid #F2C420;
+    border-radius: 50%;
+    max-width: 320px;
+    max-height: 320px;
+    img{
+      border-radius: 50%;
+    }
+  }
+  &__title{
+    font-size: 24px;
+    line-height: 29px;
+    color: #fff;
+    font-weight: 800;
+    span{
+      font-weight: 700;
+    }
+  }
+  .btn{
+    background: #F2C420;
+    border-radius: 50px;
+    color: #202020;
+    padding-left: 95px;
+    padding-right: 95px;
+    height: 65px;
+    font-size: 26px;
+    line-height: 31px;
   }
 }
 

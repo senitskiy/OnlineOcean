@@ -25,16 +25,16 @@
           @toggledLike='toggleLike()'
           ></app-likes>
         </div>
-        <div class="dots">
-          <button class="btn-clear">
-            <svg width="25" height="6" viewBox="0 0 25 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="22" cy="3" r="3" transform="rotate(-90 22 3)" fill="#C0C0C0"/>
-              <circle cx="13" cy="3" r="3" transform="rotate(-90 13 3)" fill="#C0C0C0"/>
-              <circle cx="3" cy="3" r="3" transform="rotate(-90 3 3)" fill="#C0C0C0"/>
-            </svg>
-          </button>
-        </div>
         <div class="product-info__content">
+          <div class="dots">
+            <button class="btn-clear">
+              <svg width="25" height="6" viewBox="0 0 25 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="22" cy="3" r="3" transform="rotate(-90 22 3)" fill="#C0C0C0"/>
+                <circle cx="13" cy="3" r="3" transform="rotate(-90 13 3)" fill="#C0C0C0"/>
+                <circle cx="3" cy="3" r="3" transform="rotate(-90 3 3)" fill="#C0C0C0"/>
+              </svg>
+            </button>
+          </div>
           <h1 class="product-info__name">
             {{ productName }}
           </h1>
@@ -142,7 +142,7 @@ export default {
   },
   data() {
     return {
-      endAuction: '2021-10-22T22:53:30',
+      endAuction: '2021-10-23T22:53:30',
       dateNow: 0,
       difference: 0,
 

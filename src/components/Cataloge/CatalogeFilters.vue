@@ -285,6 +285,11 @@ export default {
       return this.filtersOpened ? '' : 'filters--hidden'
     }
   },
+  watch: {
+    filters() {
+      console.log(111)
+    },
+  },
   components: {
     AppInput,
     CatalogeFilterItem,

@@ -62,6 +62,20 @@
   }
 
   // Global
+
+  // Product
+
+  .profile--product-info{
+    left: 5px;
+  }
+
+  .product-info{
+    .likes--big{
+      left: 10px;
+    }
+  }
+
+  // Product
 }
 
 @media (max-width: 950px){
@@ -95,6 +109,48 @@
   }
 
   // Index
+
+  // Product
+
+  .product-cover {
+    margin: 30px 0 15px;
+  }
+  .product-info__inner{
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  .product-info__videowrapper{
+    margin-right: 0;
+  }
+  .product-info__content{
+    margin-top: 15px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    // justify-content: flex-start;
+  }
+  .product-info__buttons{
+    justify-content: flex-start;
+    margin: 0;
+  }
+  .auction{
+    margin-left: 50px;
+  }
+
+  .product-info__name{
+    margin-bottom: 24px;
+  }
+  .product-info__descr{
+    margin-bottom: 20px;
+  }
+  .product-info__middle{
+    margin-bottom: 30px;
+  }
+
+  // Product
 }
 
 @media (max-width: 900px){
@@ -315,6 +371,48 @@
   }
 
   // Index 
+
+  // Product
+
+  .product-info__name{
+    font-size: 38px;
+    line-height: 45px;
+    margin-bottom: 18px;
+  }
+
+  .product-info__descr{
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 16px;
+  }
+
+  .product-info__subtitle,
+  .auction__time,
+  .product-info__cost{
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .product-info__subtitle{
+    margin-bottom: 5px;
+  }
+
+  .auction__numb,
+  .product-info__bid{
+    font-size: 23px;
+    line-height: 27px;
+    margin-bottom: 2px;
+  }
+  
+  .product-info__content{
+    padding-top: 20px;
+  }
+
+  .dots{
+    top: -3px;
+  }
+
+  // Product
 }
 
 @media (max-width: 570px){
@@ -388,7 +486,50 @@
   }
 
   // Global
+
+  // Product
+
+  .product-info__content{
+    align-items: flex-start;
+    text-align: left;
+  }
+  .product-info__middle{
+    margin-bottom: 25px;
+    flex-direction: column;
+  }
+  .auction{
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .product-info__buttons{
+    flex-wrap: wrap;
+    gap: 15px;
+    .btn{
+      width: 120px;
+      font-size: 20px;
+      line-height: 24px;
+    }
+    .btn + .btn{
+      margin-left: 0;
+    }
+  }
+  .product-info__name,
+  .product-info__descr{
+    max-width: unset;
+  }
+
+  // Product
 }
+
+@media (max-width: 425px){
+  .product-info__buttons{
+    .btn{
+      width: 110px;
+    }
+  }
+
+}
+
 
 @media (max-width: 380px){
   // Index
