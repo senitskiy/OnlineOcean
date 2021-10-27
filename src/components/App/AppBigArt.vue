@@ -7,9 +7,9 @@
     <span class="row__slide-top row-top">
       <span class="row-top__left">
         <p class="row__slide-title">
-          {{ title }}
+          {{ itemName }}
         </p>
-        <p class="row__slide-owner">Owner: {{ owner }}</p>
+        <p class="row__slide-owner">Owner: {{ custom.owner }}</p>
       </span>
       <app-likes
       
@@ -17,12 +17,13 @@
     </span>
     <span class="row__slide-imgwrapper">
       <img src="@/assets/images/temp/slide-1.jpg" alt="" />
+      <slot></slot>
     </span>
     <span class="row__slide-bottom row-bottom">
       <span class="row-bottom__left">
         <p class="row__slide-bid">Current bid:</p>
         <p class="row__slide-price">
-          {{ price }}
+          {{ custom.price + ' ' + custom.blockchain }}
         </p>
       </span>
       <app-profile
@@ -45,18 +46,10 @@ import AppChars from '@/components/App/AppChars.vue';
 
 export default {
   props: {
-    title: {
-      type: String,
-      required: true,
-    },
-    owner: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: String,
-      required: true,
-    },
+    custom:{
+      type: Object,
+      default: null,
+    }
   },
   data() {
     return {
@@ -84,6 +77,9 @@ export default {
     activeState() {
       return this.liked ? "row__slide--active" : ""
     },
+    itemName(){
+      return this.custom.name.substring(0, 21) + '...'
+    }
   },
   components: {
     AppProfile,

@@ -75,10 +75,29 @@
               </p>
             </div>
           </div>
-          <div class="create-modal__preview">
+          <div class="create-modal__preview"
+          :class='isEdit ? "" : "create-modal__preview--preview"'
+          >
+            <button class="create-modal__preview-btn btn-clear"
+            @click='toggleView()'
+            >
+              {{ isEdit ? info.previewText : info.editText }}
+            </button>
             <app-big-art
-            
-            ></app-big-art>
+            :custom='data'
+            >
+              <label class="create-modal__preview-upload upload">
+                <p class="upload__title">
+                  {{ info.uploadTitle }}
+                </p>
+                <app-button
+                :title='info.uploadBtnTitle'
+                ></app-button>
+                <input type="file"
+                @click.stop
+                >
+              </label>
+            </app-big-art>
           </div>
         </div>
         <create-box-loot></create-box-loot>
@@ -103,6 +122,7 @@ import CreateChars from '@/components/Create/CreateChars.vue';
 export default {
   data() {
     return {
+      isEdit: true,
       info:{
         title: 'Create Random Box',
         chooses:[
@@ -123,16 +143,20 @@ export default {
           'eth', 'btc', 'etc'
         ],
         siteFee: '2.5%',
+        previewText: 'Preview',
+        editText: 'Edit',
+        uploadTitle: 'PNG, GIF, WEBP, MP4. Max 100 MB.',
+        uploadBtnTitle: 'Upload box',
       },
       data:{
         name: '',
         descr: '',
-        boxPrice: '',
+        price: '',
         willGet: '',
         blockchain: '',
         type: '',
         classifications: [],
-      }
+      },
     }
   },
   methods: {
@@ -149,19 +173,22 @@ export default {
       this.data.descr = value
     },
     typedPrice(value){
-      this.data.boxPrice = Number(value)
+      this.data.price = Number(value)
       this.data.willGet = this.willGet
     },
     changeBlockchain(value){
       this.data.blockchain = value
     },
+    toggleView(){
+      this.isEdit = !this.isEdit
+    }
   },
   computed: {
     willGet(){
       let siteFee = this.info.siteFee
       siteFee = Number(siteFee.replace(/%/i, '')) / 100
 
-      return this.data.boxPrice - (this.data.boxPrice * siteFee)
+      return this.data.price - (this.data.price * siteFee)
     }
   },
   components: {
