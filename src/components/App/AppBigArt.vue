@@ -17,7 +17,6 @@
       </span>
       <app-likes
       :info='content.likes'
-      @loadLike='setLike'
       @toggledLike='toggleLike()'
       ></app-likes>
     </span>

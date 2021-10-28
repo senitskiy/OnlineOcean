@@ -1829,4 +1829,39 @@
   }
 }
 
+.user-info{
+  margin: 0 0 38px;
+  &__title{
+    font-weight: 700;
+    color: $black;
+    font-size: 36px;
+    line-height: 43px;
+    margin-bottom: 13px;
+  }
+  &__descr{
+    font-size: 18px;
+    line-height: 22px;
+    color: #717171;
+  }
+}
+
+.user-filters{
+  &__checkboxes{
+    display: grid;
+    
+  }
+}
+
+.user-loot{
+  margin: 25px 0 52px;
+  &__items{
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    border-radius: 25px;
+    background-color: $grey-bg;
+    padding: 20px 20px 16px;
+  }
+}
+
 @import '_media.scss';
