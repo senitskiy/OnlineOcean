@@ -1,9 +1,13 @@
 <template>
   <router-link class="row__slide" to='/product-n'
-  :class='activeState'
+  :class='[likeState]'
   @mouseover='showChars()'
   @mouseleave="hideChars()"
   >
+    <span class="row__slide-blocker"
+    v-if='isActive !== true'
+    @click.prevent
+    ></span>
     <span class="row__slide-top row-top">
       <span class="row-top__left">
         <p class="row__slide-title">
@@ -16,7 +20,7 @@
       ></app-likes>
     </span>
     <span class="row__slide-imgwrapper">
-      <img src="@/assets/images/temp/slide-1.jpg" alt="" />
+      <img class='row__slide-img' :src="custom ? custom.image.src : '@/assets/images/temp/slide-1.jpg'" alt="" />
       <slot></slot>
     </span>
     <span class="row__slide-bottom row-bottom">
@@ -49,6 +53,10 @@ export default {
     custom:{
       type: Object,
       default: null,
+    },
+    isActive:{
+      type: Boolean,
+      default: true,
     }
   },
   data() {
@@ -74,12 +82,12 @@ export default {
     },
   },
   computed: {
-    activeState() {
+    likeState() {
       return this.liked ? "row__slide--active" : ""
     },
     itemName(){
       return this.custom.name.substring(0, 21) + '...'
-    }
+    },
   },
   components: {
     AppProfile,

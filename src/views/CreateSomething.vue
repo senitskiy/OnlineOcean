@@ -85,6 +85,7 @@
             </button>
             <app-big-art
             :custom='data'
+            :isActive='isActiveLink'
             >
               <label class="create-modal__preview-upload upload">
                 <p class="upload__title">
@@ -95,6 +96,8 @@
                 ></app-button>
                 <input type="file"
                 @click.stop
+                @click='saveCurrent()'
+                @change='loadCover($event)'
                 >
               </label>
             </app-big-art>
@@ -123,6 +126,7 @@ export default {
   data() {
     return {
       isEdit: true,
+      isActiveLink: false,
       info:{
         title: 'Create Random Box',
         chooses:[
@@ -147,6 +151,7 @@ export default {
         editText: 'Edit',
         uploadTitle: 'PNG, GIF, WEBP, MP4. Max 100 MB.',
         uploadBtnTitle: 'Upload box',
+        uploadLoadedBtnTitle: 'Change box',
       },
       data:{
         name: '',
@@ -156,6 +161,10 @@ export default {
         blockchain: '',
         type: '',
         classifications: [],
+        image:{
+          src: '',
+        },
+        prevImage: null,
       },
     }
   },
@@ -181,7 +190,19 @@ export default {
     },
     toggleView(){
       this.isEdit = !this.isEdit
-    }
+    },
+    loadCover(event){
+      if (event.srcElement.files.length !== 0){
+        this.data.image = event.target.files[0]
+        this.data.image.src = URL.createObjectURL(this.data.image);
+        this.info.uploadBtnTitle = this.info.uploadLoadedBtnTitle
+      } else{
+        this.data.image = this.data.prevImage
+      }
+    },
+    saveCurrent(){
+      this.data.prevImage = this.data.image
+    },
   },
   computed: {
     willGet(){
