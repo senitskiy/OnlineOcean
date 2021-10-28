@@ -6,6 +6,7 @@ import BoxOpen from '../views/BoxOpen.vue'
 import Art from '../views/Art.vue'
 import Create from '../views/Create.vue'
 import CreateSomething from '../views/CreateSomething.vue'
+import User from '../views/User.vue'
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
     path: '/create/box',
     name: 'CreateSomething',
     component: CreateSomething
+  },
+  {
+    path: '/user/:username',
+    name: 'User',
+    component: User
   },
 ]
 

@@ -23,7 +23,7 @@
     <app-button
     title='More...'
     link
-    href='/lk'
+    href='/user/artstudio'
     ></app-button>
   </div>
   <div class="nots__pad"></div>

@@ -20,8 +20,7 @@
           ></app-profile>
           <app-likes
           view='big'
-          :liked='likedBox'
-          @loadLike='setLike()'
+          :info='info.likes'
           @toggledLike='toggleLike()'
           ></app-likes>
         </div>
@@ -149,6 +148,12 @@ export default {
       auctionIsActive: true,
       videoActive: false,
       likedBox: null,
+      info:{
+        likes:{
+          count: 121,
+          status: true,
+        },
+      },
     }
   },
   created () {
@@ -184,11 +189,16 @@ export default {
         this.videoActive = false
       }
     },
-    setLike(value){
-      this.likedBox = value
-    },
+    // setLike(value){
+    //   this.info.likes.status = value.status
+    // },
     toggleLike(){
-      this.likedBox = !this.likedBox
+      if(this.info.likes.status === false){
+        this.info.likes.count++
+      }else{
+        this.info.likes.count--
+      }
+      this.info.likes.status = !this.info.likes.status
     }
   },
   

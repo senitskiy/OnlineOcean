@@ -1,6 +1,6 @@
 <template>
   <router-link class="nots__item"
-  to='/lk'
+  to='/user/artstudio'
   >
     <app-profile
     userId='43'

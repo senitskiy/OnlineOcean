@@ -2,16 +2,11 @@
   <div class="create-modal__box-loot box-loot">
     <div class="box-loot__items">
       <app-art
+      v-for='id in data.items'
+      :artId='id'
       short
       view='box-loot'
-      ></app-art>
-      <app-art
-      short
-      view='box-loot'
-      ></app-art>
-      <app-art
-      short
-      view='box-loot'
+      :key='id'
       ></app-art>
       <button class="box-loot__add btn-clear">
         <span class="box-loot__imgwrapper">
@@ -37,6 +32,9 @@ export default {
       data:{
         title: 'Items are loaded from the offers you created earlier.',
         uploadDescr: 'Upload item',
+        items:[
+          4, 1, 566
+        ]
       }
     }
   },

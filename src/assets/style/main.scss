@@ -417,7 +417,8 @@
     height: 60px;
     opacity: 1;
     right: -15px;
-    top: calc(50% - 90px);
+    top: calc(50%);
+    transform: translateY(-50%);
     &:hover{
       opacity: 1;
     }
@@ -442,7 +443,7 @@
     }
   }
   .splide__slide{
-    padding-bottom: 204px;
+    padding-bottom: 205px;
   }
   .splide__track{
     overflow-y: auto;

@@ -29,7 +29,7 @@
       <img src="@/assets/images/notify.svg" alt="">
     </button>
     <router-link class="header__account-link"
-    to='lk'
+    to='/user/artstudio'
     >
       <img src="@/assets/images/temp/user.jpg" alt="">
     </router-link>

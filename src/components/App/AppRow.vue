@@ -25,9 +25,7 @@
           @mouseleave="reduceIndex()"
           >
             <app-big-art
-            :title='slide.title'
-            :owner='slide.owner'
-            :price='slide.price'
+            :artId='slide'
             ></app-big-art>
           </splide-slide>
         </splide> 
@@ -103,55 +101,7 @@ export default {
     return {
       needHeight: null,
       data:[
-        {
-          title: 'Abstract 3D work',
-          owner: 'artstudio',
-          price: '0.034 ETH',
-          autor: '@artstudio',
-          verifiedAccount: true,
-        },
-        {
-          title: 'Abstract 3D work',
-          owner: 'artstudio',
-          price: '0.034 ETH',
-          autor: '@artstudio',
-          verifiedAccount: true,
-        },
-        {
-          title: 'Abstract 3D work',
-          owner: 'artstudio',
-          price: '0.034 ETH',
-          autor: '@artstudio',
-          verifiedAccount: true,
-        },
-        {
-          title: 'Abstract 3D work',
-          owner: 'artstudio',
-          price: '0.034 ETH',
-          autor: '@artstudio',
-          verifiedAccount: true,
-        },
-        {
-          title: 'Abstract 3D work',
-          owner: 'artstudio',
-          price: '0.034 ETH',
-          autor: '@artstudio',
-          verifiedAccount: true,
-        },
-        {
-          title: 'Abstract 3D work',
-          owner: 'artstudio',
-          price: '0.034 ETH',
-          autor: '@artstudio',
-          verifiedAccount: true,
-        },
-        {
-          title: 'Abstract 3D work',
-          owner: 'artstudio',
-          price: '0.034 ETH',
-          autor: '@artstudio',
-          verifiedAccount: true,
-        },
+        44, 332, 344, 233, 444, 3, 7, 8  
       ]
     }
   },
@@ -162,7 +112,7 @@ export default {
   },
   methods: {
     setHeight() {
-      let trackHeight = this.$refs.splide.$el.offsetHeight
+      let trackHeight = this.$refs.splide.$el.clientHeight
 
       let splide = document.querySelectorAll('.splide')
       for (let i = 0; i < splide.length; i++){
