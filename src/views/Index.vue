@@ -1,5 +1,5 @@
 <template>
-  <index-cover></index-cover>
+  <app-cover></app-cover>
   <index-live-tape></index-live-tape>
   <app-row></app-row>
   <app-row></app-row>
@@ -11,13 +11,13 @@
 </template>
 
 <script>
-import IndexCover from '@/components/Index/IndexCover.vue'
+import AppCover from '@/components/App/AppCover.vue'
 import IndexLiveTape from '@/components/Index/IndexLiveTape.vue'
 
 export default {
   name: 'Index',
   components: {
-    IndexCover,
+    AppCover,
     IndexLiveTape,
   }
 }

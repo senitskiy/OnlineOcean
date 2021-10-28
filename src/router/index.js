@@ -7,6 +7,7 @@ import Art from '../views/Art.vue'
 import Create from '../views/Create.vue'
 import CreateSomething from '../views/CreateSomething.vue'
 import User from '../views/User.vue'
+import UserUnlogged from '../views/UserUnlogged.vue'
 
 const routes = [
   {
@@ -43,6 +44,11 @@ const routes = [
     path: '/create/box',
     name: 'CreateSomething',
     component: CreateSomething
+  },
+  {
+    path: '/user/:username/unlogged',
+    name: 'UserUnlogged',
+    component: UserUnlogged
   },
   {
     path: '/user/:username',
