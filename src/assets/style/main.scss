@@ -1830,7 +1830,7 @@
 }
 
 .user-info{
-  margin: 0 0 38px;
+  margin: -20px 0 38px;
   &__title{
     font-weight: 700;
     color: $black;
@@ -1880,11 +1880,97 @@
     display: inline-flex;
     background-color: $grey-bg;
     border-radius: 25px 0 0 25px;
-    .profile{
+    position: relative;
+    padding: 19px 0 17px 104px;
+    color: $black;
+    .profile--cover{
       display: inline-flex;
+      max-width: 130px;
+      width: 100%;
+      position: absolute;
+      left: -60px;
+      top: 0;
+      pointer-events: none;
       .profile__imgwrapper{
-        width: 130px;
-        height: 130px;
+        width: 100%;
+        max-width: 130px;
+        max-height: 130px;
+        margin-top: 0;
+        padding: 6px;
+        &:after{
+          width: 34px;
+          height: 34px;
+          bottom: 6px;
+          right: 6px;
+        }
+      }
+    }
+  }
+  &__profile-username{
+    margin-bottom: 25px;
+    font-size: 26px;
+    line-height: 31px;
+    font-weight: 700;
+  }
+  &__profile-loot{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 45px;
+  }
+  &__loot{
+    display: flex;
+  }
+  &__loot-item{
+    font-size: 16px;
+    line-height: 19px;
+    color: #55525E;
+    span{
+      color: $grey;
+    }
+    & + &{
+      margin-left: 23px;
+    }
+  }
+  .btn--lined{
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+  &__profile-edit{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .copy{
+    display: flex;
+    margin-bottom: 22px;
+    cursor: pointer;
+    &__input{
+      color: $black;
+      font-size: 16px;
+      line-height: 19px;
+      margin: 0;
+      padding: 0;
+      border: none;
+      background-color: transparent;
+      max-width: 92px;
+      transition: all .3s;
+      cursor: pointer;
+    }
+    svg{
+      margin-left: 10px;
+      path{
+        transition: all .4s;
+      }
+    }
+    &:hover{
+      input{
+        color: rgba($black, .7);
+      }
+      svg{
+        path{
+          fill: rgba($pink, .7)
+        }
       }
     }
   }
@@ -1962,6 +2048,11 @@
     border-radius: 25px;
     background-color: $grey-bg;
     padding: 20px 20px 16px;
+  }
+  .row__slide{
+    &:hover{
+      z-index: 2;
+    }
   }
 }
 

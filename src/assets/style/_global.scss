@@ -115,6 +115,11 @@ menu{
   &--green{
     background: #4EC84C;
   }
+  &--lined{
+    border: 1px solid $pink;
+    background-color: transparent;
+    color: $pink;
+  }
   &--linear{
     margin: 32px auto 30px;
     display: block;
@@ -367,7 +372,9 @@ menu{
 .box-loot__items .art:nth-child(1),
 .box-loot__items .art:nth-child(5n + 1),
 .cataloge__rows .art:nth-child(1),
-.cataloge__rows .art:nth-child(5n + 1)
+.cataloge__rows .art:nth-child(5n + 1),
+.user-loot .row__slide:nth-child(1),
+.user-loot .row__slide:nth-child(4n + 1)
 {
   .art__chars{
     left: 20px;
@@ -383,7 +390,8 @@ menu{
 .panel__items .art:nth-child(6n),
 .box-loot__items .art:nth-child(5n),
 .cataloge__rows .art:nth-child(5n),
-.cataloge__inner--more .cataloge__rows .art:nth-child(6n)
+.cataloge__inner--more .cataloge__rows .art:nth-child(6n),
+.user-loot .row__slide:nth-child(4n)
 {
   .art__chars{
     right: 20px;
