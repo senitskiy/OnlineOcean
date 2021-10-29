@@ -96,7 +96,6 @@ export default {
   },
   methods: {
     setType(value) {
-      console.log(value)
       this.data.showType = value
     },
     search(value){
