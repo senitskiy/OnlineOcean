@@ -1,6 +1,7 @@
 <template>
   <div class="nots"
   :class='notsState'
+  @click.stop
   >
     <p class="nots__title">
       Notifications

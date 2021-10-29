@@ -59,6 +59,15 @@
     margin-right: 21px;
     position: relative;
   }
+  &__blockchain-icon{
+    background-color: $pink;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   &__notifications{
     margin-right: 24px;
     position: relative;
@@ -467,6 +476,7 @@
   transition: all .4s;
   z-index: 3;
   width: 300px;
+  cursor: default;
   &--active{
     opacity: 1;
     pointer-events: all;
@@ -528,6 +538,26 @@
   padding: 10px 15px 15px;
   color: $black;
   cursor: default;
+  z-index: 3;
+  opacity: 0;
+  transition: all .4s;
+  pointer-events: none;
+  &__pad{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+  }
+  &--active{
+    opacity: 1;
+    pointer-events: all;
+  }
+  &--active + .blockchains__pad{
+    pointer-events: all;
+  }
   &__title{
     font-size: 20px;
     line-height: 24px;

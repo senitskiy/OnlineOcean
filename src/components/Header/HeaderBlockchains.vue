@@ -1,5 +1,8 @@
 <template>
-  <div class="blockchains">
+  <div class="blockchains"
+  :class='blockchainsState'
+  @click.stop
+  >
     <p class="blockchains__title">
       Choosing a Blockchain
     </p>
@@ -12,6 +15,7 @@
         :descr='item.name'
         :checkboxValue='item.value'
         :checkboxName='content.blockchainsName'
+        :checkboxChecked='item.checked'
         @choosed='setBlockchain'
         radio
         >
@@ -25,6 +29,7 @@
     title='Apply'
     ></app-button>
   </div>
+  <div class="blockchains__pad"></div>
 </template>
 
 <script>
@@ -44,26 +49,32 @@ export default {
           {
             name: 'Ethereum',
             value: 'eth',
+            checked: true,
           },
           {
             name: 'Immutable X',
             value: 'imux',
+            checked: false,
           },
           {
             name: 'BSC',
             value: 'bsc',
+            checked: false,
           },
           {
             name: 'Polygon',
             value: 'polygon',
+            checked: false,
           },
           {
             name: 'Solana',
             value: 'solana',
+            checked: false,
           },
           {
             name: 'Dfinity',
             value: 'dfinity',
+            checked: false,
           },
         ]
       },
@@ -72,9 +83,15 @@ export default {
       },
     }
   },
+  computed: {
+    blockchainsState() {
+      return this.opened ? 'blockchains--active' : ''
+    },
+  },
   methods: {
     setBlockchain(value) {
       this.data.currBlockchain = value
+      console.log(value)
     }
   },
   components: {

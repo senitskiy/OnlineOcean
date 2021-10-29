@@ -19,15 +19,20 @@
     ></app-button>
   </div>
   <div class="header__account">
-    <button class="header__blockchain btn-clear">
+    <button class="header__blockchain btn-clear"
+    :class='openedBlockchains !== false ? "header__blockchain--active" : ""'
+    @click='togglePopUpBlockchains'
+    >
       <header-blockchains
       :opened='openedBlockchains'
       ></header-blockchains>
-      <img src="@/assets/images/blockchain-icon.svg" alt="">
+      <div class="header__blockchain-icon">
+        <img src="@/assets/images/blockchain-icon.png" alt="">
+      </div>
     </button>
     <button class="header__notifications btn-clear"
     :class='notifications !== 0 ? "header__notifications--active" : ""'
-    @click.stop='togglePopUpNots'
+    @click='togglePopUpNots'
     >
       <app-nots
       :openedNots='openedNots'
@@ -60,7 +65,12 @@ export default {
       this.openedNots = false
     },
     togglePopUpNots() {
+      this.openedBlockchains = false
       this.openedNots = !this.openedNots
+    },
+    togglePopUpBlockchains(){
+      this.openedNots = false
+      this.openedBlockchains = !this.openedBlockchains
     },
     search(){
 
