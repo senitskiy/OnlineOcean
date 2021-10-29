@@ -286,9 +286,15 @@ export default {
     }
   },
   watch: {
-    filters() {
-      console.log(111)
+    filtersOpened(value){
+      console.log('new data' + value)
     },
+    filters:{
+      handler(value){
+        this.$emit('updatedFilters', value)
+      },
+      deep: true
+    }
   },
   components: {
     AppInput,

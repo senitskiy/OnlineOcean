@@ -19,6 +19,12 @@
     ></app-button>
   </div>
   <div class="header__account">
+    <button class="header__blockchain btn-clear">
+      <header-blockchains
+      :opened='openedBlockchains'
+      ></header-blockchains>
+      <img src="@/assets/images/blockchain-icon.svg" alt="">
+    </button>
     <button class="header__notifications btn-clear"
     :class='notifications !== 0 ? "header__notifications--active" : ""'
     @click.stop='togglePopUpNots'
@@ -39,12 +45,14 @@
 <script>
 import AppInput from '@/components/App/AppInput.vue'
 import AppNots from '@/components/App/AppNots.vue'
+import HeaderBlockchains from '@/components/Header/HeaderBlockchains.vue'
 
 export default {
   data() {
     return {
       notifications: 1,
       openedNots: false,
+      openedBlockchains: false,
     }
   },
   methods: {
@@ -61,6 +69,7 @@ export default {
   components: {
     AppInput,
     AppNots,
+    HeaderBlockchains,
   },
 }
 </script>
