@@ -48,6 +48,13 @@ body{
   // display: flex;
   // flex-direction: column;
   // min-height: 100vh;
+  &.scroll-stoped{
+    position: relative;
+  }
+}
+
+.scroll-stoped{
+  overflow-y: hidden;
 }
 
 img{

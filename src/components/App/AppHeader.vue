@@ -19,6 +19,10 @@
     ref='menu'
     >
       <header-content></header-content>
+      <app-profile
+      :userId='22'
+      ></app-profile>
+      <header-blockchains></header-blockchains>
       <app-social></app-social>
     </menu>
   </header>
@@ -27,18 +31,28 @@
 <script>
 import AppLogo from '@/components/App/AppLogo.vue'
 import AppSocial from '@/components/App/AppSocial.vue'
+import AppProfile from '@/components/App/AppProfile.vue'
 import HeaderContent from '@/components/Header/HeaderContent.vue';
+import HeaderBlockchains from '@/components/Header/HeaderBlockchains.vue';
 
 export default {
   methods: {
     toggleMenu(){
+      let html = document.documentElement,
+          body = document.body;
+
+      html.classList.toggle('scroll-stoped')
+      body.classList.toggle('scroll-stoped')
+
       this.$refs.menu.classList.toggle('header__menu--active')
     },
   },
   components:{
     AppLogo,
     AppSocial,
+    AppProfile,
     HeaderContent,
+    HeaderBlockchains,
   },
 }
 </script>
