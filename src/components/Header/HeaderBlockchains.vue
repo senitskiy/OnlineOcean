@@ -3,10 +3,13 @@
   :class='blockchainsState'
   @click.stop
   >
+    {{ currentBlockchain }}
     <p class="blockchains__title">
       Choosing a Blockchain
     </p>
-    <ul class="blockchains__items">
+    <ul class="blockchains__items"
+    ref='blockchainItemsParent'
+    >
       <li class="blockchains__item"
       v-for='item in content.blockchains'
       :key='item'
@@ -14,9 +17,9 @@
         <app-input
         :descr='item.name'
         :checkboxValue='item.value'
-        :checkboxName='content.blockchainsName'
-        :checkboxChecked='item.checked'
-        @choosed='setBlockchain'
+        :checkboxName='data.blockchainsName'
+        :checkboxChecked='item.value === currentBlockchain.value'
+        @choosed='checkInput'
         radio
         >
           <span class="blockchains__imgwrapper">
@@ -27,6 +30,7 @@
     </ul>
     <app-button
     title='Apply'
+    @click='setBlockchain()'
     ></app-button>
   </div>
   <div class="blockchains__pad"></div>
@@ -34,6 +38,8 @@
 
 <script>
 import AppInput from '@/components/App/AppInput.vue';
+
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   props: {
@@ -44,55 +50,68 @@ export default {
   data() {
     return {
       content:{
-        blockchainsName: 'header-blockchain',
         blockchains:[
           {
             name: 'Ethereum',
             value: 'eth',
-            checked: true,
           },
           {
             name: 'Immutable X',
             value: 'imux',
-            checked: false,
           },
           {
             name: 'BSC',
             value: 'bsc',
-            checked: false,
           },
           {
             name: 'Polygon',
             value: 'polygon',
-            checked: false,
           },
           {
             name: 'Solana',
             value: 'solana',
-            checked: false,
           },
           {
             name: 'Dfinity',
             value: 'dfinity',
-            checked: false,
           },
         ]
       },
       data:{
         currBlockchain: '',
-      },
+        blockchainsName: '',
+      }
     }
+  },
+  mounted () {
+    this.generateName()
   },
   computed: {
     blockchainsState() {
       return this.opened ? 'blockchains--active' : ''
     },
+    ...mapGetters(['currentBlockchain'])
   },
   methods: {
-    setBlockchain(value) {
-      this.data.currBlockchain = value
-      console.log(value)
-    }
+    generateName(){
+      this.data.blockchainsName = Math.random() + Math.random()
+    },
+    blockchainCheckedState(value){
+      console.log(value === this.currentBlockchain.value)
+      return value === this.currentBlockchain.value
+    },
+    checkInput(value){
+      let allBlockchains = this.content.blockchains
+      let needValue = Object.values(allBlockchains).find((obj) => {
+        return obj.value == value
+      })
+
+      this.data.currBlockchain = needValue
+    },
+    setBlockchain(){
+      this.setNewBlockchain(this.data.currBlockchain)
+    },
+    ...mapMutations(['setNewBlockchain'])
   },
   components: {
     AppInput,
