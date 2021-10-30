@@ -3,7 +3,6 @@
   :class='blockchainsState'
   @click.stop
   >
-    {{ currentBlockchain }}
     <p class="blockchains__title">
       Choosing a Blockchain
     </p>
@@ -94,7 +93,8 @@ export default {
   },
   methods: {
     generateName(){
-      this.data.blockchainsName = Math.random() + Math.random()
+      let randomValue = Math.random() + Math.random()
+      this.data.blockchainsName = randomValue.toString()
     },
     blockchainCheckedState(value){
       console.log(value === this.currentBlockchain.value)

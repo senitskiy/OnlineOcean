@@ -15,11 +15,10 @@
       title='Art or Games'
       view='fill'
       >
-        <div class="filters__item-body"
-        v-for='item in data.or'
-        :key="item"
-        >
+        <div class="filters__item-body">
           <app-input
+          v-for='item in data.or'
+          :key="item"
           :descr='item.text'
           :checkboxValue='item.value'
           checkbox
@@ -33,21 +32,21 @@
       title='Blockchain'
       view='fill'
       >
-        <div class="filters__item-body"
-        v-for='blockchain in data.blockchains'
-        :key="blockchain"
-        >
-          <app-input
-          :descr='blockchain.text'
-          :checkboxValue='blockchain.value'
-          :checkboxName='blockchain.checkboxName'
-          :checkboxChecked='blockchain.checked'
-          radio
-          type='radio'
-          @choosed='setBlockchain'
-          >
-            <img src="@/assets/images/temp/ethereum.svg" alt="">
-          </app-input>
+        <div class="filters__item-body">
+          <div class="filters--limited">
+            <app-input
+            v-for='blockchain in data.blockchains'
+            :key="blockchain"
+            :descr='blockchain.text'
+            :checkboxValue='blockchain.value'
+            :checkboxName='blockchain.checkboxName'
+            :checkboxChecked='blockchain.checked'
+            radio
+            @choosed='setBlockchain'
+            >
+              <img src="@/assets/images/temp/ethereum.svg" alt="">
+            </app-input>
+          </div>
         </div>
       </cataloge-filter-item>
       <cataloge-filter-item
@@ -67,12 +66,12 @@
       title='Collections'
       view='fill'
       >
-        <div class="filters__item-body filters__item-body collections">
+        <div class="filters__item-body collections">
           <app-input
           view='filter-collection'
           :placeholderText='data.collectionSearchPlaceholder'
           ></app-input>
-          <ul class="filters__item-list collections__list">
+          <ul class="filters__item-list filters--limited collections__list">
             <li class="collections__list-item"
             v-for='collection in data.collections'
             :key="collection.id"
@@ -94,41 +93,43 @@
       title='Categories'
       view='fill'
       >
-        <div class="filters__item-body"
-        v-for='category in data.categories'
-        :key="category"
-        >
-          <app-input
-          :descr='category.text'
-          :checkboxValue='category.value'
-          checkbox
-          @choosed='setCategories'
-          view='verified'
-          >
-            <img src="@/assets/images/temp/ethereum.svg" alt="">
-          </app-input>
+        <div class="filters__item-body">
+          <div class="filters--limited">
+            <app-input
+            v-for='category in data.categories'
+            :key="category"
+            :descr='category.text'
+            :checkboxValue='category.value'
+            checkbox
+            @choosed='setCategories'
+            view='verified'
+            >
+              <img src="@/assets/images/temp/ethereum.svg" alt="">
+            </app-input>
+          </div>
         </div>
       </cataloge-filter-item>
       <cataloge-filter-item
       title='Rarity'
       view='checkmark'
       >
-        <div class="filters__item-body"
-        v-for='item in data.rarity'
-        :key="item"
-        >
-          <app-input
-          :descr='item.text'
-          :checkboxValue='item.value'
-          checkbox
-          @choosed='setRarity'
-          >
-            <span class="checkbox-style">
-              <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-            </span>
-          </app-input>
+        <div class="filters__item-body">
+          <div class="filters--limited">
+            <app-input
+            v-for='item in data.rarity'
+            :key="item"
+            :descr='item.text'
+            :checkboxValue='item.value'
+            checkbox
+            @choosed='setRarity'
+            >
+              <span class="checkbox-style">
+                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+            </app-input>
+          </div>
         </div>
       </cataloge-filter-item>
     </ul>
@@ -211,6 +212,24 @@ export default {
             verified: true,
             type: 'art',
           },
+          {
+            text: 'Doodles art',
+            id: 2,
+            verified: true,
+            type: 'art',
+          },
+          {
+            text: 'Doodles art',
+            id: 90,
+            verified: true,
+            type: 'art',
+          },
+          {
+            text: 'Doodles art',
+            id: 75,
+            verified: true,
+            type: 'art',
+          },
         ],
         categories:[
           {
@@ -225,6 +244,30 @@ export default {
             text: 'Box',
             value: 'box',
           },
+          {
+            text: 'Music',
+            value: 'mu3232sic',
+          },
+          {
+            text: 'Art',
+            value: 'ar2323t',
+          },
+          {
+            text: 'Box',
+            value: 'bo123x',
+          },
+          {
+            text: 'Music',
+            value: 'music231',
+          },
+          {
+            text: 'Art',
+            value: 'ar2t',
+          },
+          {
+            text: 'Box',
+            value: 'bo233x',
+          },
         ],
         rarity:[
           {
@@ -238,6 +281,42 @@ export default {
           {
             text: 'Epic',
             value: 'epic'
+          },
+          {
+            text: 'Legendary',
+            value: 'legenda4323ry'
+          },
+          {
+            text: 'Common',
+            value: 'com343mon'
+          },
+          {
+            text: 'Epic',
+            value: 'epi343c'
+          },
+          {
+            text: 'Legendary',
+            value: 'legendary'
+          },
+          {
+            text: 'Common',
+            value: 'comm33on'
+          },
+          {
+            text: 'Epic',
+            value: 'epic32'
+          },
+          {
+            text: 'Legendary',
+            value: 'legendary'
+          },
+          {
+            text: 'Common',
+            value: 'common33'
+          },
+          {
+            text: 'Epic',
+            value: 'epi43c'
           },
         ],
       },
