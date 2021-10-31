@@ -1,6 +1,7 @@
 <template>
   <label class="label"
   v-if='radio'
+  :class='verifiedView'
   >
     <input class='checkbox' type='radio'
     v-model="inputValue"
@@ -12,11 +13,13 @@
     <slot></slot>
     <span class='label-text'>
       {{ descr }}
+      <slot name='verified'></slot>
     </span>
   </label>
 
   <label class="label"
   v-else-if='checkbox'
+  :class='verifiedView'
   >
     <input class='checkbox' type='checkbox'
     :value="checkboxValue"
@@ -25,6 +28,7 @@
     <slot></slot>
     <span class='label-text'>
       {{ descr }}
+      <slot name='verified'></slot>
     </span>
   </label>
 
@@ -81,6 +85,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    verified:{
+      type: Boolean,
+      required: false,
+    }
   },
   data() {
     return {
@@ -104,6 +112,9 @@ export default {
   computed: {
     viewStyle() {
       return 'input--' + this.view
+    },
+    verifiedView(){
+      return this.verified ? 'label--verified' : ''
     },
   },
   emits:[

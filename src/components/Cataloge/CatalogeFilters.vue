@@ -81,9 +81,15 @@
               :checkboxValue='collection.id'
               checkbox
               ref='collectionInput'
+              :verified='collection.verified'
               @choosed='setCollections'
               >
-                <img src="@/assets/images/temp/ethereum.svg" alt="">
+                <template v-slot:default>
+                  <img src="@/assets/images/temp/ethereum.svg" alt="">
+                </template>
+                <template v-slot:verified>
+                  <img class='collections__list-item--verified' src="@/assets/images/success.svg" alt="">
+                </template>
               </app-input>
             </li>
           </ul>
