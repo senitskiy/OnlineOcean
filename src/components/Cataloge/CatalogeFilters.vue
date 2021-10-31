@@ -37,7 +37,7 @@
             <app-input
             v-for='blockchain in data.blockchains'
             :key="blockchain"
-            :descr='blockchain.text'
+            :descr='blockchain.label'
             :checkboxValue='blockchain.value'
             :checkboxName='blockchain.checkboxName'
             :checkboxChecked='blockchain.checked'
@@ -53,13 +53,40 @@
       title='Price'
       view='price'
       >
-        <div class="filters__item-body">
-          <Multiselect
-          v-model='filters.price'
-          :options='data.currency'
-          >
-            
-          </Multiselect>
+        <div class="filters__item-body filter-price"
+        :class='prefilters.price.error.length > 0 ? "filter-price--disabled" : ""'
+        >
+          <div class="filter-price__selectwrapper">
+            <app-select
+            :options='data.blockchains'
+            @selectedBlockchain='setPrefilterPriceBlockchain'
+            >
+            </app-select>
+          </div>
+          <div class="filter-price__inputs">
+            <app-input
+            placeholderText='Min'
+            type='number'
+            @typed='setFilterMin'
+            ref='priceMin'
+            ></app-input>
+            <span class="filter-price__to">
+              to
+            </span>
+            <app-input
+            placeholderText='Max'
+            type='number'
+            @typed='setFilterMax'
+            ref='priceMax'
+            ></app-input>
+          </div>
+          <p class="filter-price__error">
+            {{ prefilters.price.error }}
+          </p>
+          <app-button
+          title='Apply'
+          @click='setPrice()'
+          ></app-button>
         </div>
       </cataloge-filter-item>
       <cataloge-filter-item
@@ -139,17 +166,16 @@
         </div>
       </cataloge-filter-item>
     </ul>
+    {{ prefilters }}
+    <br>
     {{ filters }}
   </aside>
 </template>
 
 <script>
 import AppInput from '@/components/App/AppInput.vue';
+import AppSelect from '@/components/App/AppSelect.vue';
 import CatalogeFilterItem from '@/components/Cataloge/CatalogeFilterItem.vue';
-
-
-import Multiselect from '@vueform/multiselect';
-import '@vueform/multiselect/themes/default.css';
 
 export default {
   data() {
@@ -169,22 +195,20 @@ export default {
         ],
         blockchains:[
           {
-            text: 'Ethereum',
+            label: 'Ethereum',
             value: 'eth',
             checkboxName: 'cataloge-blockchains',
             checked: true,
           },
           {
-            text: 'Bitcoin',
+            label: 'Bitcoin',
             value: 'btc',
             checkboxName: 'cataloge-blockchains',
           },
-        ],
-        currency:[
           {
-            value: 'eth',
-            text: 'Etherum',
-            src: '',
+            label: 'Immutable x',
+            value: 'imux',
+            checkboxName: 'cataloge-blockchains',
           },
         ],
         collections:[
@@ -326,10 +350,22 @@ export default {
           },
         ],
       },
+      prefilters:{
+        price: {
+          error: '',
+          blockchain: '',
+          min: '',
+          max: '',
+        },
+      },
       filters:{
         or: [],
         blockchain: '',
-        price: '',
+        price: {
+          blockchain: '',
+          min: '',
+          max: '',
+        },
         collections: [],
         categories: [],
         rarity: [],
@@ -364,6 +400,37 @@ export default {
     setRarity(value){
       this.toggleInArray(this.filters.rarity, value)
     },
+    setFilterMin(value){
+      this.prefilters.price.min = value
+      if (this.prefilters.price.max === ''){
+        this.prefilters.price.error = ''
+      }else{
+        if(this.prefilters.price.max < this.prefilters.price.min){
+          this.prefilters.price.error = 'Min must be less than max'
+        }else{
+          this.prefilters.price.error = ''
+        }
+      }
+    },
+    setFilterMax(value){
+      this.prefilters.price.max = value
+      if (this.prefilters.price.min === ''){
+        this.prefilters.price.error = ''
+      }else{
+        if(this.prefilters.price.min > this.prefilters.price.max){
+          this.prefilters.price.error = 'Max must be more than min'
+        }else{
+          this.prefilters.price.error = ''
+        }
+      }
+    },
+    setPrefilterPriceBlockchain(value){
+      this.prefilters.price.blockchain = value
+    },
+    setPrice(){
+      let currentFilters = JSON.parse(JSON.stringify(this.prefilters.price))
+      this.filters.price = currentFilters
+    },
   },
   computed: {
     filtersView() {
@@ -383,8 +450,8 @@ export default {
   },
   components: {
     AppInput,
+    AppSelect,
     CatalogeFilterItem,
-    Multiselect,
   },
 }
 </script>

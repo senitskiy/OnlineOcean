@@ -41,6 +41,10 @@ export default {
     big:{
       type: Boolean,
       default: false,
+    },
+    btnDisabled:{
+      type: Boolean,
+      default: false,
     }
   },
   computed: {
