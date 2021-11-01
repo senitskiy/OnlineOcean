@@ -7,7 +7,18 @@
   ref='select'
   @select='changedValue'
   :caret='false'
-  ></multiselect>
+  >
+    <template #singlelabel="{ value }">
+      <div class="multiselect-single-label">
+        <img class="select-icon" :src="value.image" />
+        {{ value.label }}
+      </div>
+    </template>
+    <template #option="{ option }">
+      <img class="select-icon" :src="option.image" />
+      {{ option.label }}
+    </template>
+  </multiselect>
 </template>
 
 <script>

@@ -35,12 +35,12 @@
         <div class="filters__item-body">
           <div class="filters--limited">
             <app-input
-            v-for='blockchain in data.blockchains'
+            v-for='blockchain in allBlockchains'
             :key="blockchain"
             :descr='blockchain.label'
             :checkboxValue='blockchain.value'
-            :checkboxName='blockchain.checkboxName'
-            :checkboxChecked='blockchain.checked'
+            :checkboxName='blockchainsRadioName'
+            :checkboxChecked='blockchain.value === currentBlockchain.value'
             radio
             @choosed='setBlockchain'
             >
@@ -58,7 +58,7 @@
         >
           <div class="filter-price__selectwrapper">
             <app-select
-            :options='data.blockchains'
+            :options='allBlockchains'
             @selectedBlockchain='setPrefilterPriceBlockchain'
             >
             </app-select>
@@ -177,10 +177,13 @@ import AppInput from '@/components/App/AppInput.vue';
 import AppSelect from '@/components/App/AppSelect.vue';
 import CatalogeFilterItem from '@/components/Cataloge/CatalogeFilterItem.vue';
 
+import { mapGetters, mapMutations } from 'vuex';
+
 export default {
   data() {
     return {
       filtersOpened: true,
+      blockchainsRadioName: 'filter-blockchain',
       data:{
         collectionSearchPlaceholder: 'Search',
         or:[
@@ -191,24 +194,6 @@ export default {
           {
             text: 'Games',
             value: 'games',
-          },
-        ],
-        blockchains:[
-          {
-            label: 'Ethereum',
-            value: 'eth',
-            checkboxName: 'cataloge-blockchains',
-            checked: true,
-          },
-          {
-            label: 'Bitcoin',
-            value: 'btc',
-            checkboxName: 'cataloge-blockchains',
-          },
-          {
-            label: 'Immutable x',
-            value: 'imux',
-            checkboxName: 'cataloge-blockchains',
           },
         ],
         collections:[
@@ -373,6 +358,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['setNewBlockchain']),
     toggleFilters() {
       this.filtersOpened = !this.filtersOpened
       this.$emit('clicked')
@@ -389,7 +375,11 @@ export default {
       this.toggleInArray(this.filters.or, value)
     },
     setBlockchain(value){
-      this.filters.blockchain = value
+      let allBlockchains = this.allBlockchains
+      let needValue = Object.values(allBlockchains).find((obj) => {
+        return obj.value == value
+      })
+      this.setNewBlockchain(needValue)
     },
     setCollections(value){
       this.toggleInArray(this.filters.collections, value)
@@ -404,6 +394,8 @@ export default {
       this.prefilters.price.min = value
       if (this.prefilters.price.max === ''){
         this.prefilters.price.error = ''
+      }else if(this.prefilters.price.min === ''){
+        this.prefilters.price.error = ''
       }else{
         if(this.prefilters.price.max < this.prefilters.price.min){
           this.prefilters.price.error = 'Min must be less than max'
@@ -415,6 +407,8 @@ export default {
     setFilterMax(value){
       this.prefilters.price.max = value
       if (this.prefilters.price.min === ''){
+        this.prefilters.price.error = ''
+      }else if(this.prefilters.price.max === ''){
         this.prefilters.price.error = ''
       }else{
         if(this.prefilters.price.min > this.prefilters.price.max){
@@ -428,19 +422,21 @@ export default {
       this.prefilters.price.blockchain = value
     },
     setPrice(){
-      let currentFilters = JSON.parse(JSON.stringify(this.prefilters.price))
-      this.filters.price = currentFilters
+      if (this.prefilters.price.min === '' & this.prefilters.price.max === ''){
+        return false        
+      }else{
+        let currentFilters = JSON.parse(JSON.stringify(this.prefilters.price))
+        this.filters.price = currentFilters
+      }
     },
   },
   computed: {
+    ...mapGetters(['allBlockchains', 'currentBlockchain']),
     filtersView() {
       return this.filtersOpened ? '' : 'filters--hidden'
     }
   },
   watch: {
-    filtersOpened(value){
-      console.log('new data' + value)
-    },
     filters:{
       handler(value){
         this.$emit('updatedFilters', value)

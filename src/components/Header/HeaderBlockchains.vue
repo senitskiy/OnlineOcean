@@ -10,11 +10,11 @@
     ref='blockchainItemsParent'
     >
       <li class="blockchains__item"
-      v-for='item in content.blockchains'
+      v-for='item in allBlockchains'
       :key='item'
       >
         <app-input
-        :descr='item.name'
+        :descr='item.label'
         :checkboxValue='item.value'
         :checkboxName='data.blockchainsName'
         :checkboxChecked='item.value === currentBlockchain.value'
@@ -48,34 +48,6 @@ export default {
   },
   data() {
     return {
-      content:{
-        blockchains:[
-          {
-            name: 'Ethereum',
-            value: 'eth',
-          },
-          {
-            name: 'Immutable X',
-            value: 'imux',
-          },
-          {
-            name: 'BSC',
-            value: 'bsc',
-          },
-          {
-            name: 'Polygon',
-            value: 'polygon',
-          },
-          {
-            name: 'Solana',
-            value: 'solana',
-          },
-          {
-            name: 'Dfinity',
-            value: 'dfinity',
-          },
-        ]
-      },
       data:{
         currBlockchain: '',
         blockchainsName: '',
@@ -89,7 +61,8 @@ export default {
     blockchainsState() {
       return this.opened ? 'blockchains--active' : ''
     },
-    ...mapGetters(['currentBlockchain'])
+    ...mapGetters(['allBlockchains']),
+    ...mapGetters(['currentBlockchain']),
   },
   methods: {
     generateName(){
@@ -101,7 +74,7 @@ export default {
       return value === this.currentBlockchain.value
     },
     checkInput(value){
-      let allBlockchains = this.content.blockchains
+      let allBlockchains = this.allBlockchains
       let needValue = Object.values(allBlockchains).find((obj) => {
         return obj.value == value
       })

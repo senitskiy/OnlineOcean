@@ -865,6 +865,9 @@
       }
     }
     &--checkmark{
+      .filters--limited{
+        max-height: 225px;
+      }
       .label{
         position: relative;
       }
@@ -1000,10 +1003,17 @@
     .multiselect-clear{
       display: none;
     }
+    .select-icon{
+      width: 16px;
+      height: 16px;
+      margin-right: 7px;
+    }
     .multiselect-option{
       font-size: 16px;
       line-height: 19px;
-      padding: 8px 20px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
     }
     .multiselect-option.is-selected{
       display: none;
@@ -1020,6 +1030,8 @@
       box-shadow: none;
       font-size: 16px;
       line-height: 19px;
+      display: flex;
+      align-items: center;
       &:after{
         content: '';
         position: absolute;

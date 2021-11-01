@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 
-import settings from "./modules/settings";
+import blockchains from "./modules/blockchains";
 
 export default createStore({
   state: {
@@ -13,6 +13,6 @@ export default createStore({
     
   },
   modules: {
-    settings,
+    blockchains,
   }
 })
