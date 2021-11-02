@@ -700,6 +700,9 @@
     }
   }
   &__current-filter{
+    display: flex;
+    align-items: center;
+    height: 35px;
     color: #766C70;
     padding: 8px 12px 8px 14px;
     border-radius: 17px;
@@ -709,6 +712,9 @@
       background: rgba(155, 242, 164, 0.4);
       border: 1px solid #73CE77;
     }
+  }
+  &__current-filter--close{
+    margin-left: 12px;
   }
   &__current-reset{
     color: #4CA8EA;
@@ -844,6 +850,8 @@
           left: 28px;
           transform: translateY(-1px);
           transition: all .4s;
+          max-width: 28px;
+          max-height: 28px;
         }
         .collections__list-item--verified{
           margin-left: 6px;
@@ -1085,6 +1093,14 @@
       background-color: rgba($pink, .5);
       pointer-events: none;
     }
+  }
+}
+
+.current-filter-price{
+  &__img{
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
   }
 }
 

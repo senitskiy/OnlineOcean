@@ -41,10 +41,10 @@
             :checkboxValue='blockchain.value'
             :checkboxName='blockchainsRadioName'
             :checkboxChecked='blockchain.value === currentBlockchain.value'
-            radio
+            checkbox
             @choosed='setBlockchain'
             >
-              <img src="@/assets/images/temp/ethereum.svg" alt="">
+              <img :src="blockchain.image" alt="">
             </app-input>
           </div>
         </div>
@@ -166,8 +166,6 @@
         </div>
       </cataloge-filter-item>
     </ul>
-    {{ prefilters }}
-    <br>
     {{ filters }}
   </aside>
 </template>
@@ -342,12 +340,17 @@ export default {
           min: '',
           max: '',
         },
+        collections:{
+          searchInputValue: '',
+        },
       },
       filters:{
         or: [],
-        blockchain: '',
+        blockchains: [],
         price: {
-          blockchain: '',
+          blockchain: {
+            label: '',
+          },
           min: '',
           max: '',
         },
@@ -375,11 +378,7 @@ export default {
       this.toggleInArray(this.filters.or, value)
     },
     setBlockchain(value){
-      let allBlockchains = this.allBlockchains
-      let needValue = Object.values(allBlockchains).find((obj) => {
-        return obj.value == value
-      })
-      this.setNewBlockchain(needValue)
+      this.toggleInArray(this.filters.blockchains, value)
     },
     setCollections(value){
       this.toggleInArray(this.filters.collections, value)
@@ -419,7 +418,12 @@ export default {
       }
     },
     setPrefilterPriceBlockchain(value){
-      this.prefilters.price.blockchain = value
+      let allBlockchains = this.allBlockchains
+      let needValue = Object.values(allBlockchains).find((obj) => {
+        return obj.value == value
+      })
+
+      this.prefilters.price.blockchain = needValue
     },
     setPrice(){
       if (this.prefilters.price.min === '' & this.prefilters.price.max === ''){
@@ -439,6 +443,7 @@ export default {
   watch: {
     filters:{
       handler(value){
+        console.log(value)
         this.$emit('updatedFilters', value)
       },
       deep: true
