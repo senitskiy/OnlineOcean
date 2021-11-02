@@ -627,12 +627,13 @@
     transition: all .4s;
   }
   &__inner{
+    padding-right: 15px;
     transition: all .4s;
     // max-width: 950px;
     // padding: 0 15px;
     // margin: 0 auto;
     &--more{
-      margin-left: 178px;
+      margin-left: 128px;
       .cataloge__rows{
         grid-template-columns: repeat(6, 158px);
         .art:nth-child(5n),
@@ -723,8 +724,8 @@
 
 .filters{
   margin-right: 30px;
+  min-width: 320px;
   max-width: 320px;
-  width: 100%;
   background: #FFFFFF;
   font-size: 16px;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.05);
@@ -1104,6 +1105,10 @@
   }
 }
 
+.current-filter-rarity{
+  text-transform: capitalize;
+}
+
 .product-cover{
   margin: 30px 0 32px;
   &__imgwrapper{
@@ -1357,6 +1362,7 @@
     .profile__slot{
       font-weight: 700;
       color: #636363;
+      display: block;
     }
   }
   &:hover{

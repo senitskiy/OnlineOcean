@@ -24,7 +24,7 @@
           checkbox
           @choosed='setOr'
           >
-            <img src="@/assets/images/temp/ethereum.svg" alt="">
+            <img :src="item.image" alt="">
           </app-input>
         </div>
       </cataloge-filter-item>
@@ -188,10 +188,12 @@ export default {
           {
             text: 'Art',
             value: 'art',
+            image: 'https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png',
           },
           {
             text: 'Games',
             value: 'games',
+            image: 'https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png',
           },
         ],
         collections:[
@@ -355,7 +357,7 @@ export default {
           max: '',
         },
         collections: [],
-        categories: [],
+        categories: '',
         rarity: [],
       },
     }
@@ -375,6 +377,10 @@ export default {
       } 
     },
     setOr(value){
+      if (typeof(this.filters.or) == String){
+        this.filters.or = []
+      }
+      
       this.toggleInArray(this.filters.or, value)
     },
     setBlockchain(value){
@@ -384,7 +390,7 @@ export default {
       this.toggleInArray(this.filters.collections, value)
     },
     setCategories(value){
-      this.toggleInArray(this.filters.categories, value)
+      this.filters.categories = value
     },
     setRarity(value){
       this.toggleInArray(this.filters.rarity, value)
@@ -443,7 +449,9 @@ export default {
   watch: {
     filters:{
       handler(value){
-        console.log(value)
+        // if(value.or.length < 1){
+        //   value.or = 'all'
+        // }
         this.$emit('updatedFilters', value)
       },
       deep: true

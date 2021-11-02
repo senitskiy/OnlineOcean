@@ -5,6 +5,13 @@
     </p>
     <div class="cataloge__current-filters">
       <button class="cataloge__current-filter btn-clear"
+      v-for='item in this.currentOr'
+      :key='item'
+      >
+        {{ item }}
+        <img class='cataloge__current-filter--close' src="@/assets/images/close.svg" alt="">
+      </button>
+      <button class="cataloge__current-filter btn-clear"
       v-for='item in currentFilters.blockchains'
       :key='item'
       >
@@ -17,6 +24,13 @@
       >
         <img class='current-filter-price__img' :src="currentFilters.price.blockchain.image">
         {{ priceInfo }}
+        <img class='cataloge__current-filter--close' src="@/assets/images/close.svg" alt="">
+      </button>
+      <button class="cataloge__current-filter current-filter-rarity btn-clear"
+      v-for='item in currentFilters.rarity'
+      :key='item'
+      >
+        {{ item }}
         <img class='cataloge__current-filter--close' src="@/assets/images/close.svg" alt="">
       </button>
       <button class="cataloge__current-filter btn-clear">
@@ -66,6 +80,14 @@ export default {
   },
   computed: {
     ...mapGetters(['allBlockchains']),
+    currentOr(){
+      if (this.currentFilters.or === 'all'){
+        return false
+      }else{
+        console.log(this.currentFilters.or)
+        return this.currentFilters.or
+      }
+    },
     priceInfo() {
       let currPrice = this.currentFilters.price,
           addactiveInfo = '';
