@@ -1059,11 +1059,13 @@
     }
   }
   .cataloge__inner{
-    margin-left: 128px;
+    margin-left: 9%;
     .cataloge__rows{
       grid-template-columns: repeat(6, 158px);
       .art:nth-child(5n),
-      .art:nth-child(5n + 1){
+      .art:nth-child(5n + 1),
+      .art:nth-child(4n),
+      .art:nth-child(4n + 1){
         .art__chars{
           left: 50%;
           transform: translateX(-50%);
@@ -1083,7 +1085,7 @@
           margin: -40px auto 0 5px;
         }
       }
-      .art:nth-child(6){
+      .art:nth-child(6n){
         .art__chars{
           right: 20px;
           left: unset;
