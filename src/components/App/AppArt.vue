@@ -13,13 +13,13 @@
     <span class="art__info">
       <app-profile
       v-if='!short'
-      :contentSlot='artDescr'
+      :contentSlot='art.descr'
       view='hasDescr'
       ></app-profile>
       <span class="art__descr"
       v-else
       >
-        {{ artDescr }}
+        {{ art.descr }}
       </span>
     </span>
     <app-chars
@@ -54,7 +54,7 @@ export default {
       charsView: false,
       art:{
         price: '20.034 ETH',
-        descr: 'Abstract 3D 232323',
+        descr: 'Abstract 3D Content Art',
         chars:{
           amount: '126',
           probability: '8%',
@@ -78,9 +78,6 @@ export default {
     artSize(){
       return this.short ? 'art--short' : ''
     },
-    artDescr(){
-      return this.art.descr.substring(0, 11) + '...'
-    }
   },
   components: {
     AppProfile,

@@ -1,7 +1,5 @@
 <template>
-  <aside class="cataloge__filters filters"
-  :class='filtersView'
-  >
+  <aside class="cataloge__filters filters">
     <ul class="filters__list">
       <li class="filters__item filters__toggle">
         <button class="filters__item-head btn-clear"
@@ -180,7 +178,6 @@ import { mapGetters, mapMutations } from 'vuex';
 export default {
   data() {
     return {
-      filtersOpened: true,
       blockchainsRadioName: 'filter-blockchain',
       data:{
         collectionSearchPlaceholder: 'Search',
@@ -365,7 +362,6 @@ export default {
   methods: {
     ...mapMutations(['setNewBlockchain']),
     toggleFilters() {
-      this.filtersOpened = !this.filtersOpened
       this.$emit('clicked')
     },
     toggleInArray(array, value){

@@ -1,13 +1,13 @@
 <template>
   <div class="cataloge">
-    <div class="cataloge__wrapper">
+    <div class="cataloge__wrapper"
+    :class='countOfCols'  
+    >
       <cataloge-filters
       @clicked='changeView()'
       @updatedFilters='setCurrentFilters'
       ></cataloge-filters>
-      <div class="cataloge__inner"
-      :class='countOfCols'
-      >
+      <div class="cataloge__inner">
         <cataloge-current-filters
         :currentFilters='currentFilters'
         ></cataloge-current-filters>
@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       showMoreCols: false,
+      windowWidth: window.innerWidth,
       currentFilters: {
         or: [],
         blockchains: [],
@@ -42,7 +43,21 @@ export default {
       },
     }
   },
+  mounted() {
+    this.onResize()
+    window.addEventListener('resize', this.onResize);
+  },
+  beforeUnmounted() { 
+    window.removeEventListener('resize', this.onResize); 
+  },
   methods: {
+    onResize() {
+      this.windowWidth = window.innerWidth
+      if(this.windowWidth <= 800){
+        this.showMoreCols = true
+      }
+      console.log(this.showMoreCols)
+    },
     changeView() {
       this.showMoreCols = !this.showMoreCols
     },
@@ -52,8 +67,8 @@ export default {
   },
   computed: {
     countOfCols(){
-      return this.showMoreCols ? 'cataloge__inner--more' : ''
-    }
+      return this.showMoreCols ? 'cataloge__wrapper--more' : ''
+    },
   },
   components: {
     CatalogeFilters,

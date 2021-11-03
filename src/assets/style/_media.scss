@@ -106,7 +106,10 @@
   .filters{
     max-width: 280px;
     min-width: 280px;
-    &--hidden{
+  }
+
+  .cataloge__wrapper--more{
+    .filters{
       margin-left: -230px;
     }
   }
@@ -401,9 +404,28 @@
     z-index: 2;
     height: 100vh;
     overflow-y: auto;
-    &--hidden{
+    overflow-x: hidden;
+    margin: 0;
+    top: 80px;
+    max-width: unset;
+    width: 100vw;
+  }
+
+  .cataloge__wrapper--more{
+    .filters{
+      top: 180px;
       height: 50px;
       overflow-y: hidden;
+      margin-left: calc((100% - 50px) * -1);
+      .filters__toggle{
+      }
+    }
+    .cataloge__inner{
+      margin-left: 0;
+      padding: 0 15px;
+      .cataloge__rows{
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
   }
 
@@ -657,6 +679,14 @@
   }
   
   // Index
+
+  // Cataloge
+
+  .filters{
+    top: 70px;
+  }
+
+  // Cataloge
 
   // Create
 
