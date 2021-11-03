@@ -591,6 +591,9 @@
     height: 85px;
     border: 1px solid transparent;
     transition: all .3s;
+    img{
+      max-width: 57px;
+    }
   }
   .label{
     cursor: pointer;

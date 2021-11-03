@@ -56,7 +56,6 @@ export default {
       if(this.windowWidth <= 800){
         this.showMoreCols = true
       }
-      console.log(this.showMoreCols)
     },
     changeView() {
       this.showMoreCols = !this.showMoreCols

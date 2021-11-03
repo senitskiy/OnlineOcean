@@ -22,7 +22,7 @@
         radio
         >
           <span class="blockchains__imgwrapper">
-            <img src="@/assets/images/temp/blockchain-1.svg" alt="">
+            <img :src="item.image" alt="">
           </span>
         </app-input>
       </li>
