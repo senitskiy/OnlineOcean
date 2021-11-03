@@ -48,6 +48,48 @@
   // Index
 }
 
+@media (max-width: 1135px){
+  // Cataloge
+
+  .cataloge__rows{
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 18px;
+    row-gap: 31px;
+    .art:nth-child(4n + 1),
+    .art:nth-child(4n){
+      .art__chars{
+        right: unset;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .art__transfericon{
+        margin: -40px auto 0;
+      }
+    }
+    .art:nth-child(3n + 1){
+      .art__chars{
+        left: 20px;
+        transform: unset;
+      }
+      .art__transfericon{
+        margin: -40px auto 0 5px;
+      }
+    }
+    .art:nth-child(3n){
+      .art__chars{
+        right: 20px;
+        left: unset;
+        transform: unset;
+      }
+      .art__transfericon{
+        margin: -40px 5px 0 auto;
+      }
+    }
+  }
+
+  // Cataloge
+}
+
 @media (max-width: 1100px){
   // Index
 
@@ -111,42 +153,6 @@
   .cataloge__wrapper--more{
     .filters{
       margin-left: -230px;
-    }
-  }
-
-  .cataloge__rows{
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 18px;
-    row-gap: 31px;
-    .art:nth-child(4n + 1),
-    .art:nth-child(4n){
-      .art__chars{
-        right: unset;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      .art__transfericon{
-        margin: -40px auto 0;
-      }
-    }
-    .art:nth-child(3n + 1){
-      .art__chars{
-        left: 20px;
-        transform: unset;
-      }
-      .art__transfericon{
-        margin: -40px auto 0 5px;
-      }
-    }
-    .art:nth-child(3n){
-      .art__chars{
-        right: 20px;
-        left: unset;
-        transform: unset;
-      }
-      .art__transfericon{
-        margin: -40px 5px 0 auto;
-      }
     }
   }
 
@@ -374,6 +380,44 @@
   }
 
   // Product
+
+  // Cataloge
+
+  .cataloge__rows{
+    grid-template-columns: repeat(2, 1fr);
+    .art:nth-child(3n + 1),
+    .art:nth-child(3n){
+      .art__chars{
+        right: unset;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .art__transfericon{
+        margin: -40px auto 0;
+      }
+    }
+    .art:nth-child(2n + 1){
+      .art__chars{
+        left: 20px;
+        transform: unset;
+      }
+      .art__transfericon{
+        margin: -40px auto 0 5px;
+      }
+    }
+    .art:nth-child(2n){
+      .art__chars{
+        right: 20px;
+        left: unset;
+        transform: unset;
+      }
+      .art__transfericon{
+        margin: -40px 5px 0 auto;
+      }
+    }
+  }
+
+  // Cataloge
 }
 
 @media (max-width: 800px){
@@ -424,7 +468,39 @@
       margin-left: 0;
       padding: 0 15px;
       .cataloge__rows{
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        .art:nth-child(3n + 1),
+        .art:nth-child(3n),
+        .art:nth-child(2n + 1),
+        .art:nth-child(2n){
+          .art__chars{
+            right: unset;
+            left: 50%;
+            transform: translateX(-50%);
+          }
+          .art__transfericon{
+            margin: -40px auto 0;
+          }
+        }
+        .art:nth-child(3n + 1){
+          .art__chars{
+            left: 20px;
+            transform: unset;
+          }
+          .art__transfericon{
+            margin: -40px auto 0 5px;
+          }
+        }
+        .art:nth-child(3n){
+          .art__chars{
+            right: 20px;
+            left: unset;
+            transform: unset;
+          }
+          .art__transfericon{
+            margin: -40px 5px 0 auto;
+          }
+        }
       }
     }
   }
@@ -650,6 +726,16 @@
   // Product
 }
 
+@media (max-width: 600px){
+  .cataloge__wrapper--more{
+    .cataloge__inner{
+      .cataloge__rows{
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
+
 @media (max-width: 570px){
   // Index
   
@@ -817,6 +903,22 @@
   }
 
   // Product
+}
+
+@media (max-width: 400px){
+  // Cataloge
+
+  .cataloge__wrapper--more{
+    .cataloge__inner{
+      .cataloge__rows{
+        margin: 0 auto 50px;
+        max-width: 320px;
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  // Cataloge
 }
 
 

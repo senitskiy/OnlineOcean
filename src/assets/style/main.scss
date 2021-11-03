@@ -1344,10 +1344,9 @@
   .profile--hasDescr{
     flex-direction: row;
     margin-top: 5px;
+    flex-grow: 1;
     .profile__imgwrapper{
       padding: 0;
-      min-width: 37px;
-      min-height: 37px;
       max-width: 37px;
       max-height: 37px;
       margin-right: 5px;
@@ -1360,12 +1359,14 @@
     }
     .profile__name{
       color: $grey-light;
+      width: 100%;
+      max-width: calc(100% - 60px);
+      flex-grow: 1;
     }
     .profile__slot{
       font-weight: 700;
       color: #636363;
       display: block;
-      max-width: calc(100% - 42px);
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
