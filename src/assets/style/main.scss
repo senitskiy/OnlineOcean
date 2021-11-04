@@ -1271,6 +1271,7 @@
   position: relative;
   transition: transform .4s, border-color .3s, background-color .3s;
   z-index: 0;
+  min-width: 0;
   &__imgwrapper{
     position: relative;
     border-radius: 15px;

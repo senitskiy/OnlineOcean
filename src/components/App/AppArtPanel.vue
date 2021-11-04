@@ -57,11 +57,11 @@
           short
           ></app-art>
         </div>
+        <app-button
+        :title='moreMobileItems ? content.showBtnText : content.hideBtnText'
+        @click='toggleArts()'
+        ></app-button>
       </div>
-      <app-button
-      :title='moreMobileItems ? content.showBtnText : content.hideBtnText'
-      @click='toggleArts()'
-      ></app-button>
     </div>
   </div>
 </template>
