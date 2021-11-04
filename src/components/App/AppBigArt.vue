@@ -119,6 +119,14 @@ export default {
         this.content.likes.count--
       }
       this.content.likes.status = !this.content.likes.status
+
+      // axios.post('/like', this.content)
+      // .then(function (response) {
+      //   console.log(response);
+      // })
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
     },
   },
   computed: {

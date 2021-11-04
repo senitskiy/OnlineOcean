@@ -2348,4 +2348,37 @@
   }
 }
 
+.share{
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.15);
+  position: absolute;
+  right: 0;
+  top: 28px;
+  font-weight: 700;
+  color: $black;
+  &__item{
+  }
+  &__imgwrapper{
+    max-width: 32px;
+    max-height: 32px;
+    margin-right: 11px;
+    img{
+      height: 100%;
+      width: 100%;
+    }
+  }
+  &__link{
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 11px 29px 7px 12px;
+    width: 100%;
+    transition: all .4s;
+    &:hover{
+      background-color: rgba($grey-light, .2);
+    }
+  }
+}
+
 @import '_media.scss';

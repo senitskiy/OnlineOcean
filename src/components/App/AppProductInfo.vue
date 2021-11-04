@@ -33,6 +33,24 @@
                 <circle cx="3" cy="3" r="3" transform="rotate(-90 3 3)" fill="#C0C0C0"/>
               </svg>
             </button>
+            <ul class="share dots__modal">
+              <li class="share__item">
+                <a class="share__link" :href="'https://twitter.com/intent/tweet?text=Cool%20art%20here%20' + currPath">
+                  <span class="share__imgwrapper">
+                    <img src="" alt="">
+                  </span>
+                  Twitter
+                </a>
+              </li>
+              <li class="share__item">
+                <a class="share__link" href="#">
+                  <span class="share__imgwrapper">
+                    <img src="" alt="">
+                  </span>
+                  Telegram
+                </a>
+              </li>
+            </ul>
           </div>
           <h1 class="product-info__name">
             {{ productName }}
@@ -92,6 +110,7 @@
               </vue-countdown>
             </div>
           </div>
+            {{ currPath }}
           <div class="product-info__buttons">
             <app-button
             v-if="box"
@@ -141,6 +160,7 @@ export default {
   },
   data() {
     return {
+      currPath: document.URL,
       endAuction: '2021-10-23T22:53:30',
       dateNow: 0,
       difference: 0,
