@@ -1,6 +1,6 @@
 <template>
   <router-link class="art" :to='artLink'
-  :class='artSize'
+  :class='[artSize, artRarity]'
   @mouseover='showChars()'
   @mouseleave="hideChars()"
   >
@@ -54,11 +54,12 @@ export default {
       charsView: false,
       art:{
         price: '20.034 ETH',
-        descr: 'Abstract 3D Content Art',
+        descr: 'Abstract 3D Content Art fdfds ee rwerew',
+        rarity: 'common', // common, epic, rare, legendary
         chars:{
           amount: '126',
           probability: '8%',
-          rank: 'Legendary',
+          rarityLabel: 'Legendary',
         },
       }
     }
@@ -77,6 +78,9 @@ export default {
     },
     artSize(){
       return this.short ? 'art--short' : ''
+    },
+    artRarity(){
+      return 'art--' + this.art.rarity
     },
   },
   components: {

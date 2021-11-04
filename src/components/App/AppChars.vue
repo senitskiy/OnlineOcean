@@ -22,7 +22,7 @@
       <li class="art__list-item art__item">
         <span class="art__item-title"> Rank </span>
         <span class="art__item-text">
-          {{ chars.rank }}
+          {{ chars.rarityLabel }}
         </span>
       </li>
     </ul>

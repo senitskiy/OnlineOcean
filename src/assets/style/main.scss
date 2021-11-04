@@ -1370,7 +1370,6 @@
     }
     .profile__slot{
       font-weight: 700;
-      color: #636363;
       display: block;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -1381,11 +1380,53 @@
     transform: translateY(-9px);
     z-index: 1;
   }
+  &--common{
+    .profile__name{
+      color: #808080;
+    }
+    .art__transfericon{
+      path{
+        fill: #808080;
+      }
+    }
+  }
+  &--epic{
+    .art__descr,
+    .profile__slot{
+      color: #0085FF;
+    }
+    .art__transfericon{
+      path{
+        fill: #0085FF;
+      }
+    }
+  }
+  &--rare{
+    .art__descr,
+    .profile__slot{
+      color: #9C39EB;
+    }
+    .art__transfericon{
+      path{
+        fill: #9C39EB;
+      }
+    }
+  }
+  &--legendary{
+    .art__descr,
+    .profile__slot{
+      color: #EA3333;
+    }
+    .art__transfericon{
+      path{
+        fill: #EA3333;
+      }
+    }
+  }
 }
 
 .panel{
   margin-bottom: 20px;
-  background-color: $grey-bg;
   .btn{
     display: none;
     padding-left: 30px;
@@ -1393,6 +1434,7 @@
     margin: 0 auto;
   }
   &__inner{
+    background-color: $grey-bg;
     padding: 28px 30px 43px;
     border-radius: 15px;
   }
@@ -1410,61 +1452,37 @@
     font-weight: 700;
   }
   .art{
+    min-width: 0;
     border: 1px solid #D3D3D6;
-    // &__descr{
-    //   color: #808080;
-    // }
-    // &__transfericon{
-    //   path{
-    //     fill: #808080;
-    //   }
-    // }
-    // &:hover{
-    //   border-color: #808080;
-    //   background-color: rgba(#808080, .15);
-    // }
-    // &:nth-child(n + 4){
-    //   .art__descr{
-    //     color: #0085FF;
-    //   }
-    //   .art__transfericon{
-    //     path{
-    //       fill: #0085FF;
-    //     }
-    //   }
-    //   &:hover{
-    //     border-color: #0085FF;
-    //     background-color: rgba(#0085FF, .15);
-    //   }
-    // }
-    // &:nth-child(n + 7){
-    //   .art__descr{
-    //     color: #9C39EB;
-    //   }
-    //   .art__transfericon{
-    //     path{
-    //       fill: #9C39EB;
-    //     }
-    //   }
-    //   &:hover{
-    //     border-color: #9C39EB;
-    //     background-color: rgba(#9C39EB, .15);
-    //   }
-    // }
-    // &:nth-child(n + 10){
-    //   .art__descr{
-    //     color: #EA3333;
-    //   }
-    //   .art__transfericon{
-    //     path{
-    //       fill: #EA3333;
-    //     }
-    //   }
-    //   &:hover{
-    //     border-color: #EA3333;
-    //     background-color: rgba(#EA3333, .15);
-    //   }
-    // }
+    &__descr{
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 9px 15px 18px;
+      max-width: 100%;
+    }
+    &:hover{
+      border-color: #808080;
+      background-color: rgba(#808080, .15);
+    }
+    &--epic{
+      &:hover{
+        border-color: #0085FF;
+        background-color: rgba(#0085FF, .15);
+      }
+    }
+    &--rare{
+      &:hover{
+        border-color: #9C39EB;
+        background-color: rgba(#9C39EB, .15);
+      }
+    }
+    &--legendary{
+      &:hover{
+        border-color: #EA3333;
+        background-color: rgba(#EA3333, .15);
+      }
+    }
   }
 }
 
@@ -2363,8 +2381,6 @@
   transition: all .4s;
   &--active{
     opacity: 1;
-  }
-  &__item{
   }
   &__imgwrapper{
     width: 32px;

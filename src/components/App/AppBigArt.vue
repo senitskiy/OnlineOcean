@@ -85,7 +85,7 @@ export default {
         chars:{
           amount: '126',
           probability: '8%',
-          rank: 'Legendary',
+          rarityLabel: 'Legendary',
         },
       },
       liked: false,
