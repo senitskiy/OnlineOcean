@@ -26,26 +26,30 @@
         </div>
         <div class="product-info__content">
           <div class="dots">
-            <button class="btn-clear">
+            <button class="btn-clear"
+            @click='toggleShare()'
+            >
               <svg width="25" height="6" viewBox="0 0 25 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="22" cy="3" r="3" transform="rotate(-90 22 3)" fill="#C0C0C0"/>
                 <circle cx="13" cy="3" r="3" transform="rotate(-90 13 3)" fill="#C0C0C0"/>
                 <circle cx="3" cy="3" r="3" transform="rotate(-90 3 3)" fill="#C0C0C0"/>
               </svg>
             </button>
-            <ul class="share dots__modal">
+            <ul class="share dots__modal"
+            :class='shareActive'
+            >
               <li class="share__item">
-                <a class="share__link" :href="'https://twitter.com/intent/tweet?text=Cool%20art%20here%20' + currPath">
+                <a class="share__link" :href="'https://twitter.com/intent/tweet?text=' + shareLinkHref">
                   <span class="share__imgwrapper">
-                    <img src="" alt="">
+                    <img src="https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png" alt="">
                   </span>
                   Twitter
                 </a>
               </li>
               <li class="share__item">
-                <a class="share__link" href="#">
+                <a class="share__link" :href="'https://telegram.me/share/?&text=' + shareLinkHref">
                   <span class="share__imgwrapper">
-                    <img src="" alt="">
+                    <img src="https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png" alt="">
                   </span>
                   Telegram
                 </a>
@@ -110,7 +114,6 @@
               </vue-countdown>
             </div>
           </div>
-            {{ currPath }}
           <div class="product-info__buttons">
             <app-button
             v-if="box"
@@ -160,6 +163,8 @@ export default {
   },
   data() {
     return {
+      shareStatus: false,
+      shareText: 'Cool%20art%20here%20',
       currPath: document.URL,
       endAuction: '2021-10-23T22:53:30',
       dateNow: 0,
@@ -194,7 +199,13 @@ export default {
     },
     boxOpenLink(){
       return this.$route.params.itemId + '/open/'
-    }
+    },
+    shareActive(){
+      return this.shareStatus ? 'share--active' : ''
+    },
+    shareLinkHref(){
+      return this.shareText + this.currPath
+    },
   },
   methods: {
     onTimerEnd() {
@@ -219,7 +230,10 @@ export default {
         this.info.likes.count--
       }
       this.info.likes.status = !this.info.likes.status
-    }
+    },
+    toggleShare(){
+      this.shareStatus = !this.shareStatus
+    },
   },
   
   components: {
