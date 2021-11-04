@@ -55,6 +55,7 @@ export default {
       art:{
         price: '20.034 ETH',
         descr: 'Abstract 3D Content Art fdfds ee rwerew',
+        dateOfCreate: new Date().getDay(),
         rarity: 'common', // common, epic, rare, legendary
         chars:{
           amount: '126',
@@ -73,7 +74,7 @@ export default {
     },
   },
   computed: {
-    artLink() {
+    artLink(){
       return '/art/' + this.artId
     },
     artSize(){

@@ -1,6 +1,7 @@
 <template>
   <div class="row"
   ref='parentRow'
+  :class='fireStatus'
   >
     <div class="container">
       <div class="row__inner"
@@ -45,6 +46,10 @@ export default {
     title: {
       type: String,
       default: 'The hottest products of this week',
+    },
+    fire:{
+      type: Boolean,
+      default: false,
     },
   },
   setup() {
@@ -109,6 +114,11 @@ export default {
     setTimeout(() => {
       this.setHeight()
     }, 1)
+  },
+  computed: {
+    fireStatus() {
+      return this.fire ? 'fire' : ''
+    }
   },
   methods: {
     setHeight() {

@@ -1,7 +1,9 @@
 <template>
   <app-cover></app-cover>
   <index-live-tape></index-live-tape>
-  <app-row></app-row>
+  <app-row
+  fire
+  ></app-row>
   <app-row></app-row>
   <app-row></app-row>
   <app-button

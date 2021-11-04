@@ -9,7 +9,9 @@
   <app-art-panel
   text='In this box, you can win the following items:'
   ></app-art-panel>
-  <app-row></app-row>
+  <app-row
+  fire
+  ></app-row>
 </template>
 
 <script>

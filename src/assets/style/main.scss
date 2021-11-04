@@ -360,6 +360,7 @@
     line-height: 24px;
     font-weight: 700;
     margin-bottom: 22px;
+    display: inline-block;
   }
   &__slide{
     padding: 26px 15px;
@@ -473,6 +474,22 @@
   }
   .splide__track{
     overflow-y: auto;
+  }
+}
+
+.fire{
+  .row__title{
+    position: relative;
+    &:after{
+      content: '';
+      position: absolute;
+      right: -42px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      background-image: url('./assets/images/fire.svg');
+    }
   }
 }
 

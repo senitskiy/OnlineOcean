@@ -4,7 +4,9 @@
   name='NFTmotors Series id - Yamaha R6'
   descr='Token is a platform that alms to build a new creative economy world where creators can use the Ethereum blockchain.'
   ></app-product-info>
-  <app-row></app-row>
+  <app-row
+  fire
+  ></app-row>
 </template>
 
 <script>
