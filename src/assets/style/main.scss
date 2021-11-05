@@ -493,6 +493,19 @@
   }
 }
 
+.art.fire{
+  position: relative;
+  &:after{
+    content: '';
+    position: absolute;
+    top: 6px;
+    right: 5px;
+    width: 28px;
+    height: 28px;
+    background-image: url('./assets/images/fire.svg');
+  }
+}
+
 .nots{
   position: absolute;
   padding: 17px 10px 24px;

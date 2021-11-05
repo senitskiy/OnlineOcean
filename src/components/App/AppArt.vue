@@ -1,6 +1,6 @@
 <template>
   <router-link class="art" :to='artLink'
-  :class='[artSize, artRarity]'
+  :class='[artSize, artRarity, artDate]'
   @mouseover='showChars()'
   @mouseleave="hideChars()"
   >
@@ -34,6 +34,8 @@
 import AppProfile from '@/components/App/AppProfile.vue';
 import AppChars from '@/components/App/AppChars.vue';
 
+import moment from 'moment'
+
 export default {
   props: {
     artId: {
@@ -55,7 +57,8 @@ export default {
       art:{
         price: '20.034 ETH',
         descr: 'Abstract 3D Content Art fdfds ee rwerew',
-        dateOfCreate: new Date().getDay(),
+        dateOfCreate: moment('2021-10-21T22:53:30'),
+        todayDate: moment(),
         rarity: 'common', // common, epic, rare, legendary
         chars:{
           amount: '126',
@@ -82,6 +85,11 @@ export default {
     },
     artRarity(){
       return 'art--' + this.art.rarity
+    },
+    artDate(){
+      let difference = this.art.todayDate.diff(this.art.dateOfCreate, 'days')
+      console.log(difference)
+      return difference <= 14 ? 'fire' : ''
     },
   },
   components: {
