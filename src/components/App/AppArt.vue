@@ -88,7 +88,6 @@ export default {
     },
     artDate(){
       let difference = this.art.todayDate.diff(this.art.dateOfCreate, 'days')
-      console.log(difference)
       return difference <= 14 ? 'fire' : ''
     },
   },

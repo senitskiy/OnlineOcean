@@ -83,12 +83,13 @@ export default {
       let currSlide = splide.index,
           sliderLength = splide.length,
           prevArrow = splide._Components.Arrows.arrows.prev,
-          nextArrow = splide._Components.Arrows.arrows.next
+          nextArrow = splide._Components.Arrows.arrows.next,
+          perPage = splide._options.perPage
 
       if (currSlide === 0){
         prevArrow.classList.add('hidden')
         nextArrow.classList.remove('hidden')
-      } else if (currSlide + options.perPage === sliderLength){
+      } else if (currSlide + perPage === sliderLength){
         nextArrow.classList.add('hidden')
         prevArrow.classList.remove('hidden')
       } else{
@@ -107,13 +108,19 @@ export default {
       needHeight: null,
       data:[
         44, 332, 344, 233, 444, 3, 7, 8  
-      ]
+      ],
+      windowWidth: window.innerWidth,
     }
   },
   mounted () {
+    this.onResize()
+    window.addEventListener('resize', this.onResize);
     setTimeout(() => {
       this.setHeight()
     }, 1)
+  },
+  beforeUnmounted() { 
+    window.removeEventListener('resize', this.onResize); 
   },
   computed: {
     fireStatus() {
@@ -121,6 +128,10 @@ export default {
     }
   },
   methods: {
+    onResize() {
+      this.windowWidth = window.innerWidth
+      this.setHeight()
+    },
     setHeight() {
       let trackHeight = this.$refs.splide.$el.clientHeight
 

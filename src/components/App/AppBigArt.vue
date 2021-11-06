@@ -11,7 +11,7 @@
     <span class="row__slide-top row-top">
       <span class="row-top__left">
         <p class="row__slide-title">
-          {{ itemName }}
+          {{ content.title }}
         </p>
         <p class="row__slide-owner">{{ pretitle.owner }} {{ custom ? custom.owner : content.owner }}</p>
       </span>
@@ -75,7 +75,7 @@ export default {
         bid: 'Current bid:',
       },
       content: {
-        title: 'Abstract 3D work',
+        title: 'Abstract 3D work content more than ever',
         owner: 'artstudio',
         bid: '0.034 ETH',
         likes:{

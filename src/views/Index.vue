@@ -6,10 +6,12 @@
   ></app-row>
   <app-row></app-row>
   <app-row></app-row>
-  <app-button
-  title='Load more'
-  view='linear'
-  ></app-button>
+  <div class="index-load">
+    <app-button
+    title='Load more'
+    view='linear'
+    ></app-button>
+  </div>
 </template>
 
 <script>

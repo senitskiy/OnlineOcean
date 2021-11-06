@@ -176,6 +176,14 @@
 
   // Global
 
+  // Index
+
+  .row .splide__slide{
+    padding-bottom: 185px;
+  }
+
+  // Index
+
   // Cataloge
 
   .cataloge__wrapper--more{
@@ -318,6 +326,10 @@
 
 @media (max-width: 950px){
   // Index
+
+  .row .splide__slide{
+    padding-bottom: 225px;
+  }
 
   .row .splide__slide.is-next + .splide__slide{
     .art__chars{
@@ -570,6 +582,10 @@
     }
   }
 
+  .row .splide__slide{
+    padding-bottom: 200px;
+  }
+
   // Index
 }
 
@@ -677,6 +693,7 @@
   }
 
   .row .splide__slide{
+    padding-bottom: 0;
     .art__chars{
       display: none;
     }
@@ -1015,6 +1032,21 @@
   // Product
 }
 
+@media (max-width: 450px){
+  // Index
+  
+  .fire{
+    .row__title{
+      padding-left: 40px;
+    }
+    .row__title:after{
+      right: unset;
+      left: 0;
+    }
+  }
+
+  // Index
+}
 
 @media (max-width: 425px){
   // Product

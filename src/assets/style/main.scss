@@ -175,6 +175,7 @@
     display: flex;
     justify-content: space-between;
     padding: 48px 0 38px;
+    position: relative;
   }
   &__copyright{
     font-size: 12px;
@@ -236,6 +237,16 @@
   .input{
     padding: 0 114px 0 20px;
     width: 100%;
+  }
+}
+
+.index-load{
+  position: relative;
+  z-index: 0;
+  text-align: center;
+  margin: 32px 0 30px;
+  .btn{
+    margin: 0 auto;
   }
 }
 
@@ -377,6 +388,10 @@
     line-height: 19px;
     margin-bottom: 4px;
     color: $black;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
   }
   &__slide-owner{
     color: $grey-light;
@@ -386,6 +401,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  &-top__left{
+    max-width: calc(100% - 45px);
+    flex-grow: 1;
   }
   &__slide-imgwrapper{
     display: block;
@@ -471,6 +490,7 @@
   }
   .splide__slide{
     padding-bottom: 205px;
+    // padding-bottom: 170px;
   }
   .splide__track{
     overflow-y: auto;
