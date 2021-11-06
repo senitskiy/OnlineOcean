@@ -329,6 +329,40 @@
     margin: 30px 0 60px;
   }
 
+  .user-loot__items{
+    grid-template-columns: repeat(3, 1fr);
+    .row__slide:nth-child(4n + 1),
+    .row__slide:nth-child(4n){
+      .art__chars{
+        left: 50%;
+        transform: translateX(-50%);
+        right: unset;
+      }
+      .art__transfericon{
+        margin: -40px auto 0;
+      }
+    }
+    .row__slide:nth-child(3n + 1){
+      .art__chars{
+        left: 20px;
+        transform: unset;
+      }
+      .art__transfericon{
+        margin: -40px auto 0 5px;
+      }
+    }
+    .row__slide:nth-child(3n){
+      .art__chars{
+        right: 20px;
+        left: unset;
+        transform: unset;
+      }
+      .art__transfericon{
+        margin: -40px 5px 0 auto;
+      }
+    }
+  }
+
   // User
 }
 
@@ -794,6 +828,26 @@
     }
   }
   // product
+
+  // User
+
+  .user-loot__items{
+    grid-template-columns: repeat(2, 1fr);
+    .row__slide:nth-child(n + 5){
+      display: none;
+    }
+    &--more{
+      .row__slide:nth-child(n + 5){
+        display: unset;
+      }
+    }
+  }
+
+  .user-loot .btn{
+    display: block;
+  }
+
+  // User
 }
 
 @media (max-width: 700px){
@@ -1096,6 +1150,15 @@
 
   .user-connect__descr{
     margin-bottom: 30px;
+  }
+
+  .user-loot__items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .row__slide{
+      max-width: 320px;
+    }
   }
 
   // User

@@ -36,14 +36,22 @@
       </div>
     </div>
   </section>
-  <section class="user-loot">
+  <section class="user-loot"
+  :class='lootMore'
+  >
     <div class="container">
-      <div class="user-loot__items">
-        <app-big-art
-        v-for='card in info.cards'
-        :key='card'
-        :artId='card'
-        ></app-big-art>
+      <div class="user-loot__inner">
+        <div class="user-loot__items">
+          <app-big-art
+          v-for='card in info.cards'
+          :key='card'
+          :artId='card'
+          ></app-big-art>
+        </div>
+        <app-button
+        :title='lootBtn'
+        @click='toggleMore'
+        ></app-button>
       </div>
     </div>
   </section>
@@ -59,6 +67,8 @@ export default {
       info:{
         title: 'My Account',
         descr: 'Manage your account, profile details and view your collections',
+        btnTextShow: 'Show more',
+        btnTextLess: 'Show less',
         cards:[
           34, 2, 6, 3, 9, 94, 24, 3
         ],
@@ -91,8 +101,12 @@ export default {
       data:{
         showType: '',
         searchText: '',
+        showMore: false,
       }
     }
+  },
+  mounted () {
+    this.data.btnText = this.info.btnTextShow
   },
   methods: {
     setType(value) {
@@ -100,7 +114,23 @@ export default {
     },
     search(value){
       this.data.searchText = value
-    }
+    },
+    toggleMore(){
+      this.data.showMore = !this.data.showMore
+      if(this.data.btnText === this.info.btnTextShow){
+        this.data.btnText === this.info.btnTextLess
+      }else{
+        this.data.btnText === this.info.btnTextShow
+      }
+    },
+  },
+  computed: {
+    lootMore(){
+      return this.data.showMore ? 'user-loot__items--more' : ''
+    },
+    lootBtn(){
+      return this.data.showMore ? this.info.btnTextLess : this.info.btnTextShow
+    },
   },
   components: {
     AppBigArt,
