@@ -185,12 +185,12 @@ export default {
           {
             text: 'Art',
             value: 'art',
-            image: 'https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
           {
             text: 'Games',
             value: 'games',
-            image: 'https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
         ],
         collections:[

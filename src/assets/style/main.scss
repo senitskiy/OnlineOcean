@@ -2211,10 +2211,16 @@
   &__imgwrapper{
     width: 100vw;
     max-height: 300px;
+    height: 100%;
+    min-height: 300px;
     position: relative;
     img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      height: 100%;
       width: 100%;
-      max-height: 300px;
     }
     &:before{
       content: '';
@@ -2224,6 +2230,7 @@
       width: 100%;
       height: 100%;
       background: rgba(38, 38, 38, 0.2);
+      z-index: 0;
     }
   }
   &__inner{
@@ -2244,14 +2251,14 @@
     background-color: $grey-bg;
     border-radius: 25px 0 0 25px;
     position: relative;
-    padding: 19px 0 17px 104px;
+    padding: 19px 0 17px 114px;
     color: $black;
     .profile--cover{
       display: inline-flex;
       max-width: 130px;
       width: 100%;
       position: absolute;
-      left: -60px;
+      left: -50px;
       top: 0;
       pointer-events: none;
       .profile__imgwrapper{

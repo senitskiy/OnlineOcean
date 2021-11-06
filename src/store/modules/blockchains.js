@@ -10,32 +10,32 @@ const state = {
     {
       label: 'Ethereum',
       value: 'eth',
-      image: 'https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png',
+      image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
     },
     {
       label: 'Immutable X',
       value: 'imux',
-      image: 'https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png',
+      image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
     },
     {
       label: 'BSC',
       value: 'bsc',
-      image: 'https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png',
+      image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
     },
     {
       label: 'Polygon',
       value: 'polygon',
-      image: 'https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png',
+      image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
     },
     {
       label: 'Solana',
       value: 'solana',
-      image: 'https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png',
+      image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
     },
     {
       label: 'Dfinity',
       value: 'dfinity',
-      image: 'https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png',
+      image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
     },
   ],
   currentBlockchain:{

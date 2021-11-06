@@ -41,7 +41,7 @@
               <li class="share__item">
                 <a class="share__link" :href="'https://twitter.com/intent/tweet?text=' + shareLinkHref">
                   <span class="share__imgwrapper">
-                    <img src="https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png" alt="">
+                    <img src="https://www.pngrepo.com/png/5125/180/avatar.png" alt="">
                   </span>
                   Twitter
                 </a>
@@ -49,7 +49,7 @@
               <li class="share__item">
                 <a class="share__link" :href="'https://telegram.me/share/?&text=' + shareLinkHref">
                   <span class="share__imgwrapper">
-                    <img src="https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png" alt="">
+                    <img src="https://www.pngrepo.com/png/5125/180/avatar.png" alt="">
                   </span>
                   Telegram
                 </a>
