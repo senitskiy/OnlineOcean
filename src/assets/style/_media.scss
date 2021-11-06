@@ -225,6 +225,21 @@
   }
 
   // Cataloge
+
+  // User
+
+  .user-filters__inner{
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .user-filters__inputwrapper{
+    margin-left: 0;
+    margin-top: 15px;
+    max-width: 50%;
+  }
+
+  // User
 }
 
 @media (max-width: 1024px){
@@ -845,6 +860,29 @@
 
   .user-loot .btn{
     display: block;
+  }
+
+  .user-filters__checkboxes-mobileoverflow{
+    overflow: auto;
+    width: 100%;
+  }
+
+  .user-filters__checkboxes-wrapper{
+    white-space: nowrap;
+  }
+
+  .user-filters__checkboxes{
+    display: block;
+    .label{
+      display: inline-block;
+    }
+    .label + .label{
+      margin-left: 15px;
+    }
+  }
+  
+  .user-filters__inputwrapper{
+    max-width: unset;
   }
 
   // User

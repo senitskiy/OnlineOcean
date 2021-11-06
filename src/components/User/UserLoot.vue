@@ -1,28 +1,22 @@
 <template>
-  <div class="user-info">
-    <div class="container">
-      <h1 class="user-info__title">
-        {{ info.title }}
-      </h1>
-      <h2 class="user-info__descr">
-        {{ info.descr }}
-      </h2>
-    </div>
-  </div>
   <section class="user-filters">
     <div class="container">
       <div class="user-filters__inner">
-        <div class="user-filters__checkboxes">
-          <app-input
-          v-for='item in info.filters'
-          :key='item'
-          radio
-          :checkboxValue='item.value'
-          :descr='item.text'
-          :checkboxChecked='item.checked'
-          :checkboxName='info.filtersName'
-          @choosed='setType'
-          ></app-input>
+        <div class="user-filters__checkboxes-mobileoverflow">
+          <div class="user-filters__checkboxes-wrapper">
+            <div class="user-filters__checkboxes">
+              <app-input
+              v-for='item in info.filters'
+              :key='item'
+              radio
+              :checkboxValue='item.value'
+              :descr='item.text'
+              :checkboxChecked='item.checked'
+              :checkboxName='info.filtersName'
+              @choosed='setType'
+              ></app-input>
+            </div>
+          </div>
         </div>
         <div class="user-filters__inputwrapper">
           <app-input
@@ -65,8 +59,6 @@ export default {
   data() {
     return {
       info:{
-        title: 'My Account',
-        descr: 'Manage your account, profile details and view your collections',
         btnTextShow: 'Show more',
         btnTextLess: 'Show less',
         cards:[

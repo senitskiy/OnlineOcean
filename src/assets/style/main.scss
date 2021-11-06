@@ -2235,6 +2235,7 @@
       position: absolute;
       background-color: $grey-bg;
       width: calc(100vw - 1140px);
+      min-width: 30px;
       height: 100%;
     }
   }
