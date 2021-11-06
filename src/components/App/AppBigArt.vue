@@ -79,7 +79,7 @@ export default {
         owner: 'artstudio',
         bid: '0.034 ETH',
         likes:{
-          count: 121,
+          count: 131,
           status: false,
         },
         chars:{
