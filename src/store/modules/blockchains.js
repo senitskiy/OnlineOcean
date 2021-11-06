@@ -41,6 +41,7 @@ const state = {
   currentBlockchain:{
     value: 'eth',
     label: 'Ethereum',
+    image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
   },
 };
 

@@ -3,11 +3,13 @@
     <div class="box-loot__items">
       <app-art
       v-for='id in data.items'
+      :key='id'
       :artId='id'
       short
       view='box-loot'
-      :key='id'
-      ></app-art>
+      >
+        <button class="box-loot__remove btn-clear"></button>
+      </app-art>
       <button class="box-loot__add btn-clear">
         <span class="box-loot__imgwrapper">
           <img src="@/assets/images/upload.svg" alt="">
@@ -33,7 +35,7 @@ export default {
         title: 'Items are loaded from the offers you created earlier.',
         uploadDescr: 'Upload item',
         items:[
-          4, 1, 566
+          4, 1, 566, 3, 4, 5, 2, 26, 64, 43, 445
         ]
       }
     }

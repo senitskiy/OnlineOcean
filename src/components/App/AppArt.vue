@@ -4,6 +4,7 @@
   @mouseover='showChars()'
   @mouseleave="hideChars()"
   >
+    <slot></slot>
     <span class="art__imgwrapper">
       <img src="@/assets/images/temp/art-1.jpg" alt="">
       <span class="art__price">

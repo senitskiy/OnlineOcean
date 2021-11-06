@@ -32,9 +32,18 @@ export default {
       type: Array,
       required: true, 
     },
+    defaultValue: {
+      type: String,
+      default: '',
+    },
   },
   mounted () {
-    this.$refs.select.select(this.options[0])
+    console.log(this.defaultValue)
+    if (this.defaultValue === ''){
+      this.$refs.select.select(this.options[0])
+    }else{
+      this.$refs.select.select(this.defaultValue)
+    }
     this.changedValue()
   },
   data() {

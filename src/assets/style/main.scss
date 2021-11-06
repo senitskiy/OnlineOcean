@@ -380,9 +380,6 @@
     width: 100%;
     position: relative;
     min-width: 0;
-    // &--disabled{
-    //   pointer-events: none;
-    // }
   }
   &__slide-title{
     font-size: 16px;
@@ -404,10 +401,11 @@
     align-items: center;
     .likes{
       min-width: 100%;
+      margin-left: 5px;
     }
   }
   &-top__left{
-    max-width: calc(100% - 45px);
+    max-width: calc(100% - 60px);
     flex-grow: 1;
   }
   &__slide-imgwrapper{
@@ -428,8 +426,6 @@
     font-weight: 700;
     color: $pink;
     text-transform: uppercase;
-  }
-  &__slide-count{
   }
   &__slide-account{
     margin-top: -45px;
@@ -487,7 +483,6 @@
   }
   .splide__slide{
     padding-bottom: 205px;
-    // padding-bottom: 170px;
   }
   .splide__track{
     overflow-y: auto;
@@ -1979,27 +1974,58 @@
       border-radius: 50%;
     }
   }
+  &__remove{
+    border-radius: 50%;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+    background-color: $black;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: -11px;
+    right: -11px;
+    z-index: 1;
+    transition: all .4s;
+    &:after{
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 17px;
+      height: 5px;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+  }
   .art,
   &__add{
     max-height: 203px;
   }
   .art{
-    background-color: rgba(#EA3333, .15);
-    border: 1px solid #EA3333;
-    .art__descr{
-      color: #EA3333;
+    height: 100%;
+    .art__info{
+      padding: 0 15px;
     }
-    &:nth-child(odd){
+    .art__descr{
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    &--common{
+      background-color: rgba(#808080, .15);
+      border: 1px solid #808080;
+    }
+    &--epic{
+      background-color: rgba(#0085FF, .15);
+      border: 1px solid #0085FF;
+    }
+    &--rare{
       background-color: rgba(#9C39EB, .15);
       border: 1px solid #9C39EB;
-      .art__descr{
-        color: #9C39EB;
-      }
-      .art__transfericon{
-        path{
-          fill: #9C39EB;
-        }
-      }
+    }
+    &--legendary{
+      background-color: rgba(#EA3333, .15);
+      border: 1px solid #EA3333;
     }
   }
 }
@@ -2185,9 +2211,6 @@
     font-weight: 700;
     height: 85px;
     background-color: $pink;
-  }
-  .row__slide{
-
   }
 }
 

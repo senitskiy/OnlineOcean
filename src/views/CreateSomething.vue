@@ -18,7 +18,7 @@
         <h1 class="create-modal__title">
           {{ info.title }}
         </h1>
-        {{ data }}
+        <!-- {{ data }} -->
         <div class="create-modal__info">
           <div class="create-modal__content">
             <div class="create-modal__info-inputs">
@@ -122,6 +122,8 @@ import CreateChoose from '@/components/Create/CreateChoose.vue';
 import CreateBoxLoot from '@/components/Create/CreateBoxLoot.vue';
 import CreateChars from '@/components/Create/CreateChars.vue';
 
+import { mapGetters, mapMutations } from 'vuex';
+
 export default {
   data() {
     return {
@@ -169,6 +171,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations['setNewBlockchain'],
     routePrev(){
       this.$router.go(-1)
     },
@@ -205,6 +208,7 @@ export default {
     },
   },
   computed: {
+    ...mapGetters['currentBlockchain', 'allBlockchains'],
     willGet(){
       let siteFee = this.info.siteFee
       siteFee = Number(siteFee.replace(/%/i, '')) / 100
