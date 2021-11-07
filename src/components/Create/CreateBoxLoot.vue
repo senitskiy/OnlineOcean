@@ -35,7 +35,7 @@ export default {
         title: 'Items are loaded from the offers you created earlier.',
         uploadDescr: 'Upload item',
         items:[
-          4, 1, 566, 3, 4, 5, 2, 26, 64, 43, 445
+          4, 1, 566
         ]
       }
     }

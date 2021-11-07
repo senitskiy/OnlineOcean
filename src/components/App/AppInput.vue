@@ -41,8 +41,8 @@
     :type="type"
     :placeholder="placeholderText"
     :class='view ? viewStyle : ""'
-    :value='inputDefaultValue'
     @input='typedText()'
+    ref='input'
     >
   </label>
 </template>
@@ -101,8 +101,7 @@ export default {
   },
   mounted () {
     if (this.inputDefaultValue !== ''){
-      let onceValue = this.inputDefaultValue.toString()
-      this.inputValue = onceValue
+      this.$refs.input.value = this.inputDefaultValue
     }
 
     if (this.radio & this.checkboxChecked){
