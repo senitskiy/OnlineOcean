@@ -475,6 +475,10 @@
     margin-right: 50px;
   }
 
+  .box-loot__items{
+    grid-template-columns: repeat(5, 1fr);
+  }
+
   // Create
 }
 
@@ -658,6 +662,45 @@
   .create-chars__probability{
     .slider-target{
       max-width: 80%;
+    }
+  }
+
+  .box-loot__items{
+    grid-template-columns: repeat(4, 1fr);
+    .art,
+    .box-loot__add{
+      height: unset;
+      max-height: unset;
+    }
+    .art:nth-child(5n + 1),
+    .art:nth-child(5n){
+      .art__chars{
+        right: unset;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .art__transfericon{
+        margin: -40px auto 0;
+      }
+    }
+    .art:nth-child(4n + 1){
+      .art__chars{
+        left: 20px;
+        transform: unset;
+      }
+      .art__transfericon{
+        margin: -40px auto 0 5px;
+      }
+    }
+    .art:nth-child(4n){
+      .art__chars{
+        right: 20px;
+        left: unset;
+        transform: unset;
+      }
+      .art__transfericon{
+        margin: -40px 5px 0 auto;
+      }
     }
   }
 
@@ -852,6 +895,10 @@
     }
   }
 
+  .art:hover{
+    transform: unset;
+  }
+
   .art__chars{
     display: none;
   }
@@ -928,6 +975,14 @@
     max-width: 90%;
   }
 
+  .create-modal__info{
+    margin-bottom: 35px;
+  }
+
+  .box-loot__items{
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   // Create
 
   // Product
@@ -983,7 +1038,6 @@
     }
   }
 
-
   .user-loot__items{
     grid-template-columns: repeat(2, 1fr);
     .row__slide:nth-child(n + 5){
@@ -1035,12 +1089,6 @@
   }
 
   // User
-
-  // Create
-
-
-
-  // Create
 }
 
 @media (max-width: 650px){
@@ -1249,6 +1297,21 @@
     }
     & + &{
       margin-top: 20px;
+    }
+  }
+
+  .box-loot__items{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .box-loot__descr{
+    font-size: 14px;
+    line-height: 17px;
+    padding-left: 18px;
+    &:before{
+      left: 7px;
+      top: 6px;
+      transform: unset;
     }
   }
 
@@ -1474,6 +1537,20 @@
 
   .create-modal .multiselect{
     top: 25px;
+  }
+
+  .box-loot__items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .art{
+      max-width: 260px;
+    }
+    .box-loot__add{
+      height: 311px;
+      min-width: 260px;
+      max-width: 260px;
+    }
   }
 
   // Create
