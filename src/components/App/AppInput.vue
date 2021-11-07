@@ -41,6 +41,7 @@
     :type="type"
     :placeholder="placeholderText"
     :class='view ? viewStyle : ""'
+    :value='inputDefaultValue'
     @input='typedText()'
     >
   </label>
@@ -56,6 +57,9 @@ export default {
     placeholderText: {
       type: String,
       required: false,
+    },
+    inputDefaultValue:{
+      default: '',
     },
     view: {
       type: String,
@@ -96,6 +100,11 @@ export default {
     }
   },
   mounted () {
+    if (this.inputDefaultValue !== ''){
+      let onceValue = this.inputDefaultValue.toString()
+      this.inputValue = onceValue
+    }
+
     if (this.radio & this.checkboxChecked){
       this.inputValue = this.checkboxValue
       this.$emit('choosed', this.inputValue)

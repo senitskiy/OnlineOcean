@@ -2074,8 +2074,31 @@
       justify-content: flex-start;
     }
   }
+  &__name{
+    max-width: 120px;
+  }
+  &__name-text{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   &__price{
     color: $pink;
+  }
+  &__price-text{
+    padding-left: 5px;
+  }
+  &__amount{
+    .label{
+      max-width: 80px;
+      .input{
+        border-radius: 0;
+        padding: 0 5px;
+        border-bottom: 1px solid $grey;
+        height: 22px;
+        text-align: center;
+      }
+    }
   }
   &__probability{
     align-items: flex-end;

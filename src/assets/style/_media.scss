@@ -652,6 +652,16 @@
   }
 
   // Cataloge
+
+  // Create
+
+  .create-chars__probability{
+    .slider-target{
+      max-width: 80%;
+    }
+  }
+
+  // Create
 }
 
 @media (max-width: 850px){
@@ -719,6 +729,27 @@
     max-width: 550px;
     width: 100%;
     margin-bottom: 30px;
+  }
+
+  .create-modal__title{
+    margin-bottom: 32px;
+  }
+
+  .create-modal__info-inputs .label + .label{
+    margin-top: 20px;
+  }
+
+  .create-modal__info-inputs,
+  .create-modal__info-fee,
+  .create-modal .choose{
+    margin-bottom: 25px;
+  }
+
+  .create-chars__row{
+    padding: 16px 20px 17px;
+    &:first-child{
+      padding: 16px 27px 17px 20px;
+    }
   }
 
   // Create
@@ -878,6 +909,25 @@
     margin-bottom: 32px;
   }
 
+  .create-modal__chars{
+    white-space: nowrap;
+    overflow-x: scroll;
+    margin-bottom: 30px;
+  }
+
+  .box-loot{
+    margin-bottom: 25px;
+  }
+
+  .create-chars__row{
+    grid-template-columns: 125px 100px 135px 150px 150px 30px;
+    min-width: 735px;
+  }
+
+  .create-chars__probability .slider-target {
+    max-width: 90%;
+  }
+
   // Create
 
   // Product
@@ -985,6 +1035,12 @@
   }
 
   // User
+
+  // Create
+
+
+
+  // Create
 }
 
 @media (max-width: 650px){
@@ -1368,6 +1424,59 @@
   }
 
   // Product
+
+  // Create
+
+  .choose__text{
+    padding: 7px 10px;
+  }
+
+  .create-modal .choose{
+    padding: 5px 6px;
+  }
+
+  .create-modal .choose__text{
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .create-modal__info .label{
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .create-modal__info-fee .create-modal__text,
+  .create-modal__info-classification .create-modal__text{
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 6px;
+  }
+
+  .create-modal__info .label .input{
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 17px;
+    &::placeholder{
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+
+  .create-modal__info-inputs .label + .label{
+    margin-top: 17px;
+  }
+
+  .create-modal__info-inputs,
+  .create-modal__info-fee,
+  .create-modal .choose{
+    margin-bottom: 17px;
+  }
+
+  .create-modal .multiselect{
+    top: 25px;
+  }
+
+  // Create
 }
 
 @media (max-width: 400px){

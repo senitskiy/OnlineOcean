@@ -5,13 +5,20 @@
     :key='row'
     >
       <div class="create-chars__col create-chars__name">
-        {{ row.name }}
+        <p class="create-chars__name-text">
+          {{ row.name }}
+        </p>
       </div>
       <div class="create-chars__col create-chars__classification">
         {{ row.classification }}
       </div>
       <div class="create-chars__col create-chars__amount">
-        {{ row.amount }}
+        <app-input
+        v-if='!row.first'
+        :inputDefaultValue='row.amount'
+        type='number'
+        ></app-input>
+        {{ row.first ? row.amount : ''}}
       </div>
       <div class="create-chars__col create-chars__probability">
         <span
@@ -28,7 +35,9 @@
         ></slider>
       </div>
       <div class="create-chars__col create-chars__price">
-        {{ row.price }}
+        <p class="create-chars__price-text">
+          {{ row.price }}
+        </p>
       </div>
       <div class="create-chars__col create-chars__watch">
         <span
@@ -49,6 +58,7 @@
 
 <script>
 import Slider from '@vueform/slider'
+import AppInput from '@/components/App/AppInput.vue';
 
 import '@vueform/slider/themes/default.css'
 
@@ -70,9 +80,9 @@ export default {
           href: 'watch',
         },
         {
-          name: 'Book Knight',
+          name: 'Book Knight Art 3d kek uo9',
           classification: 'Legendary',
-          amount: '35',
+          amount: 335,
           probability: 25,
           price: '20.034 ETH',
           href: '',
@@ -80,7 +90,7 @@ export default {
         {
           name: 'Sword',
           classification: 'Epic',
-          amount: '257',
+          amount: 27,
           probability: 60,
           price: '0.0345 ETH',
           href: '',
@@ -88,7 +98,7 @@ export default {
         {
           name: 'Sword',
           classification: 'Epic',
-          amount: '257',
+          amount: 257,
           probability: 8,
           price: '0.0345 ETH',
           href: '',
@@ -96,7 +106,7 @@ export default {
         {
           name: 'Sword',
           classification: 'Epic',
-          amount: '257',
+          amount: 257,
           probability: 7,
           price: '0.0345 ETH',
           href: '',
@@ -110,7 +120,8 @@ export default {
     }
   },
   components: {
-    Slider
+    Slider,
+    AppInput,
   },
 }
 </script>
