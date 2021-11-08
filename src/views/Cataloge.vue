@@ -6,11 +6,13 @@
       <cataloge-filters
       @clicked='changeView()'
       @updatedFilters='setCurrentFilters'
+      :needClear='needClear'
       ></cataloge-filters>
       <div class="cataloge__inner">
         <cataloge-current-filters
         :currentFilters='currentFilters'
         @clearAll='clearAll'
+        @clearOption='clearOption'
         ></cataloge-current-filters>
         <cataloge-rows></cataloge-rows>
       </div>
@@ -42,6 +44,7 @@ export default {
         categories: [],
         rarity: [],
       },
+      needClear: null,
     }
   },
   mounted() {
@@ -66,7 +69,18 @@ export default {
     },
     clearAll(value){
       this.currentFilters = value
-    }
+    },
+    clearOption(value, parentArray){
+      console.log([parentArray, value])
+      // this.currentFilters = parentArray.filter(function( obj ) {
+      //   if(obj.id === undefined){
+      //     return obj.value !== value.value;
+      //   }else{
+      //     return obj.id !== value.id;
+      //   }
+      // });
+      // this.needClear = parentArray
+    },
   },
   computed: {
     countOfCols(){

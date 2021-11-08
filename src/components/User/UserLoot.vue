@@ -55,6 +55,8 @@
 import AppBigArt from '@/components/App/AppBigArt.vue';
 import AppInput from '@/components/App/AppInput.vue';
 
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -92,7 +94,6 @@ export default {
       },
       data:{
         showType: '',
-        searchText: '',
         showMore: false,
       }
     }
@@ -105,7 +106,8 @@ export default {
       this.data.showType = value
     },
     search(value){
-      this.data.searchText = value
+      axios.post('/getArts',{ sort: value })
+        .then(response => ( this.info.cards = response ))
     },
     toggleMore(){
       this.data.showMore = !this.data.showMore

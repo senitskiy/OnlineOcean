@@ -95,6 +95,7 @@
           <app-input
           view='filter-collection'
           :placeholderText='data.collectionSearchPlaceholder'
+          @typed='getCollections'
           ></app-input>
           <ul class="filters__item-list filters--limited collections__list">
             <li class="collections__list-item"
@@ -173,9 +174,16 @@ import AppInput from '@/components/App/AppInput.vue';
 import AppSelect from '@/components/App/AppSelect.vue';
 import CatalogeFilterItem from '@/components/Cataloge/CatalogeFilterItem.vue';
 
+import axios from 'axios';
 import { mapGetters, mapMutations } from 'vuex';
 
 export default {
+  props: {
+    needClear: {
+      type: Object,
+      default: null,
+    },
+  },
   data() {
     return {
       blockchainsRadioName: 'filter-blockchain',
@@ -378,6 +386,10 @@ export default {
   },
   methods: {
     ...mapMutations(['setNewBlockchain']),
+    getCollections(value){
+      axios.post('/getCollections',{ sort: value })
+        .then(response => ( this.data.collections = response ))
+    },
     toggleFilters() {
       this.$emit('clicked')
     },
@@ -469,7 +481,16 @@ export default {
         this.$emit('updatedFilters', value)
       },
       deep: true
-    }
+    },
+    needClear(value){
+      this.filters.or = this.filters.or.filter(function( obj ) {
+        if(obj.id === undefined){
+          return obj.value !== value.value;
+        }else{
+          return obj.id !== value.id;
+        }
+      });
+    },
   },
   components: {
     AppInput,

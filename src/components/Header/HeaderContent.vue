@@ -3,7 +3,7 @@
     <app-input
     placeholderText='Search for art'
     view='header-search'
-    @typed='search()'
+    @typed='search'
     ></app-input>
     <img src="@/assets/images/search.svg" alt="">
   </div>
@@ -52,6 +52,8 @@ import AppInput from '@/components/App/AppInput.vue'
 import AppNots from '@/components/App/AppNots.vue'
 import HeaderBlockchains from '@/components/Header/HeaderBlockchains.vue'
 
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -72,8 +74,9 @@ export default {
       this.openedNots = false
       this.openedBlockchains = !this.openedBlockchains
     },
-    search(){
-
+    search(value){
+      axios.post('/getContent',{ sort: value })
+        .then(response => ( this.data.searched = response ))
     },
   },
   components: {

@@ -9,7 +9,7 @@
       <button class="cataloge__current-filter btn-clear"
       v-for='item in this.currentOr'
       :key='item'
-      @click='clearOption(this.currentOr)'
+      @click='clearOption(item, currentFilters.or)'
       >
         <img class='current-filter-price__img' :src="item.image" alt="">
         {{ item.label }}
@@ -88,7 +88,10 @@ export default {
   methods: {
     clearAll() {
       this.$emit('clearAll', this.defaultFiltersObject)
-    }
+    },
+    clearOption(value, parentArray){
+      this.$emit('clearOption', value, parentArray)
+    },
   },
   computed: {
     ...mapGetters(['allBlockchains']),
