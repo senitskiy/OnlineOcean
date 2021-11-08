@@ -13,6 +13,7 @@
     "@vueform/slider": "^2.0.5",
     "axios": "^0.23.0",
     "core-js": "^3.6.5",
+    "infinite-loading-vue3": "^1.0.1",
     "moment": "^2.29.1",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
