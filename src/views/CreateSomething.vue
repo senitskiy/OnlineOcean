@@ -108,6 +108,7 @@
         <app-button
         title='Create box'
         view='submit'
+        @click='create()'
         ></app-button>
       </div>
     </div>
@@ -123,6 +124,7 @@ import CreateBoxLoot from '@/components/Create/CreateBoxLoot.vue';
 import CreateChars from '@/components/Create/CreateChars.vue';
 
 import { mapGetters, mapMutations } from 'vuex';
+import axios from 'axios';
 
 export default {
   data() {
@@ -205,6 +207,10 @@ export default {
     },
     saveCurrent(){
       this.data.prevImage = this.data.image
+    },
+    create(){
+      axios.post('/create', this.data)
+        .then( this.routePrev() )
     },
   },
   computed: {

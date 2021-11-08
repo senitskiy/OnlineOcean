@@ -38,7 +38,6 @@ export default {
     },
   },
   mounted () {
-    console.log(this.defaultValue)
     if (this.defaultValue === ''){
       this.$refs.select.select(this.options[0])
     }else{

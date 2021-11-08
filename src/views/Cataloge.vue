@@ -10,11 +10,14 @@
       ></cataloge-filters>
       <div class="cataloge__inner">
         <cataloge-current-filters
+        :itemsLength='itemsLength'
         :currentFilters='currentFilters'
         @clearAll='clearAll'
         @clearOption='clearOption'
         ></cataloge-current-filters>
-        <cataloge-rows></cataloge-rows>
+        <cataloge-rows
+        @changedLength='changeLength'
+        ></cataloge-rows>
       </div>
     </div>
   </div>
@@ -45,6 +48,7 @@ export default {
         rarity: [],
       },
       needClear: null,
+      itemsLength: 0,
     }
   },
   mounted() {
@@ -80,6 +84,10 @@ export default {
       //   }
       // });
       // this.needClear = parentArray
+    },
+    changeLength(value){
+      console.log(value)
+      this.itemsLength = value
     },
   },
   computed: {

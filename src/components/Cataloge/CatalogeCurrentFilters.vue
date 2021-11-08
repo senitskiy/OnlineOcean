@@ -1,7 +1,7 @@
 <template>
   <div class="cataloge__current">
     <p class="cataloge__current-all">
-      {{ allItems }}
+      {{ itemsLength + allItemsLabel }}
     </p>
     <div class="cataloge__current-filters"
     v-show='currentFilters !== defaultFiltersObject'
@@ -75,10 +75,14 @@ export default {
       type: Object,
       required: false,
     },
+    itemsLength:{
+      type: Number,
+      required: true,
+    },
   },
   data() {
     return {
-      allItems: '1 412 515 results',
+      allItemsLabel: ' results',
       defaultFiltersObject: null,
     }
   },
@@ -99,7 +103,6 @@ export default {
       if (this.currentFilters.or === 'all'){
         return false
       }else{
-        console.log(this.currentFilters.or)
         return this.currentFilters.or
       }
     },

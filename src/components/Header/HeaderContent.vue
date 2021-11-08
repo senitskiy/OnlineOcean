@@ -14,8 +14,10 @@
     href='/create'
     ></app-button>
     <app-button
+    v-if='!userLogged'
     title='Connect wallet'
     view='blue'
+    @click='this.connectWallet()'
     ></app-button>
   </div>
   <div class="header__account">
@@ -53,6 +55,7 @@ import AppNots from '@/components/App/AppNots.vue'
 import HeaderBlockchains from '@/components/Header/HeaderBlockchains.vue'
 
 import axios from 'axios';
+import { mapMutations, mapGetters } from 'vuex';
 
 export default {
   data() {
@@ -62,7 +65,11 @@ export default {
       openedBlockchains: false,
     }
   },
+  computed: {
+    ...mapGetters(['userLogged']),
+  },
   methods: {
+    ...mapMutations(['connectWallet']),
     removePopUpNots(){
       this.openedNots = false
     },

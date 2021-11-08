@@ -36,7 +36,7 @@ const routes = [
     component: Art
   },
   {
-    path: '/create/',
+    path: '/create',
     name: 'Create',
     component: Create
   },

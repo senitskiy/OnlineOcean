@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 
 import blockchains from "./modules/blockchains";
+import profile from "./modules/profile";
 
 export default createStore({
   state: {
@@ -14,5 +15,6 @@ export default createStore({
   },
   modules: {
     blockchains,
+    profile,
   }
 })

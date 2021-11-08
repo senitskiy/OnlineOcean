@@ -58,6 +58,8 @@
 <script>
 import AppProfile from '@/components/App/AppProfile.vue';
 
+import { mapGetters } from 'vuex';
+
 export default {
   data() {
     return {
@@ -65,7 +67,6 @@ export default {
         btnTitle: 'Edit profile',
         userName: 'ArtStudio_nft',
         userId: 34,
-        userToken: '4b73hghjk4ljh2jk3hy956',
         userLootItemsLabel: 'Items',
         userLootBoxesLabel: 'Boxes',
         userLootItems: 134,
@@ -79,9 +80,10 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['userToken']),
     shortToken() {
-      let first = this.content.userToken.slice(0, 4),
-          second = this.content.userToken.slice(-4, this.content.userToken.length);
+      let first = this.userToken.slice(0, 4),
+          second = this.userToken.slice(-4, this.userToken.length);
 
       return first + '...' + second
     }

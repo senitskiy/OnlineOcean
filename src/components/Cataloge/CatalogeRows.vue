@@ -24,9 +24,7 @@ import InfiniteScroll from "infinite-loading-vue3";
 export default {
   data() {
     return {
-      items:[
-        3, 55, 1, 3, 56, 94, 4, 3, 55, 1, 3, 56, 94, 43, 55, 1, 3, 56, 94, 4, 94, 43, 55, 1, 3
-      ],
+      items: [],
       page: 1,
       message: '',
       noResult: false,
@@ -37,14 +35,15 @@ export default {
   },
   methods: {
     loadPosts(){
-      
+      this.loadDataFromServer()
     },
     async loadDataFromServer(){
       try {
         // const result = await axios.get(`/getItems=${this.page}`)
-        const result = [4554, 4, 2, 5, 3, 5, 5, 3, 6]
+        const result = [4554, 4, 2, 5, 3, 5, 5, 3, 6, 3, 5, 5, 3, 6]
         if(result.length) {
           this.items.push(...result);
+          this.$emit('changedLength', this.items.length)
         } else {
           this.noResult = true;
           this.message = "No result found";
@@ -59,5 +58,6 @@ export default {
     AppArt,
     InfiniteScroll,
   },
+  emits:['changedLength']
 }
 </script>
