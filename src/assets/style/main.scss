@@ -697,10 +697,10 @@
     color: $grey-light;
   }
   &__current-filters{
-    display: grid;
-    grid-template-areas: 'a a a a a a';
-    grid-auto-columns: max-content;
-    gap: 17px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 17px;
+    max-width: 1000px;
     button{
       font-weight: 500;
     }

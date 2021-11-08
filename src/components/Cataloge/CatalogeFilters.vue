@@ -17,7 +17,7 @@
           <app-input
           v-for='item in data.or'
           :key="item"
-          :descr='item.text'
+          :descr='item.label'
           :checkboxValue='item.value'
           checkbox
           @choosed='setOr'
@@ -102,7 +102,7 @@
             :key="collection.id"
             >
               <app-input
-              :descr='collection.text'
+              :descr='collection.label'
               :checkboxValue='collection.id'
               checkbox
               ref='collectionInput'
@@ -110,7 +110,7 @@
               @choosed='setCollections'
               >
                 <template v-slot:default>
-                  <img src="@/assets/images/temp/ethereum.svg" alt="">
+                  <img :src="collection.image" alt="">
                 </template>
                 <template v-slot:verified>
                   <img class='collections__list-item--verified' src="@/assets/images/success.svg" alt="">
@@ -129,13 +129,13 @@
             <app-input
             v-for='category in data.categories'
             :key="category"
-            :descr='category.text'
+            :descr='category.label'
             :checkboxValue='category.value'
             checkbox
             @choosed='setCategories'
             view='verified'
             >
-              <img src="@/assets/images/temp/ethereum.svg" alt="">
+              <img :src="category.image" alt="">
             </app-input>
           </div>
         </div>
@@ -149,7 +149,7 @@
             <app-input
             v-for='item in data.rarity'
             :key="item"
-            :descr='item.text'
+            :descr='item.label'
             :checkboxValue='item.value'
             checkbox
             @choosed='setRarity'
@@ -183,151 +183,168 @@ export default {
         collectionSearchPlaceholder: 'Search',
         or:[
           {
-            text: 'Art',
+            label: 'Art',
             value: 'art',
             image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
           {
-            text: 'Games',
+            label: 'Games',
             value: 'games',
             image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
         ],
         collections:[
           {
-            text: 'Doodles art',
+            label: 'Doodles art',
             id: 111,
             verified: true,
             type: 'art',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
           {
-            text: 'Doodles art',
+            label: 'Doodles art',
             id: 101,
             verified: false,
             type: 'art',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
           {
-            text: 'Doodles game',
+            label: 'Doodles game',
             id: 1,
             verified: false,
             type: 'game',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
           {
-            text: 'Doodles game',
+            label: 'Doodles game',
             id: 11,
             verified: true,
             type: 'game',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
           {
-            text: 'Doodles art',
+            label: 'Doodles art',
             id: 45,
             verified: true,
             type: 'art',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
           {
-            text: 'Doodles art',
+            label: 'Doodles art',
             id: 2,
             verified: true,
             type: 'art',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
           {
-            text: 'Doodles art',
+            label: 'Doodles art',
             id: 90,
             verified: true,
             type: 'art',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
           {
-            text: 'Doodles art',
+            label: 'Doodles art',
             id: 75,
             verified: true,
             type: 'art',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
         ],
         categories:[
           {
-            text: 'Music',
+            label: 'Music',
             value: 'music',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
           {
-            text: 'Art',
+            label: 'Art',
             value: 'art',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
           {
-            text: 'Box',
+            label: 'Box',
             value: 'box',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
           {
-            text: 'Music',
+            label: 'Music',
             value: 'mu3232sic',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
           {
-            text: 'Art',
+            label: 'Art',
             value: 'ar2323t',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
           {
-            text: 'Box',
+            label: 'Box',
             value: 'bo123x',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
           {
-            text: 'Music',
+            label: 'Music',
             value: 'music231',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
           {
-            text: 'Art',
+            label: 'Art',
             value: 'ar2t',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
           {
-            text: 'Box',
+            label: 'Box',
             value: 'bo233x',
+            image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
           },
         ],
         rarity:[
           {
-            text: 'Legendary',
+            label: 'Legendary',
             value: 'legendary'
           },
           {
-            text: 'Common',
+            label: 'Common',
             value: 'common'
           },
           {
-            text: 'Epic',
+            label: 'Epic',
             value: 'epic'
           },
           {
-            text: 'Legendary',
+            label: 'Legendary',
             value: 'legenda4323ry'
           },
           {
-            text: 'Common',
+            label: 'Common',
             value: 'com343mon'
           },
           {
-            text: 'Epic',
+            label: 'Epic',
             value: 'epi343c'
           },
           {
-            text: 'Legendary',
+            label: 'Legendary',
             value: 'legendary'
           },
           {
-            text: 'Common',
+            label: 'Common',
             value: 'comm33on'
           },
           {
-            text: 'Epic',
+            label: 'Epic',
             value: 'epic32'
           },
           {
-            text: 'Legendary',
+            label: 'Legendary',
             value: 'legendary'
           },
           {
-            text: 'Common',
+            label: 'Common',
             value: 'common33'
           },
           {
-            text: 'Epic',
+            label: 'Epic',
             value: 'epi43c'
           },
         ],
@@ -354,7 +371,7 @@ export default {
           max: '',
         },
         collections: [],
-        categories: '',
+        categories: [],
         rarity: [],
       },
     }
@@ -373,23 +390,24 @@ export default {
       } 
     },
     setOr(value){
-      if (typeof(this.filters.or) == String){
-        this.filters.or = []
-      }
-      
-      this.toggleInArray(this.filters.or, value)
+      let needValue = this.data.or.find(element => element.value === value)
+      this.toggleInArray(this.filters.or, needValue)
     },
     setBlockchain(value){
-      this.toggleInArray(this.filters.blockchains, value)
+      let needValue = this.allBlockchains.find(element => element.value === value)
+      this.toggleInArray(this.filters.blockchains, needValue)
     },
     setCollections(value){
-      this.toggleInArray(this.filters.collections, value)
+      let needValue = this.data.collections.find(element => element.id === value)
+      this.toggleInArray(this.filters.collections, needValue)
     },
     setCategories(value){
-      this.filters.categories = value
+      let needValue = this.data.categories.find(element => element.value === value)
+      this.toggleInArray(this.filters.categories, needValue)
     },
     setRarity(value){
-      this.toggleInArray(this.filters.rarity, value)
+      let needValue = this.data.rarity.find(element => element.value === value)
+      this.toggleInArray(this.filters.rarity, needValue)
     },
     setFilterMin(value){
       this.prefilters.price.min = value

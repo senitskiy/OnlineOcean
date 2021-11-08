@@ -10,6 +10,7 @@
       <div class="cataloge__inner">
         <cataloge-current-filters
         :currentFilters='currentFilters'
+        @clearAll='clearAll'
         ></cataloge-current-filters>
         <cataloge-rows></cataloge-rows>
       </div>
@@ -63,6 +64,9 @@ export default {
     setCurrentFilters(value){
       this.currentFilters = value
     },
+    clearAll(value){
+      this.currentFilters = value
+    }
   },
   computed: {
     countOfCols(){

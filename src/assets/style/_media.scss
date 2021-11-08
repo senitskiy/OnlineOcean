@@ -1078,6 +1078,15 @@
   }
 
   // User
+
+  // Cataloge
+
+  .cataloge__current,
+  .cataloge__current-filters{
+    max-width: calc(100vw - 30px);
+  }
+
+  // Cataloge
 }
 
 @media (max-width: 700px){
@@ -1464,6 +1473,14 @@
   }
 
   // Index
+
+  // Cataloge
+
+  .cataloge__current-filters{
+    gap: 10px 13px;
+  }
+
+  // Cataloge
 }
 
 @media (max-width: 425px){
@@ -1563,7 +1580,7 @@
   .cataloge__wrapper--more{
     .cataloge__inner{
       .cataloge__rows{
-        margin: 0 auto 50px;
+        margin: 0;
         max-width: 320px;
         grid-template-columns: 1fr;
       }

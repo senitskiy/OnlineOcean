@@ -3,20 +3,24 @@
     <p class="cataloge__current-all">
       {{ allItems }}
     </p>
-    <div class="cataloge__current-filters">
+    <div class="cataloge__current-filters"
+    v-show='currentFilters !== defaultFiltersObject'
+    >
       <button class="cataloge__current-filter btn-clear"
       v-for='item in this.currentOr'
       :key='item'
+      @click='clearOption(this.currentOr)'
       >
-        {{ item }}
+        <img class='current-filter-price__img' :src="item.image" alt="">
+        {{ item.label }}
         <img class='cataloge__current-filter--close' src="@/assets/images/close.svg" alt="">
       </button>
       <button class="cataloge__current-filter btn-clear"
       v-for='item in currentFilters.blockchains'
       :key='item'
       >
-        <img class='current-filter-price__img' :src="blockchainImage(item)" alt="">
-        {{ blockchainLabel(item) }}
+        <img class='current-filter-price__img' :src="item.image" alt="">
+        {{ item.label }}
         <img class='cataloge__current-filter--close' src="@/assets/images/close.svg" alt="">
       </button>
       <button class="cataloge__current-filter current-filter-price btn-clear"
@@ -26,21 +30,38 @@
         {{ priceInfo }}
         <img class='cataloge__current-filter--close' src="@/assets/images/close.svg" alt="">
       </button>
+      <button class="cataloge__current-filter btn-clear"
+      v-for='item in currentFilters.categories'
+      :key='item'
+      >
+        <img class='current-filter-price__img' :src="item.image" alt="">
+        {{ item.label }}
+        <img class='cataloge__current-filter--close' src="@/assets/images/close.svg" alt="">
+      </button>
+      <button class="cataloge__current-filter btn-clear"
+      v-for='item in currentFilters.collections'
+      :key='item'
+      >
+        <img class='current-filter-price__img' :src="item.image" alt="">
+        {{ item.label }}
+        <img class='cataloge__current-filter--close' src="@/assets/images/close.svg" alt="">
+      </button>
       <button class="cataloge__current-filter current-filter-rarity btn-clear"
       v-for='item in currentFilters.rarity'
       :key='item'
       >
-        {{ item }}
+        {{ item.label }}
         <img class='cataloge__current-filter--close' src="@/assets/images/close.svg" alt="">
       </button>
-      <button class="cataloge__current-filter btn-clear">
-        Action
-        <img class='cataloge__current-filter--close' src="@/assets/images/close.svg" alt="">
-      </button>
-      <button class="cataloge__current-reset btn-clear">
+      <button class="cataloge__current-reset btn-clear"
+      @click='clearAll()'
+      >
         Clear All
       </button>
     </div>
+    {{ defaultFiltersObject }}
+    <br>
+    <br>
     {{ currentFilters }}
   </div>
 </template>
@@ -58,24 +79,15 @@ export default {
   data() {
     return {
       allItems: '1 412 515 results',
+      defaultFiltersObject: null,
     }
   },
+  mounted () {
+    this.defaultFiltersObject = this.currentFilters
+  },
   methods: {
-    blockchainImage(value){
-      let allBlockchains = this.allBlockchains
-      let needValue = Object.values(allBlockchains).find((obj) => {
-        return obj.value == value
-      })
-
-      return needValue.image
-    },
-    blockchainLabel(value) {
-      let allBlockchains = this.allBlockchains
-      let needValue = Object.values(allBlockchains).find((obj) => {
-        return obj.value == value
-      })
-
-      return needValue.label
+    clearAll() {
+      this.$emit('clearAll', this.defaultFiltersObject)
     }
   },
   computed: {
