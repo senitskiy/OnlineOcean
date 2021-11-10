@@ -37,7 +37,7 @@
       <div class="user-loot__inner">
         <div class="user-loot__items">
           <app-big-art
-          v-for='card in info.cards'
+          v-for='card in data.currentItems'
           :key='card'
           :artId='card'
           ></app-big-art>
@@ -56,6 +56,7 @@ import AppBigArt from '@/components/App/AppBigArt.vue';
 import AppInput from '@/components/App/AppInput.vue';
 
 import axios from 'axios';
+import { mapGetters } from 'vuex';
 
 export default {
   data() {
@@ -63,9 +64,6 @@ export default {
       info:{
         btnTextShow: 'Show more',
         btnTextLess: 'Show less',
-        cards:[
-          34, 2, 6, 3, 9, 94, 24, 3
-        ],
         filtersName: 'user-filters',
         filters:[
           {
@@ -93,20 +91,26 @@ export default {
         searchInputPlaceholder: 'Search',
       },
       data:{
-        showType: '',
         showMore: false,
+        currentItems: [],
       }
     }
   },
   mounted () {
     this.data.btnText = this.info.btnTextShow
   },
+  updated(){
+    console.log('upd')
+  },
   methods: {
     setType(value) {
-      this.data.showType = value
+      console.log([value], this.userInfo.allItems)
+      this.data.currentItems = this.userInfo.allItems
+      // axios.get(`/getArts=${value}`)
+      //   .then(response => ( this.data.currentItems = response ))
     },
     search(value){
-      axios.post('/getArts',{ sort: value })
+      axios.post('/getArts', { sort: value })
         .then(response => ( this.info.cards = response ))
     },
     toggleMore(){
@@ -119,6 +123,7 @@ export default {
     },
   },
   computed: {
+    ...mapGetters(['userInfo']),
     lootMore(){
       return this.data.showMore ? 'user-loot__items--more' : ''
     },

@@ -53,12 +53,37 @@ const routes = [
   {
     path: '/user/:username',
     name: 'User',
-    component: User
+    component: User,
+    beforeEnter: (to) => {
+      if(to.params.username === localStorage.getItem('userUsername') & localStorage.getItem('userConnected')){
+        to.params.connected = true
+        to.params.own = true
+      }else if(to.params.username === localStorage.getItem('userUsername')){
+        to.params.connected = false
+        to.params.own = true
+      }else{
+        to.params.connected = false
+        to.params.own = false
+      }
+    },
+    beforeRouteUpdate: (to) => {
+      if(to.params.username === localStorage.getItem('userUsername') & localStorage.getItem('userConnected')){
+        console.log(1)
+        return to
+      }else if(to.params.username === localStorage.getItem('userUsername')){
+        console.log(2)
+        return to
+      }else{
+        console.log(3)
+        return to
+      }
+    },
   },
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
+  props: true,
   routes
 })
 

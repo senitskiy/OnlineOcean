@@ -4,37 +4,37 @@
 
     </div>
     <div class="user-cover__imgwrapper">
-      <img src="@/assets/images/temp/product-banner.jpg" alt="">
+      <img :src="userInfo.cover" alt="">
     </div>
     <div class="container">
       <div class="user-cover__inner">
         <div class="user-cover__profile">
           <app-profile
-          :userId='content.userId'
+          :userId='userInfo.id'
           view='cover'
           ></app-profile>
           <div class="user-cover__profile-col user-cover__profile-loot">
             <p class="user-cover__profile-username">
-              {{ content.userName }}
+              {{ userInfo.nickname }}
             </p>
             <ul class="user-cover__loot">
               <li class="user-cover__loot-item">
                 {{ content.userLootItemsLabel + ':'}}
                 <span>
-                  {{ content.userLootItems }}
+                  {{ userInfo.itemLength }}
                 </span>
               </li>
               <li class="user-cover__loot-item">
                 {{ content.userLootBoxesLabel + ':'}}
                 <span>
-                  {{ content.userLootBoxes }}
+                  {{ userInfo.boxLength }}
                 </span>
               </li>
             </ul>
           </div>
           <div class="user-cover__profile-col user-cover__profile-edit">
             <div class="user-cover__profile-copy copy"
-            @click='copyToken(this.content.userToken)'
+            @click='copyToken(userInfo.token)'
             >
               <input class="copy__input" type="text"
               :value='shortToken'
@@ -65,12 +65,8 @@ export default {
     return {
       content:{
         btnTitle: 'Edit profile',
-        userName: 'ArtStudio_nft',
-        userId: 34,
         userLootItemsLabel: 'Items',
         userLootBoxesLabel: 'Boxes',
-        userLootItems: 134,
-        userLootBoxes: 134,
       },
     }
   },
@@ -80,10 +76,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['userToken']),
+    ...mapGetters(['userInfo']),
     shortToken() {
-      let first = this.userToken.slice(0, 4),
-          second = this.userToken.slice(-4, this.userToken.length);
+      let first = this.userInfo.token.slice(0, 4),
+          second = this.userInfo.token.slice(-4, this.userInfo.token.length);
 
       return first + '...' + second
     }

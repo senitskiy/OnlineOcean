@@ -1,6 +1,7 @@
 <template>
   <header class="header"
   @click='removePopUpNots'
+  :class='connectedUser'
   >
     <div class="container">
       <div class="header__inner">
@@ -34,6 +35,7 @@ import AppSocial from '@/components/App/AppSocial.vue'
 import AppProfile from '@/components/App/AppProfile.vue'
 import HeaderContent from '@/components/Header/HeaderContent.vue';
 import HeaderBlockchains from '@/components/Header/HeaderBlockchains.vue';
+import { mapGetters } from 'vuex';
 
 export default {
   methods: {
@@ -46,6 +48,12 @@ export default {
 
       this.$refs.menu.classList.toggle('header__menu--active')
     },
+  },
+  computed: {
+    ...mapGetters(['userInfo']),
+    connectedUser() {
+      return this.userInfo.connected ? 'header--connected' : ''
+    }
   },
   components:{
     AppLogo,

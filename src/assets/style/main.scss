@@ -165,6 +165,13 @@
       // text-align: center;
     }
   }
+  &--connected{
+    .header__search-wrapper{
+      margin-left: 80px;
+      margin-right: auto;
+      max-width: unset;
+    }
+  }
 }
 
 .footer{
@@ -2461,12 +2468,12 @@
   &__inner{
     background-color: $grey-bg;
     padding: 20px 20px 16px;
+    border-radius: 25px;
   }
   &__items{
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(4, 1fr);
-    border-radius: 25px;
   }
   .row__slide{
     &:hover{

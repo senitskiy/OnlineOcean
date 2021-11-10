@@ -14,7 +14,7 @@
     href='/create'
     ></app-button>
     <app-button
-    v-if='!userLogged'
+    v-if='!userInfo.connected'
     title='Connect wallet'
     view='blue'
     @click='this.connectWallet()'
@@ -44,7 +44,7 @@
     <router-link class="header__account-link"
     to='/user/artstudio'
     >
-      <img src="@/assets/images/temp/user.jpg" alt="">
+      <img :src="userInfo.image" alt="">
     </router-link>
   </div>
 </template>
@@ -66,7 +66,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['userLogged']),
+    ...mapGetters(['userInfo']),
   },
   methods: {
     ...mapMutations(['connectWallet']),
