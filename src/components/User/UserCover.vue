@@ -4,13 +4,13 @@
 
     </div>
     <div class="user-cover__imgwrapper">
-      <img :src="userInfo.cover" alt="">
+      <img :src="content.coverImage" alt="">
     </div>
     <div class="container">
       <div class="user-cover__inner">
         <div class="user-cover__profile">
           <app-profile
-          :userId='userInfo.id'
+          :userId='content.userId'
           view='cover'
           ></app-profile>
           <div class="user-cover__profile-col user-cover__profile-loot">
@@ -67,6 +67,8 @@ export default {
         btnTitle: 'Edit profile',
         userLootItemsLabel: 'Items',
         userLootBoxesLabel: 'Boxes',
+        coverImage: 'https://i.ibb.co/KjyXtpS/product-banner.jpg',
+        userId: 5,
       },
     }
   },

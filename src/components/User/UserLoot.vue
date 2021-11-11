@@ -88,7 +88,11 @@ export default {
             value: 'random-box',
           },
         ],
+        allItems: [],
+        profileId: 4,
         searchInputPlaceholder: 'Search',
+        image: 'https://i.ibb.co/TwJzdGg/user-ultra-big.jpg',
+        id: 34,
       },
       data:{
         showMore: false,
@@ -98,9 +102,6 @@ export default {
   },
   mounted () {
     this.data.btnText = this.info.btnTextShow
-  },
-  updated(){
-    console.log('upd')
   },
   methods: {
     setType(value) {

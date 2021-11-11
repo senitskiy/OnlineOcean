@@ -42,7 +42,7 @@
       <img src="@/assets/images/notify.svg" alt="">
     </button>
     <router-link class="header__account-link"
-    to='/user/artstudio'
+    :to="'/user/' + userInfo.username"
     >
       <img :src="userInfo.image" alt="">
     </router-link>

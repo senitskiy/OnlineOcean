@@ -55,27 +55,43 @@ const routes = [
     name: 'User',
     component: User,
     beforeEnter: (to) => {
-      if(to.params.username === localStorage.getItem('userUsername') & localStorage.getItem('userConnected')){
+      console.log([
+      localStorage.getItem('userUsername'),
+      JSON.parse(localStorage.getItem('userConnected'))
+      ])
+      if(to.params.username === localStorage.getItem('userUsername') && JSON.parse(localStorage.getItem('userConnected')) === true){
+        console.log(1)
         to.params.connected = true
         to.params.own = true
-      }else if(to.params.username === localStorage.getItem('userUsername')){
+      }else if(to.params.username === localStorage.getItem('userUsername') && JSON.parse(localStorage.getItem('userConnected')) === false){
+        console.log(2)
         to.params.connected = false
         to.params.own = true
+        router.push(to.href + '/unlogged')
       }else{
+        console.log(3)
         to.params.connected = false
         to.params.own = false
       }
     },
     beforeRouteUpdate: (to) => {
-      if(to.params.username === localStorage.getItem('userUsername') & localStorage.getItem('userConnected')){
+      console.log([
+      localStorage.getItem('userUsername'),
+      JSON.parse(localStorage.getItem('userConnected'))
+      ])
+      if(to.params.username === localStorage.getItem('userUsername') && JSON.parse(localStorage.getItem('userConnected')) === true){
         console.log(1)
-        return to
-      }else if(to.params.username === localStorage.getItem('userUsername')){
+        to.params.connected = true
+        to.params.own = true
+      }else if(to.params.username === localStorage.getItem('userUsername') && JSON.parse(localStorage.getItem('userConnected')) === false){
         console.log(2)
-        return to
+        to.params.connected = false
+        to.params.own = true
+        router.push(to + '/unlogged')
       }else{
         console.log(3)
-        return to
+        to.params.connected = false
+        to.params.own = false
       }
     },
   },

@@ -20,7 +20,7 @@
         ref='splide'
         >
           <splide-slide
-          v-for='slide in data'
+          v-for='slide in items'
           :key='slide'
           @mouseenter="increaseIndex()"
           @mouseleave="reduceIndex()"
@@ -40,6 +40,8 @@ import AppBigArt from '@/components/App/AppBigArt.vue'
 
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
+
+// import axios from 'axios';
 
 export default {
   props: {
@@ -106,7 +108,7 @@ export default {
   data() {
     return {
       needHeight: null,
-      data:[
+      items:[
         44, 332, 344, 233, 444, 3, 7, 8  
       ],
       windowWidth: window.innerWidth,
@@ -114,6 +116,7 @@ export default {
   },
   mounted () {
     this.onResize()
+    // this.getItems()
     window.addEventListener('resize', this.onResize);
     setTimeout(() => {
       this.setHeight()
@@ -128,6 +131,12 @@ export default {
     }
   },
   methods: {
+    // getItems(){
+    //   axios.get('/getUserRow')
+    //     .then(function(response) {
+    //       this.items = response
+    //     })
+    // },
     onResize() {
       this.windowWidth = window.innerWidth
       this.setHeight()

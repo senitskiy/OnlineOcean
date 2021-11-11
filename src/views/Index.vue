@@ -2,14 +2,15 @@
   <app-cover></app-cover>
   <index-live-tape></index-live-tape>
   <app-row
-  fire
+  v-for='row in rows'
+  :key='row'
+  ref='rowItem'
   ></app-row>
-  <app-row></app-row>
-  <app-row></app-row>
   <div class="index-load">
     <app-button
     title='Load more'
     view='linear'
+    @click='loadMore()'
     ></app-button>
   </div>
 </template>
@@ -20,6 +21,17 @@ import IndexLiveTape from '@/components/Index/IndexLiveTape.vue'
 
 export default {
   name: 'Index',
+  data() {
+    return {
+      rows: 3,
+    }
+  },
+  methods: {
+    loadMore(){
+      this.rows++
+      this.$refs.rowItem.setHeight()
+    }
+  },
   components: {
     AppCover,
     IndexLiveTape,
