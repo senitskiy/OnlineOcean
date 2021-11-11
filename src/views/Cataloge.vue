@@ -4,8 +4,10 @@
     :class='countOfCols'  
     >
       <cataloge-filters
+      ref='filters'
       @clicked='changeView()'
       @updatedFilters='setCurrentFilters'
+      :currentFilters='currentFilters'
       :needClear='needClear'
       ></cataloge-filters>
       <div class="cataloge__inner">
@@ -73,6 +75,8 @@ export default {
     },
     clearAll(value){
       this.currentFilters = value
+      
+      this.$refs.filters.clearAll()
     },
     clearOption(value, parentArray){
       console.log([parentArray, value])

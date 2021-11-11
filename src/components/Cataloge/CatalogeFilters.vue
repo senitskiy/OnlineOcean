@@ -1,5 +1,7 @@
 <template>
-  <aside class="cataloge__filters filters">
+  <aside class="cataloge__filters filters"
+  ref='filters'
+  >
     <ul class="filters__list">
       <li class="filters__item filters__toggle">
         <button class="filters__item-head btn-clear"
@@ -165,6 +167,10 @@
         </div>
       </cataloge-filter-item>
     </ul>
+    {{ defaultPrefilters }}
+    <br><br>
+    {{ prefilters }}
+    <br><br>
     {{ filters }}
   </aside>
 </template>
@@ -175,6 +181,7 @@ import AppSelect from '@/components/App/AppSelect.vue';
 import CatalogeFilterItem from '@/components/Cataloge/CatalogeFilterItem.vue';
 
 import axios from 'axios';
+// import InfiniteScroll from "infinite-loading-vue3";
 import { mapGetters, mapMutations } from 'vuex';
 
 export default {
@@ -182,6 +189,9 @@ export default {
     needClear: {
       type: Object,
       default: null,
+    },
+    currentFilters:{
+      type: Object,
     },
   },
   data() {
@@ -357,6 +367,7 @@ export default {
           },
         ],
       },
+      defaultPrefilters: null,
       prefilters:{
         price: {
           error: '',
@@ -368,6 +379,7 @@ export default {
           searchInputValue: '',
         },
       },
+      defaultFilters: null,
       filters:{
         or: [],
         blockchains: [],
@@ -383,6 +395,10 @@ export default {
         rarity: [],
       },
     }
+  },
+  mounted () {
+    this.defaultFilters = this.currentFilters
+    this.defaultPrefilters = JSON.parse(JSON.stringify(this.prefilters))
   },
   methods: {
     ...mapMutations(['setNewBlockchain']),
@@ -465,6 +481,23 @@ export default {
         this.filters.price = currentFilters
       }
     },
+    clearAll(){
+      let allTextInputs = document.querySelectorAll('.filters input:not([type=text])');
+
+      for(let i = 0; i < allTextInputs.length; i++){
+        if (allTextInputs[i].type === 'number'){
+          allTextInputs[i].value = ''
+        }else{
+          allTextInputs[i].checked = false
+        }
+      }
+
+      let copiedFilters = JSON.parse(JSON.stringify(this.defaultFilters)),
+          copiedPrefilters = JSON.parse(JSON.stringify(this.defaultPrefilters))
+
+      this.filters = copiedFilters
+      this.prefilters = copiedPrefilters
+    },
   },
   computed: {
     ...mapGetters(['allBlockchains', 'currentBlockchain']),
@@ -496,6 +529,7 @@ export default {
     AppInput,
     AppSelect,
     CatalogeFilterItem,
+    // InfiniteScroll,
   },
 }
 </script>

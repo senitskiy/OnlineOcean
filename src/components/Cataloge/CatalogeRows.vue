@@ -31,12 +31,9 @@ export default {
     }
   },
   mounted () {
-    this.loadPosts()
+    this.loadDataFromServer()
   },
   methods: {
-    loadPosts(){
-      this.loadDataFromServer()
-    },
     async loadDataFromServer(){
       try {
         // const result = await axios.get(`/getItems=${this.page}`)

@@ -34,7 +34,7 @@
         </p>
       </span>
       <app-profile
-      userId='344'
+      :userId='content.owner'
       view='slider'
       ></app-profile>
     </span>

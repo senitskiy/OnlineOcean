@@ -14,6 +14,7 @@
     <span class="art__info">
       <app-profile
       v-if='!short'
+      :userId='art.artstudio'
       :contentSlot='art.descr'
       view='hasDescr'
       ></app-profile>
@@ -58,6 +59,7 @@ export default {
       art:{
         price: '20.034 ETH',
         descr: 'Abstract 3D Content Art fdfds ee rwerew',
+        owner: 'artstudio',
         dateOfCreate: moment('2021-10-21T22:53:30'),
         todayDate: moment(),
         rarity: 'common', // common, epic, rare, legendary
