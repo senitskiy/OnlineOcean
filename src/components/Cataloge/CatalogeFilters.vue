@@ -167,8 +167,6 @@
         </div>
       </cataloge-filter-item>
     </ul>
-    {{ defaultPrefilters }}
-    <br><br>
     {{ prefilters }}
     <br><br>
     {{ filters }}

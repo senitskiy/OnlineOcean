@@ -80,6 +80,10 @@ export default {
     },
     clearOption(value, parentArray){
       console.log([parentArray, value])
+      let needToClear = this.currentFilters.find(obj => {
+        return obj.label === value.label
+      })
+      console.log(needToClear)
       // this.currentFilters = parentArray.filter(function( obj ) {
       //   if(obj.id === undefined){
       //     return obj.value !== value.value;

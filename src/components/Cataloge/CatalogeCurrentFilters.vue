@@ -3,9 +3,7 @@
     <p class="cataloge__current-all">
       {{ itemsLength + allItemsLabel }}
     </p>
-    <div class="cataloge__current-filters"
-    v-show='currentFilters !== defaultFiltersObject'
-    >
+    <div class="cataloge__current-filters">
       <button class="cataloge__current-filter btn-clear"
       v-for='item in this.currentOr'
       :key='item'
@@ -55,9 +53,11 @@
       </button>
       <button class="cataloge__current-reset btn-clear"
       @click='clearAll()'
+      v-if='showClearButton'
       >
         Clear All
       </button>
+      {{ showClearButton }}
     </div>
     {{ defaultFiltersObject }}
     <br>
@@ -118,6 +118,10 @@ export default {
         addactiveInfo = currPrice.min + ' - ' + currPrice.max
       }
       return currPrice.blockchain.label + ': ' + addactiveInfo
+    },
+    showClearButton(){
+      let result = this.currentFilters === JSON.parse(JSON.stringify(this.defaultFiltersObject))
+      return !result
     },
   },
 }

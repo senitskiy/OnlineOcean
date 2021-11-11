@@ -9,8 +9,7 @@ import CreateSomething from '../views/CreateSomething.vue'
 import User from '../views/User.vue'
 import UserUnlogged from '../views/UserUnlogged.vue'
 
-function userRoute(from, to){
-  console.log(from, to)
+function userRoute(to){
   if(to.params.username === localStorage.getItem('userUsername') && JSON.parse(localStorage.getItem('userConnected')) === true){
     to.params.connected = true
     to.params.own = true

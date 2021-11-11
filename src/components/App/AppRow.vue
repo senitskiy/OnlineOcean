@@ -22,10 +22,10 @@
           <splide-slide
           v-for='slide in items'
           :key='slide'
-          @mouseenter="increaseIndex()"
-          @mouseleave="reduceIndex()"
           >
             <app-big-art
+            @mouseenter="increaseIndex()"
+            @mouseleave="reduceIndex()"
             :artId='slide'
             ></app-big-art>
           </splide-slide>
