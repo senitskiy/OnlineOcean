@@ -114,11 +114,6 @@ export default {
       ]
     }
   },
-  methods: {
-    changedProbabilityValue() {
-      
-    }
-  },
   components: {
     Slider,
     AppInput,

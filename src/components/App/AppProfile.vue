@@ -7,7 +7,7 @@
       <img src="@/assets/images/temp/user-ultra-big.jpg" alt="" />
     </span>
     <span class="profile__name">
-      {{ user.name }}
+      {{ userName }}
       <span class="profile__slot"
       v-if='contentSlot.length !== 0'
       >
@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   props: {
     userId:{
@@ -33,12 +35,23 @@ export default {
       default: '',
     }
   },
+  mounted () {
+    this.getUser()
+  },
   data() {
     return {
       user:{
-        name: '@artstudio',
+        name: 'artstudio',
         verified: true,
       }
+    }
+  },
+  methods: {
+    getUser() {
+      axios.get('/user')
+        .then(function (response) {
+          this.user = response
+        })
     }
   },
   computed: {
@@ -47,6 +60,9 @@ export default {
     },
     viewVerified(){
       return this.user.verified ? 'profile--verified' : ''
+    },
+    userName(){
+      return '@' + this.user.name
     },
     linkToProfile() {
       return '/user/' + this.user.name.replace(/@/i, '')

@@ -97,6 +97,20 @@
     min-width: 40px;
     height: 40px;
   }
+  &__account-link{
+    .profile{
+      width: inherit;
+    }
+    .profile__imgwrapper{
+      padding: 0;
+      &::after{
+        display: none;
+      }
+    }
+    .profile__name{
+      display: none;
+    }
+  }
   &__menu-btn{
     display: none;
     flex-direction: column;
@@ -2307,6 +2321,8 @@
     position: relative;
     padding: 19px 0 17px 114px;
     color: $black;
+    max-height: 120px;
+    min-height: 120px;
     .profile--cover{
       display: inline-flex;
       max-width: 130px;
@@ -2396,6 +2412,14 @@
           fill: rgba($pink, .7)
         }
       }
+    }
+  }
+  &--guest{
+    .copy{
+      margin-bottom: 0;
+    }
+    .user-cover__profile-edit{
+      justify-content: center;
     }
   }
 }

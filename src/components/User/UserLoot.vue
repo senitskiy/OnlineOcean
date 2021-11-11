@@ -88,7 +88,7 @@ export default {
             value: 'random-box',
           },
         ],
-        allItems: [],
+        allItems: [3, 5, 1, 42, 64, 78, 4, 6],
         profileId: 4,
         searchInputPlaceholder: 'Search',
         image: 'https://i.ibb.co/TwJzdGg/user-ultra-big.jpg',
@@ -105,10 +105,9 @@ export default {
   },
   methods: {
     setType(value) {
-      console.log([value], this.userInfo.allItems)
-      this.data.currentItems = this.userInfo.allItems
-      // axios.get(`/getArts=${value}`)
-      //   .then(response => ( this.data.currentItems = response ))
+      this.data.currentItems = this.info.allItems
+      axios.get(`/getArts=${value}`)
+        .then(response => ( this.data.currentItems = response ))
     },
     search(value){
       axios.post('/getArts', { sort: value })

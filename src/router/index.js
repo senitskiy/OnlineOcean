@@ -9,6 +9,21 @@ import CreateSomething from '../views/CreateSomething.vue'
 import User from '../views/User.vue'
 import UserUnlogged from '../views/UserUnlogged.vue'
 
+function userRoute(from, to){
+  console.log(from, to)
+  if(to.params.username === localStorage.getItem('userUsername') && JSON.parse(localStorage.getItem('userConnected')) === true){
+    to.params.connected = true
+    to.params.own = true
+  }else if(to.params.username === localStorage.getItem('userUsername') && JSON.parse(localStorage.getItem('userConnected')) === false){
+    to.params.connected = false
+    to.params.own = true
+    router.push(to.href + '/unlogged')
+  }else{
+    to.params.connected = false
+    to.params.own = false
+  }
+}
+
 const routes = [
   {
     path: '/',
@@ -54,52 +69,14 @@ const routes = [
     path: '/user/:username',
     name: 'User',
     component: User,
-    beforeEnter: (to) => {
-      console.log([
-      localStorage.getItem('userUsername'),
-      JSON.parse(localStorage.getItem('userConnected'))
-      ])
-      if(to.params.username === localStorage.getItem('userUsername') && JSON.parse(localStorage.getItem('userConnected')) === true){
-        console.log(1)
-        to.params.connected = true
-        to.params.own = true
-      }else if(to.params.username === localStorage.getItem('userUsername') && JSON.parse(localStorage.getItem('userConnected')) === false){
-        console.log(2)
-        to.params.connected = false
-        to.params.own = true
-        router.push(to.href + '/unlogged')
-      }else{
-        console.log(3)
-        to.params.connected = false
-        to.params.own = false
-      }
-    },
-    beforeRouteUpdate: (to) => {
-      console.log([
-      localStorage.getItem('userUsername'),
-      JSON.parse(localStorage.getItem('userConnected'))
-      ])
-      if(to.params.username === localStorage.getItem('userUsername') && JSON.parse(localStorage.getItem('userConnected')) === true){
-        console.log(1)
-        to.params.connected = true
-        to.params.own = true
-      }else if(to.params.username === localStorage.getItem('userUsername') && JSON.parse(localStorage.getItem('userConnected')) === false){
-        console.log(2)
-        to.params.connected = false
-        to.params.own = true
-        router.push(to + '/unlogged')
-      }else{
-        console.log(3)
-        to.params.connected = false
-        to.params.own = false
-      }
-    },
+    props: true,
+    beforeEnter: userRoute,
+    beforeRouteUpdate: userRoute,
   },
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  props: true,
   routes
 })
 

@@ -41,16 +41,22 @@
       ></app-nots>
       <img src="@/assets/images/notify.svg" alt="">
     </button>
-    <router-link class="header__account-link"
+    <span class="header__account-link">
+      <app-profile
+      :userID='userInfo.username'
+      ></app-profile>
+    </span>
+    <!-- <router-link class="header__account-link"
     :to="'/user/' + userInfo.username"
     >
       <img :src="userInfo.image" alt="">
-    </router-link>
+    </router-link> -->
   </div>
 </template>
 
 <script>
 import AppInput from '@/components/App/AppInput.vue'
+import AppProfile from '@/components/App/AppProfile.vue'
 import AppNots from '@/components/App/AppNots.vue'
 import HeaderBlockchains from '@/components/Header/HeaderBlockchains.vue'
 
@@ -88,6 +94,7 @@ export default {
   },
   components: {
     AppInput,
+    AppProfile,
     AppNots,
     HeaderBlockchains,
   },

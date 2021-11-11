@@ -11,6 +11,7 @@
         <app-button
         :title='content.btnTitle'
         view='big'
+        @click='connectWallet()'
         ></app-button>
         <div class="user-connect__imgwrapper">
           <img src="@/assets/images/connect-graphic.png" alt="">
@@ -24,6 +25,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   data() {
     return {
@@ -33,6 +36,9 @@ export default {
         btnTitle: 'Connect wallet',
       },
     }
+  },
+  methods: {
+    ...mapMutations(['connectWallet'])
   },
 }
 </script>

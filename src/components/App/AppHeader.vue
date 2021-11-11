@@ -21,7 +21,7 @@
     >
       <header-content></header-content>
       <app-profile
-      :userId='22'
+      :userId='userInfo.username'
       ></app-profile>
       <header-blockchains></header-blockchains>
       <app-social></app-social>
@@ -35,6 +35,7 @@ import AppSocial from '@/components/App/AppSocial.vue'
 import AppProfile from '@/components/App/AppProfile.vue'
 import HeaderContent from '@/components/Header/HeaderContent.vue';
 import HeaderBlockchains from '@/components/Header/HeaderBlockchains.vue';
+
 import { mapGetters } from 'vuex';
 
 export default {

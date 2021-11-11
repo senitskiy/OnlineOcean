@@ -1,5 +1,7 @@
 <template>
-  <div class="user-cover">
+  <div class="user-cover"
+  :class='guestProfile'
+  >
     <div class="user-cover__change">
 
     </div>
@@ -10,31 +12,31 @@
       <div class="user-cover__inner">
         <div class="user-cover__profile">
           <app-profile
-          :userId='content.userId'
+          :userId='content.userName'
           view='cover'
           ></app-profile>
           <div class="user-cover__profile-col user-cover__profile-loot">
             <p class="user-cover__profile-username">
-              {{ userInfo.nickname }}
+              {{ content.userNickname }}
             </p>
             <ul class="user-cover__loot">
               <li class="user-cover__loot-item">
                 {{ content.userLootItemsLabel + ':'}}
                 <span>
-                  {{ userInfo.itemLength }}
+                  {{ content.userItemsLength }}
                 </span>
               </li>
               <li class="user-cover__loot-item">
                 {{ content.userLootBoxesLabel + ':'}}
                 <span>
-                  {{ userInfo.boxLength }}
+                  {{ content.userBoxLength }}
                 </span>
               </li>
             </ul>
           </div>
           <div class="user-cover__profile-col user-cover__profile-edit">
             <div class="user-cover__profile-copy copy"
-            @click='copyToken(userInfo.token)'
+            @click='copyToken(content.userToken)'
             >
               <input class="copy__input" type="text"
               :value='shortToken'
@@ -45,6 +47,7 @@
               </svg>
             </div>
             <app-button
+            v-if='this.$route.params.own'
             :title='content.btnTitle'
             view='lined'
             ></app-button>
@@ -68,7 +71,11 @@ export default {
         userLootItemsLabel: 'Items',
         userLootBoxesLabel: 'Boxes',
         coverImage: 'https://i.ibb.co/KjyXtpS/product-banner.jpg',
-        userId: 5,
+        userName: 'artstudio',
+        userNickname: 'Artstudio__451',
+        userToken: '4b73hghjk4ljh2jk3hy956',
+        userItemsLength: 153,
+        userBoxLength: 153,
       },
     }
   },
@@ -80,10 +87,13 @@ export default {
   computed: {
     ...mapGetters(['userInfo']),
     shortToken() {
-      let first = this.userInfo.token.slice(0, 4),
-          second = this.userInfo.token.slice(-4, this.userInfo.token.length);
+      let first = this.content.userToken.slice(0, 4),
+          second = this.content.userToken.slice(-4, this.content.userToken.length);
 
       return first + '...' + second
+    },
+    guestProfile(){
+      return this.$route.params.own ? '' : "user-cover--guest"
     }
   },
   components: {

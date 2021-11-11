@@ -11,6 +11,7 @@ const state = {
   user:{
     token: '',
     connected: false,
+    username: 'artstudio',
   }
 };
 

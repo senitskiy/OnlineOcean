@@ -169,6 +169,7 @@ export default {
           src: '',
         },
         prevImage: null,
+        loot: [],
       },
     }
   },
