@@ -15,7 +15,9 @@
       title='Art or Games'
       view='fill'
       >
-        <div class="filters__item-body">
+        <div class="filters__item-body"
+        id='filterOr'
+        >
           <app-input
           v-for='item in data.or'
           :key="item"
@@ -32,7 +34,9 @@
       title='Blockchain'
       view='fill'
       >
-        <div class="filters__item-body">
+        <div class="filters__item-body"
+        id='filterBlockchains'
+        >
           <div class="filters--limited">
             <app-input
             v-for='blockchain in allBlockchains'
@@ -55,6 +59,7 @@
       >
         <div class="filters__item-body filter-price"
         :class='prefilters.price.error.length > 0 ? "filter-price--disabled" : ""'
+        id='filterPrice'
         >
           <div class="filter-price__selectwrapper">
             <app-select
@@ -93,7 +98,9 @@
       title='Collections'
       view='fill'
       >
-        <div class="filters__item-body collections">
+        <div class="filters__item-body collections"
+        id='filterCollections'
+        >
           <app-input
           view='filter-collection'
           :placeholderText='data.collectionSearchPlaceholder'
@@ -127,7 +134,9 @@
       title='Categories'
       view='fill'
       >
-        <div class="filters__item-body">
+        <div class="filters__item-body"
+        id='filterCategories'
+        >
           <div class="filters--limited">
             <app-input
             v-for='category in data.categories'
@@ -147,7 +156,9 @@
       title='Rarity'
       view='checkmark'
       >
-        <div class="filters__item-body">
+        <div class="filters__item-body"
+        id='filterRarity'
+        >
           <div class="filters--limited">
             <app-input
             v-for='item in data.rarity'
@@ -479,6 +490,14 @@ export default {
         this.filters.price = currentFilters
       }
     },
+    clearSingleInput(input){
+
+      if (input.type === 'number'){
+        input.value = ''
+      }else{
+        input.checked = false
+      }
+    },
     clearAll(){
       let allTextInputs = document.querySelectorAll('.filters input:not([type=text])');
 
@@ -495,6 +514,32 @@ export default {
 
       this.filters = copiedFilters
       this.prefilters = copiedPrefilters
+    },
+    clearOption(id, needToDel){
+      let allInputs = document.querySelectorAll(`#${id} input:not([type=text])`)
+
+      for(let i = 0; i < allInputs.length; i++){
+        if(needToDel.value !== undefined){
+          console.log(1)
+          if(allInputs[i].value === needToDel.value){
+            if (allInputs[i].type === 'number'){
+              allInputs[i].value = '' 
+            }else{
+              allInputs[i].checked = false
+            }
+          }
+        }else if(allInputs[i].value == needToDel.id){
+          if (allInputs[i].type === 'number'){
+            allInputs[i].value = '' 
+          }else{
+            allInputs[i].checked = false
+          }
+        }
+      }
+
+      // console.log(1, needToDel)
+      // let needInput = allInputs.find(el => el === needToDel)
+      // console.log(needInput)
     },
   },
   computed: {

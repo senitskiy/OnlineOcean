@@ -78,12 +78,25 @@ export default {
       
       this.$refs.filters.clearAll()
     },
-    clearOption(value, parentArray){
+    clearOption(value, parentArray, parentName){
       console.log([parentArray, value])
-      let needToClear = this.currentFilters.find(obj => {
-        return obj.label === value.label
-      })
-      console.log(needToClear)
+
+      for(let key in this.currentFilters){
+        if(this.currentFilters[key] === parentArray){
+          let needValue = this.currentFilters[key].find(el => el === value),
+              index = this.currentFilters[key].indexOf(needValue)
+
+          this.currentFilters[key].splice(index, 1)
+          this.$refs.filters.clearOption(parentName, value)
+        }
+      }
+
+      // this.currentFilters.find()
+
+      // for(let i = 0; i < this.currentFilters.length; i++){
+      //   console.log(this.currentFilters[i])
+      // }
+      // console.log(needToClear)
       // this.currentFilters = parentArray.filter(function( obj ) {
       //   if(obj.id === undefined){
       //     return obj.value !== value.value;
