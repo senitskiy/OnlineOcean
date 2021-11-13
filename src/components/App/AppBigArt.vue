@@ -47,7 +47,7 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 
 import AppProfile from '@/components/App/AppProfile.vue';
 import AppLikes from '@/components/App/AppLikes.vue';
@@ -98,7 +98,7 @@ export default {
   methods:{
     loadCard(){
       // axios
-      //   .get('https://google.com')
+      //   .get('https://google.com&=artId')
       //   .then(function(response){
       //     this.content = response
       //   })
@@ -113,20 +113,23 @@ export default {
       this.charsView = false
     },
     toggleLike(){
+      // Убрать
       if(this.content.likes.status === false){
         this.content.likes.count++
       }else{
         this.content.likes.count--
       }
       this.content.likes.status = !this.content.likes.status
-
-      // axios.post('/like', this.content)
-      // .then(function (response) {
-      //   console.log(response);
-      // })
-      // .catch(function (error) {
-      //   console.log(error);
-      // });
+      axios.post('/favourite', this.artId)
+        .then(function () {
+          // Раскоментировать 
+          // if(this.content.likes.status === false){
+          //   this.content.likes.count++
+          // }else{
+          //   this.content.likes.count--
+          // }
+          // this.content.likes.status = !this.content.likes.status
+        })
     },
   },
   computed: {

@@ -178,9 +178,6 @@
         </div>
       </cataloge-filter-item>
     </ul>
-    {{ prefilters }}
-    <br><br>
-    {{ filters }}
   </aside>
 </template>
 
@@ -555,7 +552,6 @@ export default {
     filters:{
       handler(value){
         let equal = JSON.stringify(value) === JSON.stringify(this.defaultFilters)
-        console.log(equal)
         this.$emit('updatedFilters', value, equal)
       },
       deep: true

@@ -82,8 +82,6 @@ export default {
       this.$refs.filters.clearAll()
     },
     clearOption(value, parentArray, parentName){
-      console.log([parentArray, value])
-
       for(let key in this.currentFilters){
         if(this.currentFilters[key] === parentArray){
           if(parentArray.min !== undefined){
@@ -104,7 +102,6 @@ export default {
       }
     },
     changeLength(value){
-      console.log(value)
       this.itemsLength = value
     },
   },

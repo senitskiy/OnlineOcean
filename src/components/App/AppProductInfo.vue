@@ -220,16 +220,24 @@ export default {
         this.videoActive = false
       }
     },
-    // setLike(value){
-    //   this.info.likes.status = value.status
-    // },
     toggleLike(){
+      // Убрать
       if(this.info.likes.status === false){
         this.info.likes.count++
       }else{
         this.info.likes.count--
       }
       this.info.likes.status = !this.info.likes.status
+      // Раскоментировать
+      // axios.post('/favourite', this.$route.params.itemId)
+      //   .then(function (response) {
+      //     if(this.info.likes.status === false){
+      //       this.info.likes.count++
+      //     }else{
+      //       this.info.likes.count--
+      //     }
+      //       this.info.likes.status = !this.info.likes.status
+      //   })
     },
     toggleShare(){
       this.shareStatus = !this.shareStatus
