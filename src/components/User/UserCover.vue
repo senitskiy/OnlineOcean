@@ -6,37 +6,37 @@
 
     </div>
     <div class="user-cover__imgwrapper">
-      <img :src="content.coverImage" alt="">
+      <img :src="user.coverImage" alt="">
     </div>
     <div class="container">
       <div class="user-cover__inner">
         <div class="user-cover__profile">
           <app-profile
-          :userId='content.userName'
+          :userId='user.userName'
           view='cover'
           ></app-profile>
           <div class="user-cover__profile-col user-cover__profile-loot">
             <p class="user-cover__profile-username">
-              {{ content.userNickname }}
+              {{ user.userNickname }}
             </p>
             <ul class="user-cover__loot">
               <li class="user-cover__loot-item">
                 {{ content.userLootItemsLabel + ':'}}
                 <span>
-                  {{ content.userItemsLength }}
+                  {{ user.userItemsLength }}
                 </span>
               </li>
               <li class="user-cover__loot-item">
                 {{ content.userLootBoxesLabel + ':'}}
                 <span>
-                  {{ content.userBoxLength }}
+                  {{ user.userBoxLength }}
                 </span>
               </li>
             </ul>
           </div>
           <div class="user-cover__profile-col user-cover__profile-edit">
             <div class="user-cover__profile-copy copy"
-            @click='copyToken(content.userToken)'
+            @click='copyToken(user.userToken)'
             >
               <input class="copy__input" type="text"
               :value='shortToken'
@@ -48,10 +48,20 @@
             </div>
             <app-button
             v-if='this.$route.params.own'
-            :title='content.btnTitle'
+            :title='content.editBtnTitle'
             view='lined'
             ></app-button>
           </div>
+          <ul class="user-cover__socials">
+            <li class="user-cover__socials-item"
+            v-for='item in user.socials'
+            :key='item'
+            >
+              <a class="user-cover__socials-link" :href="item.href">
+                <img :src="showImage(item.type)" alt="">
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -64,37 +74,41 @@ import AppProfile from '@/components/App/AppProfile.vue';
 import { mapGetters } from 'vuex';
 
 export default {
-  data() {
-    return {
-      content:{
-        btnTitle: 'Edit profile',
-        userLootItemsLabel: 'Items',
-        userLootBoxesLabel: 'Boxes',
-        coverImage: 'https://i.ibb.co/KjyXtpS/product-banner.jpg',
-        userName: 'artstudio',
-        userNickname: 'Artstudio__451',
-        userToken: '4b73hghjk4ljh2jk3hy956',
-        userItemsLength: 153,
-        userBoxLength: 153,
-      },
-    }
+  props: {
+    content:{
+      type: Object,
+      required: true,
+    },
+    user: {
+      type: Object,
+      required: true,
+    },
   },
   methods: {
     copyToken(value) {
       navigator.clipboard.writeText(value);
-    }
+    },
+    showImage(value){
+      if(value === 'twitter'){
+        return 'https://drive.google.com/uc?id=1Yub9eIedn9voyd7MBURQTRFY_XbDkf_U'
+      }else if(value === 'instagram'){
+        return 'https://drive.google.com/uc?id=1wVYcLwFVzT2zJ88peQzkRKCen5_PKY_Y'
+      }else{
+        return 'https://drive.google.com/uc?id=1MPQf5IWtTtzJGOZXDyVmqoVZAkaK6zuF'
+      }
+    },
   },
   computed: {
     ...mapGetters(['userInfo']),
     shortToken() {
-      let first = this.content.userToken.slice(0, 4),
-          second = this.content.userToken.slice(-4, this.content.userToken.length);
+      let first = this.user.userToken.slice(0, 4),
+          second = this.user.userToken.slice(-4, this.user.userToken.length);
 
       return first + '...' + second
     },
     guestProfile(){
       return this.$route.params.own ? '' : "user-cover--guest"
-    }
+    },
   },
   components: {
     AppProfile,

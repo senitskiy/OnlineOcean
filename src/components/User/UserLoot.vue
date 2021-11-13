@@ -59,11 +59,19 @@ import axios from 'axios';
 import { mapGetters } from 'vuex';
 
 export default {
+  props: {
+    content:{
+      type: Object,
+      required: true,
+    },
+    user: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
       info:{
-        btnTextShow: 'Show more',
-        btnTextLess: 'Show less',
         filtersName: 'user-filters',
         filters:[
           {
@@ -128,7 +136,7 @@ export default {
       return this.data.showMore ? 'user-loot__items--more' : ''
     },
     lootBtn(){
-      return this.data.showMore ? this.info.btnTextLess : this.info.btnTextShow
+      return this.data.showMore ? this.content.itemsBtnTextLess : this.content.itemsBtnTextShow
     },
   },
   components: {

@@ -2417,6 +2417,26 @@
       }
     }
   }
+  &__socials{
+    display: flex;
+
+    position: absolute;
+    top: -56px;
+    right: 0;
+    height: 40px;
+  }
+  &__socials-item{
+    height: 100%;
+    & + &{
+      margin-left: 15px;
+    }
+  }
+  &__socials-link{
+    height: 100%;
+    img{
+      height: 100%;
+    }
+  }
   &--guest{
     .copy{
       margin-bottom: 0;

@@ -1082,6 +1082,11 @@
     max-width: unset;
   }
 
+  .user-cover__socials{
+    height: 32px;
+    top: -45px;
+  }
+
   // User
 
   // Cataloge
@@ -1418,6 +1423,10 @@
     .row__slide{
       max-width: 320px;
     }
+  }
+
+  .user-cover__profile{
+    max-height: unset;
   }
 
   // User
