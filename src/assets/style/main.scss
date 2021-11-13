@@ -712,6 +712,9 @@
     font-size: 16px;
     line-height: 19px;
     margin-bottom: 30px;
+    &--null{
+      margin-bottom: 0;
+    }
   }
   &__current-all{
     margin: 28px 0 16px;

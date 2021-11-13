@@ -406,7 +406,7 @@ export default {
     }
   },
   mounted () {
-    this.defaultFilters = this.currentFilters
+    this.defaultFilters = JSON.parse(JSON.stringify(this.filters))
     this.defaultPrefilters = JSON.parse(JSON.stringify(this.prefilters))
   },
   methods: {
@@ -498,6 +498,13 @@ export default {
         input.checked = false
       }
     },
+    clearPrefilters(){
+      let copiedPrefilters = JSON.parse(JSON.stringify(this.defaultPrefilters))
+      
+      this.prefilters = copiedPrefilters
+
+      this.filters.price = { "blockchain": { "label": "" }, "min": "", "max": "" }
+    },
     clearAll(){
       let allTextInputs = document.querySelectorAll('.filters input:not([type=text])');
 
@@ -509,18 +516,16 @@ export default {
         }
       }
 
-      let copiedFilters = JSON.parse(JSON.stringify(this.defaultFilters)),
-          copiedPrefilters = JSON.parse(JSON.stringify(this.defaultPrefilters))
-
+      let copiedFilters = JSON.parse(JSON.stringify(this.defaultFilters))
       this.filters = copiedFilters
-      this.prefilters = copiedPrefilters
+
+      this.clearPrefilters()
     },
     clearOption(id, needToDel){
       let allInputs = document.querySelectorAll(`#${id} input:not([type=text])`)
 
       for(let i = 0; i < allInputs.length; i++){
         if(needToDel.value !== undefined){
-          console.log(1)
           if(allInputs[i].value === needToDel.value){
             if (allInputs[i].type === 'number'){
               allInputs[i].value = '' 
@@ -534,12 +539,10 @@ export default {
           }else{
             allInputs[i].checked = false
           }
+        }else if(needToDel.blockchain.value === needToDel.blockchain.value){
+          allInputs[i].value = ''
         }
       }
-
-      // console.log(1, needToDel)
-      // let needInput = allInputs.find(el => el === needToDel)
-      // console.log(needInput)
     },
   },
   computed: {
@@ -551,10 +554,9 @@ export default {
   watch: {
     filters:{
       handler(value){
-        // if(value.or.length < 1){
-        //   value.or = 'all'
-        // }
-        this.$emit('updatedFilters', value)
+        let equal = JSON.stringify(value) === JSON.stringify(this.defaultFilters)
+        console.log(equal)
+        this.$emit('updatedFilters', value, equal)
       },
       deep: true
     },

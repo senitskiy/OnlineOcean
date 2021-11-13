@@ -14,6 +14,7 @@
         <cataloge-current-filters
         :itemsLength='itemsLength'
         :currentFilters='currentFilters'
+        :showClearBtn='showClearBtn'
         @clearAll='clearAll'
         @clearOption='clearOption'
         ></cataloge-current-filters>
@@ -49,6 +50,7 @@ export default {
         categories: [],
         rarity: [],
       },
+      showClearBtn: false,
       needClear: null,
       itemsLength: 0,
     }
@@ -70,8 +72,9 @@ export default {
     changeView() {
       this.showMoreCols = !this.showMoreCols
     },
-    setCurrentFilters(value){
+    setCurrentFilters(value, equal){
       this.currentFilters = value
+      this.showClearBtn = equal
     },
     clearAll(value){
       this.currentFilters = value
@@ -83,28 +86,22 @@ export default {
 
       for(let key in this.currentFilters){
         if(this.currentFilters[key] === parentArray){
-          let needValue = this.currentFilters[key].find(el => el === value),
-              index = this.currentFilters[key].indexOf(needValue)
+          if(parentArray.min !== undefined){
+            this.currentFilters[key].min = ''
+            this.currentFilters[key].max = ''
+            this.currentFilters[key].label = ''
 
-          this.currentFilters[key].splice(index, 1)
-          this.$refs.filters.clearOption(parentName, value)
+            this.$refs.filters.clearPrefilters()
+            this.$refs.filters.clearOption(parentName, value)
+          }else{
+            let needValue = this.currentFilters[key].find(el => el === value),
+                index = this.currentFilters[key].indexOf(needValue)
+  
+            this.currentFilters[key].splice(index, 1)
+            this.$refs.filters.clearOption(parentName, value)
+          }
         }
       }
-
-      // this.currentFilters.find()
-
-      // for(let i = 0; i < this.currentFilters.length; i++){
-      //   console.log(this.currentFilters[i])
-      // }
-      // console.log(needToClear)
-      // this.currentFilters = parentArray.filter(function( obj ) {
-      //   if(obj.id === undefined){
-      //     return obj.value !== value.value;
-      //   }else{
-      //     return obj.id !== value.id;
-      //   }
-      // });
-      // this.needClear = parentArray
     },
     changeLength(value){
       console.log(value)

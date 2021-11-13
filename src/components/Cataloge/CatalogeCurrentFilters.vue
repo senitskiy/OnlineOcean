@@ -1,5 +1,7 @@
 <template>
-  <div class="cataloge__current">
+  <div class="cataloge__current"
+  :class='catalogeCurrentState'
+  >
     <p class="cataloge__current-all">
       {{ itemsLength + allItemsLabel }}
     </p>
@@ -24,7 +26,7 @@
       </button>
       <button class="cataloge__current-filter current-filter-price btn-clear"
       v-if='currentFilters.price.blockchain.label.length > 0'
-      @click='clearOption(item, currentFilters.blockchain, "filterPrice")'
+      @click='clearOption(this.currentFilters.price, this.currentFilters.price, "filterPrice")'
       >
         <img class='current-filter-price__img' :src="currentFilters.price.blockchain.image">
         {{ priceInfo }}
@@ -58,16 +60,11 @@
       </button>
       <button class="cataloge__current-reset btn-clear"
       @click='clearAll()'
-      v-if='showClearButton'
+      v-if='!showClearBtn'
       >
         Clear All
       </button>
-      {{ showClearButton }}
     </div>
-    {{ defaultFiltersObject }}
-    <br>
-    <br>
-    {{ currentFilters }}
   </div>
 </template>
 
@@ -84,6 +81,9 @@ export default {
       type: Number,
       required: true,
     },
+    showClearBtn:{
+      type: Boolean,
+    }
   },
   data() {
     return {
@@ -92,7 +92,7 @@ export default {
     }
   },
   mounted () {
-    this.defaultFiltersObject = this.currentFilters
+    this.defaultFiltersObject = JSON.parse(JSON.stringify(this.currentFilters))
   },
   methods: {
     clearAll() {
@@ -124,9 +124,8 @@ export default {
       }
       return currPrice.blockchain.label + ': ' + addactiveInfo
     },
-    showClearButton(){
-      let result = this.currentFilters === JSON.parse(JSON.stringify(this.defaultFiltersObject))
-      return !result
+    catalogeCurrentState(){
+      return this.showClearBtn ? 'cataloge__current--null' : ''
     },
   },
 }
