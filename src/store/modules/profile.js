@@ -30,7 +30,6 @@ const mutations = {
     //   })
     localStorage.setItem('userConnected', true)
     localStorage.setItem('userUsername', state.user.username)
-    console.log([13, localStorage.getItem('userConnected')])
   },
   connectWallet(state){
     state.user.token = '4b73hghjk4ljh2jk3hy956'

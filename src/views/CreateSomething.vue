@@ -95,8 +95,7 @@
                 :title='info.uploadBtnTitle'
                 ></app-button>
                 <input type="file"
-                @click.stop
-                @click='saveCurrent()'
+                @click.stop='saveCurrent()'
                 @change='loadCover($event)'
                 >
               </label>

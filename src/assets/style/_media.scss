@@ -156,6 +156,15 @@
   }
 
   // Cataloge
+
+  // User
+
+  .user-cover__change{
+    top: 15px;
+    right: 15px;
+  }
+
+  // User
 }
 
 @media (max-width: 1100px){
@@ -1087,6 +1096,11 @@
     top: -45px;
   }
 
+  .user-cover__change{
+    top: 10px;
+    right: 10px;
+  }
+
   // User
 
   // Cataloge
@@ -1468,6 +1482,13 @@
 
   .user-connect__imgwrapper{
     max-width: 120px;
+  }
+
+  .user-cover__change{
+    font-size: 12px;
+    line-height: 15px;
+    height: 35px;
+    padding: 0 18px;
   }
 
   // User

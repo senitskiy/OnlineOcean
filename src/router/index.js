@@ -11,15 +11,15 @@ import UserUnlogged from '../views/UserUnlogged.vue'
 
 function userRoute(to){
   if(to.params.username === localStorage.getItem('userUsername') && JSON.parse(localStorage.getItem('userConnected')) === true){
-    to.params.connected = true
-    to.params.own = true
+    to.params.userConnected = true
+    to.params.userOwn = true
   }else if(to.params.username === localStorage.getItem('userUsername') && JSON.parse(localStorage.getItem('userConnected')) === false){
-    to.params.connected = false
-    to.params.own = true
+    to.params.userConnected = false
+    to.params.userOwn = true
     router.push(to.href + '/unlogged')
   }else{
-    to.params.connected = false
-    to.params.own = false
+    to.params.userConnected = false
+    to.params.userOwn = false
   }
 }
 

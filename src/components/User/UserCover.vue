@@ -2,11 +2,17 @@
   <div class="user-cover"
   :class='guestProfile'
   >
-    <div class="user-cover__change">
-
+    <div class="user-cover__change"
+    v-if='this.$route.params.userOwn'
+    >
+      {{ content.changeBackgroundBtn }}
+      <input type="file"
+      @click='saveCurrent()'
+      @change='loadCover($event)'
+      >
     </div>
     <div class="user-cover__imgwrapper">
-      <img :src="user.coverImage" alt="">
+      <img :src="user.coverImage.src" alt="">
     </div>
     <div class="container">
       <div class="user-cover__inner">
@@ -47,7 +53,7 @@
               </svg>
             </div>
             <app-button
-            v-if='this.$route.params.own'
+            v-if='this.$route.params.userOwn'
             :title='content.editBtnTitle'
             view='lined'
             ></app-button>
@@ -84,6 +90,14 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      preCoverImage: null,
+      currImage: {
+        src: '',
+      },
+    }
+  },
   methods: {
     copyToken(value) {
       navigator.clipboard.writeText(value);
@@ -97,6 +111,18 @@ export default {
         return 'https://drive.google.com/uc?id=1MPQf5IWtTtzJGOZXDyVmqoVZAkaK6zuF'
       }
     },
+    loadCover(event){
+      if (event.srcElement.files.length !== 0){
+        this.currImage = event.target.files[0]
+        this.currImage.src = URL.createObjectURL(this.currImage);
+        this.$emit('changedCover', this.currImage)
+      } else{
+        this.currImage = this.preCoverImage
+      }
+    },
+    saveCurrent(){
+      this.preCoverImage = this.currImage
+    },
   },
   computed: {
     ...mapGetters(['userInfo']),
@@ -107,7 +133,7 @@ export default {
       return first + '...' + second
     },
     guestProfile(){
-      return this.$route.params.own ? '' : "user-cover--guest"
+      return this.$route.params.userOwn ? '' : "user-cover--guest"
     },
   },
   components: {
