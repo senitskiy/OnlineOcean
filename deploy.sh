@@ -10,6 +10,6 @@ git init
 git add -A
 git commit -m 'New deployment'
 
-git push -f git@github.com:OnlineOcen/OnlineOcean.git main:gh-pages
+git push -f git@github.com:OnlineOcen/OnlineOcean.git front:gh-pages
 
 cd -
