@@ -9,6 +9,6 @@ chainWebpack: (config) => {
   })
 }
 
-module.exports = {
-  publicPath: '/OnlineOcean/'
-}
+// module.exports = {
+//   publicPath: '/OnlineOcean/'
+// }
