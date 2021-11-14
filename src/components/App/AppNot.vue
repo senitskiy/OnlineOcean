@@ -11,7 +11,7 @@
         {{ name }}
       </p>
       <p class="nots__text">
-        {{ shortText }}
+        {{ text }}
       </p>
     </span>
   </router-link>
@@ -29,11 +29,6 @@ export default {
     text: {
       type: String,
       required: true,
-    },
-  },
-  computed: {
-    shortText() {
-      return this.text.substring(0, 60) + '...'
     },
   },
   components: {
