@@ -8,3 +8,7 @@ chainWebpack: (config) => {
        return args;
   })
 }
+
+module.exports = {
+  publicPath: '/OnlineOcean/'
+}
