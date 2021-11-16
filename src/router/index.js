@@ -16,7 +16,7 @@ function userRoute(to){
   }else if(to.params.username === localStorage.getItem('userUsername') && JSON.parse(localStorage.getItem('userConnected')) === false){
     to.params.userConnected = false
     to.params.userOwn = true
-    router.push(to.href + '/unlogged')
+    router.push(to.fullPath + '/unlogged')
   }else{
     to.params.userConnected = false
     to.params.userOwn = false

@@ -50,7 +50,7 @@ export default {
         categories: [],
         rarity: [],
       },
-      showClearBtn: false,
+      showClearBtn: true,
       needClear: null,
       itemsLength: 0,
     }
