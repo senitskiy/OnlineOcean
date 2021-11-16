@@ -64,16 +64,6 @@
                 </span>
               </p>
             </div>
-            <div class="create-modal__info-classification">
-              <app-input
-              descr='List of classifications'
-              placeholderText='Legendary, Perfect, Epic, Rare'
-              view='lined'
-              ></app-input>
-              <p class="create-modal__text">
-                Displays a list of loaded classifications
-              </p>
-            </div>
           </div>
           <div class="create-modal__preview"
           :class='isEdit ? "" : "create-modal__preview--preview"'

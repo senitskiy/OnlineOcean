@@ -461,6 +461,10 @@
     grid-template-columns: repeat(5, 1fr);
   }
 
+  .create-chars__row{
+    grid-template-columns: minmax(max-content, 200px) 140px 1fr 1fr minmax(30px, 30px);
+  }
+
   // Create
 }
 
@@ -650,6 +654,14 @@
     .slider-target{
       max-width: 80%;
     }
+  }
+
+  .create-chars__row{
+    grid-template-columns: minmax(max-content, 175px) 130px 1fr 150px minmax(30px, 30px);
+  }
+
+  .create-chars__name{
+    max-width: 175px;
   }
 
   .box-loot__items{
@@ -943,8 +955,12 @@
   }
 
   .create-chars__row{
-    grid-template-columns: 125px 100px 135px 150px 150px 30px;
+    grid-template-columns: minmax(max-content, 155px) 130px 1fr 160px minmax(30px, 30px);
     min-width: 735px;
+  }
+
+  .create-chars__name{
+    max-width: 155px;
   }
 
   .create-chars__probability .slider-target {

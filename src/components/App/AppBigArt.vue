@@ -9,7 +9,7 @@
     <span class="row__slide-top row-top">
       <span class="row-top__left">
         <p class="row__slide-title">
-          {{ content.title }}
+          {{ custom ? custom.name : content.title }}
         </p>
         <p class="row__slide-owner">{{ pretitle.owner }} {{ custom ? custom.owner : content.owner }}</p>
       </span>
@@ -40,11 +40,6 @@
       view='slider'
       ></app-profile>
     </span>
-    <app-chars
-    :chars='content.chars'
-    ref='chars'
-    :viewStyle='charsView'
-    ></app-chars>
   </router-link>
 </template>
 

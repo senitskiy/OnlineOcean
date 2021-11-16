@@ -433,8 +433,8 @@
     justify-content: space-between;
     align-items: center;
     .likes{
-      min-width: 100%;
       margin-left: 5px;
+      text-align: right;
     }
   }
   &-top__left{
@@ -1745,7 +1745,7 @@
   }
   &__info{
     display: flex;
-    margin-bottom: 45px;
+    margin-bottom: 55px;
   }
   &__content{
     max-width: 375px;
@@ -2142,7 +2142,7 @@
   margin-bottom: 49px;
   &__row{
     display: grid;
-    grid-template-columns: minmax(max-content, 125px) minmax(91px, 91px) 1fr 1fr 1fr minmax(30px, 30px);
+    grid-template-columns: minmax(max-content, 200px) 180px 1fr 1fr minmax(30px, 30px);
     position: relative;
     color: #7B7B7B;
     padding: 16px 73px 17px 20px;
@@ -2183,7 +2183,7 @@
     }
   }
   &__name{
-    max-width: 120px;
+    max-width: 195px;
   }
   &__name-text{
     white-space: nowrap;

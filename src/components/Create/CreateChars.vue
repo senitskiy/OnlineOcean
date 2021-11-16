@@ -9,9 +9,6 @@
           {{ row.name }}
         </p>
       </div>
-      <div class="create-chars__col create-chars__classification">
-        {{ row.classification }}
-      </div>
       <div class="create-chars__col create-chars__amount">
         <app-input
         v-if='!row.first'
@@ -73,7 +70,6 @@ export default {
         {
           first: true,
           name: 'name',
-          classification: 'classification',
           amount: 'amount',
           probability: 'probability',
           price: 'price',
@@ -81,7 +77,6 @@ export default {
         },
         {
           name: 'Book Knight Art 3d kek uo9',
-          classification: 'Legendary',
           amount: 335,
           probability: 25,
           price: '20.034 ETH',
@@ -89,7 +84,6 @@ export default {
         },
         {
           name: 'Sword',
-          classification: 'Epic',
           amount: 27,
           probability: 60,
           price: '0.0345 ETH',
@@ -97,7 +91,6 @@ export default {
         },
         {
           name: 'Sword',
-          classification: 'Epic',
           amount: 257,
           probability: 8,
           price: '0.0345 ETH',
@@ -105,7 +98,6 @@ export default {
         },
         {
           name: 'Sword',
-          classification: 'Epic',
           amount: 257,
           probability: 7,
           price: '0.0345 ETH',
