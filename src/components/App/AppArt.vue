@@ -7,6 +7,10 @@
     <slot></slot>
     <span class="art__imgwrapper">
       <img src="@/assets/images/temp/art-1.jpg" alt="">
+      <app-button
+      @click.prevent
+      :title='art.buyTitle'
+      ></app-button>
       <span class="art__price">
         {{ art.price }}
       </span>
@@ -57,6 +61,7 @@ export default {
         dateOfCreate: moment('2021-10-21T22:53:30'),
         todayDate: moment(),
         rarity: 'common', // common, epic, rare, legendary
+        buyTitle: 'Buy now',
         chars:{
           amount: '126',
           probability: '8%',

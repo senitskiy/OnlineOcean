@@ -20,6 +20,9 @@
     </span>
     <span class="row__slide-imgwrapper">
       <img class='row__slide-img' :src="custom ? custom.image.src : require('@/assets/images/temp/slide-1.jpg')" alt="" />
+      <app-button
+      :title='content.buyTitle'
+      ></app-button>
       <slot></slot>
     </span>
     <span class="row__slide-bottom row-bottom">
@@ -75,6 +78,7 @@ export default {
         title: 'Abstract 3D work content more than ever',
         owner: 'artstudio',
         bid: '0.034 ETH',
+        buyTitle: 'Buy now',
         likes:{
           count: 131,
           status: false,

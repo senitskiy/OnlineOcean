@@ -401,6 +401,16 @@
     width: 100%;
     position: relative;
     min-width: 0;
+    &:hover{
+      .row__slide-imgwrapper{
+        &:after{
+          background-color: rgba(1, 1, 1, .3);
+        }
+        .btn{
+          opacity: 1;
+        }
+      }
+    }
   }
   &__slide-title{
     font-size: 16px;
@@ -433,10 +443,32 @@
     display: block;
     margin: 13px 0 12px;
     width: 100%;
+    position: relative;
     img{
       width: 100%;
       height: 100%;
       border-radius: 15px;
+    }
+    &:after{
+      content: '';
+      position: absolute;
+      border-radius: 15px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(1, 1, 1, 0);
+      transition: all .2s;
+    }
+    .btn{
+      position: absolute;
+      padding: 0 15px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      z-index: 2;
+      transition: all .3s;
     }
   }
   &__slide-bid{
@@ -1341,10 +1373,32 @@
     position: relative;
     border-radius: 15px;
     width: 100%;
+    &:after{
+      content: '';
+      position: absolute;
+      border-radius: 15px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(1, 1, 1, 0);
+      transition: all .2s;
+    }
     img{
       border-radius: 15px;
       width: 100%;
       height: 100%;
+    }
+    .btn{
+      padding: 0 15px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 2;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      opacity: 0;
+      transition: all .3s;
     }
   }
   &__price{
@@ -1356,6 +1410,17 @@
     border-radius: 15px;
     font-weight: 700;
     color: #fff;
+    &:after{
+      content: '';
+      position: absolute;
+      border-radius: 15px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(1, 1, 1, 0);
+      transition: all .2s;
+    }
   }
   &__descr{
     font-size: 18px;
@@ -1443,8 +1508,17 @@
     }
   }
   &:hover{
-    transform: translateY(-9px);
+    // transform: translateY(-9px);
     z-index: 1;
+    .art__imgwrapper,
+    .art__price{
+      &:after{
+        background-color: rgba(1, 1, 1, .3);
+      }
+      .btn{
+        opacity: 1;
+      }
+    }
   }
   &--common{
     .profile__name{
