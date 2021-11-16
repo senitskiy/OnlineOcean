@@ -1,8 +1,6 @@
 <template>
   <router-link class="row__slide" :to='"/art/" + this.artId'
   :class='[likeState]'
-  @mouseover='showChars()'
-  @mouseleave="hideChars()"
   >
     <span class="row__slide-blocker"
     v-if='isActive !== true'
@@ -51,7 +49,6 @@ import axios from 'axios';
 
 import AppProfile from '@/components/App/AppProfile.vue';
 import AppLikes from '@/components/App/AppLikes.vue';
-import AppChars from '@/components/App/AppChars.vue';
 
 export default {
   props: {
@@ -89,7 +86,6 @@ export default {
         },
       },
       liked: false,
-      charsView: false,
     }
   },
   mounted () {
@@ -105,12 +101,6 @@ export default {
     },
     toggleFavourite(){
       this.liked = !this.liked
-    },
-    showChars() {
-      this.charsView = true
-    },
-    hideChars(){
-      this.charsView = false
     },
     toggleLike(){
       // Убрать
@@ -136,25 +126,10 @@ export default {
     likeState() {
       return this.liked ? "row__slide--active" : ""
     },
-    itemName(){
-      let needString = ''
-      if (this.custom){
-        needString = this.custom.name
-      } else{
-        needString = this.content.title
-      }
-
-      if(needString.length <= 17){
-        return needString
-      } else{
-        return needString.substring(0, 17) + '...'
-      }
-    },
   },
   components: {
     AppProfile,
     AppLikes,
-    AppChars,
   },
 };
 </script>

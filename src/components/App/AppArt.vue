@@ -24,17 +24,11 @@
         {{ art.descr }}
       </span>
     </span>
-    <app-chars
-    :chars='art.chars'
-    ref='chars'
-    :viewStyle='charsView'
-    ></app-chars>
   </router-link>
 </template>
 
 <script>
 import AppProfile from '@/components/App/AppProfile.vue';
-import AppChars from '@/components/App/AppChars.vue';
 
 import moment from 'moment'
 
@@ -96,7 +90,6 @@ export default {
   },
   components: {
     AppProfile,
-    AppChars,
   },
 }
 </script>

@@ -115,15 +115,7 @@ export default {
     }
   },
   mounted () {
-    this.onResize()
     // this.getItems()
-    window.addEventListener('resize', this.onResize);
-    setTimeout(() => {
-      this.setHeight()
-    }, 1)
-  },
-  beforeUnmounted() { 
-    window.removeEventListener('resize', this.onResize); 
   },
   computed: {
     fireStatus() {
@@ -137,18 +129,6 @@ export default {
     //       this.items = response
     //     })
     // },
-    onResize() {
-      this.windowWidth = window.innerWidth
-      this.setHeight()
-    },
-    setHeight() {
-      let trackHeight = this.$refs.splide.$el.clientHeight
-
-      let splide = document.querySelectorAll('.splide')
-      for (let i = 0; i < splide.length; i++){
-        splide[i].style.height = trackHeight + 'px'
-      }
-    },
     increaseIndex(){
       this.$refs.parentRow.classList.add('row--hover')
     },

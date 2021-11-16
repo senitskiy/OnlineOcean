@@ -195,14 +195,6 @@
 
   // Global
 
-  // Index
-
-  .row .splide__slide{
-    padding-bottom: 185px;
-  }
-
-  // Index
-
   // Cataloge
 
   .cataloge__wrapper--more{
@@ -409,25 +401,6 @@
 }
 
 @media (max-width: 950px){
-  // Index
-
-  .row .splide__slide{
-    padding-bottom: 225px;
-  }
-
-  .row .splide__slide.is-next + .splide__slide{
-    .art__chars{
-      right: 20px;
-      left: unset;
-      transform: unset;
-    }
-    .art__transfericon{
-      margin: -40px 5px 0 auto;
-    }
-  }
-
-  // Index
-
   // Product
 
   .product-cover {
@@ -740,10 +713,6 @@
     }
   }
 
-  .row .splide__slide{
-    padding-bottom: 200px;
-  }
-
   // Index
 
   // User
@@ -925,13 +894,6 @@
     font-size: 30px;
     line-height: 36px;
     margin-bottom: 25px;
-  }
-
-  .row .splide__slide{
-    padding-bottom: 0;
-    .art__chars{
-      display: none;
-    }
   }
 
   .row__slide-imgwrapper{
