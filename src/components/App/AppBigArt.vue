@@ -22,6 +22,7 @@
       <img class='row__slide-img' :src="custom ? custom.image.src : require('@/assets/images/temp/slide-1.jpg')" alt="" />
       <app-button
       :title='content.buyTitle'
+      view='art-hover'
       ></app-button>
       <slot></slot>
     </span>

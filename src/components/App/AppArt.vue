@@ -10,6 +10,7 @@
       <app-button
       @click.prevent
       :title='art.buyTitle'
+      view='art-hover'
       ></app-button>
       <span class="art__price">
         {{ art.price }}

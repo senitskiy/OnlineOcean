@@ -406,8 +406,10 @@
         &:after{
           background-color: rgba(1, 1, 1, .3);
         }
-        .btn{
+        .btn--art-hover{
           opacity: 1;
+          background-color: $pink;
+          color: #fff;
         }
       }
     }
@@ -460,7 +462,7 @@
       background-color: rgba(1, 1, 1, 0);
       transition: all .2s;
     }
-    .btn{
+    .btn--art-hover{
       position: absolute;
       padding: 0 15px;
       top: 50%;
@@ -1389,8 +1391,10 @@
       width: 100%;
       height: 100%;
     }
-    .btn{
+    .btn--art-hover{
       padding: 0 15px;
+      background-color: $pink;
+      color: #fff;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -1515,7 +1519,7 @@
       &:after{
         background-color: rgba(1, 1, 1, .3);
       }
-      .btn{
+      .btn--art-hover{
         opacity: 1;
       }
     }
@@ -1846,6 +1850,9 @@
     position: relative;
     max-width: 350px;
     width: 100%;
+    .btn--art-hover{
+      display: none;
+    }
     .row__slide{
       box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
       padding: 34px 21px 36px;
@@ -1886,6 +1893,9 @@
       position: relative;
       max-height: 310px;
       min-height: 300px;
+      &:after{
+        display: none;
+      }
       img{
         opacity: 0;
         max-height: 310px;
