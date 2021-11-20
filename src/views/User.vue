@@ -63,6 +63,10 @@ export default {
             href: 'https://twitter.com/home',
             type: 'telegram',
           },
+          {
+            href: 'https://twitter.com/home',
+            type: 'facebook',
+          },
         ],
       },
     }

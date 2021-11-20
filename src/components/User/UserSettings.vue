@@ -17,30 +17,63 @@
               :descr='content.nameLabel'
               :placeholderText='content.namePlaceholder'
               :inputRequired='true'
+              v-model='data.name'
               ></app-input>
               <app-input
               :descr='content.nicknameLabel'
               :placeholderText='content.nicknamePlaceholder'
               :inputRequired='true'
+              v-model='data.nickname'
               ></app-input>
               <app-input
               :descr='content.emailLabel'
               :placeholderText='content.emailPlaceholder'
               :inputRequired='true'
+              type='email'
+              v-model='data.email'
               ></app-input>
               <app-input
               :descr='content.descrLabel'
               :placeholderText='content.descrPlaceholder'
               textarea
+              v-model='data.descr'
               ></app-input>
             </ul>
-            <ul class="settings__list settings__list--info">
+            <ul class="settings__list settings__list--info settings-upload">
               <li class="settings__list-item">
                 <p class="settings__list-label">
                   {{ content.designLabel }}
                 </p>
-                <app-upload></app-upload>
-                <app-upload></app-upload>
+                <app-upload
+                @uploaded='setLogo'
+                >
+                  <div class="settings-upload">
+                    <p class="settings-upload__label">
+                      {{ content.avatarPlaceholder }}
+                    </p>
+                    <div class="settings-upload__btn">
+                      <img src="@/assets/images/add.svg" alt="">
+                    </div>
+                    <p class="settings-upload__size">
+                      512x512
+                    </p>
+                  </div>
+                </app-upload>
+                <app-upload
+                @uploaded='setCover'
+                >
+                  <div class="settings-upload">
+                    <p class="settings-upload__label">
+                      {{ content.bannerPlaceholder }}
+                    </p>
+                    <div class="settings-upload__btn">
+                      <img src="@/assets/images/add.svg" alt="">
+                    </div>
+                    <p class="settings-upload__size">
+                      1920x300
+                    </p>
+                  </div>
+                </app-upload>
               </li>
               <li class="settings__list-item">
                 <p class="settings__list-label">
@@ -48,13 +81,28 @@
                 </p>
                 <app-input
                 placeholderText='https://twitter.com/elonmusk'
-                ></app-input>
+                v-model='data.socials[0].href'
+                >
+                  <img class='settings__list-logo' src="https://drive.google.com/uc?id=1Yub9eIedn9voyd7MBURQTRFY_XbDkf_U" alt="">
+                </app-input>
                 <app-input
-                placeholderText='https://www.instagram.com/elonrmuskk/'
-                ></app-input>
+                placeholderText='https://instagram.com/elonrmuskk/'
+                v-model='data.socials[1].href'
+                >
+                  <img class='settings__list-logo' src="https://drive.google.com/uc?id=1wVYcLwFVzT2zJ88peQzkRKCen5_PKY_Y" alt="">
+                </app-input>
                 <app-input
-                placeholderText='https://www.facebook.com/TheElonmusk/'
-                ></app-input>
+                placeholderText='https://t.me/elon_mask'
+                v-model='data.socials[2].href'
+                >
+                  <img class='settings__list-logo' src="https://drive.google.com/uc?id=1MPQf5IWtTtzJGOZXDyVmqoVZAkaK6zuF" alt="">
+                </app-input>
+                <app-input
+                placeholderText='https://facebook.com/TheElonmusk/'
+                v-model='data.socials[2].href'
+                >
+                  <img class='settings__list-logo' src="https://drive.google.com/uc?export=view&id=1IdcobFjL9FGV-cZfKRRv675X-CbWk3w1" alt="">
+                </app-input>
               </li>
             </ul>
             <div class="settings__buttonwrapper">
@@ -64,6 +112,7 @@
               ></app-button>
             </div>
           </form>
+          {{ data }}
         </div>
       </div>
     </div>
@@ -106,9 +155,45 @@ export default {
         bannerPlaceholder: 'banner',
         saveBtn: 'Save settings',
       },
+      data:{
+        name: '',
+        nickname: '',
+        email: '',
+        descr: '',
+        logo: {
+          src: '',
+        },
+        cover: {
+          src: '',
+        },
+        socials:[
+          {
+            href: '',
+            type: 'twitter',
+          },
+          {
+            href: '',
+            type: 'instagram',
+          },
+          {
+            href: '',
+            type: 'telegram',
+          },
+          {
+            href: '',
+            type: 'facebook',
+          },
+        ],
+      },
     }
   },
   methods: {
+    setLogo(value){
+      this.data.logo = value
+    },
+    setCover(value){
+      this.data.cover = value
+    },
     saveSettings() {
       
     }

@@ -1951,6 +1951,7 @@
         left: 0;
         opacity: 0;
         cursor: pointer;
+        pointer-events: all;
       }
     }
     &--preview{
@@ -2710,6 +2711,7 @@
   }
   .label{
     display: block;
+    position: relative;
   }
   .label + .label{
     margin-top: 29px;
@@ -2734,14 +2736,6 @@
       color: #A9A8A8;
     }
   }
-  .input:focus{
-    background: rgba(#EA4C89, 0.15);
-    border-color: #EA4C89;
-    outline: none;
-    &::placeholder{
-      color: $black;
-    }
-  }
   &__list{
     max-width: 350px;
     width: 100%;
@@ -2757,6 +2751,17 @@
         padding-left: 64px;
       }
     }
+  }
+  &__list-item + &__list-item{
+    margin-top: 22px;
+  }
+  &__list-logo{
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%)
   }
 }
 

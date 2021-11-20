@@ -19,7 +19,7 @@
   </label>
 
   <label class="label"
-  v-if='checkbox'
+  v-else-if='checkbox'
   :class='verifiedView'
   >
     <input class='checkbox' type='checkbox'
@@ -34,18 +34,16 @@
   </label>
 
   <label class="label"
-  v-if='textarea'
-  :class='inputRequired ? "label--required" : ""'
+  v-else-if='textarea'
   >
     <p class="label-text">
       {{ descr }}
     </p>
     <input class='input textarea' 
-    v-model="inputValue"
-    :type="type"
     :placeholder="placeholderText"
     :class='view ? viewStyle : ""'
     @input='typedText()'
+    :value='modelValue'
     ref='input'
     >
   </label>
@@ -57,11 +55,14 @@
     <p class="label-text">
       {{ descr }} 
     </p>
+    <slot></slot>
     <input class='input' 
-    v-model="inputValue"
     :placeholder="placeholderText"
     :class='view ? viewStyle : ""'
-    @input='typedText()'
+    :type="type"
+    @input='typedText'
+    :value='modelValue'
+    :required='inputRequired'
     ref='input'
     >
   </label>
@@ -70,6 +71,9 @@
 <script>
 export default {
   props: {
+    modelValue:{
+
+    },
     inputRequired: {
       type: Boolean,
       default: false,
@@ -138,8 +142,14 @@ export default {
     }
   },
   methods: {
-    typedText() {
-      this.$emit('typed', this.inputValue)
+    typedText(event) {
+      // New way
+      this.$emit('update:modelValue', event.target.value)
+
+      // Old way
+      // this.$emit(this.$refs.input.value)
+      // this.$emit('typed', this.inputValue)
+
     },
     toggledCheckbox(){
       this.$emit('choosed', this.checkboxValue)

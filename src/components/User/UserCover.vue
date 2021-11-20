@@ -107,6 +107,8 @@ export default {
         return 'https://drive.google.com/uc?id=1Yub9eIedn9voyd7MBURQTRFY_XbDkf_U'
       }else if(value === 'instagram'){
         return 'https://drive.google.com/uc?id=1wVYcLwFVzT2zJ88peQzkRKCen5_PKY_Y'
+      }else if(value === 'facebook'){
+        return 'https://drive.google.com/uc?export=view&id=1IdcobFjL9FGV-cZfKRRv675X-CbWk3w1'
       }else{
         return 'https://drive.google.com/uc?id=1MPQf5IWtTtzJGOZXDyVmqoVZAkaK6zuF'
       }

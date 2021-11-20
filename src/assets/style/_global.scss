@@ -201,6 +201,14 @@ menu{
     font-family: "Acrom", sans-serif;
     font-weight: 400;
   }
+  &:focus{
+    background: rgba(#EA4C89, 0.15);
+    border-color: #EA4C89;
+    outline: none;
+    &::placeholder{
+      color: $black;
+    }
+  }
 }
 
 .profile{
@@ -368,6 +376,28 @@ menu{
   font-weight: 700;
   .input{
     width: 100%;
+  }
+  &--required{
+    .label-text{
+      position: relative;
+      padding-right: 13px;
+      display: inline-block;
+      &::after{
+        content: '*';
+        position: absolute;
+        right: 0;
+        top: 2px;
+        color: #EA7373;
+      }
+    }
+  }
+}
+
+.upload{
+  input{
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
   }
 }
 
