@@ -445,6 +445,10 @@
     display: block;
     margin: 13px 0 12px;
     width: 100%;
+    max-width: 222px;
+    width: 100%;
+    max-height: 222px;
+    height: 100%;
     position: relative;
     img{
       width: 100%;
@@ -2630,8 +2634,8 @@
     grid-template-columns: repeat(4, 1fr);
   }
   .row__slide{
-    &:hover{
-      z-index: 2;
+    .btn{
+      display: unset;
     }
   }
   .btn{
