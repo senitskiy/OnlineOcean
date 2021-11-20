@@ -9,6 +9,7 @@
     :name='checkboxName'
     :checked='checkboxChecked'
     @change='toggledCheckbox()'
+    :required='inputRequired'
     >
     <slot></slot>
     <span class='label-text'>
@@ -18,7 +19,7 @@
   </label>
 
   <label class="label"
-  v-else-if='checkbox'
+  v-if='checkbox'
   :class='verifiedView'
   >
     <input class='checkbox' type='checkbox'
@@ -33,12 +34,31 @@
   </label>
 
   <label class="label"
-  v-else
+  v-if='textarea'
+  :class='inputRequired ? "label--required" : ""'
   >
-    {{ descr }}
-    <input class='input' 
+    <p class="label-text">
+      {{ descr }}
+    </p>
+    <input class='input textarea' 
     v-model="inputValue"
     :type="type"
+    :placeholder="placeholderText"
+    :class='view ? viewStyle : ""'
+    @input='typedText()'
+    ref='input'
+    >
+  </label>
+
+  <label class="label"
+  v-else
+  :class='inputRequired ? "label--required" : ""'
+  >
+    <p class="label-text">
+      {{ descr }} 
+    </p>
+    <input class='input' 
+    v-model="inputValue"
     :placeholder="placeholderText"
     :class='view ? viewStyle : ""'
     @input='typedText()'
@@ -50,6 +70,10 @@
 <script>
 export default {
   props: {
+    inputRequired: {
+      type: Boolean,
+      default: false,
+    },
     descr: {
       type: String,
       required: false,
@@ -74,6 +98,10 @@ export default {
       default: false,
     },
     checkbox:{
+      type: Boolean,
+      default: false,
+    },
+    textarea:{
       type: Boolean,
       default: false,
     },

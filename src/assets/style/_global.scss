@@ -371,6 +371,11 @@ menu{
   }
 }
 
+.section{
+  background: $grey-bg;
+  border-radius: 25px;
+}
+
 .row .splide__slide.is-active,
 .live__items .art:first-child,
 .panel__items .art:nth-child(1),

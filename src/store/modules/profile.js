@@ -7,6 +7,8 @@
 //     
 //   })
 
+import router from '@/router'
+
 const state = {
   user:{
     token: '',
@@ -31,7 +33,10 @@ const mutations = {
     localStorage.setItem('userConnected', true)
     localStorage.setItem('userUsername', state.user.username)
   },
-  connectWallet(state){
+  connectWallet(){
+    router.push({name: 'Register'})
+  },
+  userLogged(state){
     state.user.token = '4b73hghjk4ljh2jk3hy956'
     state.user.connected = true
     this.commit('changeUserInfo')

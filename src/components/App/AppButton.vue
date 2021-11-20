@@ -3,6 +3,7 @@
   v-if='!link'
   class='btn'
   :class='[useStyle, this.big ? "btn--big" : ""]'
+  :type='btnType'
   >
     <slot></slot>
     {{ title }}
@@ -45,7 +46,11 @@ export default {
     btnDisabled:{
       type: Boolean,
       default: false,
-    }
+    },
+    btnType: {
+      type: String,
+      default: 'button'
+    },
   },
   computed: {
     useStyle() {

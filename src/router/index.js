@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Index from '../views/Index.vue'
 import Cataloge from '../views/Cataloge.vue'
+import Register from '../views/Register.vue'
 import Box from '../views/Box.vue'
 import BoxOpen from '../views/BoxOpen.vue'
 import Art from '../views/Art.vue'
@@ -28,6 +29,11 @@ const routes = [
     path: '/',
     name: 'Index',
     component: Index
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
   },
   {
     path: '/cataloge',
