@@ -22,6 +22,7 @@
       <header-content></header-content>
       <app-profile
       :userId='userInfo.username'
+      :customHref='"/user/" + userInfo.username'
       ></app-profile>
       <header-blockchains></header-blockchains>
       <app-social></app-social>

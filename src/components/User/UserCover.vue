@@ -55,6 +55,8 @@
             <app-button
             v-if='this.$route.params.userOwn'
             :title='content.editBtnTitle'
+            link
+            href='/settings/'
             view='lined'
             ></app-button>
           </div>

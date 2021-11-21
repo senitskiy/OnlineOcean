@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Index from '../views/Index.vue'
 import Cataloge from '../views/Cataloge.vue'
 import Register from '../views/Register.vue'
+import Settings from '../views/Settings.vue'
 import Box from '../views/Box.vue'
 import BoxOpen from '../views/BoxOpen.vue'
 import Art from '../views/Art.vue'
@@ -34,6 +35,11 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: Register
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: Settings
   },
   {
     path: '/cataloge',
@@ -82,7 +88,10 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+  scrollBehavior() {
+    window.scrollTo(0,0);
+  },
 })
 
 export default router

@@ -1,10 +1,10 @@
 <template>
   <router-link class="profile"
-  :to='linkToProfile'
+  :to='customHref !== "" ? customHref : linkToProfile'
   :class='[viewProfileStyle, viewVerified]'
   >
     <span class="profile__imgwrapper">
-      <img src="@/assets/images/temp/user-ultra-big.jpg" alt="" />
+      <img :src="user.logo" alt="" />
     </span>
     <span class="profile__name">
       {{ userName }}
@@ -33,6 +33,10 @@ export default {
     contentSlot:{
       type: String,
       default: '',
+    },
+    customHref:{
+      type: String,
+      default: '',
     }
   },
   mounted () {
@@ -43,6 +47,7 @@ export default {
       user:{
         name: 'artstudio',
         verified: true,
+        logo: require('@/assets/images/temp/user-ultra-big.jpg'),
       }
     }
   },

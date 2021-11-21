@@ -39,13 +39,14 @@
     <p class="label-text">
       {{ descr }}
     </p>
-    <input class='input textarea' 
+    <textarea class='input textarea' 
     :placeholder="placeholderText"
     :class='view ? viewStyle : ""'
+    :rows='rows'
     @input='typedText()'
     :value='modelValue'
     ref='input'
-    >
+    ></textarea>
   </label>
 
   <label class="label"
@@ -73,6 +74,10 @@ export default {
   props: {
     modelValue:{
 
+    },
+    rows:{
+      type: Number,
+      default: 5,
     },
     inputRequired: {
       type: Boolean,

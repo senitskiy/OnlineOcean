@@ -2681,6 +2681,13 @@
 }
 
 .settings{
+  margin-bottom: 27px;
+  .btn--back{
+    transform: translateY(35px);
+    font-size: 18px;
+    line-height: 22px;
+    text-transform: lowercase;
+  }
   &__inner{
     padding: 24px 24px 36px 24px;
     text-align: center;
@@ -2730,8 +2737,10 @@
       padding-right: 25px;
     }
   }
-  input{
+  input,
+  textarea{
     border: 1px solid #A9A8A8;
+    resize: none;
     &::placeholder{
       color: #A9A8A8;
     }
@@ -2762,6 +2771,102 @@
     left: 0;
     top: 50%;
     transform: translateY(-50%)
+  }
+}
+
+.settings-upload{
+  position: relative;
+  z-index: 2;
+  &__label{
+    color: #A9A8A8;
+  }
+  &__size{
+    color: $black;
+    transform: translateY(3px)
+  }
+  &__label,
+  &__size{
+    transition: background .2s, color .2s;
+    border-radius: 20px;
+    padding: 3px;
+  }
+  &__btn{
+    margin: 6px 0 4px;
+    padding: 3px;
+    transition: background .2s;
+    max-height: 34px;
+    border-radius: 50%;
+    display: inline-block;
+    transform: translateY(3px);
+    path{
+      transition: fill .2s;
+    }
+  }
+  &__items{
+    display: flex;
+    max-height: 105px;
+    .upload{
+      border: 1px solid #A9A8A8;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3px 22px 13px;
+      &:last-child{
+        margin-left: 25px;
+        width: 100%;
+      }
+    }
+  }
+  &__imgwrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    border-radius: 20px;
+    opacity: 0;
+    transition: all .2s;
+    &:after{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(#000, .3);
+      border-radius: 20px;
+    }
+    img{
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+    }
+  }
+  &__wrapper--uploaded{
+    .settings-upload__imgwrapper{
+      opacity: 1;
+    }
+    .settings-upload{
+      &__label,
+      &__size{
+        background: $pink;
+        color: #fff;
+      }
+      &__btn{
+        background: $pink;
+        path{
+          fill: #fff;
+        }
+      }
+      &__label,
+      &__size,
+      &__btn{
+        transform: translateY(3px)
+      }
+    }
   }
 }
 

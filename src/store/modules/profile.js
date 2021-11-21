@@ -36,10 +36,14 @@ const mutations = {
   connectWallet(){
     router.push({name: 'Register'})
   },
-  userLogged(state){
+  userLogged(state, payload){
+    state.user = payload
+
     state.user.token = '4b73hghjk4ljh2jk3hy956'
     state.user.connected = true
     this.commit('changeUserInfo')
+
+    router.push({name: 'Index'})
   }
 };
 

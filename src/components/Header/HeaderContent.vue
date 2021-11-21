@@ -44,13 +44,9 @@
     <span class="header__account-link">
       <app-profile
       :userID='userInfo.username'
+      :customHref='"/user/" + userInfo.username'
       ></app-profile>
     </span>
-    <!-- <router-link class="header__account-link"
-    :to="'/user/' + userInfo.username"
-    >
-      <img :src="userInfo.image" alt="">
-    </router-link> -->
   </div>
 </template>
 

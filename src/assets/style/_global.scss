@@ -393,7 +393,22 @@ menu{
   }
 }
 
+.textarea{
+  border-radius: 20px;
+  height: unset;
+  padding: 11px 20px;
+  &::-webkit-scrollbar{
+    width: 7px;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb{
+    background-color: rgba($grey, .7);
+    border-radius: 7px;
+  }
+}
+
 .upload{
+  position: relative;
   input{
     position: absolute;
     opacity: 0;
