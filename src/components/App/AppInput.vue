@@ -36,7 +36,9 @@
   <label class="label"
   v-else-if='textarea'
   >
-    <p class="label-text">
+    <p class="label-text"
+    v-if='descr'
+    >
       {{ descr }}
     </p>
     <textarea class='input textarea' 
@@ -53,7 +55,9 @@
   v-else
   :class='inputRequired ? "label--required" : ""'
   >
-    <p class="label-text">
+    <p class="label-text"
+    v-if='descr'
+    >
       {{ descr }} 
     </p>
     <slot></slot>
@@ -148,13 +152,7 @@ export default {
   },
   methods: {
     typedText(event) {
-      // New way
       this.$emit('update:modelValue', event.target.value)
-
-      // Old way
-      // this.$emit(this.$refs.input.value)
-      // this.$emit('typed', this.inputValue)
-
     },
     toggledCheckbox(){
       this.$emit('choosed', this.checkboxValue)
@@ -169,7 +167,7 @@ export default {
     },
   },
   emits:[
-    'typed', 'choosed'
+    'choosed', 'update:modelValue',
   ],
 }
 </script>

@@ -61,7 +61,7 @@
               <app-input
               type='email'
               placeholderText='Your e-mail'
-              @typedText='setEmailAdress'
+              v-model='emailAdress'
               ></app-input>
               <app-button
               title='Send'
@@ -92,9 +92,6 @@ export default {
     }
   },
   methods: {
-    setEmailAdress(value) {
-      this.emailAdress = value
-    },
     sendData(){
       axios
         .post('https://google.com')

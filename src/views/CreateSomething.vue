@@ -18,7 +18,6 @@
         <h1 class="create-modal__title">
           {{ info.title }}
         </h1>
-        <!-- {{ data }} -->
         <div class="create-modal__info">
           <div class="create-modal__content">
             <div class="create-modal__info-inputs">
@@ -26,13 +25,13 @@
               descr='The name of your box'
               placeholderText='Enter the name of your box'
               view='lined'
-              @typed='typedName'
+              v-model='data.name'
               ></app-input>
               <app-input
               descr='Description'
               placeholderText='Write a description of your box'
               view='lined'
-              @typed='typedDescr'
+              v-model='data.descr'
               ></app-input>
             </div>
             <create-choose
@@ -44,7 +43,7 @@
               descr='Price'
               placeholderText='Write the price of your offer'
               view='lined'
-              @typed='typedPrice'
+              v-model='data.price'
               type='number'
               ></app-input>
               <app-select
@@ -169,12 +168,6 @@ export default {
     },
     setChoosed(value) {
       this.data.type = value
-    },
-    typedName(value){
-      this.data.name = value
-    },
-    typedDescr(value){
-      this.data.descr = value
     },
     typedPrice(value){
       this.data.price = Number(value)

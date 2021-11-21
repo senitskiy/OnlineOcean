@@ -3,7 +3,8 @@
     <app-input
     placeholderText='Search for art'
     view='header-search'
-    @typed='search'
+    v-model='needToSearch'
+    @input='search()'
     ></app-input>
     <img src="@/assets/images/search.svg" alt="">
   </div>
@@ -65,6 +66,8 @@ export default {
       notifications: 1,
       openedNots: false,
       openedBlockchains: false,
+      needToSearch: '',
+      searched: [],
     }
   },
   computed: {
@@ -83,9 +86,10 @@ export default {
       this.openedNots = false
       this.openedBlockchains = !this.openedBlockchains
     },
-    search(value){
-      axios.post('/getContent',{ sort: value })
-        .then(response => ( this.data.searched = response ))
+    search(){
+      console.log(this.needToSearch)
+      axios.post('/getContent',{ sort: this.needToSearch })
+        .then(response => ( this.searched = response ))
     },
   },
   components: {

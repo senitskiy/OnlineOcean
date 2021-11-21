@@ -58,7 +58,7 @@
       view='price'
       >
         <div class="filters__item-body filter-price"
-        :class='prefilters.price.error.length > 0 ? "filter-price--disabled" : ""'
+        :class='priceError.length > 1 ? "filter-price--disabled" : ""'
         id='filterPrice'
         >
           <div class="filter-price__selectwrapper">
@@ -72,7 +72,7 @@
             <app-input
             placeholderText='Min'
             type='number'
-            @typed='setFilterMin'
+            v-model.number='prefilters.price.min'
             ref='priceMin'
             ></app-input>
             <span class="filter-price__to">
@@ -81,12 +81,12 @@
             <app-input
             placeholderText='Max'
             type='number'
-            @typed='setFilterMax'
+            v-model.number='prefilters.price.max'
             ref='priceMax'
             ></app-input>
           </div>
           <p class="filter-price__error">
-            {{ prefilters.price.error }}
+            {{ priceError }}
           </p>
           <app-button
           title='Apply'
@@ -104,7 +104,8 @@
           <app-input
           view='filter-collection'
           :placeholderText='data.collectionSearchPlaceholder'
-          @typed='getCollections'
+          v-model='collectionSearch'
+          @input='getCollections()'
           ></app-input>
           <ul class="filters__item-list filters--limited collections__list">
             <li class="collections__list-item"
@@ -373,6 +374,7 @@ export default {
           },
         ],
       },
+      collectionSearch: '',
       defaultPrefilters: null,
       prefilters:{
         price: {
@@ -408,8 +410,8 @@ export default {
   },
   methods: {
     ...mapMutations(['setNewBlockchain']),
-    getCollections(value){
-      axios.post('/getCollections',{ sort: value })
+    getCollections(){
+      axios.post('/getCollections',{ sort: this.collectionSearch })
         .then(response => ( this.data.collections = response ))
     },
     toggleFilters() {
@@ -442,34 +444,6 @@ export default {
     setRarity(value){
       let needValue = this.data.rarity.find(element => element.value === value)
       this.toggleInArray(this.filters.rarity, needValue)
-    },
-    setFilterMin(value){
-      this.prefilters.price.min = value
-      if (this.prefilters.price.max === ''){
-        this.prefilters.price.error = ''
-      }else if(this.prefilters.price.min === ''){
-        this.prefilters.price.error = ''
-      }else{
-        if(this.prefilters.price.max < this.prefilters.price.min){
-          this.prefilters.price.error = 'Min must be less than max'
-        }else{
-          this.prefilters.price.error = ''
-        }
-      }
-    },
-    setFilterMax(value){
-      this.prefilters.price.max = value
-      if (this.prefilters.price.min === ''){
-        this.prefilters.price.error = ''
-      }else if(this.prefilters.price.max === ''){
-        this.prefilters.price.error = ''
-      }else{
-        if(this.prefilters.price.min > this.prefilters.price.max){
-          this.prefilters.price.error = 'Max must be more than min'
-        }else{
-          this.prefilters.price.error = ''
-        }
-      }
     },
     setPrefilterPriceBlockchain(value){
       let allBlockchains = this.allBlockchains
@@ -546,6 +520,45 @@ export default {
     ...mapGetters(['allBlockchains', 'currentBlockchain']),
     filtersView() {
       return this.filtersOpened ? '' : 'filters--hidden'
+    },
+    priceError(){
+      if(this.prefilters.price.max !== '' && this.prefilters.price.min !== ''){
+        if(this.prefilters.price.min > this.prefilters.price.max){
+          return 'Min must be less than max'
+        }else{
+          return ''
+        }
+      }else{
+        return ''
+      }
+      // setFilterMin(){
+      //   this.prefilters.price.error = ''
+      //   if (this.prefilters.price.max === ''){
+      //     this.prefilters.price.error = ''
+      //   }else if(this.prefilters.price.min === ''){
+      //     this.prefilters.price.error = ''
+      //   }else{
+      //     if(this.prefilters.price.max < this.prefilters.price.min){
+      //       this.prefilters.price.error = 'Min must be less than max'
+      //     }else{
+      //       this.prefilters.price.error = ''
+      //     }
+      //   }
+      // },
+      // setFilterMax(){
+      //   this.prefilters.price.error = ''
+      //   if (this.prefilters.price.min === ''){
+      //     this.prefilters.price.error = ''
+      //   }else if(this.prefilters.price.max === ''){
+      //     this.prefilters.price.error = ''
+      //   }else{
+      //     if(this.prefilters.price.min > this.prefilters.price.max){
+      //       this.prefilters.price.error = 'Max must be more than min'
+      //     }else{
+      //       this.prefilters.price.error = ''
+      //     }
+      //   }
+      // },
     }
   },
   watch: {
