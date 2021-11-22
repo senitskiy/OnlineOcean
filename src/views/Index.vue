@@ -21,6 +21,7 @@ import IndexLiveTape from '@/components/Index/IndexLiveTape.vue'
 
 export default {
   name: 'Index',
+  title: 'OnlineOcean',
   data() {
     return {
       rows: 3,
@@ -29,7 +30,6 @@ export default {
   methods: {
     loadMore(){
       this.rows++
-      this.$refs.rowItem.setHeight()
     }
   },
   components: {

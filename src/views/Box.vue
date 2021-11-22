@@ -2,8 +2,8 @@
   <app-product-cover
   ></app-product-cover>
   <app-product-info
-  name='NFTmotors Series id - Yamaha R6'
-  descr='Token is a platform that alms to build a new creative economy world where creators can use the Ethereum blockchain.'
+  :name='box.name'
+  :descr='box.descr'
   box
   ></app-product-info>
   <app-art-panel
@@ -19,11 +19,35 @@ import AppProductCover from '@/components/App/AppProductCover.vue'
 import AppProductInfo from '@/components/App/AppProductInfo.vue'
 import AppArtPanel from '@/components/App/AppArtPanel.vue'
 
-export default {
-  setup () {
-    
+import axios from 'axios'
 
-    return {}
+export default {
+  title () {
+    let needIndex = this.box.name.indexOf('-') + 1,
+        needName = this.box.name.slice(needIndex, this.box.name.length)
+
+    console.log(needIndex)
+
+    return `Box - ${needName}`
+  },
+  mounted () {
+    this.getBox()
+  },
+  methods: {
+    getBox() {
+      axios.get(`/box/${this.$route.params.itemId}`)
+        .then(function (response) {
+          this.box = response
+        })
+    }
+  },
+  data() {
+    return {
+      box:{
+        name: 'NFTmotors Series id - Yamaha R6',
+        descr: 'Token is a platform that alms to build a new creative economy world where creators can use the Ethereum blockchain.',
+      },
+    }
   },
   components: {
     AppProductCover,

@@ -115,6 +115,7 @@ import { mapGetters, mapMutations } from 'vuex';
 import axios from 'axios';
 
 export default {
+  title: 'Create Something',
   data() {
     return {
       isEdit: true,

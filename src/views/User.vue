@@ -29,6 +29,9 @@ import UserLoot from '@/components/User/UserLoot.vue';
 import axios from 'axios';
 
 export default {
+  title(){
+    return this.$route.params.userOwn ? 'My profile' : this.user.userNickname
+  },
   data() {
     return {
       content:{

@@ -32,6 +32,7 @@ import CatalogeCurrentFilters from '@/components/Cataloge/CatalogeCurrentFilters
 import CatalogeRows from '@/components/Cataloge/CatalogeRows.vue';
 
 export default {
+  title: 'Explore',
   data() {
     return {
       showMoreCols: false,

@@ -43,7 +43,8 @@ const mutations = {
     state.user.connected = true
     this.commit('changeUserInfo')
 
-    router.push({name: 'Index'})
+    // router.push({name: 'Index'})
+    router.push({ name: 'User', params: { username: state.user.username }})
   }
 };
 

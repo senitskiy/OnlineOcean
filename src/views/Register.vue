@@ -8,6 +8,7 @@ import AppCover from '@/components/App/AppCover.vue'
 import UserSettings from '@/components/User/UserSettings.vue'
 
 export default {
+  title: 'Register',
   components: {
     AppCover,
     UserSettings,

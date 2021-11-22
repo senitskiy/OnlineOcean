@@ -44,6 +44,7 @@ import CreateCard from '@/components/Create/CreateCard.vue';
 import AppButton from '@/components/App/AppButton.vue';
 
 export default {
+  title: 'Create',
   data() {
     return {
       create:{
