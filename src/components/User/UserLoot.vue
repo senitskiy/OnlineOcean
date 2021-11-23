@@ -63,6 +63,7 @@
             <div class="user-nots__index">
               {{ index + 1 }}
             </div>
+
             <app-profile
             v-if='item.sourceType === "user"'
             :userId='item.sourceId'
@@ -70,6 +71,11 @@
             :customName='item.sourceId == userInfo.username ? "My profile" : ""'
             showName
             ></app-profile>
+
+            <p class="user-nots__text">
+              {{ noteMessage(item) }}
+            </p>
+
             <button class="user-nots__delete btn-clear"
             @click='deleteNote(item.id)'
             >
@@ -150,6 +156,21 @@ export default {
   },
   methods: {
     ...mapMutations(['deleteNote']),
+    noteMessage(item){
+      if(item.sourceId == this.userInfo.username){
+        if(item.action === 'purchase'){
+          return this.notsMessage.youBought
+        }else if(item.action === 'open'){
+          return this.notsMessage.youOpened
+        }
+      }else{
+        if(item.action === 'like'){
+          return this.notsMessage.someoneLiked
+        }else if(item.action === 'purchase'){
+          return this.notsMessage.someoneBought
+        }
+      }
+    },
     setType(value) {
       this.currentFilter = value
       this.data.currentItems = this.info.allItems
@@ -169,21 +190,24 @@ export default {
       }
     },
     openNots(){
-      console.log(this.$route.params.needNots)
-      if(this.$route.params.needNots === true){
+      if(this.$route.params.needNots === 'true'){
+        let needUncheck = this.info.filters.find(item => item.checked === true)
+
+        needUncheck.checked = false
+
         let needItem = this.info.filters.find(item => item.value === 'nots')
   
-        console.log(needItem)
-  
         needItem.checked = true
-  
-        console.log(needItem)
+        this.currentFilter = needItem.value
+
+        console.log(this.info.filters)
       }
     },
   },
   computed: {
     ...mapGetters(['userInfo']),
     ...mapGetters(['nots']),
+    ...mapGetters(['notsMessage']),
     lootMore(){
       return this.data.showMore ? 'user-loot__items--more' : ''
     },

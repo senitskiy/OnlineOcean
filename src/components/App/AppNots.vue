@@ -24,8 +24,7 @@
     <app-button
     title='More...'
     link
-    routeName='User'
-    :params='{username: userInfo.username, needNots: true}'
+    :custom='{name: "User", params: {username: userInfo.username, needNots: true}}'
     ></app-button>
   </div>
   <div class="nots__pad"></div>

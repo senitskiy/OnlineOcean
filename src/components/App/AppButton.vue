@@ -13,7 +13,7 @@
   v-else
   class='btn'
   :class='[useStyle, this.big ? "btn--big" : ""]'
-  :to='params === null ? href : {name: routeName, params: params}'
+  :to='custom === null ? href : custom'
   >
     <slot></slot>
     {{ title }}
@@ -35,13 +35,9 @@ export default {
       type: String,
       default: '',
     },
-    params:{
+    custom:{
       type: Object,
-      default: null,
-    },
-    routeName:{
-      type: String,
-      default: ''
+      default: null
     },
     view:{
       type: String,

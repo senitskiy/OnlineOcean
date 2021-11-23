@@ -2673,8 +2673,10 @@
   &__item{
     background-color: #fff;
     padding: 13px 14px 14px 43px;
-    display: flex;
+    display: grid;
     align-items: center;
+    grid-template-columns: 35px 220px 1fr;
+    column-gap: 48px;
     border-radius: 15px;
     position: relative;
     & + &{
@@ -2716,7 +2718,6 @@
   .profile{
     flex-direction: row;
     color: $black;
-    margin-right: 48px;
     &__imgwrapper{
       margin-right: 16px;
       max-width: 56px;
