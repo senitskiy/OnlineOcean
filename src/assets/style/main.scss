@@ -2509,7 +2509,6 @@
   }
   &__socials{
     display: flex;
-
     position: absolute;
     top: -56px;
     right: 0;
@@ -2561,6 +2560,7 @@
 }
 
 .user-filters{
+  margin-bottom: 25px;
   &__inner{
     display: flex;
     align-items: center;
@@ -2624,7 +2624,7 @@
 }
 
 .user-loot{
-  margin: 25px 0 52px;
+  margin: 0 0 52px;
   &__inner{
     background-color: $grey-bg;
     padding: 20px 20px 16px;
@@ -2645,6 +2645,99 @@
     margin: 16px auto 0;
     padding-left: 20px;
     padding-right: 20px;
+  }
+  .btn--art-hover{
+    margin: 0;
+  }
+}
+
+.user-nots{
+  margin: 0 0 52px;
+  &__inner{
+    padding: 26px 29px 38px;
+  }
+  &__items{
+    padding-right: 37px;
+    max-height: 742px;
+    overflow-y: auto;
+    &::-webkit-scrollbar{
+      width: 8px;
+      background-color: #EDEDED;
+      border-radius: 4px;
+    }
+    &::-webkit-scrollbar-thumb{
+      background-color: $pink;
+      border-radius: 4px;
+    }
+  }
+  &__item{
+    background-color: #fff;
+    padding: 13px 14px 14px 43px;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    position: relative;
+    & + &{
+      margin-top: 20px;
+    }
+  }
+  &__index{
+    background: #C0B5EA;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    line-height: 29px;
+    color: #fff;
+    font-weight: 700;
+    margin-right: 48px;
+  }
+  &__delete{
+    position: absolute;
+    top: 13px;
+    right: 14px;
+    svg{
+      width: 16px;
+      height: 16px;
+    }
+    path{
+      fill: #EDEDED;
+      transition: all .3s;
+    }
+    &:hover{
+      path{
+        fill: $black;
+      }
+    }
+  }
+  .profile{
+    flex-direction: row;
+    color: $black;
+    margin-right: 48px;
+    &__imgwrapper{
+      margin-right: 16px;
+      max-width: 56px;
+      max-height: 56px;
+      padding: 0;
+      &:after,
+      &:before{
+        bottom: 0;
+        right: 0;
+      }
+    }
+    &--white.profile--verified{
+      .profile__imgwrapper{
+        &:after{
+          display: none;
+        }
+        &:before{
+          display: block;
+        }
+      }
+    }
   }
 }
 

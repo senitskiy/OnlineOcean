@@ -24,7 +24,8 @@
     <app-button
     title='More...'
     link
-    href='/user/artstudio'
+    routeName='User'
+    :params='{username: userInfo.username, needNots: true}'
     ></app-button>
   </div>
   <div class="nots__pad"></div>
@@ -32,6 +33,8 @@
 
 <script>
 import AppNot from '@/components/App/AppNot.vue'
+
+import { mapGetters } from 'vuex'
 
 export default {
   props: {
@@ -41,6 +44,7 @@ export default {
     },
   },
   computed: {
+    ...mapGetters(['userInfo']),
     notsState() {
       return this.openedNots ? 'nots--active' : ''
     },

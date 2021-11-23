@@ -32,6 +32,7 @@
   </section>
   <section class="user-loot"
   :class='lootMore'
+  v-if='this.currentFilter !== "nots"'
   >
     <div class="container">
       <div class="user-loot__inner">
@@ -49,14 +50,47 @@
       </div>
     </div>
   </section>
+  <section class="user-nots"
+  v-else
+  >
+    <div class="container">
+      <div class="user-nots__inner section">
+        <div class="user-nots__items">
+          <div class="user-nots__item"
+          v-for='(item, index) in nots'
+          :key='index'
+          >
+            <div class="user-nots__index">
+              {{ index + 1 }}
+            </div>
+            <app-profile
+            v-if='item.sourceType === "user"'
+            :userId='item.sourceId'
+            :view='item.sourceId == userInfo.username ? "white" : ""'
+            :customName='item.sourceId == userInfo.username ? "My profile" : ""'
+            showName
+            ></app-profile>
+            <button class="user-nots__delete btn-clear"
+            @click='deleteNote(item.id)'
+            >
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.66188 1.97037L6.63193 5.00063L9.66188 8.03074C10.1126 8.4816 10.1126 9.21193 9.66188 9.66279C9.43669 9.88798 9.14145 10.0007 8.84636 10.0007C8.55078 10.0007 8.25552 9.88815 8.03051 9.66279L4.9999 6.63234L1.96952 9.66276C1.74437 9.88795 1.4491 10.0006 1.15375 10.0006C0.858489 10.0006 0.563426 9.88812 0.338067 9.66276C-0.112622 9.2121 -0.112622 8.48174 0.338067 8.03071L3.36793 5.0006L0.337895 1.97037C-0.112794 1.51968 -0.112794 0.789178 0.337895 0.33849C0.788498 -0.111853 1.51858 -0.111853 1.96935 0.33849L4.99987 3.36874L8.03016 0.33849C8.48102 -0.111853 9.21119 -0.111853 9.6617 0.33849C10.1126 0.789178 10.1126 1.51968 9.66188 1.97037Z" fill="#3E3E3E" fill-opacity="0.7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
 import AppBigArt from '@/components/App/AppBigArt.vue';
 import AppInput from '@/components/App/AppInput.vue';
+import AppProfile from '@/components/App/AppProfile.vue';
 
 import axios from 'axios';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 
 export default {
   props: {
@@ -92,8 +126,8 @@ export default {
             value: 'sale',
           },
           {
-            text: 'Random boxes',
-            value: 'random-box',
+            text: 'Notifications',
+            value: 'nots',
           },
         ],
         allItems: [3, 5, 1, 42, 64, 78, 4, 6],
@@ -105,16 +139,21 @@ export default {
       data:{
         showMore: false,
         currentItems: [],
-      }
+      },
+      currentFilter: '',
     }
   },
   mounted () {
     this.data.btnText = this.info.btnTextShow
+
+    this.openNots()
   },
   methods: {
+    ...mapMutations(['deleteNote']),
     setType(value) {
+      this.currentFilter = value
       this.data.currentItems = this.info.allItems
-      axios.get(`/getArts=${value}`)
+      axios.get(`/getArts/${value}`)
         .then(response => ( this.data.currentItems = response ))
     },
     search(value){
@@ -129,9 +168,22 @@ export default {
         this.data.btnText === this.info.btnTextShow
       }
     },
+    openNots(){
+      console.log(this.$route.params.needNots)
+      if(this.$route.params.needNots === true){
+        let needItem = this.info.filters.find(item => item.value === 'nots')
+  
+        console.log(needItem)
+  
+        needItem.checked = true
+  
+        console.log(needItem)
+      }
+    },
   },
   computed: {
     ...mapGetters(['userInfo']),
+    ...mapGetters(['nots']),
     lootMore(){
       return this.data.showMore ? 'user-loot__items--more' : ''
     },
@@ -142,6 +194,7 @@ export default {
   components: {
     AppBigArt,
     AppInput,
+    AppProfile,
   },
 }
 </script>

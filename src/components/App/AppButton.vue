@@ -13,7 +13,7 @@
   v-else
   class='btn'
   :class='[useStyle, this.big ? "btn--big" : ""]'
-  :to='href'
+  :to='params === null ? href : {name: routeName, params: params}'
   >
     <slot></slot>
     {{ title }}
@@ -34,6 +34,14 @@ export default {
     href:{
       type: String,
       default: '',
+    },
+    params:{
+      type: Object,
+      default: null,
+    },
+    routeName:{
+      type: String,
+      default: ''
     },
     view:{
       type: String,

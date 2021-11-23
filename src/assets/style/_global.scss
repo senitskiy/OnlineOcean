@@ -228,6 +228,7 @@ menu{
       width: 100%;
       height: 100%;
     }
+    &:before,
     &:after{
       content: '';
       position: absolute;
@@ -235,9 +236,14 @@ menu{
       right: 3px;
       width: 16px;
       height: 16px;
-      background-image: url('./assets/images/success.svg');
       background-size: 100% 100%;
       display: none;
+    }
+    &:before{
+      background-image: url('./assets/images/success--white.svg');
+    }
+    &:after{
+      background-image: url('./assets/images/success.svg');
     }
   }
   &--verified{
@@ -409,6 +415,7 @@ menu{
 
 .upload{
   position: relative;
+  cursor: pointer;
   input{
     position: absolute;
     opacity: 0;

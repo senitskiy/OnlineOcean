@@ -7,7 +7,7 @@
       <img :src="user.logo" alt="" />
     </span>
     <span class="profile__name">
-      {{ userName }}
+      {{ showName ? userName : userUsername }}
       <span class="profile__slot"
       v-if='contentSlot.length !== 0'
       >
@@ -37,6 +37,18 @@ export default {
     customHref:{
       type: String,
       default: '',
+    },
+    showName:{
+      type: Boolean,
+      default: false,
+    },
+    customUsername:{
+      type: String,
+      default: '',
+    },
+    customName:{
+      type: String,
+      default: '',
     }
   },
   mounted () {
@@ -45,7 +57,8 @@ export default {
   data() {
     return {
       user:{
-        name: 'artstudio',
+        username: 'artstudio',
+        name: 'Artstudio__451',
         verified: true,
         logo: require('@/assets/images/temp/user-ultra-big.jpg'),
       }
@@ -66,11 +79,14 @@ export default {
     viewVerified(){
       return this.user.verified ? 'profile--verified' : ''
     },
+    userUsername(){
+      return this.customUsername.length > 1 ? this.customUsername : '@' + this.user.username
+    },
     userName(){
-      return '@' + this.user.name
+      return this.customName.length > 1 ? this.customName : this.user.name
     },
     linkToProfile() {
-      return '/user/' + this.user.name.replace(/@/i, '')
+      return '/user/' + this.user.username.replace(/@/i, '')
     }
   },
 }

@@ -79,6 +79,7 @@ export default {
       this.openedNots = false
     },
     togglePopUpNots() {
+      this.notifications = 0
       this.openedBlockchains = false
       this.openedNots = !this.openedNots
     },
