@@ -64,40 +64,49 @@
               {{ index + 1 }}
             </div>
 
-            <app-profile
+            <!-- Source -->
+            <!-- Source User -->
+            <div class="user-nots__source"
             v-if='item.sourceType === "user"'
-            :userId='item.sourceId'
-            :view='item.sourceId == userInfo.username ? "white" : ""'
-            :customName='item.sourceId == userInfo.username ? "My profile" : ""'
-            showName
-            ></app-profile>
-
+            >
+              <app-profile
+              :userId='item.sourceId'
+              :view='item.sourceId == userInfo.username ? "white" : ""'
+              :customName='item.sourceId == userInfo.username ? "You" : ""'
+              showName
+              ></app-profile>
+            </div>
+            <!-- Source Box -->
             <div class="user-nots__source"
             v-else-if='item.sourceType === "box"'
+            v-for='source in boxItem(item.sourceId)'
+            :key='source'
             >
               <div class="user-nots__imgwrapper">
-                <img src="" alt="">
+                <img :src="source.cover.src" alt="">
               </div>
-              
+              {{ source.title }}
             </div>
 
-            <div class="user-nots__result">
+            <!-- Result -->
+            <div class="user-nots__result"
+            v-for='result in resultItem(item.itemId)'
+            :key='result'
+            >
               <div class="user-nots__imgwrapper">
-                <img src="" alt="">
+                <img :src="result.cover.src" alt="">
               </div>
               <div class="user-nots__result-info">
                 <p class="user-nots__text">
                   {{ noteMessage(item) }}
                 </p>
                 <app-likes
-                :info='{
-                  status: false,
-                  count: 34,
-                }'
+                :info='result.likes'
                 ></app-likes>
               </div>
             </div>
 
+            <!-- Cross -->
             <button class="user-nots__delete btn-clear"
             @click='deleteNote(item.id)'
             >
@@ -225,6 +234,53 @@ export default {
 
         console.log(this.info.filters)
       }
+    },
+    boxItem(id){
+      // Пример ответа
+      let output = [{
+        cover:{
+          src: 'https://drive.google.com/uc?id=1qhbBI-bSd7OgBj8NnZ-QUqFXsYh8AkfQ',
+        },
+        title: 'Random box',
+      }]
+
+
+      
+      console.log(id)
+      return output
+
+      // Раскоментировать
+      // let output = null
+      // axios
+      //   .get('box/' + id)
+      //   .then(function(response){
+      //     output = response
+        // })
+      // return output
+    },
+    resultItem(id){
+      // Пример ответа
+      let output = [{
+        cover:{
+          src: 'https://drive.google.com/uc?id=1YSmJeQg8G9mbdnR2MREvppFxqNk5K3ST'
+        },
+        likes:{
+          count: 131,
+          status: false,
+        },
+      }]
+
+      console.log(id)
+      return output
+
+      // Раскоментировать
+      // let output = null
+      // axios
+      //   .get('art/' + id)
+      //   .then(function(response){
+      //     output = response
+      //   })
+      // return output
     },
   },
   computed: {

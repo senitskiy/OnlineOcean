@@ -1,12 +1,10 @@
 <template>
   <router-link class="art" :to='artLink'
   :class='[artSize, artRarity, artDate]'
-  @mouseover='showChars()'
-  @mouseleave="hideChars()"
   >
     <slot></slot>
     <span class="art__imgwrapper">
-      <img src="@/assets/images/temp/art-1.jpg" alt="">
+      <img :src="art.cover.src" alt="">
       <app-button
       @click.prevent
       :title='art.buyTitle'
@@ -36,6 +34,7 @@
 import AppProfile from '@/components/App/AppProfile.vue';
 
 import moment from 'moment'
+import axios from 'axios'
 
 export default {
   props: {
@@ -52,17 +51,23 @@ export default {
       default: false
     }
   },
+  mounted () {
+    this.loadArt()
+  },
   data() {
     return {
       charsView: false,
+      todayDate: moment(),
       art:{
         price: '20.034 ETH',
         descr: 'Abstract 3D Content Art fdfds ee rwerew',
         owner: 'artstudio',
-        dateOfCreate: moment('2021-10-21T22:53:30'),
-        todayDate: moment(),
+        dateOfCreate: '2021-10-21T22:53:30',
         rarity: 'common', // common, epic, rare, legendary
         buyTitle: 'Buy now',
+        cover:{
+          src: require('@/assets/images/temp/art-1.jpg')
+        },
         chars:{
           amount: '126',
           probability: '8%',
@@ -72,11 +77,12 @@ export default {
     }
   },
   methods: {
-    showChars() {
-      this.charsView = true
-    },
-    hideChars(){
-      this.charsView = false
+    loadArt(){
+      axios
+        .get('art/' + this.artId)
+        .then(function(response){
+          this.art = response
+        })
     },
   },
   computed: {
@@ -90,7 +96,7 @@ export default {
       return 'art--' + this.art.rarity
     },
     artDate(){
-      let difference = this.art.todayDate.diff(this.art.dateOfCreate, 'days')
+      let difference = this.todayDate.diff(moment(this.art.dateOfCreate), 'days')
       return difference <= 14 ? 'fire' : ''
     },
   },

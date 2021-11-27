@@ -4,7 +4,7 @@
 //   .get('https://google.com')
 //   .then(function(response){
 //     state.user = response
-//     
+    
 //   })
 
 import router from '@/router'

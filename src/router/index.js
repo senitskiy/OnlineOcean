@@ -11,20 +11,6 @@ import CreateSomething from '../views/CreateSomething.vue'
 import User from '../views/User.vue'
 import UserUnlogged from '../views/UserUnlogged.vue'
 
-// function userRoute(to){
-//   if(to.params.username === JSON.parse(localStorage.getItem('userUsername')) && JSON.parse(localStorage.getItem('userConnected')) === true){
-//     to.params.userConnected = true
-//     to.params.userOwn = true
-//   }else if(to.params.username === JSON.parse(localStorage.getItem('userUsername')) && JSON.parse(localStorage.getItem('userConnected')) === false){
-//     to.params.userConnected = false
-//     to.params.userOwn = true
-//     router.push(to.fullPath + '/unlogged')
-//   }else{
-//     to.params.userConnected = false
-//     to.params.userOwn = false
-//   }
-// }
-
 function userRoute(to){
   if(to.params.username === 'null'){
     to.params.userConnected = false
