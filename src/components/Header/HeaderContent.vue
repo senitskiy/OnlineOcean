@@ -46,6 +46,7 @@
       <app-profile
       :userID='userInfo.username'
       :customHref='"/user/" + userInfo.username'
+      
       ></app-profile>
     </span>
   </div>

@@ -72,9 +72,31 @@
             showName
             ></app-profile>
 
-            <p class="user-nots__text">
-              {{ noteMessage(item) }}
-            </p>
+            <div class="user-nots__source"
+            v-else-if='item.sourceType === "box"'
+            >
+              <div class="user-nots__imgwrapper">
+                <img src="" alt="">
+              </div>
+              
+            </div>
+
+            <div class="user-nots__result">
+              <div class="user-nots__imgwrapper">
+                <img src="" alt="">
+              </div>
+              <div class="user-nots__result-info">
+                <p class="user-nots__text">
+                  {{ noteMessage(item) }}
+                </p>
+                <app-likes
+                :info='{
+                  status: false,
+                  count: 34,
+                }'
+                ></app-likes>
+              </div>
+            </div>
 
             <button class="user-nots__delete btn-clear"
             @click='deleteNote(item.id)'
@@ -94,6 +116,7 @@
 import AppBigArt from '@/components/App/AppBigArt.vue';
 import AppInput from '@/components/App/AppInput.vue';
 import AppProfile from '@/components/App/AppProfile.vue';
+import AppLikes from '@/components/App/AppLikes.vue';
 
 import axios from 'axios';
 import { mapGetters, mapMutations } from 'vuex';
@@ -219,6 +242,7 @@ export default {
     AppBigArt,
     AppInput,
     AppProfile,
+    AppLikes,
   },
 }
 </script>

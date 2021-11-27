@@ -4,7 +4,7 @@
   :class='[viewProfileStyle, viewVerified]'
   >
     <span class="profile__imgwrapper">
-      <img :src="user.logo" alt="" />
+      <img :src="user.logo.src === '' ? 'https://drive.google.com/uc?id=13bI25kgK1cX7EHr3pze_pX1PqwkHk04g' : user.logo.src" alt="" />
     </span>
     <span class="profile__name">
       {{ showName ? userName : userUsername }}
@@ -60,7 +60,9 @@ export default {
         username: 'artstudio',
         name: 'Artstudio__451',
         verified: true,
-        logo: require('@/assets/images/temp/user-ultra-big.jpg'),
+        logo:{
+          src: require('@/assets/images/temp/user-ultra-big.jpg'),
+        },
       }
     }
   },

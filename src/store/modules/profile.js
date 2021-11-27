@@ -13,7 +13,7 @@ const state = {
   user:{
     token: '',
     connected: false,
-    username: 'artstudio',
+    username: 'null',
   }
 };
 
@@ -41,6 +41,7 @@ const mutations = {
 
     state.user.token = '4b73hghjk4ljh2jk3hy956'
     state.user.connected = true
+    state.user.username = 'artstudio'
     this.commit('changeUserInfo')
 
     // router.push({name: 'Index'})

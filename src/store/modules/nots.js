@@ -34,7 +34,7 @@ const state = {
     {
       id: 4,
       sourceId: 'artstudio',
-      sourceType: 'user',
+      sourceType: 'box',
       itemId: 34,
       itemType: 'box',
       action: 'open',
