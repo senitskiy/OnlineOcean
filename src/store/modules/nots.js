@@ -153,7 +153,6 @@ const getters = {
 
 const mutations = {
   deleteNote(state, payload){
-    // Удалять локально из state
     let needDelete = state.nots.find((item) => item.id === payload)
 
     // Убрать 

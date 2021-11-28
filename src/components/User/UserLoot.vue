@@ -104,7 +104,7 @@
               </router-link>
               <div class="user-nots__result-info">
                 <p class="user-nots__text">
-                  {{ noteMessage(item) }}
+                  {{ getNoteMessage(this.notsMessage, item, this.userInfo.username) }}
                 </p>
                 <app-likes
                 :info='result.likes'
@@ -136,6 +136,8 @@ import AppLikes from '@/components/App/AppLikes.vue';
 
 import axios from 'axios';
 import { mapGetters, mapMutations } from 'vuex';
+
+import noteMessageMixin from '@/mixins/noteMessageMixin'
 
 export default {
   props: {
@@ -194,6 +196,17 @@ export default {
     this.openNots()
 
     this.notsVisibility()
+
+    console.log(
+      this.getNoteMessage({
+      id: 12,
+      sourceId: 23,
+      sourceType: 'user',
+      itemId: 34,
+      itemType: 'art',
+      action: 'like',
+    }, 'dfsd')
+    )
   },
   methods: {
     ...mapMutations(['deleteNote']),
@@ -248,21 +261,16 @@ export default {
   
         needItem.checked = true
         this.currentFilter = needItem.value
-
-        console.log(this.info.filters)
       }
     },
     boxItem(id){
-      // Пример ответа
+      // Пример ответа - убрать
       let output = [{
         cover:{
           src: 'https://drive.google.com/uc?id=1qhbBI-bSd7OgBj8NnZ-QUqFXsYh8AkfQ',
         },
         title: 'Random box',
       }]
-
-
-      
       console.log(id)
       return output
 
@@ -325,6 +333,9 @@ export default {
       return this.data.showMore ? this.content.itemsBtnTextLess : this.content.itemsBtnTextShow
     },
   },
+  mixins:[
+    noteMessageMixin,
+  ],
   components: {
     AppBigArt,
     AppInput,
