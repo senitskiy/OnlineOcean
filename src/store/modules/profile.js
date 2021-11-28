@@ -1,12 +1,5 @@
 // import axios from 'axios';
 
-// axios
-//   .get('https://google.com')
-//   .then(function(response){
-//     state.user = response
-    
-//   })
-
 import router from '@/router'
 
 const state = {
@@ -17,8 +10,14 @@ const state = {
   }
 };
 
-localStorage.setItem('userConnected', state.user.connected)
-localStorage.setItem('userUsername', state.user.username)
+if(localStorage.getItem('userConnected') === 'true'){
+  state.user.connected = true
+  state.user.username = localStorage.getItem('userUsername')
+  state.user.token = localStorage.getItem('userToken')
+}else{
+  localStorage.setItem('userConnected', state.user.connected)
+  localStorage.setItem('userUsername', state.user.username)
+}
 
 const getters = {
   userInfo: state => state.user,
@@ -26,12 +25,18 @@ const getters = {
 
 const mutations = {
   changeUserInfo(state){
-    // axios.post('/user', state.user)
+    // Раскоментировать
+    // axios.post('/user/' + state.user.username, state.user)
     //   .then(function () {
-    //     return null
+    //     localStorage.setItem('userConnected', true)
+    //     localStorage.setItem('userUsername', state.user.username)
+    //     localStorage.setItem('userToken', state.user.token)
     //   })
+
+    // Убрать
     localStorage.setItem('userConnected', true)
     localStorage.setItem('userUsername', state.user.username)
+    localStorage.setItem('userToken', state.user.token)
   },
   connectWallet(){
     router.push({name: 'Register'})
@@ -44,7 +49,6 @@ const mutations = {
     state.user.username = 'artstudio'
     this.commit('changeUserInfo')
 
-    // router.push({name: 'Index'})
     router.push({ name: 'User', params: { username: state.user.username }})
   }
 };
