@@ -11,6 +11,8 @@ import CreateSomething from '../views/CreateSomething.vue'
 import User from '../views/User.vue'
 import UserUnlogged from '../views/UserUnlogged.vue'
 
+// let prevUserRouteParams = null
+
 function userRoute(to){
   if(to.params.username === 'null'){
     to.params.userConnected = false

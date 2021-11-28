@@ -704,6 +704,37 @@
   }
 
   // Create
+
+  // User
+
+  .settings__items{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .settings__list{
+    max-width: 600px;
+    text-align: center;
+    & + &{
+      margin-top: 18px;
+    }
+  }
+
+  .settings__list-item + .settings__list-item {
+    margin-top: 20px;
+  }
+
+  .settings .label + .label {
+    margin-top: 20px;
+  }
+
+  .settings__descr{
+    margin-bottom: 30px;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  // User
 }
 
 @media (max-width: 850px){
@@ -1421,6 +1452,24 @@
     max-height: unset;
   }
 
+  .settings__title{
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .settings__descr{
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .settings__inner{
+    padding: 20px;
+  }
+
+  .settings-upload__items .upload:last-child{
+    margin-left: 15px;
+  }
+
   // User
 }
 
@@ -1645,6 +1694,45 @@
       margin-right: 0;
       margin-bottom: 15px;
     }
+  }
+
+  .settings__title{
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .settings__descr{
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 20px;
+  }
+
+  .settings{
+    .settings__list-label,
+    .label-text{
+      font-size: 16px;
+      line-height: 19px;
+    }
+    .input{
+      height: 35px;
+      font-size: 14px;
+      line-height: 17px;
+      &::placeholder{
+        font-size: 14px;
+        line-height: 17px;
+      }
+    }
+    .textarea{
+      height: unset;
+    }
+  }
+
+  .settings__list-logo{
+    height: 40px;
+    width: 40px;
+  }
+  .settings__list--info .input{
+    padding-left: 54px;
   }
 
   // User

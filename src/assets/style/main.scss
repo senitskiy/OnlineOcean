@@ -2715,6 +2715,14 @@
       }
     }
   }
+  &__imgwrapper{
+    max-width: 80px;
+    max-height: 80px;
+    margin-right: 15px;
+    img{
+      border-radius: 15px;
+    }
+  }
   .profile{
     flex-direction: row;
     color: $black;
@@ -2738,6 +2746,20 @@
           display: block;
         }
       }
+    }
+  }
+  &__source,
+  &__result{
+    display: flex;
+    align-items: center;
+    color: $black;
+  }
+  &__result{
+    .user-nots__imgwrapper{
+      margin-right: 25px;
+    }
+    .likes{
+      margin-top: 9px;
     }
   }
 }

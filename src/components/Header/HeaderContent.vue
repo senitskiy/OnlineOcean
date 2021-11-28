@@ -36,6 +36,7 @@
     <button class="header__notifications btn-clear"
     :class='notifications !== 0 ? "header__notifications--active" : ""'
     @click='togglePopUpNots'
+    v-if='userInfo.connected'
     >
       <app-nots
       :openedNots='openedNots'
@@ -46,7 +47,6 @@
       <app-profile
       :userID='userInfo.username'
       :customHref='"/user/" + userInfo.username'
-      
       ></app-profile>
     </span>
   </div>

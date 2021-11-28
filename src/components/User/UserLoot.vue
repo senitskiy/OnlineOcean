@@ -14,6 +14,7 @@
               :checkboxChecked='item.checked'
               :checkboxName='info.filtersName'
               @choosed='setType'
+              v-show='item.show !== false'
               ></app-input>
             </div>
           </div>
@@ -77,7 +78,8 @@
               ></app-profile>
             </div>
             <!-- Source Box -->
-            <div class="user-nots__source"
+            <router-link class="user-nots__source"
+            :to='{name: "Box", params:{itemId: item.sourceId}}'
             v-else-if='item.sourceType === "box"'
             v-for='source in boxItem(item.sourceId)'
             :key='source'
@@ -85,23 +87,28 @@
               <div class="user-nots__imgwrapper">
                 <img :src="source.cover.src" alt="">
               </div>
-              {{ source.title }}
-            </div>
+              <p class="user-nots__text">
+                {{ source.title }}
+              </p>
+            </router-link>
 
             <!-- Result -->
             <div class="user-nots__result"
             v-for='result in resultItem(item.itemId)'
             :key='result'
             >
-              <div class="user-nots__imgwrapper">
+              <router-link class="user-nots__imgwrapper"
+              :to='{name: "Art", params:{itemId: item.itemId}}'
+              >
                 <img :src="result.cover.src" alt="">
-              </div>
+              </router-link>
               <div class="user-nots__result-info">
                 <p class="user-nots__text">
                   {{ noteMessage(item) }}
                 </p>
                 <app-likes
                 :info='result.likes'
+                @toggledLike='toggleLike(item.itemId, result.likes)'
                 ></app-likes>
               </div>
             </div>
@@ -185,15 +192,25 @@ export default {
     this.data.btnText = this.info.btnTextShow
 
     this.openNots()
+
+    this.notsVisibility()
   },
   methods: {
     ...mapMutations(['deleteNote']),
+    notsVisibility(){
+      if(this.$route.params.userOwn === false){
+        let notsItem = this.info.filters.find(item => item.value === 'nots')
+        notsItem.show = false
+      }
+    },
     noteMessage(item){
+      if(item.sourceType === 'box'){
+        return this.notsMessage.youOpened
+      }
+
       if(item.sourceId == this.userInfo.username){
         if(item.action === 'purchase'){
           return this.notsMessage.youBought
-        }else if(item.action === 'open'){
-          return this.notsMessage.youOpened
         }
       }else{
         if(item.action === 'like'){
@@ -282,6 +299,20 @@ export default {
       //   })
       // return output
     },
+    toggleLike(id, likes){
+      if(likes.status === false){
+        likes.count++
+      }else{
+        likes.count--
+      }
+      likes.status = !likes.status
+
+      axios
+        .post('art/' + id, likes)
+        .then(function(){
+
+        })
+    }
   },
   computed: {
     ...mapGetters(['userInfo']),
