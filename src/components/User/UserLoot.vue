@@ -196,17 +196,6 @@ export default {
     this.openNots()
 
     this.notsVisibility()
-
-    console.log(
-      this.getNoteMessage({
-      id: 12,
-      sourceId: 23,
-      sourceType: 'user',
-      itemId: 34,
-      itemType: 'art',
-      action: 'like',
-    }, 'dfsd')
-    )
   },
   methods: {
     ...mapMutations(['deleteNote']),

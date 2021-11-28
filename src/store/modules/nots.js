@@ -21,25 +21,23 @@ const state = {
       sourceType: 'user',
       itemId: 34,
       itemType: 'art',
-      action: 'purchase',
+      action: 'like',
     },
     {
       id: 3,
-      sourceId: 'artstudio',
+      sourceId: 23,
       sourceType: 'user',
       itemId: 34,
       itemType: 'art',
-      action: 'purchase',
+      action: 'like',
     },
     {
       id: 4,
       sourceId: 23,
-      sourceType: 'box',
+      sourceType: 'user',
       itemId: 34,
-      itemType: 'box',
-      action: 'open',
-
-      // Убрать
+      itemType: 'art',
+      action: 'like',
     },
     {
       id: 5,
@@ -47,7 +45,7 @@ const state = {
       sourceType: 'user',
       itemId: 34,
       itemType: 'art',
-      action: 'purchase',
+      action: 'like',
     },
     {
       id: 6,
@@ -103,23 +101,23 @@ const state = {
       sourceType: 'user',
       itemId: 34,
       itemType: 'art',
-      action: 'like',
+      action: 'purchase',
     },
     {
       id: 13,
-      sourceId: 23,
+      sourceId: 'artstudio',
       sourceType: 'user',
       itemId: 34,
       itemType: 'art',
-      action: 'like',
+      action: 'purchase',
     },
     {
       id: 14,
       sourceId: 23,
-      sourceType: 'user',
+      sourceType: 'box',
       itemId: 34,
-      itemType: 'art',
-      action: 'like',
+      itemType: 'box',
+      action: 'open',
     },
     {
       id: 15,
@@ -127,7 +125,7 @@ const state = {
       sourceType: 'user',
       itemId: 34,
       itemType: 'art',
-      action: 'like',
+      action: 'purchase',
     },
     {
       id: 16,
@@ -147,7 +145,7 @@ const state = {
 };
 
 const getters = {
-  nots: state => state.nots,
+  nots: state => state.nots.slice().reverse(),
   notsMessage: state => state.message,
 };
 

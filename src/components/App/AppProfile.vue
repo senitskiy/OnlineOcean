@@ -8,6 +8,7 @@
     </span>
     <span class="profile__name">
       {{ showName ? userName : userUsername }}
+      <slot></slot>
       <span class="profile__slot"
       v-if='contentSlot.length !== 0'
       >
