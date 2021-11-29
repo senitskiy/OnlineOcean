@@ -750,6 +750,24 @@
     margin-bottom: 30px;
     font-size: 20px;
     line-height: 24px;
+    max-width: 500px;
+  }
+
+  .user-connect__inner{
+    padding: 80px 20px;
+  }
+
+  .user-connect__imgwrapper{
+    left: 20px;
+    &--reversed{
+      left: unset;
+      right: 20px;
+    }
+  }
+
+  .user-connect__graphic{
+    width: 240px;
+    height: 240px;
   }
 
   // User
@@ -779,7 +797,7 @@
   // User
 
   .user-connect__inner{
-    padding: 60px 20px 120px;
+    padding: 60px 20px;
   }
 
   .user-connect__title{
@@ -796,10 +814,6 @@
     padding-left: 40px;
     padding-right: 40px;
     height: 70px;
-  }
-
-  .user-connect__imgwrapper{
-    max-width: 190px;
   }
 
   // User
@@ -1326,15 +1340,20 @@
   }
 
   .user-connect__inner{
-    padding: 40px 20px 100px;
-  }
-
-  .user-connect__imgwrapper{
-    max-width: 150px;
+    padding: 40px 20px;
   }
 
   .user-connect .btn{
     height: 60px;
+  }
+
+  .user-connect__imgwrapper{
+    top: 65%;
+  }
+
+  .user-connect__graphic{
+    width: 180px;
+    height: 180px;
   }
 
   // User
@@ -1563,10 +1582,6 @@
     margin-right: 0;
   }
 
-  .user-connect__imgwrapper{
-    max-width: 120px;
-  }
-
   .user-cover__change{
     font-size: 12px;
     line-height: 15px;
@@ -1576,6 +1591,11 @@
 
   .user-nots{
     margin-bottom: 20px;
+  }
+
+  .user-connect__graphic{
+    width: 150px;
+    height: 150px;
   }
 
   // User
@@ -1603,6 +1623,18 @@
   }
 
   // Cataloge
+
+  // User
+
+  .user-connect__inner{
+    padding: 40px 20px 70px;
+  }
+
+  .user-connect__imgwrapper{
+    top: 72%;
+  }
+
+  // User
 }
 
 @media (max-width: 425px){
@@ -1714,7 +1746,7 @@
   // User
 
   .user-connect__inner{
-    padding-bottom: 105px;
+    // padding-bottom: 105px;
   }
 
   .user-connect{
