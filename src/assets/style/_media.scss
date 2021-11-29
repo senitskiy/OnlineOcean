@@ -747,7 +747,7 @@
   }
 
   .settings__descr{
-    margin-bottom: 30px;
+    margin: 0 auto 30px;
     font-size: 20px;
     line-height: 24px;
     max-width: 500px;
@@ -1195,6 +1195,10 @@
   .user-connect__descr{
     font-size: 18px;
     line-height: 24px;
+  }
+
+  .settings .btn--back{
+    transform: translateY(-5px);
   }
 
   // User
@@ -1742,10 +1746,6 @@
 
   // User
 
-  .user-connect__inner{
-    // padding-bottom: 105px;
-  }
-
   .user-connect{
     .btn{
       padding-left: 22px;
@@ -1794,6 +1794,19 @@
     font-size: 16px;
     line-height: 19px;
     margin-bottom: 20px;
+  }
+
+  .settings .btn--back{
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .settings__inner{
+    padding: 30px 20px 20px;
+  }
+  
+  .settings .btn--back {
+    transform: translateY(-11px);
   }
 
   .settings{
@@ -1910,4 +1923,18 @@
   }
 
   // Create
+
+  // User
+
+  .settings__buttonwrapper{
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    .btn + .btn{
+      margin-left: 0;
+      margin-top: 20px;
+    }
+  }
+
+  // User
 }

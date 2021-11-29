@@ -143,6 +143,12 @@
               btnType='submit'
               :title='content.saveBtn'
               ></app-button>
+              <app-button
+              :title='content.signOut'
+              view='out'
+              @click='signOutWallet()'
+              v-if='this.userInfo.connected !== false'
+              ></app-button>
             </div>
           </form>
         </div>
@@ -187,6 +193,7 @@ export default {
         avatarPlaceholder: 'avatar',
         bannerPlaceholder: 'banner',
         saveBtn: 'Save settings',
+        signOut: 'Sign out',
       },
       data:{
         name: '',
@@ -224,7 +231,7 @@ export default {
     ...mapGetters(['userInfo']),
   },
   methods: {
-    ...mapMutations(['userLogged']),
+    ...mapMutations(['userLogged', 'signOutWallet']),
     setLogo(value){
       this.data.logo = value
     },

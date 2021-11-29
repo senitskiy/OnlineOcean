@@ -50,7 +50,18 @@ const mutations = {
     this.commit('changeUserInfo')
 
     router.push({ name: 'User', params: { username: state.user.username }})
-  }
+  },
+  signOutWallet(state){
+    state.user.token = ''
+    state.user.connected = false
+    state.user.username = 'null'
+
+    localStorage.setItem('userConnected', false)
+    localStorage.setItem('userUsername', state.user.username)
+    localStorage.setItem('userToken', state.user.token)
+
+    router.push({ name: 'Index'})
+  },
 };
 
 export default {
