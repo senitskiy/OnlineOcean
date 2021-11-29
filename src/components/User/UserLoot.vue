@@ -93,22 +93,20 @@
             </router-link>
 
             <!-- Result -->
-            <div class="user-nots__result"
-            v-for='result in resultItem(item.itemId)'
-            :key='result'
-            >
+            <div class="user-nots__result">
+              {{ this.getResultItem(item) }}
               <router-link class="user-nots__imgwrapper"
               :to='{name: "Art", params:{itemId: item.itemId}}'
               >
-                <img :src="result.cover.src" alt="">
+                <img :src="item.loaded.cover.src" alt="">
               </router-link>
               <div class="user-nots__result-info">
                 <p class="user-nots__text">
                   {{ getNoteMessage(this.notsMessage, item, this.userInfo.username) }}
                 </p>
                 <app-likes
-                :info='result.likes'
-                @toggledLike='toggleLike(item.itemId, result.likes)'
+                :info='item.loaded.likes'
+                @toggledLike='noteToggleLike(item)'
                 ></app-likes>
               </div>
             </div>
@@ -198,7 +196,7 @@ export default {
     this.notsVisibility()
   },
   methods: {
-    ...mapMutations(['deleteNote']),
+    ...mapMutations(['deleteNote', 'getResultItem', 'noteToggleLike']),
     notsVisibility(){
       if(this.$route.params.userOwn === false){
         let notsItem = this.info.filters.find(item => item.value === 'nots')
@@ -272,49 +270,9 @@ export default {
         // })
       // return output
     },
-    resultItem(id){
-      // Пример ответа
-      let output = [{
-        cover:{
-          src: 'https://drive.google.com/uc?id=1YSmJeQg8G9mbdnR2MREvppFxqNk5K3ST'
-        },
-        likes:{
-          count: 131,
-          status: false,
-        },
-      }]
-
-      console.log(id)
-      return output
-
-      // Раскоментировать
-      // let output = null
-      // axios
-      //   .get('art/' + id)
-      //   .then(function(response){
-      //     output = response
-      //   })
-      // return output
-    },
-    toggleLike(id, likes){
-      if(likes.status === false){
-        likes.count++
-      }else{
-        likes.count--
-      }
-      likes.status = !likes.status
-
-      axios
-        .post('art/' + id, likes)
-        .then(function(){
-
-        })
-    }
   },
   computed: {
-    ...mapGetters(['userInfo']),
-    ...mapGetters(['nots']),
-    ...mapGetters(['notsMessage']),
+    ...mapGetters(['userInfo', 'nots', 'notsMessage']),
     lootMore(){
       return this.data.showMore ? 'user-loot__items--more' : ''
     },

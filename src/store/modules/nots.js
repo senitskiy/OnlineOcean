@@ -2,7 +2,7 @@
 
 // axios.get('nots')
 //   .then(function (response) {
-//     state.nots = response
+//     state = response
 //   })
 
 const state = {
@@ -19,7 +19,7 @@ const state = {
       id: 2,
       sourceId: 23,
       sourceType: 'user',
-      itemId: 34,
+      itemId: 324,
       itemType: 'art',
       action: 'like',
     },
@@ -27,7 +27,7 @@ const state = {
       id: 3,
       sourceId: 23,
       sourceType: 'user',
-      itemId: 34,
+      itemId: 344,
       itemType: 'art',
       action: 'like',
     },
@@ -35,7 +35,7 @@ const state = {
       id: 4,
       sourceId: 23,
       sourceType: 'user',
-      itemId: 34,
+      itemId: 3445,
       itemType: 'art',
       action: 'like',
     },
@@ -43,7 +43,7 @@ const state = {
       id: 5,
       sourceId: 23,
       sourceType: 'user',
-      itemId: 34,
+      itemId: 4335,
       itemType: 'art',
       action: 'like',
     },
@@ -51,7 +51,7 @@ const state = {
       id: 6,
       sourceId: 23,
       sourceType: 'user',
-      itemId: 34,
+      itemId: 343553,
       itemType: 'art',
       action: 'like',
     },
@@ -59,7 +59,7 @@ const state = {
       id: 7,
       sourceId: 23,
       sourceType: 'user',
-      itemId: 34,
+      itemId: 34314,
       itemType: 'art',
       action: 'like',
     },
@@ -67,7 +67,7 @@ const state = {
       id: 8,
       sourceId: 23,
       sourceType: 'user',
-      itemId: 34,
+      itemId: 34234,
       itemType: 'art',
       action: 'like',
     },
@@ -83,7 +83,7 @@ const state = {
       id: 10,
       sourceId: 23,
       sourceType: 'user',
-      itemId: 34,
+      itemId: 345378994,
       itemType: 'art',
       action: 'like',
     },
@@ -91,7 +91,7 @@ const state = {
       id: 11,
       sourceId: 23,
       sourceType: 'user',
-      itemId: 34,
+      itemId: 3674,
       itemType: 'art',
       action: 'like',
     },
@@ -99,7 +99,7 @@ const state = {
       id: 12,
       sourceId: 23,
       sourceType: 'user',
-      itemId: 34,
+      itemId: 38764,
       itemType: 'art',
       action: 'purchase',
     },
@@ -107,7 +107,7 @@ const state = {
       id: 13,
       sourceId: 'artstudio',
       sourceType: 'user',
-      itemId: 34,
+      itemId: 37864,
       itemType: 'art',
       action: 'purchase',
     },
@@ -115,7 +115,7 @@ const state = {
       id: 14,
       sourceId: 23,
       sourceType: 'box',
-      itemId: 34,
+      itemId: 38764,
       itemType: 'box',
       action: 'open',
     },
@@ -123,7 +123,7 @@ const state = {
       id: 15,
       sourceId: 23,
       sourceType: 'user',
-      itemId: 34,
+      itemId: 36877687684,
       itemType: 'art',
       action: 'purchase',
     },
@@ -131,7 +131,7 @@ const state = {
       id: 16,
       sourceId: 23,
       sourceType: 'user',
-      itemId: 34,
+      itemId: 3768678764,
       itemType: 'art',
       action: 'like',
     },
@@ -171,7 +171,54 @@ const mutations = {
     //       state.nots.push(needDelete)
     //     } 
     //   })
-  }
+  },
+  getResultItem(state, payload){
+    let needItem = state.nots.find((item) => item.id === payload.id)
+
+    // Пример ответа (Убрать)
+    let output = {
+      cover:{
+        src: 'https://drive.google.com/uc?id=1YSmJeQg8G9mbdnR2MREvppFxqNk5K3ST'
+      },
+      likes:{
+        count: 131,
+        status: false,
+      },
+    }
+    needItem.loaded = output
+
+    // Раскоментировать
+    // let output = null
+    // axios
+    //   .get('art/' + payload.itemId)
+    //   .then(function(response){
+    //     needItem.loaded = response
+    //   })
+    // return output
+  },
+  noteToggleLike(state, payload){
+    // Убрать
+    let needItem = state.nots.find((item) => item.id === payload.id)
+    
+    if(needItem.loaded.likes.status === false){
+      needItem.loaded.likes.count++
+    }else{
+      needItem.loaded.likes.count--
+    }
+    needItem.loaded.likes.status = !needItem.loaded.likes.status
+
+    // Раскоментировать
+    // axios.post('user/likes', {payload.id, payload.likes})
+    // .then(function () {
+    //   let needItem = state.nots.find((item) => item.id === payload.id)
+    //   if(needItem.loaded.likes.status === false){
+    //     needItem.loaded.likes.count++
+    //   }else{
+    //     needItem.loaded.likes.count--
+    //   }
+    //   needItem.loaded.likes.status = !needItem.loaded.likes.status
+    // })
+  },
 };
 
 export default {
