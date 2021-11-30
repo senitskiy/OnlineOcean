@@ -45,7 +45,7 @@
     </button>
     <span class="header__account-link">
       <app-profile
-      :userID='userInfo.username'
+      :user-id='userInfo.username'
       :customHref='"/user/" + userInfo.username'
       ></app-profile>
     </span>

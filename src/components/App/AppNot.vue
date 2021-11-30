@@ -1,7 +1,5 @@
 <template>
-  <router-link class="nots__item"
-  to='/kek/'
-  >
+  <div class="nots__item">
     <app-profile
     userId='43'
     view='nots'
@@ -11,14 +9,7 @@
         {{ getNoteMessage(this.notsMessage, item, this.userInfo.username) }}
       </p>
     </app-profile>
-    <!-- <span class="nots__content">
-      <p class="nots__name">
-        {{ name }}
-      </p>
-      <p class="nots__text">
-      </p>
-    </span> -->
-  </router-link>
+  </div>
 </template>
 
 <script>

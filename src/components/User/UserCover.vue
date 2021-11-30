@@ -18,7 +18,7 @@
       <div class="user-cover__inner">
         <div class="user-cover__profile">
           <app-profile
-          :userId='user.userName'
+          :user-id='user.userName'
           view='cover'
           ></app-profile>
           <div class="user-cover__profile-col user-cover__profile-loot">

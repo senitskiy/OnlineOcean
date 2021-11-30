@@ -46,7 +46,7 @@ export default {
       },
       user:{
         coverImage: {
-          src: 'https://i.ibb.co/KjyXtpS/product-banner.jpg'
+          src: 'https://drive.google.com/uc?id=1Purnpw_AVLS4NoSlaG8f2F5z-amS_0JG'
         },
         userName: 'artstudio',
         userNickname: 'Artstudio__451',

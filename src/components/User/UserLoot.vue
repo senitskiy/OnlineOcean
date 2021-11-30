@@ -58,7 +58,7 @@
       <div class="user-nots__inner section">
         <div class="user-nots__items">
           <div class="user-nots__item"
-          v-for='(item, index) in nots'
+          v-for='(item, index) in reversedNots'
           :key='index'
           >
             <div class="user-nots__index">
@@ -71,9 +71,9 @@
             v-if='item.sourceType === "user"'
             >
               <app-profile
-              :userId='item.sourceId'
+              :user-id='item.sourceId'
               :view='item.sourceId == userInfo.username ? "white" : ""'
-              :customName='item.sourceId == userInfo.username ? "You" : ""'
+              :custom-name='item.sourceId == userInfo.username ? "You" : ""'
               showName
               ></app-profile>
             </div>
@@ -258,7 +258,9 @@ export default {
         },
         title: 'Random box',
       }]
-      console.log(id)
+      
+      id
+
       return output
 
       // Раскоментировать
@@ -278,6 +280,10 @@ export default {
     },
     lootBtn(){
       return this.data.showMore ? this.content.itemsBtnTextLess : this.content.itemsBtnTextShow
+    },
+    reversedNots(){
+      // return this.nots.map((e, i, a)=> a[(a.length -1) -i])
+      return this.nots
     },
   },
   mixins:[

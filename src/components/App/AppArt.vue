@@ -17,7 +17,7 @@
     <span class="art__info">
       <app-profile
       v-if='!short'
-      :userId='art.artstudio'
+      :user-id='art.artstudio'
       :contentSlot='art.descr'
       view='hasDescr'
       ></app-profile>

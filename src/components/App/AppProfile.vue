@@ -24,7 +24,7 @@ import axios from 'axios'
 export default {
   props: {
     userId:{
-      type: String,
+      type: [Number, String],
       required: true, 
     },
     view: {
