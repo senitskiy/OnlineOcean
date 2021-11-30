@@ -17,6 +17,7 @@
       </div>
     </div>
     <menu class="header__menu"
+    :class='this.userInfo.connected ? "" : "header__menu--user-unlogged"'
     ref='menu'
     >
       <header-content></header-content>

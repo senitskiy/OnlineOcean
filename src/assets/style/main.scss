@@ -143,6 +143,18 @@
     &--active{
       transform: unset;
     }
+    &--user-unlogged{
+      .profile{
+        &--verified{
+          .profile__imgwrapper::after{
+            display: none;
+          }
+        }
+        &__name{
+          display: none;
+        }
+      }
+    }
     .header__account{
       display: none;
     }

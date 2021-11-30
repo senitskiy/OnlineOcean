@@ -534,6 +534,10 @@
     }
   }
 
+  .header__buttons *:last-child{
+    margin-left: 0;
+  }
+
   // Global
 
   // Index
@@ -1216,6 +1220,10 @@
       display: block;
       margin-bottom: 15px;
     }
+  }
+
+  .header--connected .header__search-wrapper{
+    margin: 20px 20px 15px 20px;
   }
 
   // Global
