@@ -1,29 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Index from '../views/Index.vue'
-import Cataloge from '../views/Cataloge.vue'
-import Register from '../views/Register.vue'
-import Settings from '../views/Settings.vue'
-import Box from '../views/Box.vue'
-import BoxOpen from '../views/BoxOpen.vue'
-import Art from '../views/Art.vue'
-import Create from '../views/Create.vue'
-import CreateSomething from '../views/CreateSomething.vue'
-import User from '../views/User.vue'
-import UserUnlogged from '../views/UserUnlogged.vue'
 
-// let prevUserRouteParams = null
+const Index = () => import('../views/Index.vue')
+const Cataloge = () => import('../views/Cataloge.vue')
+const Register = () => import('../views/Register.vue')
+
+const Box = () => import(/* webpackChunkName: "art" */'../views/Box.vue')
+const BoxOpen = () => import(/* webpackChunkName: "art" */'../views/BoxOpen.vue')
+const Art = () => import(/* webpackChunkName: "art" */'../views/Art.vue')
+
+const Create = () => import(/* webpackChunkName: "create" */'../views/Create.vue')
+const CreateSomething = () => import(/* webpackChunkName: "create" */'../views/CreateSomething.vue')
+
+const Settings = () => import(/* webpackChunkName: "user" */'../views/Settings.vue')
+const User = () => import(/* webpackChunkName: "user" */'../views/User.vue')
+const UserUnlogged = () => import(/* webpackChunkName: "user" */'../views/UserUnlogged.vue')
 
 function userRoute(to){
   if(to.params.username === 'null'){
-    to.params.userConnected = false
-    to.params.userOwn = true
     router.push({name: 'UserUnlogged'})
-  }else if(to.params.username === localStorage.getItem('userUsername') && JSON.parse(localStorage.getItem('userConnected')) === true){
-    to.params.userConnected = true
-    to.params.userOwn = true
-  }else{
-    to.params.userConnected = false
-    to.params.userOwn = false
   }
 }
 
@@ -37,11 +31,6 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: Register
-  },
-  {
-    path: '/settings',
-    name: 'Settings',
-    component: Settings
   },
   {
     path: '/cataloge',
@@ -85,6 +74,11 @@ const routes = [
     props: true,
     beforeEnter: userRoute,
     beforeRouteUpdate: userRoute,
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: Settings
   },
 ]
 

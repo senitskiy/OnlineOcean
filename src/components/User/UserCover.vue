@@ -3,7 +3,7 @@
   :class='guestProfile'
   >
     <div class="user-cover__change"
-    v-if='this.$route.params.userOwn'
+    v-if='userInfo.username === $route.params.username'
     >
       {{ content.changeBackgroundBtn }}
       <input type="file"
@@ -53,7 +53,7 @@
               </svg>
             </div>
             <app-button
-            v-if='this.$route.params.userOwn'
+            v-if='userInfo.username === $route.params.username'
             :title='content.editBtnTitle'
             link
             href='/settings/'
@@ -137,7 +137,7 @@ export default {
       return first + '...' + second
     },
     guestProfile(){
-      return this.$route.params.userOwn ? '' : "user-cover--guest"
+      return this.userInfo.username === this.$route.params.username ? '' : "user-cover--guest"
     },
   },
   components: {
