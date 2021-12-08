@@ -40,7 +40,7 @@
   }
   &__buttons{
     display: flex;
-    margin: 0 15px 0 50px;
+    margin: 0 24px 0 50px;
     *:first-child{
       padding-left: 38px;
       padding-right: 38px;
@@ -55,9 +55,13 @@
     display: flex;
     align-items: center;
   }
+  &__theme{
+
+  }
   &__blockchain{
     margin-right: 21px;
     position: relative;
+    margin-left: 15px;
   }
   &__blockchain-icon{
     background-color: $pink;
@@ -196,6 +200,30 @@
       margin-left: 80px;
       margin-right: auto;
       max-width: unset;
+    }
+  }
+}
+
+.theme{
+  background: $grey-bg;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  svg{
+    width: 18px;
+    height: 24px;
+    path{
+      transition: all .4s;
+    }
+  }
+  &--dark{
+    svg{
+      path{
+        fill: #fff;
+      }
     }
   }
 }

@@ -58,7 +58,7 @@
       <div class="user-nots__inner section">
         <div class="user-nots__items">
           <div class="user-nots__item"
-          v-for='(item, index) in reversedNots'
+          v-for='(item, index) in nots'
           :key='index'
           >
             <div class="user-nots__index">
@@ -280,10 +280,6 @@ export default {
     },
     lootBtn(){
       return this.data.showMore ? this.content.itemsBtnTextLess : this.content.itemsBtnTextShow
-    },
-    reversedNots(){
-      // return this.nots.map((e, i, a)=> a[(a.length -1) -i])
-      return this.nots
     },
   },
   mixins:[

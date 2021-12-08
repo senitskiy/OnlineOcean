@@ -337,7 +337,6 @@ const state = {
     },
   ],
   reversedNots:[],
-  loaded:[],
   message:{
     someoneBought: 'Your NFT was purchased by a user.',
     youBought: 'You have purchased NFT.',
@@ -347,7 +346,7 @@ const state = {
 };
 
 const getters = {
-  nots: state => state.nots,
+  nots: state => state.nots.map((e, i, a)=> a[(a.length -1) -i]),
   notsMessage: state => state.message,
 };
 

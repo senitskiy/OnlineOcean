@@ -22,6 +22,7 @@
     ></app-button>
   </div>
   <div class="header__account">
+    <app-theme></app-theme>
     <button class="header__blockchain btn-clear"
     :class='openedBlockchains !== false ? "header__blockchain--active" : ""'
     @click='togglePopUpBlockchains'
@@ -56,6 +57,7 @@
 import AppInput from '@/components/App/AppInput.vue'
 import AppProfile from '@/components/App/AppProfile.vue'
 import AppNots from '@/components/App/AppNots.vue'
+import AppTheme from '@/components/App/AppTheme.vue'
 import HeaderBlockchains from '@/components/Header/HeaderBlockchains.vue'
 
 import axios from 'axios';
@@ -98,6 +100,7 @@ export default {
     AppInput,
     AppProfile,
     AppNots,
+    AppTheme,
     HeaderBlockchains,
   },
 }
