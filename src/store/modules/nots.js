@@ -359,9 +359,7 @@ const mutations = {
     let index = state.nots.indexOf(needDelete)
     if (index !== -1){
       state.nots.splice(index, 1)
-    } else{
-      state.nots.push(needDelete)
-    } 
+    }
 
     // Раскоментировать
     // axios.post('nots/delete', payload)
@@ -369,34 +367,34 @@ const mutations = {
     //     let index = state.nots.indexOf(needDelete)
     //     if (index !== -1){
     //       state.nots.splice(index, 1)
-    //     } else{
-    //       state.nots.push(needDelete)
-    //     } 
+    //     }
     //   })
   },
   getResultItem(state, payload){
     let needItem = state.nots.find((item) => item.id === payload.id)
 
-    // Пример ответа (Убрать)
-    let output = {
-      cover:{
-        src: 'https://drive.google.com/uc?id=1YSmJeQg8G9mbdnR2MREvppFxqNk5K3ST'
-      },
-      likes:{
-        count: 131,
-        status: false,
-      },
+    if(needItem.loaded === undefined){
+      // Пример ответа (Убрать)
+      let output = {
+        cover:{
+          src: 'https://drive.google.com/uc?id=1YSmJeQg8G9mbdnR2MREvppFxqNk5K3ST'
+        },
+        likes:{
+          count: 131,
+          status: false,
+        },
+      }
+      needItem.loaded = output
+  
+      // Раскоментировать
+      // let output = null
+      // axios
+      //   .get('art/' + payload.itemId)
+      //   .then(function(response){
+      //     needItem.loaded = response
+      //   })
+      // return output
     }
-    needItem.loaded = output
-
-    // Раскоментировать
-    // let output = null
-    // axios
-    //   .get('art/' + payload.itemId)
-    //   .then(function(response){
-    //     needItem.loaded = response
-    //   })
-    // return output
   },
   noteToggleLike(state, payload){
     // Убрать
