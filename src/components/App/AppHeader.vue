@@ -21,10 +21,13 @@
     ref='menu'
     >
       <header-content></header-content>
-      <app-profile
-      :user-id='userInfo.username'
-      :customHref='"/user/" + userInfo.username'
-      ></app-profile>
+      <div class="header__menu-account">
+        <app-theme></app-theme>
+        <app-profile
+        :user-id='userInfo.username'
+        :customHref='"/user/" + userInfo.username'
+        ></app-profile>
+      </div>
       <header-blockchains></header-blockchains>
       <app-social></app-social>
     </menu>
@@ -35,6 +38,7 @@
 import AppLogo from '@/components/App/AppLogo.vue'
 import AppSocial from '@/components/App/AppSocial.vue'
 import AppProfile from '@/components/App/AppProfile.vue'
+import AppTheme from '@/components/App/AppTheme.vue'
 import HeaderContent from '@/components/Header/HeaderContent.vue';
 import HeaderBlockchains from '@/components/Header/HeaderBlockchains.vue';
 
@@ -62,6 +66,7 @@ export default {
     AppLogo,
     AppSocial,
     AppProfile,
+    AppTheme,
     HeaderContent,
     HeaderBlockchains,
   },

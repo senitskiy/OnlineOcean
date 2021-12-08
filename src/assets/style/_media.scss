@@ -177,7 +177,7 @@
   // Create
 }
 
-@media (max-width: 1070px){
+@media (max-width: 1080px){
   // Global
 
   .header__inner{
@@ -955,6 +955,13 @@
     .blockchains{
       opacity: 1;
     }
+    .header__account{
+      display: none;
+    }
+  }
+
+  .header__menu-account{
+    display: flex;
   }
 
   .art:hover{

@@ -195,6 +195,14 @@
       // text-align: center;
     }
   }
+  &__menu-account{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    .theme{
+      margin-right: 30px;
+    }
+  }
   &--connected{
     .header__search-wrapper{
       margin-left: 80px;
