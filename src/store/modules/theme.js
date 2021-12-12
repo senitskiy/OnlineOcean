@@ -2,6 +2,10 @@ const state = {
   theme: '',
 };
 
+if(localStorage.getItem("theme") === null){
+  localStorage.setItem("theme", 'dark')
+}
+
 state.theme = localStorage.getItem('theme')
 
 const getters = {
