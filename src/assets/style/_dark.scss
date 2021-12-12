@@ -1,4 +1,21 @@
 [data-theme="dark"]{
+  .cover__inner{
+    min-height: 300px;
+  }
+  .cover__imgwrapper--dark{
+    img{
+      border-radius: 25px;
+    }
+  }
+  .cover__info{
+    position: relative;
+    z-index: 2;
+    margin-left: 73px;
+  }
+  .cover__desc{
+    color: #E7E7E7;
+  }
+
   .user-filters__checkboxes .label input:checked + .label-text,
   .user-cover .btn--lined,
   .settings__buttonwrapper .btn--out,
@@ -529,6 +546,13 @@
     background: #3E3E3E;
   }
 
+  
+  @media (max-width: 1130px){
+    .cover__info{
+      margin-left: 0;
+    }
+  }
+
   @media (max-width: 768px){
     .user-nots__items{
       &::-webkit-scrollbar{
@@ -537,6 +561,12 @@
       &::-webkit-scrollbar-thumb{
         background-color: #A52EF5;
       }
+    }
+  }
+
+  @media (max-width: 650px){
+    .cover__inner{
+      min-height: unset;
     }
   }
   
