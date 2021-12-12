@@ -1,31 +1,61 @@
 [data-theme="dark"]{
-  .header__buttons{
-    .btn{
-      border: none;
-      background-image: linear-gradient(90deg, #94BBFE 0%, #D96BE0 50%, #9A22F7 100%);
+  .user-filters__checkboxes .label input:checked + .label-text,
+  .user-cover .btn--lined,
+  .settings__buttonwrapper .btn--out,
+  .user-connect .btn,
+  .header__buttons .btn{
+    border: none;
+    background-image: linear-gradient(90deg, #94BBFE 0%, #D96BE0 50%, #9A22F7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+    &:after{
+      transition: all .4s;
+      content:"";
+      position: absolute;
+      border-radius: inherit; 
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 2.1px; 
+      z-index: 2;
+      background: linear-gradient(90deg, #94BBFE 0%, #D96BE0 50%, #9A22F7 100%); 
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out; 
+      mask-composite: exclude; 
+    }
+  }
+  .user-filters__checkboxes .label input .label-text{
+    &:after{
+      opacity: 0;
+      transition: all .4s;
+    }
+  }
+  .user-cover .btn--lined,
+  .user-filters__checkboxes .label input:checked + .label-text{
+    border-color: #C0C0C0;
+    color: #C0C0C0;
+    &:after{
+      opacity: 1;
+      padding: 1.3px;
+    }
+  }
+  .index-load{
+    .btn--linear{
+      background: linear-gradient(90deg, #96B4FD 0%, #EA22F8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      position: relative;
-      z-index: 1;
+      &:before{
+        background: linear-gradient(90deg, #96B4FD 0%, #EA22F8 100%);
+      }
       &:after{
-        transition: all .4s;
-        content:"";
-        position: absolute;
-        border-radius: inherit; 
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        padding: 2.1px; 
-        z-index: 2;
-        background: linear-gradient(90deg, #94BBFE 0%, #D96BE0 50%, #9A22F7 100%); 
-        -webkit-mask: 
-          linear-gradient(#fff 0 0) content-box, 
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: destination-out; 
-        mask-composite: exclude; 
+        background: var(--main-bg);
       }
     }
   }
@@ -155,6 +185,18 @@
   .user-connect__graphic{
     path{
       fill: var(--main-bg);
+    }
+  }
+  .user-cover .copy svg{
+    path{
+      fill: #9A21F8;
+    }
+  }
+  .user-filters__inputwrapper{
+    svg{
+      path{
+        fill: url(#gradient);
+      }
     }
   }
 
@@ -372,6 +414,17 @@
   }
   .create-modal .btn--submit{
     background: linear-gradient(90deg, #F288D1 0%, #B23DED 100%);
+  }
+  .box-loot__add-descr{
+    background: linear-gradient(180deg, #F78DD0 0%, #AD38EF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .box-loot__imgwrapper svg path{
+    fill: url(#gradient);
+  }
+  .box-loot__background rect{
+    stroke: url(#gradient);
   }
 
   .user-nots__item{
