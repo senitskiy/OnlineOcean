@@ -18,7 +18,7 @@
 
   .user-filters__checkboxes .label input:checked + .label-text,
   .user-cover .btn--lined,
-  .settings__buttonwrapper .btn--out,
+  .settings__buttonwrapper .btn,
   .user-connect .btn,
   .header__buttons .btn{
     border: none;
@@ -46,6 +46,11 @@
         linear-gradient(#fff 0 0);
       -webkit-mask-composite: destination-out; 
       mask-composite: exclude; 
+    }
+  }
+  .settings__buttonwrapper .btn--pink{
+    &:after{
+      background: linear-gradient(-90deg, #95B8FC 0%, #D86AE0 51.56%, #9D26F5 100%); 
     }
   }
   .user-filters__checkboxes .label input .label-text{
@@ -174,21 +179,14 @@
     color: #fff;
     border: 1px solid #3B3741;
     background: #1D1625;
-    // position: relative;
-    // background-clip: padding-box;
-    // z-index: 0;
+    position: relative;
     &:focus{
       background: rgba(140, 116, 235, 0.05);
+      border: 1px solid transparent;
+      background-image: linear-gradient(var(--grey-bg), var(--grey-bg)), linear-gradient(90deg, #97B4FA 0%, #D567E0 51.56%, #A029F4 100%);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
     }
-    // &:after{
-    //   content: '';
-    //   position: absolute;
-    //   top: -4px; bottom: -4px;
-    //   left: -4px; right: -4px;
-    //   background: linear-gradient(90deg, #97B4FA 0%, #D567E0 51.56%, #A029F4 100%);
-    //   z-index: -1;
-    //   border-radius: 16px;
-    // }
   }
 
   .logo{
@@ -319,6 +317,13 @@
   }
   .filters .input--filter-collection{
     background: var(--grey-bg);
+    &:focus{
+      background: rgba(140, 116, 235, 0.05);
+      border: 1px solid transparent;
+      background-image: linear-gradient(var(--grey-bg), var(--grey-bg)), linear-gradient(90deg, #97B4FA 0%, #D567E0 51.56%, #A029F4 100%);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+    }
   }
   .filters__item .label{
     color: #C0C0C0;
