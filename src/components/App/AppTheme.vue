@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   data() {
     return {
@@ -18,20 +20,24 @@ export default {
     };
   },
   mounted: function () {
+    if(localStorage.getItem("theme") === null){
+      localStorage.setItem("theme", 'dark')
+    }
+
     let localTheme = localStorage.getItem("theme"); //gets stored theme value if any
     document.documentElement.setAttribute("data-theme", localTheme); // updates the data-theme attribute
 
-    this.theme = localTheme; // Автоматически дает класс луне
+    this.theme = localTheme; // Автоматически дает класс кнопке
   },
   methods: {
+    ...mapMutations(['setTheme']),
     toggleTheme() {
       this.theme = this.theme == "dark" ? "" : "dark"; //toggles theme value
       document.documentElement.setAttribute("data-theme", this.theme); // sets the data-theme attribute
       localStorage.setItem("theme", this.theme); // stores theme value on local storage
+
+      this.setTheme(this.theme)
     },
   },
 };
 </script>
-
-<style lang="scss" scoped>
-</style>   

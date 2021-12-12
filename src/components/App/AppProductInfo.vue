@@ -166,7 +166,7 @@ export default {
       shareStatus: false,
       shareText: 'Cool%20art%20here%20',
       currPath: document.URL,
-      endAuction: '2021-10-23T22:53:30',
+      endAuction: '2021-12-12T22:53:30',
       dateNow: 0,
       difference: 0,
 

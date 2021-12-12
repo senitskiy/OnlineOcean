@@ -45,6 +45,7 @@ body{
   overflow-x: hidden;
   min-width: 320px;
   color: $grey;
+  background: var(--main-bg);
   // display: flex;
   // flex-direction: column;
   // min-height: 100vh;
@@ -192,7 +193,7 @@ menu{
 }
 
 .input{
-  background-color: $grey-bg;
+  background-color: var(--grey-bg);
   height: 40px;
   border-radius: 220px;
   border: none;
@@ -210,7 +211,7 @@ menu{
     border-color: #EA4C89;
     outline: none;
     &::placeholder{
-      color: $black;
+      color: var(--black);
     }
   }
 }
@@ -262,7 +263,7 @@ menu{
   }
   &--nots{
     flex-direction: row;
-    background-color: $grey-bg;
+    background-color: var(--grey-bg);
     border-radius: 10px;
     padding: 10px 6px 11px 12px;
     .profile__imgwrapper{
@@ -325,7 +326,7 @@ menu{
       }
     }
     .profile__name{
-      color: $black;
+      color: var(--black);
       margin-left: 13px;
       font-size: 20px;
       line-height: 24px;
@@ -387,7 +388,7 @@ menu{
 }
 
 .label{
-  color: $black;
+  color: var(--black);
   font-size: 18px;
   line-height: 22px;
   font-weight: 700;
@@ -435,7 +436,7 @@ menu{
 }
 
 .section{
-  background: $grey-bg;
+  background: var(--grey-bg);
   border-radius: 25px;
 }
 

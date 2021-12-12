@@ -3,7 +3,7 @@
 @import '_global.scss';
 
 .header{
-  background: #fff;
+  background: var(--main-bg);
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid #F3F3F4;
   position: fixed;
@@ -55,9 +55,6 @@
     display: flex;
     align-items: center;
   }
-  &__theme{
-
-  }
   &__blockchain{
     margin-right: 21px;
     position: relative;
@@ -100,6 +97,10 @@
     border-radius: 50%;
     min-width: 40px;
     height: 40px;
+  }
+  .profile,
+  .profile__imgwrapper{
+    background: transparent;
   }
   &__account-link{
     .profile{
@@ -191,9 +192,6 @@
     .blockchains__items{
       grid-template-columns: repeat(3, 1fr);
     }
-    .blockchains__item{
-      // text-align: center;
-    }
   }
   &__menu-account{
     display: none;
@@ -213,7 +211,7 @@
 }
 
 .theme{
-  background: $grey-bg;
+  background: var(--grey-bg);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -281,12 +279,12 @@
     }
   }
   &__navigation-title{
-    color: $black;
+    color: var(--black);
     font-size: 18px;
     line-height: 21px;
   }
   &__news-title{
-    color: $black;
+    color: var(--black);
     font-size: 20px;
     line-height: 24px;
     margin-bottom: 13px;
@@ -336,7 +334,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $grey-bg;
+    background-color: var(--grey-bg);
     border-radius: 25px;
     font-weight: 700;
     padding: 0 22px;
@@ -352,7 +350,7 @@
   &__title{
     font-size: 36px;
     line-height: 43px;
-    color: $black;
+    color: var(--black);
     margin-bottom: 31px;
     max-width: 367px;
   }
@@ -416,8 +414,8 @@
 .row{
   &__inner{
     padding: 20px;
-    background-color: $grey-bg;
-    color: $black;
+    background-color: var(--grey-bg);
+    color: var(--black);
     border-radius: 25px;
     z-index: 0;
     position: relative;
@@ -466,7 +464,7 @@
     font-size: 16px;
     line-height: 19px;
     margin-bottom: 4px;
-    color: $black;
+    color: var(--black);
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -682,11 +680,11 @@
   position: absolute;
   top: 50px;
   right: -90px;
-  background-color: #fff;
+  background-color: var(--main-bg);
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 15px;
   padding: 10px 15px 15px;
-  color: $black;
+  color: var(--black);
   cursor: default;
   z-index: 3;
   opacity: 0;
@@ -721,7 +719,7 @@
   }
   &__imgwrapper{
     border-radius: 10px;
-    background-color: $grey-bg;
+    background-color: var(--grey-bg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -779,7 +777,7 @@
     //   top: -21px;
     //   width: calc(100% + 24px);
     //   height: calc(100% + 21px);
-    //   background-color: $grey-bg;
+    //   background-color: var(--grey-bg);
     // }
   }
   &__current{
@@ -829,7 +827,7 @@
   margin-right: 30px;
   min-width: 320px;
   max-width: 320px;
-  background: #FFFFFF;
+  background: var(--main-bg);
   font-size: 16px;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.05);
   line-height: 19px;
@@ -912,7 +910,7 @@
     }
     &--active{
       .filters__item-head{
-        img{
+        svg{
           transform: rotate(180deg);
         }
       }
@@ -1003,7 +1001,9 @@
     padding: 0 13px 0 26px;
     height: 50px;
     color: #6A6A6A;
-    img{
+    svg{
+      width: 13px;
+      height: 8px;
       transition: all .4s;
     }
   }
@@ -1060,7 +1060,7 @@
   &__toggle{
     .filters__item-head{
       background: rgba(76, 168, 234, 0.12);
-      img{
+      svg{
         transform: rotate(90deg);
       }
     }
@@ -1072,7 +1072,7 @@
     margin: 0 18px 0;
   }
   .multiselect{
-    color: $black;
+    color: var(--black);
     min-height: unset;
     height: 40px;
     padding: 0;
@@ -1137,7 +1137,7 @@
       border-color: $grey;
       &::-webkit-scrollbar{
         width: 10px;
-        background-color: $grey-bg;
+        background-color: var(--grey-bg);
       }
       &::-webkit-scrollbar-thumb{
         background-color: $grey;
@@ -1195,7 +1195,7 @@
       box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.05);
       .filters__item-head{
         padding-right: 19px;
-        img{
+        svg{
           transform: rotate(-90deg);
         }
       }
@@ -1324,7 +1324,7 @@
     font-weight: 700;
     font-size: 48px;
     line-height: 58px;
-    color: $black;
+    color: var(--black);
     margin-bottom: 34px;
     max-width: 480px;
   }
@@ -1359,7 +1359,7 @@
   &__cost{
     font-size: 22px;
     line-height: 26px;
-    color: $black;
+    color: var(--black);
   }
   &__buttons{
     display: flex;
@@ -1389,7 +1389,7 @@
     font-size: 25px;
     line-height: 30px;
     font-weight: 700;
-    color: $black;
+    color: var(--black);
   }
   &__time{
     font-size: 22px;
@@ -1622,7 +1622,7 @@
     display: block;
   }
   &__inner{
-    background-color: $grey-bg;
+    background-color: var(--grey-bg);
     padding: 28px 30px 43px;
     border-radius: 15px;
   }
@@ -1635,7 +1635,7 @@
   &__title{
     font-size: 24px;
     line-height: 28px;
-    color: $black;
+    color: var(--black);
     margin-bottom: 24px;
     font-weight: 700;
   }
@@ -1677,7 +1677,7 @@
 .create{
   padding: 37px 0 41px;
   &__wrapper{
-    background-color: $grey-bg;
+    background-color: var(--grey-bg);
     border-radius: 25px;
     padding: 30px 0 72px;
     display: flex;
@@ -1692,7 +1692,7 @@
   &__title{
     font-size: 24px;
     line-height: 29px;
-    color: $black;
+    color: var(--black);
     margin-bottom: 7px;
     font-weight: 700;
   }
@@ -1760,7 +1760,7 @@
   margin: 37px 0 52px;
   &__inner{
     border-radius: 25px;
-    background-color: $grey-bg;
+    background-color: var(--grey-bg);
     padding: 63px 95px 39px;
   }
   .btn--submit{
@@ -1784,7 +1784,7 @@
     font-size: 24px;
     line-height: 29px;
     font-weight: 700;
-    color: $black;
+    color: var(--black);
     margin: 10px 0 52px;
   }
   &__info{
@@ -1813,8 +1813,9 @@
   &__info-fee{
     margin-bottom: 33px;
     position: relative;
-    .input{
+    .label .input{
       margin-bottom: 5px;
+      padding-right: 55px;
     }
   }
   .multiselect{
@@ -1877,7 +1878,7 @@
       overflow-y: auto;
       &::-webkit-scrollbar{
         width: 10px;
-        background-color: $grey-bg;
+        background-color: var(--grey-bg);
       }
       &::-webkit-scrollbar-thumb{
         background-color: $grey;
@@ -1930,7 +1931,7 @@
         line-height: 22px;
       }
       .profile__name{
-        color: $black;
+        color: var(--black);
       }
     }
     .row__slide-imgwrapper{
@@ -2028,7 +2029,7 @@
   &__text{
     color: #A9A8A8;
     span{
-      color: $black;
+      color: var(--black);
       font-weight: 700;
       text-transform: uppercase;
     }
@@ -2130,7 +2131,7 @@
   &__remove{
     border-radius: 50%;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
-    background-color: $black;
+    background-color: var(--black);
     width: 35px;
     height: 35px;
     position: absolute;
@@ -2208,14 +2209,14 @@
       padding: 15px 73px 14px 20px;
       font-size: 13px;
       line-height: 16px;
-      color: $black;
+      color: var(--black);
       font-weight: 700;
       text-transform: capitalize;
       &:after{
         display: none;
       }
       .create-chars__price{
-        color: $black;
+        color: var(--black);
       }
     }
   }
@@ -2348,12 +2349,12 @@
   margin: 60px 0 120px;
   &__inner{
     border-radius: 25px;
-    background-color: $grey-bg;
+    background-color: var(--grey-bg);
     padding: 90px 20px 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: $black;
+    color: var(--black);
     position: relative;
   }
   &__title{
@@ -2409,7 +2410,7 @@
   margin: -20px 0 38px;
   &__title{
     font-weight: 700;
-    color: $black;
+    color: var(--black);
     font-size: 36px;
     line-height: 43px;
     margin-bottom: 13px;
@@ -2455,7 +2456,7 @@
     &:after{
       content: '';
       position: absolute;
-      background-color: $grey-bg;
+      background-color: var(--grey-bg);
       width: calc(100vw - 1140px);
       min-width: 30px;
       height: 100%;
@@ -2463,11 +2464,11 @@
   }
   &__profile{
     display: inline-flex;
-    background-color: $grey-bg;
+    background-color: var(--grey-bg);
     border-radius: 25px 0 0 25px;
     position: relative;
     padding: 19px 0 17px 114px;
-    color: $black;
+    color: var(--black);
     max-height: 120px;
     min-height: 120px;
     .profile--cover{
@@ -2533,7 +2534,7 @@
     margin-bottom: 22px;
     cursor: pointer;
     &__input{
-      color: $black;
+      color: var(--black);
       font-size: 16px;
       line-height: 19px;
       margin: 0;
@@ -2552,7 +2553,7 @@
     }
     &:hover{
       input{
-        color: rgba($black, .7);
+        color: rgba(var(--black), .7);
       }
       svg{
         path{
@@ -2680,7 +2681,7 @@
 .user-loot{
   margin: 0 0 52px;
   &__inner{
-    background-color: $grey-bg;
+    background-color: var(--grey-bg);
     padding: 20px 20px 16px;
     border-radius: 25px;
   }
@@ -2721,7 +2722,7 @@
       height: 8px;
     }
     &::-webkit-scrollbar-thumb{
-      background-color: $pink;
+      background-color: var(--pink);
       border-radius: 4px;
       height: 8px;
     }
@@ -2767,7 +2768,7 @@
     }
     &:hover{
       path{
-        fill: $black;
+        fill: var(--black);
       }
     }
   }
@@ -2781,7 +2782,7 @@
   }
   .profile{
     flex-direction: row;
-    color: $black;
+    color: var(--black);
     max-width: 100%;
     &__imgwrapper{
       margin-right: 16px;
@@ -2816,7 +2817,7 @@
   &__result{
     display: flex;
     align-items: center;
-    color: $black;
+    color: var(--black);
     max-width: 100%;
   }
   &__source{
@@ -2844,12 +2845,14 @@
   right: 0;
   top: 28px;
   font-weight: 700;
-  color: $black;
+  color: var(--black);
   font-size: 16px;
   line-height: 19px;
   opacity: 0;
+  pointer-events: none;
   transition: all .4s;
   &--active{
+    pointer-events: all;
     opacity: 1;
   }
   &__imgwrapper{
@@ -2891,14 +2894,14 @@
   .label-text{
     font-size: 20px;
     line-height: 24px;
-    color: $black;
+    color: var(--black);
     font-weight: 700;
     margin-bottom: 8px;
   }
   &__title{
     font-size: 36px;
     line-height: 43px;
-    color: $black;
+    color: var(--black);
     margin-bottom: 8px;
     font-weight: 700;
   }
@@ -2906,6 +2909,7 @@
     font-size: 23px;
     line-height: 28px;
     margin-bottom: 59px;
+    // color: var(--subtitle);
   }
   .label{
     display: block;
@@ -2975,7 +2979,7 @@
     color: #A9A8A8;
   }
   &__size{
-    color: $black;
+    color: var(--black);
     transform: translateY(3px)
   }
   &__label,
@@ -3063,5 +3067,7 @@
     }
   }
 }
+
+@import '_dark.scss';
 
 @import '_media.scss';
