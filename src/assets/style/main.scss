@@ -325,6 +325,10 @@
     & + &{
       margin-left: 20px;
     }
+    img{
+      max-width: 32px;
+      max-height: 32px;
+    }
   }
 }
 
@@ -1459,17 +1463,18 @@
       height: 100%;
     }
     .btn--art-hover{
-      padding: 0 15px;
       background-color: $pink;
       color: #fff;
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 10px;
+      left: 10px;
       z-index: 2;
-      transform: translate(-50%, -50%);
       white-space: nowrap;
       opacity: 0;
       transition: all .3s;
+      height: 37px;
+      padding-left: 11px;
+      padding-right: 11px;
     }
   }
   &__price{
@@ -1668,6 +1673,10 @@
   .art{
     min-width: 0;
     border: 1px solid #D3D3D6;
+    .btn{
+      padding-left: 11px;
+      padding-right: 11px;
+    }
     &__descr{
       text-overflow: ellipsis;
       overflow: hidden;

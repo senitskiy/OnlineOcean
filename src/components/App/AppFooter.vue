@@ -14,7 +14,7 @@
               Links
             </li>
             <li class="footer__navigation-item">
-              <router-link class="footer__navigation-link" to='#'>
+              <router-link class="footer__navigation-link" to='/cataloge'>
                 Explore
               </router-link>
             </li>
@@ -34,17 +34,17 @@
               My account
             </li>
             <li class="footer__navigation-item">
-              <router-link class="footer__navigation-link" to='#'>
+              <router-link class="footer__navigation-link" :to='"/user/" + userInfo.username'>
                 My Profile
               </router-link>
             </li>
             <li class="footer__navigation-item">
-              <router-link class="footer__navigation-link" to='#'>
+              <router-link class="footer__navigation-link" :to='{name: "User", params: {username: userInfo.username, needCollection: true}}'>
                 My Collections
               </router-link>
             </li>
             <li class="footer__navigation-item">
-              <router-link class="footer__navigation-link" to='#'>
+              <router-link class="footer__navigation-link" :to='userInfo.connected ? "/settings/" : "/register/"'>
                 My Account Settings
               </router-link>
             </li>
@@ -85,6 +85,8 @@ import AppSocial from '@/components/App/AppSocial.vue'
 
 import axios from 'axios';
 
+import { mapGetters } from 'vuex'
+
 export default {
   data() {
     return {
@@ -99,6 +101,9 @@ export default {
           this.emailAdress = ''
         )
     }
+  },
+  computed: {
+    ...mapGetters(['userInfo']),
   },
   components:{
     AppLogo,

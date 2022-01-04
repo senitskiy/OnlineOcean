@@ -200,6 +200,8 @@ export default {
 
     this.openNots()
 
+    this.openCollection()
+
     this.notsVisibility()
   },
   methods: {
@@ -252,6 +254,18 @@ export default {
         needUncheck.checked = false
 
         let needItem = this.info.filters.find(item => item.value === 'nots')
+  
+        needItem.checked = true
+        this.currentFilter = needItem.value
+      }
+    },
+    openCollection(){
+      if(this.$route.params.needCollection === 'true'){
+        let needUncheck = this.info.filters.find(item => item.checked === true)
+
+        needUncheck.checked = false
+
+        let needItem = this.info.filters.find(item => item.value === 'collection')
   
         needItem.checked = true
         this.currentFilter = needItem.value
