@@ -21,13 +21,11 @@
           </p>
           <div class="create__items">
             <create-card
-            createId='1'
-            ></create-card>
-            <create-card
-            createId='2'
-            ></create-card>
-            <create-card
-            createId='3'
+            v-for="card in cards"
+            :key="card"
+            :href="card.href"
+            :label="card.label"
+            :image="card.image"
             ></create-card>
           </div>
           <p class="create__descr">
@@ -51,7 +49,19 @@ export default {
         title: 'Create collectible',
         info: 'Choose “Single” if you want your collectible to be one of a kind or “Multiple” if you want to sell one collectible multiple times',
         descr: 'We do not own your private keys and cannot access your funds without your confirmation',
-      }
+      },
+      cards:[
+        {
+          label: 'Single',
+          href: 'single',
+          image: require('@/assets/images/create-single.svg'),
+        },
+        {
+          label: 'Multiple',
+          href: 'multiple',
+          image: require('@/assets/images/create-multiple.svg'),
+        },
+      ],
     }
   },
   methods: {

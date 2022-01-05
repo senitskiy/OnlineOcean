@@ -1009,9 +1009,10 @@
     &:first-child{
       margin-right: 20px;
     }
-    &:last-child{
-      margin-top: 20px;
-    }
+    // if cards are 3
+    // &:last-child{
+    //   margin-top: 20px;
+    // }
   }
 
   .create-modal__title{
