@@ -17,7 +17,7 @@ const UserUnlogged = () => import(/* webpackChunkName: "user" */'../views/UserUn
 
 function userRoute(to){
   if(to.params.username === 'null'){
-    router.push({name: 'UserUnlogged'})
+    router.push({name: 'Register'})
   }
 }
 

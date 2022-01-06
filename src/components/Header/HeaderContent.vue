@@ -10,12 +10,18 @@
   </div>
   <div class="header__buttons">
     <app-button
+    title="Explore"
+    link
+    href="/cataloge"
+    view="blue"
+    ></app-button>
+    <app-button
     title='Create'
     link
     href='/create'
     ></app-button>
+    <!-- v-if='!userInfo.connected' -->
     <app-button
-    v-if='!userInfo.connected'
     title='Connect wallet'
     view='blue'
     @click='this.connectWallet()'

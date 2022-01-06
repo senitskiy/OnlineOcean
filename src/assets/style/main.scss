@@ -41,9 +41,13 @@
   &__buttons{
     display: flex;
     margin: 0 24px 0 50px;
-    *:first-child{
-      padding-left: 38px;
-      padding-right: 38px;
+    *:nth-child(2){
+      margin-left: 15px;
+    }
+    *:first-child,
+    *:nth-child(2){
+      padding-left: 25px;
+      padding-right: 25px;
     }
     *:last-child{
       padding-left: 19px;
@@ -172,8 +176,14 @@
     .header__buttons{
       margin: 15px 20px;
       flex-direction: column;
+      .btn{
+        margin-left: 0;
+      }
       .btn--blue{
         margin-left: 0;
+        margin-top: 10px;
+      }
+      .btn--pink{
         margin-top: 10px;
       }
     }
@@ -203,9 +213,9 @@
   }
   &--connected{
     .header__search-wrapper{
-      margin-left: 80px;
-      margin-right: auto;
-      max-width: unset;
+      // margin-left: 20px;
+      // margin-right: auto;
+      // max-width: unset;
     }
   }
 }
@@ -521,7 +531,8 @@
     display: block;
     margin: 13px 0 12px;
     width: 100%;
-    max-height: 222px;
+    // max-height: 222px;
+    max-height: 250px;
     height: 100%;
     position: relative;
     img{
@@ -1290,6 +1301,7 @@
     max-height: 300px;
     img{
       border-radius: 25px;
+      width: 100%;
     }
   }
   .row__slide-autorwrapper{
@@ -1746,15 +1758,15 @@
     background: linear-gradient(135deg, rgba(232, 136, 240, 0.05) 0.69%, rgba(238, 168, 244, 0.28) 100%);
     border: 1px solid #F4CDF8;
     border-radius: 10px;
-    width: 145px;
-    height: 145px;
+    width: 175px;
+    height: 175px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   &__item{
     padding: 26px 0 22px;
-    max-width: 230px;
+    max-width: 260px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -1827,7 +1839,8 @@
     margin-bottom: 55px;
   }
   &__content{
-    max-width: 375px;
+    max-width: 425px;
+    width: 100%;
     margin-right: 100px;
     .label{
       display: block;
