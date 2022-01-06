@@ -1815,8 +1815,6 @@
     padding-left: 40px;
     padding-right: 40px;
     color: #fff;
-    margin-right: 0;
-    margin-left: auto;
     display: block;
   }
   .btn--back{
@@ -1937,6 +1935,9 @@
     margin-bottom: 42px;
     .label + .label{
       margin-top: 36px;
+    }
+    &:last-child{
+      margin-bottom: 0;
     }
   }
   &__preview{
