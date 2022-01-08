@@ -104,6 +104,7 @@
     background: #ED3838;
   }
   .blockchains,
+  .wallets,
   .nots{
     box-shadow: 0px 0px 37px rgba(113, 22, 155, 0.61);
     &:after{
@@ -124,6 +125,7 @@
       mask-composite: exclude; 
     }
   }
+  .wallets .wallets__imgwrapper,
   .blockchains .blockchains__imgwrapper{
     position: relative;
     &:after{
@@ -146,10 +148,23 @@
       mask-composite: exclude; 
     }
   }
+  .wallets .checkbox:checked ~ .wallets__imgwrapper,
   .blockchains .checkbox:checked ~ .blockchains__imgwrapper{
     border-color: transparent;
     &:after{
       opacity: 1;
+    }
+  }
+  .wallets{
+    -webkit-text-fill-color: #fff;
+    .wallets__link,
+    .btn{
+      background: linear-gradient(90deg, #94BBFE 0%, #D96BE0 50%, #9A22F7 100%); 
+      color: #fff;
+      -webkit-text-fill-color: #fff;
+      &:after{
+        display: none;
+      }
     }
   }
   .nots{

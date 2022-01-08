@@ -22,7 +22,12 @@
           radio
           >
             <span class="wallets__imgwrapper">
-              <img :src="item.image" alt="">
+              <img :src="item.darkImage" alt=""
+              v-if="theme === 'dark' && item.darkImage !== undefined"
+              >
+              <img :src="item.image" alt=""
+              v-else
+              >
             </span>
           </app-input>
         </li>
@@ -81,6 +86,7 @@ export default {
     ...mapGetters([
       'walletConnected',
       'currentWallet',
+      'theme',
     ]),
     walletsState() {
       return this.opened ? 'wallets--active' : ''

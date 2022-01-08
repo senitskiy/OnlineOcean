@@ -830,33 +830,26 @@
     font-size: 20px;
     line-height: 24px;
     font-weight: 700;
+    color: var(--black);
   }
   &__items{
-    margin: 16px 0 20px;
+    margin: 16px 0;
     display: grid;
     grid-template-columns: repeat(2, 80px);
     gap: 16px;
   }
-  &__item{
-    position: relative;
-    background-color: var(--grey-bg);
-    border-radius: 10px;
-    border: 1px solid transparent;
-    background-clip: padding-box;
-    min-height: 80px;
-    max-height: 80px;
-    transition: all .3s;
-  }
   &__imgwrapper{
+    background-color: var(--grey-bg);
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    height: 85px;
+    width: 85px;
+    border: 1px solid transparent;
+    transition: all .3s;
     img{
-      max-width: 32px;
-      max-height: 32px;
-      object-fit: contain;
+      max-width: 57px;
     }
   }
   &__buttons{
@@ -871,23 +864,22 @@
     }
   }
   &__link{
-    font-weight: 700;
+    font-weight: 500;
     color: #fff;
     font-size: 21px;
     line-height: 25px;
-    background: linear-gradient(135deg, #DA49FE 0%, #953EFE 100%);
+    // background: linear-gradient(135deg, #DA49FE 0%, #953EFE 100%);
+    background: var(--pink);
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 30px;
+    max-width: 40px;
     width: 100%;
-    height: 30px;
+    height: 40px;
     border-radius: 50%;
-    margin-right: 16px;
   }
   .label{
     cursor: pointer;
-    padding: 15px 0 14px;
     display: flex;
     flex-direction: column;
   }
@@ -896,24 +888,25 @@
     margin-top: 10px;
     font-size: 12px;
     line-height: 14px;
-    margin-top: 5px;
   }
   .checkbox{
     position: absolute;
     opacity: 0;
     &:checked ~ .wallets__imgwrapper{
-      opacity: 0;
-      &:after{
-        pointer-events: none;
-        transition: all .4s;
-        content: '';
-        position: absolute;
-        top: 0; right: 0; bottom: 0; left: 0;
-        z-index: -1;
-        margin: -1px;
-        border-radius: inherit;
-      }
+      border-color: var(--pink);
     }
+    // &:checked ~ .wallets__imgwrapper{
+    //   &:after{
+    //     pointer-events: none;
+    //     transition: all .4s;
+    //     content: '';
+    //     position: absolute;
+    //     top: 0; right: 0; bottom: 0; left: 0;
+    //     z-index: -1;
+    //     margin: -1px;
+    //     border-radius: inherit;
+    //   }
+    // }
   }
 }
 

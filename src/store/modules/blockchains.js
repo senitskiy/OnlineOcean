@@ -45,20 +45,22 @@ const state = {
   },
   allWallets:[
     {
+      label: 'Near wallet',
+      value: 'nearwallet',
+      image: require('@/assets/images/temp/near--light-theme.svg'),
+      darkImage: require('@/assets/images/temp/near.svg'),
+    },
+    {
       label: 'MetaMask',
       value: 'metamask',
       image: require('@/assets/images/wallet-metamask.png')
     },
-    {
-      label: 'Trust Wallet',
-      value: 'trustwallet',
-      image: require('@/assets/images/wallet-trustwallet.png')
-    },
   ],
   currentWallet:{
-    label: 'MetaMask',
-    value: 'metamask',
-    image: require('@/assets/images/wallet-metamask.png')
+    label: 'Near wallet',
+    value: 'nearwallet',
+    image: require('@/assets/images/temp/near--light-theme.svg'),
+    darkImage: require('@/assets/images/temp/near.svg'),
   },
 };
 
