@@ -21,11 +21,23 @@
     href='/create'
     ></app-button>
     <!-- v-if='!userInfo.connected' -->
-    <app-button
+    <button class="header__wallets btn btn--blue"
+    @click='togglePopUpWallets'
+    >
+      Connect wallet
+      <header-wallets
+      :opened="openedWallets"
+      ></header-wallets>
+    </button>
+    <!-- <app-button
     title='Connect wallet'
     view='blue'
     @click='this.connectWallet()'
-    ></app-button>
+    >
+      <header-wallets
+      :opened="openedWallets"
+      ></header-wallets>
+    </app-button> -->
   </div>
   <div class="header__account">
     <app-theme></app-theme>
@@ -71,6 +83,7 @@ import AppProfile from '@/components/App/AppProfile.vue'
 import AppNots from '@/components/App/AppNots.vue'
 import AppTheme from '@/components/App/AppTheme.vue'
 import HeaderBlockchains from '@/components/Header/HeaderBlockchains.vue'
+import HeaderWallets from '@/components/Header/HeaderWallets.vue'
 
 import axios from 'axios';
 import { mapMutations, mapGetters } from 'vuex';
@@ -81,6 +94,7 @@ export default {
       notifications: 1,
       openedNots: false,
       openedBlockchains: false,
+      openedWallets: false,
       needToSearch: '',
       searched: [],
     }
@@ -96,11 +110,18 @@ export default {
     togglePopUpNots() {
       this.notifications = 0
       this.openedBlockchains = false
+      this.openedWallets = false
       this.openedNots = !this.openedNots
     },
     togglePopUpBlockchains(){
       this.openedNots = false
+      this.openedWallets = false
       this.openedBlockchains = !this.openedBlockchains
+    },
+    togglePopUpWallets(){
+      this.openedNots = false
+      this.openedBlockchains = false
+      this.openedWallets = !this.openedWallets
     },
     search(){
       console.log(this.needToSearch)
@@ -114,6 +135,7 @@ export default {
     AppNots,
     AppTheme,
     HeaderBlockchains,
+    HeaderWallets,
   },
 }
 </script>

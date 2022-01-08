@@ -4,8 +4,8 @@ const Index = () => import('../views/Index.vue')
 const Cataloge = () => import('../views/Cataloge.vue')
 const Register = () => import('../views/Register.vue')
 
-const Box = () => import(/* webpackChunkName: "art" */'../views/Box.vue')
-const BoxOpen = () => import(/* webpackChunkName: "art" */'../views/BoxOpen.vue')
+// const Box = () => import(/* webpackChunkName: "art" */'../views/Box.vue')
+// const BoxOpen = () => import(/* webpackChunkName: "art" */'../views/BoxOpen.vue')
 const Art = () => import(/* webpackChunkName: "art" */'../views/Art.vue')
 
 const Create = () => import(/* webpackChunkName: "create" */'../views/Create.vue')
@@ -38,16 +38,16 @@ const routes = [
     name: 'Cataloge',
     component: Cataloge
   },
-  {
-    path: '/box/:itemId(\\d+)',
-    name: 'Box',
-    component: Box
-  },
-  {
-    path: '/box/:itemId(\\d+)/open',
-    name: 'BoxOpen',
-    component: BoxOpen
-  },
+  // {
+  //   path: '/box/:itemId(\\d+)',
+  //   name: 'Box',
+  //   component: Box
+  // },
+  // {
+  //   path: '/box/:itemId(\\d+)/open',
+  //   name: 'BoxOpen',
+  //   component: BoxOpen
+  // },
   {
     path: '/art/:itemId(\\d+)',
     name: 'Art',

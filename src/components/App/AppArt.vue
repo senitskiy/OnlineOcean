@@ -7,7 +7,7 @@
       <img :src="art.cover.src" alt="">
       <app-button
       @click.prevent
-      :title='art.buyTitle'
+      :title='buyTitle'
       view='art-hover'
       ></app-button>
       <span class="art__price">
@@ -58,15 +58,18 @@ export default {
     return {
       charsView: false,
       todayDate: moment(),
+      buyTitle: 'Buy now',
       art:{
         price: '20.034 ETH',
         descr: 'Abstract 3D Content Art fdfds ee rwerew',
         owner: 'artstudio',
         dateOfCreate: '2021-10-21T22:53:30',
         rarity: 'common', // common, epic, rare, legendary
-        buyTitle: 'Buy now',
         cover:{
           src: require('@/assets/images/temp/art-1.jpg')
+        },
+        video:{
+          src: '',
         },
         chars:{
           amount: '126',

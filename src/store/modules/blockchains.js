@@ -43,11 +43,30 @@ const state = {
     label: 'Ethereum',
     image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
   },
+  allWallets:[
+    {
+      label: 'MetaMask',
+      value: 'metamask',
+      image: require('@/assets/images/wallet-metamask.png')
+    },
+    {
+      label: 'Trust Wallet',
+      value: 'trustwallet',
+      image: require('@/assets/images/wallet-trustwallet.png')
+    },
+  ],
+  currentWallet:{
+    label: 'MetaMask',
+    value: 'metamask',
+    image: require('@/assets/images/wallet-metamask.png')
+  },
 };
 
 const getters = {
   allBlockchains: state => state.allBlockchains,
+  allWallets: state => state.allWallets,
   currentBlockchain: state => state.currentBlockchain,
+  currentWallet: state => state.currentWallet,
 };
 
 const mutations = {

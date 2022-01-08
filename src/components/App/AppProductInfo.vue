@@ -2,13 +2,20 @@
   <div class="product-info">
     <div class="container">
       <div class="product-info__inner">
-        <div class="product-info__videowrapper">
+        <div class="product-info__coverwrapper">
           <video class='product-info__video' src="@/assets/videos/ex-1.mp4"
           muted loop
           ref='productVideo'
+          v-if="art.video.src"
           ></video>
+          <div class="product-info__imgwrapper"
+          v-else
+          >
+            <img :src="art.cover.src" alt="">
+          </div>
           <button class="product-info__play btn-clear"
           @click='toggleVideo()'
+          v-if="art.video.src"
           >
             <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4.5766 1.07545C2.5159 -0.106593 0.845215 0.861755 0.845215 3.23659V20.7618C0.845215 23.139 2.5159 24.1061 4.5766 22.9252L19.8945 14.1405C21.9559 12.958 21.9559 11.0422 19.8945 9.86004L4.5766 1.07545Z" fill="#EA4C89"/>
@@ -20,7 +27,7 @@
           ></app-profile>
           <app-likes
           view='big'
-          :info='info.likes'
+          :info='art.likes'
           @toggledLike='toggleLike()'
           ></app-likes>
         </div>
@@ -174,11 +181,29 @@ export default {
       videoActive: false,
       likedBox: null,
       info:{
+      },
+      art:{
+        price: '20.034 ETH',
+        descr: 'Abstract 3D Content Art fdfds ee rwerew',
+        owner: 'artstudio',
+        dateOfCreate: '2021-10-21T22:53:30',
+        rarity: 'common', // common, epic, rare, legendary
+        cover:{
+          src: require('@/assets/images/temp/slide-1.jpg')
+        },
+        video:{
+          src: '',
+        },
+        chars:{
+          amount: '126',
+          probability: '8%',
+          rarityLabel: 'Legendary',
+        },
         likes:{
           count: 121,
           status: true,
         },
-      },
+      }
     }
   },
   created () {
@@ -222,21 +247,21 @@ export default {
     },
     toggleLike(){
       // Убрать
-      if(this.info.likes.status === false){
-        this.info.likes.count++
+      if(this.art.likes.status === false){
+        this.art.likes.count++
       }else{
-        this.info.likes.count--
+        this.art.likes.count--
       }
-      this.info.likes.status = !this.info.likes.status
+      this.art.likes.status = !this.art.likes.status
       // Раскоментировать
       // axios.post('/favourite', this.$route.params.itemId)
       //   .then(function (response) {
-      //     if(this.info.likes.status === false){
-      //       this.info.likes.count++
+      //     if(this.art.likes.status === false){
+      //       this.art.likes.count++
       //     }else{
-      //       this.info.likes.count--
+      //       this.art.likes.count--
       //     }
-      //       this.info.likes.status = !this.info.likes.status
+      //       this.art.likes.status = !this.art.likes.status
       //   })
     },
     toggleShare(){
