@@ -70,7 +70,6 @@
               view='lined'
               v-model.number='data.royalties'
               ></app-input>
-              <!-- :customMask="'##%'" -->
               <span class="create-modal__error"
               :class="priceErrors.royalties ? 'create-modal__error--active' : ''"
               >
@@ -233,7 +232,6 @@ export default {
       }
 
       if(this.priceErrors.copies === '' && this.priceErrors.royalties === ''){
-        console.log(this.data)
         axios.post('/create', this.data)
           .then( this.routePrev() )
       }

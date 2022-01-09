@@ -176,6 +176,11 @@ import { mapGetters, mapMutations } from 'vuex';
 export default {
   mounted () {
     this.getUserData()
+
+    this.data = JSON.parse(JSON.stringify(this.userInfo))
+    if(this.data.username === 'null'){
+      this.data.username = ''
+    }
   },
   data() {
     return {

@@ -100,6 +100,7 @@
       :user-id='userInfo.username'
       :customHref='"/user/" + userInfo.username'
       :noavatar="!userLogged"
+      :own="userLogged"
       ></app-profile>
     </span>
   </div>

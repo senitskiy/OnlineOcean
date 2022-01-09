@@ -1,9 +1,12 @@
 <template>
-  <div class="nots__item">
+  <div class="nots__item"
+  @click="goToNots()"
+  >
     <app-profile
     userId='43'
     view='nots'
     showName
+    @click.prevent
     >
       <p class="nots__text">
         {{ getNoteMessage(this.notsMessage, item, this.userInfo.username) }}
@@ -23,6 +26,11 @@ export default {
     item:{
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    goToNots() {
+      this.$router.push({name: "User", params: {username: this.userInfo.username, needNots: true}})
     }
   },
   computed: {

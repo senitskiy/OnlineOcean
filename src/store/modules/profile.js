@@ -6,6 +6,31 @@ const state = {
   user:{
     username: 'null',
     logged: false,
+    descr: '',
+    logo: {
+      src: '',
+    },
+    cover: {
+      src: '',
+    },
+    socials:[
+      {
+        href: '',
+        type: 'twitter',
+      },
+      {
+        href: '',
+        type: 'instagram',
+      },
+      {
+        href: '',
+        type: 'telegram',
+      },
+      {
+        href: '',
+        type: 'facebook',
+      },
+    ],
   },
   wallet: {
     id: '',

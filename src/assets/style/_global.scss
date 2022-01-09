@@ -106,7 +106,7 @@ menu{
   padding-top: 10px;
   padding-bottom: 11px;
   text-align: center;
-  transition: all .4s;
+  transition: backgoround .4s, backgoround-color .4s, border-color .4s, color .4s;
   &--pink{
     background-color: $pink;
     color: #fff;

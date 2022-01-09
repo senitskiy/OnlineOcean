@@ -71,6 +71,11 @@
             type='number'
             inputMax="50"
             ></app-input>
+            <span class="create-modal__error"
+            :class="priceErrors.royalties ? 'create-modal__error--active' : ''"
+            >
+              {{ priceErrors.royalties }}
+            </span>
           </div>
           <div class="create-modal__preview"
           :class='isEdit ? "" : "create-modal__preview--preview"'
@@ -124,6 +129,9 @@ export default {
     return {
       isEdit: true,
       isActiveLink: false,
+      priceErrors:{
+        royalties: '',
+      },
       info:{
         title: 'Create Single Art',
         chooses:[
@@ -161,7 +169,7 @@ export default {
           src: '',
         },
         prevImage: null,
-        royalties: 0,
+        royalties: '',
       },
     }
   },
@@ -196,8 +204,18 @@ export default {
       this.data.prevImage = this.data.image
     },
     create(){
-      axios.post('/create', this.data)
-        .then( this.routePrev() )
+      if(this.data.royalties > 50){
+        this.priceErrors.royalties = 'Royalties must be 50% or less than 50%'
+      }else if(this.data.royalties < 0){
+        this.priceErrors.royalties = 'Royalties must be 0% or more than 0%'
+      }else{
+        this.priceErrors.royalties = ''
+      }
+
+      if(this.priceErrors.royalties === ''){
+        axios.post('/create', this.data)
+          .then( this.routePrev() )
+      }
     },
   },
   computed: {

@@ -11,6 +11,12 @@
     </span>
 
     <span class="profile__imgwrapper"
+    v-else-if="own"
+    >
+      <img :src="userInfo.logo.src !== '' ? userInfo.logo.src : 'https://drive.google.com/uc?id=13bI25kgK1cX7EHr3pze_pX1PqwkHk04g'" alt="" />
+    </span>
+
+    <span class="profile__imgwrapper"
     v-else
     >
       <img :src="user.logo.src === '' ? 'https://drive.google.com/uc?id=13bI25kgK1cX7EHr3pze_pX1PqwkHk04g' : user.logo.src" alt="" />
@@ -64,6 +70,10 @@ export default {
       default: '',
     },
     noavatar:{
+      type: Boolean,
+      default: false,
+    },
+    own:{
       type: Boolean,
       default: false,
     }
