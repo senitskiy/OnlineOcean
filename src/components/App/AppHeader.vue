@@ -25,7 +25,7 @@
       :class="walletConnected ? 'header__menu-account--wallet-connected' : ''"
       >
         <button class="header__wallets"
-        :class="walletConnected ? 'header__wallets--connected btn-clear' : 'btn btn--blue'"
+        :class="walletConnected ? 'header__wallets--less btn-clear' : 'btn btn--blue'"
         @click='togglePopUpWallets'
         v-if="walletConnected"
         >

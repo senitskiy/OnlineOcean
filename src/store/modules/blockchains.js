@@ -75,6 +75,7 @@ const getters = {
 
   openedWallets: state => state.openedWallets,
   openedBlockchains: state => state.openedBlockchains,
+  openedNots: state => state.openedNots,
 };
 
 const mutations = {

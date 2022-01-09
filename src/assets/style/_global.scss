@@ -106,23 +106,40 @@ menu{
   padding-top: 10px;
   padding-bottom: 11px;
   text-align: center;
+  transition: all .4s;
   &--pink{
     background-color: $pink;
     color: #fff;
+    &:hover{
+      background-color: rgba($pink, .8);
+    }
   }
   &--blue{
     border: 2px solid $blue;
     color: $blue;
     background-color: transparent;
+    &:hover{
+      background-color: $blue;
+      color: #fff;
+    }
   }
   &--purple{
     background: #916EDD;
+    &:hover{
+      background: rgba(#916EDD, .8);
+    }
   }
   &--yellow{
     background: #F7A01F;
+    &:hover{
+      background: rgba(#F7A01F, .8);
+    }
   }
   &--green{
     background: #4EC84C;
+    &:hover{
+      background: rgba(#4EC84C, .8);
+    }
   }
   &--lined{
     border: 1px solid $pink;
@@ -160,6 +177,7 @@ menu{
       background: linear-gradient(90deg, #4CA8EA 0%, #EA4C89 100%);
       border-radius: 34px;
       z-index: -1;
+      transition: all .4s;
     }
   }
   &--big{
@@ -186,10 +204,16 @@ menu{
       height: 12px;
       margin-right: 6px;
     }
+    &:hover{
+      opacity: .7;
+    }
   }
   &--out{
     background-color: #EA3333;
     color: #fff;
+    &:hover{
+      background: rgba(#EA3333, .8);
+    }
   }
 }
 

@@ -1,5 +1,7 @@
 <template>
-  <div class="header__search-wrapper">
+  <div class="header__search-wrapper"
+  :class="walletConnected ? 'header__search-wrapper--less' : ''"
+  >
     <app-input
     placeholderText='Search for art'
     view='header-search'
@@ -141,9 +143,6 @@ export default {
       'togglePopUpBlockchains',
       'togglePopUpNots',
     ]),
-    removePopUpNots(){
-      this.openedNots = false
-    },
     clearNots() {
       this.notifications = 0
     },

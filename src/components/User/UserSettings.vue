@@ -149,6 +149,7 @@
               <app-button
               btnType='submit'
               :title='content.saveBtn'
+
               ></app-button>
               <app-button
               :title='content.signOut'

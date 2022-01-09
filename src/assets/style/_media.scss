@@ -8,6 +8,10 @@
       padding: 0 15px;
     }
   }
+
+  .blockchains{
+    right: -61px;
+  }
 }
 
 @media (max-width: 1250px){
@@ -45,6 +49,10 @@
         margin: -40px 5px 0 auto;
       }
     }
+  }
+
+  .header__search-wrapper:not(.header__search-wrapper--less){
+    max-width: 330px;
   }
 
   // Cataloge
@@ -448,9 +456,12 @@
 }
 
 @media (max-width: 1000px){
-  .header__buttons .btn:nth-child(2){
-    display: none;
-  }
+  .header__inner .header__buttons{
+    margin-right: 0;
+    .btn:nth-child(2){
+      display: none;
+    }
+  } 
 }
 
 @media (max-width: 950px){
@@ -891,6 +902,12 @@
 
   .create-modal__info-inputs .label + .label{
     margin-top: 20px;
+  }
+
+  .create-modal__info-inputs:last-child{
+    .label{
+      margin-top: 20px;
+    }
   }
 
   .create-modal__info-inputs,

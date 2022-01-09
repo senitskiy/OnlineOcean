@@ -69,11 +69,14 @@
     :value='modelValue'
     :required='inputRequired'
     ref='input'
+    v-mask="/\d{2}-\w{5}/"
     >
   </label>
 </template>
 
 <script>
+import mask from 'vue-r-mask'
+
 export default {
   props: {
     modelValue:{
@@ -133,7 +136,11 @@ export default {
     verified:{
       type: Boolean,
       required: false,
-    }
+    },
+    customMask:{
+      type: Object,
+      required: false
+    },
   },
   data() {
     return {
@@ -150,6 +157,9 @@ export default {
       this.$emit('choosed', this.inputValue)
     }
   },
+  directives: {
+		mask: mask,
+	},
   methods: {
     typedText(event) {
       this.$emit('update:modelValue', event.target.value)

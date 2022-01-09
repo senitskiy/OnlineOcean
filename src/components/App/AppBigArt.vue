@@ -23,6 +23,7 @@
       <app-button
       :title='content.buyTitle'
       view='art-hover'
+      @click.prevent
       ></app-button>
       <slot></slot>
     </span>

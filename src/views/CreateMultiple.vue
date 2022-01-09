@@ -68,18 +68,25 @@
               descr='Royalties %'
               placeholderText='Enter the royalties'
               view='lined'
-              v-model='data.royalties'
-              type='number'
-              inputMax="50"
+              v-model.number='data.royalties'
               ></app-input>
+              <!-- :customMask="'##%'" -->
+              <span class="create-modal__error"
+              :class="priceErrors.royalties ? 'create-modal__error--active' : ''"
+              >
+                {{ priceErrors.royalties }}
+              </span>
               <app-input
               descr='Number of copies'
               placeholderText='Write the number of copies'
               view='lined'
-              v-model='data.copies'
-              type='number'
-              inputMin="2"
+              v-model.number='data.copies'
               ></app-input>
+              <span class="create-modal__error"
+              :class="priceErrors.copies ? 'create-modal__error--active' : ''"
+              >
+                {{ priceErrors.copies }}
+              </span>
             </div>
           </div>
           <div class="create-modal__preview"
@@ -134,6 +141,10 @@ export default {
     return {
       isEdit: true,
       isActiveLink: false,
+      priceErrors:{
+        royalties: '',
+        copies: '',
+      },
       info:{
         title: 'Create Multiple Art',
         chooses:[
@@ -167,7 +178,7 @@ export default {
         willGet: '',
         blockchain: '',
         type: 'multiple',
-        royalties: 0,
+        royalties: '',
         copies: '',
         image:{
           src: '',
@@ -207,8 +218,25 @@ export default {
       this.data.prevImage = this.data.image
     },
     create(){
-      axios.post('/create', this.data)
-        .then( this.routePrev() )
+      if(this.data.royalties > 50){
+        this.priceErrors.royalties = 'Royalties must be 50% or less than 50%'
+      }else if(this.data.royalties < 0){
+        this.priceErrors.royalties = 'Royalties must be 0% or more than 0%'
+      }else{
+        this.priceErrors.royalties = ''
+      }
+
+      if(this.data.copies < 2){
+        this.priceErrors.copies = 'Copies must be more than 1'
+      }else{
+        this.priceErrors.copies = ''
+      }
+
+      if(this.priceErrors.copies === '' && this.priceErrors.royalties === ''){
+        console.log(this.data)
+        axios.post('/create', this.data)
+          .then( this.routePrev() )
+      }
     },
   },
   computed: {
