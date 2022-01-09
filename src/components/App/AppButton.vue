@@ -9,6 +9,17 @@
     {{ title }}
   </button>
 
+  <a
+  v-else-if="innerLink"
+  class='btn'
+  :class='[useStyle, this.big ? "btn--big" : ""]'
+  :href='href'
+  target="_blank"
+  >
+    <slot></slot>
+    {{ title }}
+  </a>
+
   <router-link
   v-else
   class='btn'
@@ -28,6 +39,10 @@ export default {
       required: true,
     },
     link:{
+      type: Boolean,
+      default: false,
+    },
+    innerLink:{
       type: Boolean,
       default: false,
     },

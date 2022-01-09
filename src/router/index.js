@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-const Index = () => import('../views/Index.vue')
-const Cataloge = () => import('../views/Cataloge.vue')
-const Register = () => import('../views/Register.vue')
+const Index = () => import(/* webpackChunkName: "index" */'../views/Index.vue')
+const Cataloge = () => import(/* webpackChunkName: "cataloge" */'../views/Cataloge.vue')
+const Register = () => import(/* webpackChunkName: "register" */'../views/Register.vue')
 
 // const Box = () => import(/* webpackChunkName: "art" */'../views/Box.vue')
 // const BoxOpen = () => import(/* webpackChunkName: "art" */'../views/BoxOpen.vue')
@@ -18,6 +18,12 @@ const UserUnlogged = () => import(/* webpackChunkName: "user" */'../views/UserUn
 
 function userRoute(to){
   if(to.params.username === 'null'){
+    router.push({name: 'UserUnlogged'})
+  }
+}
+
+function LogAccountOrConnectWallet(){
+  if(localStorage.getItem('walletConnected') === 'true'){
     router.push({name: 'Register'})
   }
 }
@@ -71,7 +77,9 @@ const routes = [
   {
     path: '/user/unlogged',
     name: 'UserUnlogged',
-    component: UserUnlogged
+    component: UserUnlogged,
+    beforeEnter: LogAccountOrConnectWallet,
+    beforeRouteUpdate: LogAccountOrConnectWallet,
   },
   {
     path: '/user/:username',

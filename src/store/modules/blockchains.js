@@ -10,38 +10,38 @@ const state = {
     {
       label: 'Ethereum',
       value: 'eth',
-      image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
+      image: require('@/assets/images/blockchain-ethereum.svg')
     },
     {
       label: 'Immutable X',
       value: 'imux',
-      image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
+      image: require('@/assets/images/blockchain-immux.svg')
     },
     {
       label: 'BSC',
       value: 'bsc',
-      image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
+      image: require('@/assets/images/blockchain-bsc.png'),
     },
     {
       label: 'Polygon',
       value: 'polygon',
-      image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
+      image: require('@/assets/images/blockchain-polygon.svg')
     },
     {
       label: 'Solana',
       value: 'solana',
-      image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
+      image: require('@/assets/images/blockchain-solana.svg')
     },
     {
       label: 'Dfinity',
       value: 'dfinity',
-      image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
+      image: require('@/assets/images/blockchain-dfinity.png')
     },
   ],
   currentBlockchain:{
     value: 'eth',
     label: 'Ethereum',
-    image: 'https://www.pngrepo.com/png/5125/180/avatar.png',
+    image: require('@/assets/images/blockchain-ethereum.svg')
   },
   allWallets:[
     {
@@ -62,6 +62,9 @@ const state = {
     image: require('@/assets/images/temp/near--light-theme.svg'),
     darkImage: require('@/assets/images/temp/near.svg'),
   },
+  openedWallets: false,
+  openedNots: false,
+  openedBlockchains: false,
 };
 
 const getters = {
@@ -69,6 +72,9 @@ const getters = {
   allWallets: state => state.allWallets,
   currentBlockchain: state => state.currentBlockchain,
   currentWallet: state => state.currentWallet,
+
+  openedWallets: state => state.openedWallets,
+  openedBlockchains: state => state.openedBlockchains,
 };
 
 const mutations = {
@@ -78,6 +84,21 @@ const mutations = {
     //   .then(function () {
     //     return null
     //   })
+  },
+  togglePopUpWallets(state){
+    state.openedNots = false
+    state.openedBlockchains = false
+    state.openedWallets = !state.openedWallets
+  },
+  togglePopUpBlockchains(state){
+    state.openedNots = false
+    state.openedWallets = false
+    state.openedBlockchains = !state.openedBlockchains
+  },
+  togglePopUpNots(state){
+    state.openedBlockchains = false
+    state.openedWallets = false
+    state.openedNots = !state.openedNots
   }
 };
 

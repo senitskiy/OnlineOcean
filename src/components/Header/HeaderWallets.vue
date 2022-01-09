@@ -51,7 +51,7 @@
     <app-button
     title='Leave wallet'
     @click='[togglePopUpWallets(), quitWallet()]'
-    view="red"
+    view="out"
     ></app-button>
   </div>
   <div class="wallets__pad"></div>
@@ -82,29 +82,27 @@ export default {
     this.generateName()
   },
   computed: {
-    ...mapGetters(['allWallets']),
     ...mapGetters([
       'walletConnected',
       'currentWallet',
       'theme',
+      'allWallets',
     ]),
     walletsState() {
       return this.opened ? 'wallets--active' : ''
     },
     currentFaqLink(){
-      // if(this.data.currWallet.value !== ""){
-      //   if(this.data.currWallet.value === 'metamask'){
-      //     return 'https://metamask.io/faqs.html'
-      //   }
-      //   return 'https://community.trustwallet.com/c/faq/21'
-      // }
+      if(this.data.currWallet.value !== ""){
+        if(this.data.currWallet.value === 'metamask'){
+          return 'https://metamask.io/faqs.html'
+        }
+        return 'https://community.trustwallet.com/c/faq/21'
+      }
 
-      // if(this.currentWallet.value === 'metamask'){
-      //   return 'https://metamask.io/faqs.html'
-      // }
-      // return 'https://community.trustwallet.com/c/faq/21'
-
-      return 'dd'
+      if(this.currentWallet.value === 'metamask'){
+        return 'https://metamask.io/faqs.html'
+      }
+      return 'https://community.trustwallet.com/c/faq/21'
     },
   },
   methods: {

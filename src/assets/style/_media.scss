@@ -50,6 +50,12 @@
   // Cataloge
 }
 
+@media (max-width: 1220px){
+  .header__buttons{
+    margin-left: 20px;
+  }
+}
+
 @media (max-width: 1200px){
   // Index
 
@@ -82,13 +88,35 @@
   .header__inner{
     .header__buttons{
       margin: 0 15px 0 30px;
-      .btn--blue:last-child{
-        display: none;
-      }
     }
     .header__search-wrapper{
       max-width: 100%;
       margin-left: 30px;
+    }
+  }
+
+  .header__buttons{
+    .header__wallets{
+      display: none;
+    }
+    *:last-child{
+      margin-left: 0;
+    }
+  } 
+
+  .header__account{
+    .header__wallets{
+      display: flex;
+    }
+    .header__wallets--less{
+      display: flex;
+      margin-right: 15px;
+      .wallets{
+        right: unset;
+      }
+      .wallets__link{
+        margin-right: 15px;
+      }
     }
   }
 
@@ -419,6 +447,12 @@
   // Create
 }
 
+@media (max-width: 1000px){
+  .header__buttons .btn:nth-child(2){
+    display: none;
+  }
+}
+
 @media (max-width: 950px){
   // Product
 
@@ -551,10 +585,6 @@
     .header__buttons *:last-child{
       margin-left: 0;
     }
-  }
-
-  .header__buttons *:last-child{
-    margin-left: 0;
   }
 
   // Global
@@ -973,9 +1003,23 @@
   .header__menu{
     .blockchains{
       opacity: 1;
+      pointer-events: all;
     }
     .header__account{
       display: none;
+    }
+    .header__wallets{
+      display: block;
+    }
+    .header__buttons{
+      .header__wallets--less{
+        display: none;
+      }
+    }
+    .wallets{
+      .btn--out{
+        width: 100%;
+      }
     }
   }
 
@@ -1102,6 +1146,12 @@
   .user-cover__profile-username,
   .user-cover .copy{
     margin-bottom: 18px;
+  }
+
+  .user-cover .copy{
+    &__label{
+      top: -13px;
+    }
   }
 
   .user-cover__inner{
@@ -1640,6 +1690,12 @@
     height: 150px;
   }
 
+  .user-cover .copy{
+    &__label{
+      top: -15px;
+    }
+  }
+
   // User
 }
 
@@ -1823,6 +1879,13 @@
     .copy{
       margin-right: 0;
       margin-bottom: 15px;
+    }
+  }
+
+  .user-cover .copy{
+    margin-top: 7px;
+    &__label{
+      top: -13px;
     }
   }
 

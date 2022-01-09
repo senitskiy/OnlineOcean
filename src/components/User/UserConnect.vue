@@ -11,7 +11,7 @@
         <app-button
         :title='content.btnTitle'
         view='big'
-        @click='connectWallet()'
+        @click='togglePopUpWallets()'
         ></app-button>
         <div class="user-connect__imgwrapper">
           <svg class="user-connect__graphic" width="121" height="121" viewBox="0 0 121 121" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -56,7 +56,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['connectWallet'])
+    ...mapMutations(['togglePopUpWallets'])
   },
 }
 </script>

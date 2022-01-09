@@ -27,10 +27,6 @@
         </app-input>
       </li>
     </ul>
-    <app-button
-    title='Apply'
-    @click='setBlockchain()'
-    ></app-button>
   </div>
   <div class="blockchains__pad"></div>
 </template>
@@ -79,10 +75,7 @@ export default {
         return obj.value == value
       })
 
-      this.data.currBlockchain = needValue
-    },
-    setBlockchain(){
-      this.setNewBlockchain(this.data.currBlockchain)
+      this.setNewBlockchain(needValue)
     },
     ...mapMutations(['setNewBlockchain'])
   },

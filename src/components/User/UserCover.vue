@@ -44,6 +44,9 @@
             <div class="user-cover__profile-copy copy"
             @click='copyToken(user.userToken)'
             >
+              <p class="copy__label">
+                Your wallet
+              </p>
               <input class="copy__input" type="text"
               :value='shortToken'
               disabled

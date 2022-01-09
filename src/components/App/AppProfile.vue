@@ -3,9 +3,19 @@
   :to='customHref !== "" ? customHref : linkToProfile'
   :class='[viewProfileStyle, viewVerified]'
   >
-    <span class="profile__imgwrapper">
+
+    <span class="profile__imgwrapper"
+    v-if="noavatar"
+    >
+      <img src="https://drive.google.com/uc?id=13bI25kgK1cX7EHr3pze_pX1PqwkHk04g" alt="" />
+    </span>
+
+    <span class="profile__imgwrapper"
+    v-else
+    >
       <img :src="user.logo.src === '' ? 'https://drive.google.com/uc?id=13bI25kgK1cX7EHr3pze_pX1PqwkHk04g' : user.logo.src" alt="" />
     </span>
+
     <span class="profile__name">
       {{ showName ? userName : userUsername }}
       <slot></slot>
@@ -20,6 +30,8 @@
 
 <script>
 import axios from 'axios'
+
+import { mapGetters } from 'vuex';
 
 export default {
   props: {
@@ -50,6 +62,10 @@ export default {
     customName:{
       type: String,
       default: '',
+    },
+    noavatar:{
+      type: Boolean,
+      default: false,
     }
   },
   mounted () {
@@ -76,6 +92,9 @@ export default {
     }
   },
   computed: {
+    ...mapGetters([
+      'userInfo'
+    ]),
     viewProfileStyle(){
       return 'profile--' + this.view
     },

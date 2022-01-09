@@ -58,23 +58,82 @@
   &__account{
     display: flex;
     align-items: center;
+    .header__wallets{
+      display: none;
+    }
   }
   &__wallets{
     position: relative;
+    &--less{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--grey-bg);
+      border-radius: 50%;
+      margin-left: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      .wallets{
+        right: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        .btn:last-child{
+          margin-left: 0;
+        }
+        .btn--out{
+          width: 100%;
+        }
+      }
+    }
   }
   &__blockchain{
     margin-right: 21px;
     position: relative;
     margin-left: 15px;
   }
-  &__blockchain-icon{
+  &__blockchain-preview{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: $pink;
+    border-radius: 220px;
+    padding-right: 7px;
+  }
+  &__blockchain-icon{
     height: 40px;
     width: 40px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 4px;
+    position: relative;
+    &:after{
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 3px;
+      right: 3px;
+      bottom: 3px;
+      background: var(--main-bg);
+      border-radius: 50%;
+      z-index: 0;
+    }
+    img{
+      position: relative;
+      z-index: 1;
+      max-width: 26px;
+      max-height: 26px;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+  &__blockchain-arrow{
+    margin-left: 5px;
   }
   &__notifications{
     margin-right: 24px;
@@ -196,11 +255,39 @@
       border-top: 1px solid rgba($grey, .3);
       padding-top: 15px;
     }
+    .wallets{
+      z-index: 4;
+      right: unset;
+      left: -20px;
+      transform: unset;
+      .wallets__buttons{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        .btn{
+          margin-top: 0;
+        }
+      }
+    }
+    .header__buttons{
+      .wallets{
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    .wallets__link{
+      margin-right: 15px;
+    }
     .blockchains{
       position: static;
-      pointer-events: all;
+      pointer-events: none;
       text-align: center;
       box-shadow: none;
+      z-index: 0;
+      &::after{
+        display: none;
+      }
     }
     .blockchains__items{
       grid-template-columns: repeat(3, 1fr);
@@ -211,7 +298,17 @@
     align-items: center;
     justify-content: center;
     .theme{
-      margin-right: 30px;
+      margin: 0 30px;
+    }
+    &--wallet-connected{
+      .theme{
+        margin: 0 0 0 30px;
+        order: 9;
+      }
+      .header__wallets{
+        margin-right: 30px;
+        margin-left: 0;
+      }
     }
   }
   &--connected{
@@ -772,6 +869,7 @@
     transition: all .3s;
     img{
       max-width: 57px;
+      min-width: 39px;
     }
   }
   .label{
@@ -804,9 +902,10 @@
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 15px;
   padding: 10px 15px 15px;
+  min-width: 180px;
   color: var(--black);
   cursor: default;
-  z-index: 3;
+  z-index: 2;
   opacity: 0;
   transition: all .4s;
   pointer-events: none;
@@ -850,6 +949,7 @@
     transition: all .3s;
     img{
       max-width: 57px;
+      min-width: 39px;
     }
   }
   &__buttons{
@@ -1109,6 +1209,9 @@
           transition: all .4s;
           max-width: 28px;
           max-height: 28px;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
         }
         .collections__list-item--verified{
           margin-left: 6px;
@@ -1405,6 +1508,7 @@
     width: 16px;
     height: 16px;
     margin-right: 8px;
+    object-fit: contain;
   }
 }
 
@@ -2706,6 +2810,19 @@
     display: flex;
     margin-bottom: 22px;
     cursor: pointer;
+    position: relative;
+    transform: translateY(6px);
+    &__label{
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      line-height: 12px;
+      font-weight: 400;
+      top: -15px;
+      white-space: nowrap;
+      color: var(--grey);
+    }
     &__input{
       color: var(--black);
       font-size: 16px;

@@ -21,10 +21,20 @@
     href='/create'
     ></app-button>
     <!-- v-if='!userInfo.connected' -->
-    <button class="header__wallets btn btn--blue"
+    <button class="header__wallets"
+    :class="walletConnected ? 'header__wallets--less btn-clear' : 'btn btn--blue'"
     @click='togglePopUpWallets'
     >
-      Connect wallet
+      <span
+      v-if="!walletConnected"
+      >
+        Connect wallet
+      </span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+      v-else
+      >
+        <path d="M22 7h1v10h-1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v3zm-2 10h-6a5 5 0 0 1 0-10h6V5H4v14h16v-2zm1-2V9h-7a3 3 0 0 0 0 6h7zm-7-4h3v2h-3v-2z" fill="#5F5F5F"/>
+      </svg>
       <header-wallets
       :opened="openedWallets"
       ></header-wallets>
@@ -40,6 +50,16 @@
     </app-button> -->
   </div>
   <div class="header__account">
+    <button class="header__wallets header__wallets--less btn-clear"
+    @click='togglePopUpWallets'
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+        <path d="M22 7h1v10h-1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v3zm-2 10h-6a5 5 0 0 1 0-10h6V5H4v14h16v-2zm1-2V9h-7a3 3 0 0 0 0 6h7zm-7-4h3v2h-3v-2z" fill="#5F5F5F"/>
+      </svg>
+      <header-wallets
+      :opened="openedWallets"
+      ></header-wallets>
+    </button>
     <app-theme></app-theme>
     <button class="header__blockchain btn-clear"
     :class='openedBlockchains !== false ? "header__blockchain--active" : ""'
@@ -48,14 +68,19 @@
       <header-blockchains
       :opened='openedBlockchains'
       ></header-blockchains>
-      <div class="header__blockchain-icon">
-        <img src="@/assets/images/blockchain-icon.png" alt="">
+      <div class="header__blockchain-preview">
+        <div class="header__blockchain-icon">
+          <img :src="currentBlockchain.image" alt="">
+        </div>
+        <svg class="header__blockchain-arrow" width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.70236 10.7129L17.7124 2.70265C17.8979 2.51738 18 2.27007 18 2.00636C18 1.74266 17.8979 1.49534 17.7124 1.31008L17.1227 0.720178C16.7384 0.336327 16.1138 0.336327 15.7301 0.720178L9.00373 7.44656L2.26988 0.712714C2.08447 0.527448 1.8373 0.425156 1.57374 0.425156C1.30989 0.425156 1.06272 0.527448 0.877163 0.712714L0.287558 1.30261C0.102144 1.48803 0 1.73519 0 1.9989C0 2.2626 0.102144 2.50992 0.287558 2.69519L8.30496 10.7129C8.49096 10.8986 8.73929 11.0006 9.00329 11C9.26831 11.0006 9.51651 10.8986 9.70236 10.7129Z" fill="#3E3E3E" fill-opacity="1"/>
+        </svg>
       </div>
     </button>
     <button class="header__notifications btn-clear"
     :class='notifications !== 0 ? "header__notifications--active" : ""'
-    @click='togglePopUpNots'
-    v-if='userInfo.connected'
+    @click='[clearNots(), togglePopUpNots()]'
+    v-if='walletConnected && userLogged'
     >
       <app-nots
       :openedNots='openedNots'
@@ -72,6 +97,7 @@
       <app-profile
       :user-id='userInfo.username'
       :customHref='"/user/" + userInfo.username'
+      :noavatar="!userLogged"
       ></app-profile>
     </span>
   </div>
@@ -92,36 +118,34 @@ export default {
   data() {
     return {
       notifications: 1,
-      openedNots: false,
-      openedBlockchains: false,
-      openedWallets: false,
       needToSearch: '',
       searched: [],
     }
   },
   computed: {
-    ...mapGetters(['userInfo']),
+    ...mapGetters([
+      'userInfo',
+      'currentBlockchain',
+      'wallet',
+      'walletConnected',
+      'userLogged',
+      'openedWallets',
+      'openedBlockchains',
+      'openedNots',
+    ]),
   },
   methods: {
-    ...mapMutations(['connectWallet']),
+    ...mapMutations([
+      'connectWallet',
+      'togglePopUpWallets',
+      'togglePopUpBlockchains',
+      'togglePopUpNots',
+    ]),
     removePopUpNots(){
       this.openedNots = false
     },
-    togglePopUpNots() {
+    clearNots() {
       this.notifications = 0
-      this.openedBlockchains = false
-      this.openedWallets = false
-      this.openedNots = !this.openedNots
-    },
-    togglePopUpBlockchains(){
-      this.openedNots = false
-      this.openedWallets = false
-      this.openedBlockchains = !this.openedBlockchains
-    },
-    togglePopUpWallets(){
-      this.openedNots = false
-      this.openedBlockchains = false
-      this.openedWallets = !this.openedWallets
     },
     search(){
       console.log(this.needToSearch)

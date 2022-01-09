@@ -84,8 +84,9 @@
               showName
               ></app-profile>
             </div>
+            
             <!-- Source Box -->
-            <router-link class="user-nots__source"
+            <!-- <router-link class="user-nots__source"
             :to='{name: "Box", params:{itemId: item.sourceId}}'
             v-else-if='item.sourceType === "box"'
             v-for='source in boxItem(item.sourceId)'
@@ -97,7 +98,7 @@
               <p class="user-nots__text">
                 {{ source.title }}
               </p>
-            </router-link>
+            </router-link> -->
 
             <!-- Result -->
             <div class="user-nots__result">
