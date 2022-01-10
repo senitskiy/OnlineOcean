@@ -1,3 +1,9 @@
+@media (max-width: 1380px){
+  .cataloge__rows{
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
 @media (max-width: 1280px){
   .cataloge__wrapper--more{
     .filters{
@@ -49,6 +55,30 @@
         margin: -40px 5px 0 auto;
       }
     }
+
+    // Fix cards pads
+    .art{
+      &:nth-child(3n + 1),
+      &:nth-child(3n){
+        &:before{
+          left: -12px;
+          width: calc(100% + 60px);
+        }
+      }
+      &:nth-child(4n){
+        &:before{
+          left: -12px;
+          width: calc(100% + 36px);
+        }
+      }
+      &:nth-child(4n + 1){
+        &:before{
+          left: -24px;
+          width: calc(100% + 80px);
+        }
+      }
+    }
+    // Fix cards pads
   }
 
   .header__search-wrapper:not(.header__search-wrapper--less){
@@ -137,7 +167,7 @@
   .cataloge__rows{
     grid-template-columns: repeat(3, 1fr);
     column-gap: 18px;
-    row-gap: 31px;
+    row-gap: 60px;
     .art:nth-child(4n + 1),
     .art:nth-child(4n){
       .art__chars{
@@ -168,6 +198,30 @@
         margin: -40px 5px 0 auto;
       }
     }
+
+    // Fix cards pads
+    .art{
+      &:nth-child(2n + 1),
+      &:nth-child(2n){
+        &:before{
+          left: 0;
+          width: calc(100% + 60px);
+        }
+      }
+      &:nth-child(3n){
+        &:before{
+          left: 0;
+          width: calc(100% + 24px);
+        }
+      }
+      &:nth-child(3n + 1){
+        &:before{
+          left: -24px;
+          width: calc(100% + 80px);
+        }
+      }
+    }
+    // Fix cards pads
   }
 
   .cataloge__wrapper--more{
@@ -206,6 +260,33 @@
             margin: -40px 5px 0 auto;
           }
         }
+
+        // Fix cards pads
+        .art{
+          &:before{
+            left: 0;
+          }
+          &:nth-child(4n + 1),
+          &:nth-child(4n){
+            &:before{
+              left: -0px;
+              width: calc(100% + 48px);
+            }
+          }
+          &:nth-child(5n){
+            &:before{
+              left: -6px;
+              width: calc(100% + 30px);
+            }
+          }
+          &:nth-child(5n + 1){
+            &:before{
+              left: -24px;
+              width: calc(100% + 80px);
+            }
+          }
+        }
+        // Fix cards pads
       }
     }
   }
@@ -276,8 +357,8 @@
     .cataloge__inner{
       .cataloge__rows{
         grid-template-columns: repeat(4, 1fr);
-        .art:nth-child(5n + 1),
-        .art:nth-child(5n){
+        .art:nth-child(4n + 1),
+        .art:nth-child(4n){
           .art__chars{
             right: unset;
             left: 50%;
@@ -287,7 +368,7 @@
             margin: -40px auto 0;
           }
         }
-        .art:nth-child(4n + 1){
+        .art:nth-child(3n + 1){
           .art__chars{
             left: 20px;
             transform: unset;
@@ -296,7 +377,7 @@
             margin: -40px auto 0 5px;
           }
         }
-        .art:nth-child(4n){
+        .art:nth-child(3n){
           .art__chars{
             right: 20px;
             left: unset;
@@ -306,6 +387,33 @@
             margin: -40px 5px 0 auto;
           }
         }
+
+        // Fix cards pads
+        .art{
+          &:before{
+            left: 0;
+          }
+          &:nth-child(3n + 1),
+          &:nth-child(3n){
+            &:before{
+              left: -0px;
+              width: calc(100% + 48px);
+            }
+          }
+          &:nth-child(4n){
+            &:before{
+              left: -6px;
+              width: calc(100% + 30px);
+            }
+          }
+          &:nth-child(4n + 1){
+            &:before{
+              left: -24px;
+              width: calc(100% + 80px);
+            }
+          }
+        }
+        // Fix cards pads
       }
     }
   }
@@ -747,6 +855,33 @@
             margin: -40px 5px 0 auto;
           }
         }
+
+        // Fix cards pads
+        .art{
+          &:before{
+            left: 0;
+          }
+          &:nth-child(2n + 1),
+          &:nth-child(2n){
+            &:before{
+              left: -0px;
+              width: calc(100% + 48px);
+            }
+          }
+          &:nth-child(3n){
+            &:before{
+              left: -6px;
+              width: calc(100% + 30px);
+            }
+          }
+          &:nth-child(3n + 1){
+            &:before{
+              left: -24px;
+              width: calc(100% + 80px);
+            }
+          }
+        }
+        // Fix cards pads
       }
     }
   }
@@ -1458,6 +1593,32 @@
     .cataloge__inner{
       .cataloge__rows{
         grid-template-columns: repeat(2, 1fr);
+        // Fix cards pads
+        .art{
+          &:before{
+            left: 0;
+          }
+          &:nth-child(1n + 1),
+          &:nth-child(1n){
+            &:before{
+              left: -0px;
+              width: calc(100% + 48px);
+            }
+          }
+          &:nth-child(2n){
+            &:before{
+              left: -6px;
+              width: calc(100% + 30px);
+            }
+          }
+          &:nth-child(2n + 1){
+            &:before{
+              left: -24px;
+              width: calc(100% + 80px);
+            }
+          }
+        }
+        // Fix cards pads
       }
     }
   }
@@ -1878,8 +2039,17 @@
     .cataloge__inner{
       .cataloge__rows{
         margin: 0;
-        max-width: 320px;
+        margin-top: 25px;
+        row-gap: 22px;
         grid-template-columns: 1fr;
+
+        // Fix cards pads
+        .art{
+          &:before{
+            display: none;
+          }
+        }
+        // Fix cards pads
       }
     }
   }

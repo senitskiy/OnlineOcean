@@ -1057,7 +1057,7 @@
           &:nth-child(6n + 1){
             &:before{
               left: -24px;
-              width: calc(100% + 60px);
+              width: calc(100% + 80px);
             }
           }
         }
@@ -1066,7 +1066,7 @@
   }
   &__rows{
     display: grid;
-    grid-template-columns: repeat(5, 158px);
+    grid-template-columns: repeat(5, 178px);
     column-gap: 21px;
     row-gap: 61px;
     margin-top: 21px;
@@ -1095,7 +1095,7 @@
       &:nth-child(5n + 1){
         &:before{
           left: -24px;
-          width: calc(100% + 60px);
+          width: calc(100% + 80px);
         }
       }
     }
@@ -1529,9 +1529,9 @@
     }
   }
   .cataloge__inner{
-    margin-left: 9%;
+    margin-left: 0%;
     .cataloge__rows{
-      grid-template-columns: repeat(6, 158px);
+      grid-template-columns: repeat(6, 1fr);
       .art:nth-child(5n),
       .art:nth-child(5n + 1),
       .art:nth-child(4n),
