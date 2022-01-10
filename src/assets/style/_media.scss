@@ -72,10 +72,10 @@
   }
 
   .live__items{
-    .art:nth-child(6){
+    .art:nth-child(7){
       display: none;
     }
-    .art:nth-child(5){
+    .art:nth-child(6){
       .art__chars{
         right: 20px;
         left: unset;
@@ -230,6 +230,26 @@
   }
 
   // Create
+
+  // Index
+
+  .live__items{
+    .art:nth-child(6){
+      display: none;
+    }
+    .art:nth-child(5){
+      .art__chars{
+        right: 20px;
+        left: unset;
+        transform: unset;
+      }
+      .art__transfericon{
+        margin: -40px 5px 0 auto;
+      }
+    }
+  }
+
+  // Index
 }
 
 @media (max-width: 1080px){
@@ -384,26 +404,6 @@
 
   // Product
 
-  // Index
-
-  .live__items{
-    .art:nth-child(5){
-      display: none;
-    }
-    .art:nth-child(4){
-      .art__chars{
-        right: 20px;
-        left: unset;
-        transform: unset;
-      }
-      .art__transfericon{
-        margin: -40px 5px 0 auto;
-      }
-    }
-  }
-
-  // Index
-
   // User
 
   .user-connect{
@@ -549,6 +549,29 @@
 
   // User
 }
+
+@media (max-width: 915px){
+  // Index
+
+  .live__items{
+    .art:nth-child(5){
+      display: none;
+    }
+    .art:nth-child(4){
+      .art__chars{
+        right: 20px;
+        left: unset;
+        transform: unset;
+      }
+      .art__transfericon{
+        margin: -40px 5px 0 auto;
+      }
+    }
+  }
+
+  // Index
+}
+
 
 @media (max-width: 900px){
   // Global
@@ -838,26 +861,6 @@
 }
 
 @media (max-width: 850px){
-  // Index
-
-  .live__items{
-    .art:nth-child(4){
-      display: none;
-    }
-    .art:nth-child(3){
-      .art__chars{
-        right: 20px;
-        left: unset;
-        transform: unset;
-      }
-      .art__transfericon{
-        margin: -40px 5px 0 auto;
-      }
-    }
-  }
-
-  // Index
-
   // User
 
   .user-connect__inner{
@@ -1287,6 +1290,28 @@
   // Cataloge
 }
 
+@media (max-width: 745px){
+  // Index
+
+  .live__items{
+    .art:nth-child(4){
+      display: none;
+    }
+    .art:nth-child(3){
+      .art__chars{
+        right: 20px;
+        left: unset;
+        transform: unset;
+      }
+      .art__transfericon{
+        margin: -40px 5px 0 auto;
+      }
+    }
+  }
+
+  // Index
+}
+
 @media (max-width: 700px){
   // User
 
@@ -1357,7 +1382,7 @@
   .live__items{
     margin-left: 20px;
     margin-right: 20px;
-    .art:nth-child(3){
+    .art:nth-child(4){
       margin-right: 0;
     }
   }

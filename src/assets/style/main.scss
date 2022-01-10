@@ -544,6 +544,8 @@
     padding: 20px 0;
   }
   &__label{
+    position: relative;
+    z-index: 2;
     min-height: 100px;
     min-width: 100px;
     background-color: #fff;
@@ -564,7 +566,7 @@
   }
   &__items{
     display: flex;
-    margin-left: 40px;
+    margin-left: -40px;
     .art{
       margin-right: 20px;
       max-width: 150px;
