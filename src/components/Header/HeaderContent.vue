@@ -15,7 +15,6 @@
     title="Explore"
     link
     href="/cataloge"
-    view="blue"
     ></app-button>
     <app-button
     title='Create'

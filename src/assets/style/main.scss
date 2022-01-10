@@ -68,6 +68,10 @@
   }
   &__wallets{
     position: relative;
+    &:hover{
+      background-color: unset;
+      color: #4CA8EA;
+    }
     &--less{
       display: flex;
       align-items: center;
@@ -91,6 +95,9 @@
           width: 100%;
         }
       }
+      &:hover{
+        background: var(--grey-bg);
+      }
     }
   }
   &__blockchain{
@@ -102,7 +109,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $pink;
+    background: var(--grey-bg);
     border-radius: 220px;
     padding-right: 7px;
   }
@@ -176,9 +183,11 @@
   &__account-link{
     .profile{
       width: inherit;
+      height: 40px;
     }
     .profile__imgwrapper{
       padding: 0;
+      height: 40px;
       &::after{
         display: none;
       }
@@ -232,6 +241,8 @@
       }
     }
     .profile__imgwrapper{
+      max-width: 56px;
+      padding: 0;
       img{
         max-width: 56px;
         max-height: 56px;
@@ -667,9 +678,8 @@
     .btn--art-hover{
       position: absolute;
       padding: 0 15px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      left: 12px;
+      top: 12px;
       opacity: 0;
       z-index: 2;
       transition: all .3s;

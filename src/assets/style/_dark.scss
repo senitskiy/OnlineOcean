@@ -20,7 +20,8 @@
   .user-cover .btn--lined,
   .settings__buttonwrapper .btn,
   .user-connect .btn,
-  .header__buttons .btn{
+  .header__buttons .btn,
+  .header__blockchain-preview{
     border: none;
     background-image: linear-gradient(90deg, #94BBFE 0%, #D96BE0 50%, #9A22F7 100%);
     -webkit-background-clip: text;
@@ -89,7 +90,6 @@
   .header{
     border-color: #3B3741;
   }
-  .header__blockchain-preview,
   .theme,
   .header__wallets--less{
     background: linear-gradient(144.37deg, #95B9FE -3.93%, #9A22F7 62.2%);
@@ -101,13 +101,28 @@
       }
     }
   }
+  .header__blockchain-icon{
+    transform: translateX(2px);
+  }
   .header__blockchain-arrow{
+    transform: translateX(-2px);
     path{
       fill: #fff;
     }
   }
-  .header__menu{
-    .theme--dark{
+  .header__menu-account,
+  .header__account-link{
+    .profile{
+      svg{
+        background: linear-gradient(144.37deg, #95B9FE -3.93%, #9A22F7 62.2%);
+        circle{
+          fill: transparent;
+        }
+      }
+    }
+  }
+  .theme{
+    svg{
       path{
         fill: #fff;
       }
