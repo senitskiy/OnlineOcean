@@ -8,6 +8,7 @@ import AppCover from '@/components/App/AppCover.vue'
 import UserConnect from '@/components/User/UserConnect.vue'
 
 export default {
+  title: 'User Unlogged',
   components: {
     AppCover,
     UserConnect,

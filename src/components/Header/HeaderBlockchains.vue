@@ -22,15 +22,11 @@
         radio
         >
           <span class="blockchains__imgwrapper">
-            <img :src="item.image" alt="">
+            <img :src="theme === 'dark' && item.imageDark !== undefined ? item.imageDark : item.image" alt="">
           </span>
         </app-input>
       </li>
     </ul>
-    <app-button
-    title='Apply'
-    @click='setBlockchain()'
-    ></app-button>
   </div>
   <div class="blockchains__pad"></div>
 </template>
@@ -61,8 +57,11 @@ export default {
     blockchainsState() {
       return this.opened ? 'blockchains--active' : ''
     },
-    ...mapGetters(['allBlockchains']),
-    ...mapGetters(['currentBlockchain']),
+    ...mapGetters([
+      'allBlockchains',
+      'currentBlockchain',
+      'theme',
+    ]),
   },
   methods: {
     generateName(){
@@ -79,10 +78,7 @@ export default {
         return obj.value == value
       })
 
-      this.data.currBlockchain = needValue
-    },
-    setBlockchain(){
-      this.setNewBlockchain(this.data.currBlockchain)
+      this.setNewBlockchain(needValue)
     },
     ...mapMutations(['setNewBlockchain'])
   },

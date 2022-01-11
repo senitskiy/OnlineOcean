@@ -5,7 +5,7 @@
     :key='social'
     >
       <router-link class='social__link' :to='social.href'>
-        <img src="@/assets/images/instagram.svg" alt="">
+        <img :src="social.src" alt="">
       </router-link>
     </li>
   </ul>
@@ -18,12 +18,15 @@ export default {
       socials:[
         {
           href: '#',
+          src: require('@/assets/images/discord.svg')
         },
         {
           href: '#',
+          src: require('@/assets/images/twitter.svg')
         },
         {
           href: '#',  
+          src: require('@/assets/images/telegram.svg')
         },
       ],
     }

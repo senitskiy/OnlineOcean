@@ -1,10 +1,10 @@
 <template>
   <router-link class="create__item" :to='createLink'>
     <span class="create__imgwrapper">
-      <img src="@/assets/images/create-box.svg" alt="">
+      <img :src="image" alt="">
     </span>
     <span class="create__item-title">
-      {{ card.name }}
+      {{ label }}
     </span>
   </router-link>
 </template>
@@ -12,22 +12,21 @@
 <script>
 export default {
   props: {
-    createId: {
+    href:{
       type: String,
       required: true,
     },
-  },
-  data() {
-    return {
-      card:{
-        name: 'Random Box',
-        link: 'box'
-      }
-    }
+    label:{
+      type: String,
+      required: true,
+    },
+    image:{
+      required: true,
+    },
   },
   computed: {
     createLink() {
-      return '/create/' + this.card.link
+      return '/create/' + this.href
     }
   },
 }

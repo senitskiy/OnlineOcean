@@ -1,8 +1,6 @@
 <template>
   <router-link class="row__slide" :to='"/art/" + this.artId'
   :class='[likeState]'
-  @mouseover='showChars()'
-  @mouseleave="hideChars()"
   >
     <span class="row__slide-blocker"
     v-if='isActive !== true'
@@ -11,7 +9,7 @@
     <span class="row__slide-top row-top">
       <span class="row-top__left">
         <p class="row__slide-title">
-          {{ content.title }}
+          {{ custom ? custom.name : content.title }}
         </p>
         <p class="row__slide-owner">{{ pretitle.owner }} {{ custom ? custom.owner : content.owner }}</p>
       </span>
@@ -22,6 +20,11 @@
     </span>
     <span class="row__slide-imgwrapper">
       <img class='row__slide-img' :src="custom ? custom.image.src : require('@/assets/images/temp/slide-1.jpg')" alt="" />
+      <!-- @click.prevent -->
+      <app-button
+      :title='content.buyTitle'
+      view='art-hover'
+      ></app-button>
       <slot></slot>
     </span>
     <span class="row__slide-bottom row-bottom">
@@ -34,15 +37,10 @@
         </p>
       </span>
       <app-profile
-      :userId='content.owner'
+      :user-id='content.owner'
       view='slider'
       ></app-profile>
     </span>
-    <app-chars
-    :chars='content.chars'
-    ref='chars'
-    :viewStyle='charsView'
-    ></app-chars>
   </router-link>
 </template>
 
@@ -51,7 +49,6 @@ import axios from 'axios';
 
 import AppProfile from '@/components/App/AppProfile.vue';
 import AppLikes from '@/components/App/AppLikes.vue';
-import AppChars from '@/components/App/AppChars.vue';
 
 export default {
   props: {
@@ -78,6 +75,7 @@ export default {
         title: 'Abstract 3D work content more than ever',
         owner: 'artstudio',
         bid: '0.034 ETH',
+        buyTitle: 'Buy now',
         likes:{
           count: 131,
           status: false,
@@ -89,7 +87,6 @@ export default {
         },
       },
       liked: false,
-      charsView: false,
     }
   },
   mounted () {
@@ -105,12 +102,6 @@ export default {
     },
     toggleFavourite(){
       this.liked = !this.liked
-    },
-    showChars() {
-      this.charsView = true
-    },
-    hideChars(){
-      this.charsView = false
     },
     toggleLike(){
       // Убрать
@@ -136,25 +127,10 @@ export default {
     likeState() {
       return this.liked ? "row__slide--active" : ""
     },
-    itemName(){
-      let needString = ''
-      if (this.custom){
-        needString = this.custom.name
-      } else{
-        needString = this.content.title
-      }
-
-      if(needString.length <= 17){
-        return needString
-      } else{
-        return needString.substring(0, 17) + '...'
-      }
-    },
   },
   components: {
     AppProfile,
     AppLikes,
-    AppChars,
   },
 };
 </script>

@@ -29,6 +29,9 @@ import UserLoot from '@/components/User/UserLoot.vue';
 import axios from 'axios';
 
 export default {
+  title(){
+    return this.$route.params.userOwn ? 'My profile' : this.user.userNickname
+  },
   data() {
     return {
       content:{
@@ -43,7 +46,7 @@ export default {
       },
       user:{
         coverImage: {
-          src: 'https://i.ibb.co/KjyXtpS/product-banner.jpg'
+          src: 'https://drive.google.com/uc?id=1Purnpw_AVLS4NoSlaG8f2F5z-amS_0JG'
         },
         userName: 'artstudio',
         userNickname: 'Artstudio__451',
@@ -62,6 +65,10 @@ export default {
           {
             href: 'https://twitter.com/home',
             type: 'telegram',
+          },
+          {
+            href: 'https://twitter.com/home',
+            type: 'facebook',
           },
         ],
       },

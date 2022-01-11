@@ -34,6 +34,10 @@
           artId='34'
           hasSlot
           ></app-art>
+          <app-art
+          artId='34'
+          hasSlot
+          ></app-art>
         </div>
       </div>
     </div>

@@ -15,7 +15,14 @@
           :href='data.btnHref'
           ></app-button>
         </div>
-        <div class="cover__imgwrapper">
+        <div class="cover__imgwrapper--dark"
+        v-if='theme === "dark"'
+        >
+          <img src="@/assets/images/cover-graphic-dark.jpg" alt="">
+        </div>
+        <div class="cover__imgwrapper"
+        v-else
+        >
           <img src="@/assets/images/cover-graphic.png" alt="">
         </div>
       </div>
@@ -25,6 +32,8 @@
 
 <script>
 import AppButton from '@/components/App/AppButton.vue';
+
+import { mapGetters } from 'vuex'
 
 export default {
   data() {
@@ -36,6 +45,9 @@ export default {
         btnHref: '/cataloge',
       }
     }
+  },
+  computed: {
+    ...mapGetters(['theme']),
   },
   components: {
     AppButton,

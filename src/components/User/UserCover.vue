@@ -3,7 +3,7 @@
   :class='guestProfile'
   >
     <div class="user-cover__change"
-    v-if='this.$route.params.userOwn'
+    v-if='userInfo.username === $route.params.username'
     >
       {{ content.changeBackgroundBtn }}
       <input type="file"
@@ -18,7 +18,7 @@
       <div class="user-cover__inner">
         <div class="user-cover__profile">
           <app-profile
-          :userId='user.userName'
+          :user-id='user.userName'
           view='cover'
           ></app-profile>
           <div class="user-cover__profile-col user-cover__profile-loot">
@@ -44,6 +44,9 @@
             <div class="user-cover__profile-copy copy"
             @click='copyToken(user.userToken)'
             >
+              <p class="copy__label">
+                Your wallet
+              </p>
               <input class="copy__input" type="text"
               :value='shortToken'
               disabled
@@ -53,8 +56,10 @@
               </svg>
             </div>
             <app-button
-            v-if='this.$route.params.userOwn'
+            v-if='userInfo.username === $route.params.username'
             :title='content.editBtnTitle'
+            link
+            href='/settings/'
             view='lined'
             ></app-button>
           </div>
@@ -107,6 +112,8 @@ export default {
         return 'https://drive.google.com/uc?id=1Yub9eIedn9voyd7MBURQTRFY_XbDkf_U'
       }else if(value === 'instagram'){
         return 'https://drive.google.com/uc?id=1wVYcLwFVzT2zJ88peQzkRKCen5_PKY_Y'
+      }else if(value === 'facebook'){
+        return 'https://drive.google.com/uc?export=view&id=1IdcobFjL9FGV-cZfKRRv675X-CbWk3w1'
       }else{
         return 'https://drive.google.com/uc?id=1MPQf5IWtTtzJGOZXDyVmqoVZAkaK6zuF'
       }
@@ -133,7 +140,7 @@ export default {
       return first + '...' + second
     },
     guestProfile(){
-      return this.$route.params.userOwn ? '' : "user-cover--guest"
+      return this.userInfo.username === this.$route.params.username ? '' : "user-cover--guest"
     },
   },
   components: {

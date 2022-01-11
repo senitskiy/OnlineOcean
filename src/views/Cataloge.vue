@@ -32,6 +32,7 @@ import CatalogeCurrentFilters from '@/components/Cataloge/CatalogeCurrentFilters
 import CatalogeRows from '@/components/Cataloge/CatalogeRows.vue';
 
 export default {
+  title: 'Explore',
   data() {
     return {
       showMoreCols: false,
@@ -50,7 +51,7 @@ export default {
         categories: [],
         rarity: [],
       },
-      showClearBtn: false,
+      showClearBtn: true,
       needClear: null,
       itemsLength: 0,
     }

@@ -9,6 +9,7 @@
     :name='checkboxName'
     :checked='checkboxChecked'
     @change='toggledCheckbox()'
+    :required='inputRequired'
     >
     <slot></slot>
     <span class='label-text'>
@@ -33,15 +34,40 @@
   </label>
 
   <label class="label"
-  v-else
+  v-else-if='textarea'
   >
-    {{ descr }}
-    <input class='input' 
-    v-model="inputValue"
-    :type="type"
+    <p class="label-text"
+    v-if='descr'
+    >
+      {{ descr }}
+    </p>
+    <textarea class='input textarea' 
     :placeholder="placeholderText"
     :class='view ? viewStyle : ""'
+    :rows='rows'
     @input='typedText()'
+    :value='modelValue'
+    ref='input'
+    ></textarea>
+  </label>
+
+  <label class="label"
+  v-else
+  :class='inputRequired ? "label--required" : ""'
+  >
+    <p class="label-text"
+    v-if='descr'
+    >
+      {{ descr }} 
+    </p>
+    <slot></slot>
+    <input class='input' 
+    :placeholder="placeholderText"
+    :class='view ? viewStyle : ""'
+    :type="type"
+    @input='typedText'
+    :value='modelValue'
+    :required='inputRequired'
     ref='input'
     >
   </label>
@@ -50,6 +76,17 @@
 <script>
 export default {
   props: {
+    modelValue:{
+
+    },
+    rows:{
+      type: Number,
+      default: 5,
+    },
+    inputRequired: {
+      type: Boolean,
+      default: false,
+    },
     descr: {
       type: String,
       required: false,
@@ -77,6 +114,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    textarea:{
+      type: Boolean,
+      default: false,
+    },
     checkboxValue:{
       type: String,
       required: false,
@@ -92,7 +133,11 @@ export default {
     verified:{
       type: Boolean,
       required: false,
-    }
+    },
+    customMask:{
+      type: Object,
+      required: false
+    },
   },
   data() {
     return {
@@ -110,8 +155,8 @@ export default {
     }
   },
   methods: {
-    typedText() {
-      this.$emit('typed', this.inputValue)
+    typedText(event) {
+      this.$emit('update:modelValue', event.target.value)
     },
     toggledCheckbox(){
       this.$emit('choosed', this.checkboxValue)
@@ -126,7 +171,7 @@ export default {
     },
   },
   emits:[
-    'typed', 'choosed'
+    'choosed', 'update:modelValue',
   ],
 }
 </script>

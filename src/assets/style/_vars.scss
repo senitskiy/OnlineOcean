@@ -4,3 +4,25 @@ $grey-light: #C0C0C0;
 $grey-bg: #F9F8FD;
 $pink: #EA4C89;
 $blue: #4CA8EA;
+
+:root{
+  --black: #3E3E3E;
+  --grey: #9E9EA7;
+  --grey-light: #C0C0C0;
+  --grey-bg: #F9F8FD;
+  --pink: #EA4C89;
+  --blue: #4CA8EA;
+
+  --main-bg: #ffffff;
+}
+
+[data-theme="dark"]{
+  --black: #FFFFFF;
+  --grey-bg: #1D1625;
+  --grey-light: #C0C0C0;
+  --grey: #9E9EA7;
+  --pink: #E145EF;
+  --blue: #4CA8EA;
+
+  --main-bg: #15101B;
+}

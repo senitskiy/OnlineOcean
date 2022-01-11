@@ -7,24 +7,14 @@
       Notifications
     </p>
     <app-not
-    name='Janny Muller'
-    text='Comment: I really like this product. I would like to buy another good in this nft shop'
-    verified
-    ></app-not>
-    <app-not
-    name='Mary Jane'
-    text='Comment: It is a text that i wrote for test my code. If it have bugs i will fix it'
-    verified
-    ></app-not>
-    <app-not
-    name='Sam Jonson'
-    text='Comment: This sting contains a heavy-big-mega-words for one more test'
-    verified
+    v-for='item in this.nots.slice(0, 3)'
+    :key='item.id'
+    :item='item'
     ></app-not>
     <app-button
     title='More...'
     link
-    href='/user/artstudio'
+    :custom='{name: "User", params: {username: userInfo.username, needNots: true}}'
     ></app-button>
   </div>
   <div class="nots__pad"></div>
@@ -32,6 +22,8 @@
 
 <script>
 import AppNot from '@/components/App/AppNot.vue'
+
+import { mapGetters } from 'vuex'
 
 export default {
   props: {
@@ -41,6 +33,8 @@ export default {
     },
   },
   computed: {
+    ...mapGetters(['userInfo']),
+    ...mapGetters(['nots']),
     notsState() {
       return this.openedNots ? 'nots--active' : ''
     },
@@ -48,10 +42,5 @@ export default {
   components: {
     AppNot,
   },
-  // watch: {
-  //   data(newValue, oldValue) {
-      
-  //   }
-  // },
 }
 </script>
