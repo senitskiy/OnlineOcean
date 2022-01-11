@@ -20,10 +20,10 @@
     </span>
     <span class="row__slide-imgwrapper">
       <img class='row__slide-img' :src="custom ? custom.image.src : require('@/assets/images/temp/slide-1.jpg')" alt="" />
+      <!-- @click.prevent -->
       <app-button
       :title='content.buyTitle'
       view='art-hover'
-      @click.prevent
       ></app-button>
       <slot></slot>
     </span>

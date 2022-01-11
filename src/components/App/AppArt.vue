@@ -5,8 +5,8 @@
     <slot></slot>
     <span class="art__imgwrapper">
       <img :src="art.cover.src" alt="">
+      <!-- @click.prevent -->
       <app-button
-      @click.prevent
       :title='buyTitle'
       view='art-hover'
       ></app-button>
