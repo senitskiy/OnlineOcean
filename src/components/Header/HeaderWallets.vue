@@ -96,13 +96,13 @@ export default {
         if(this.data.currWallet.value === 'metamask'){
           return 'https://metamask.io/faqs.html'
         }
-        return 'https://community.trustwallet.com/c/faq/21'
+        return 'https://near.org/'
       }
 
       if(this.currentWallet.value === 'metamask'){
         return 'https://metamask.io/faqs.html'
       }
-      return 'https://community.trustwallet.com/c/faq/21'
+      return 'https://near.org/'
     },
   },
   methods: {

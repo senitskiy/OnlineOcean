@@ -16,7 +16,10 @@
   }
 
   .blockchains{
-    right: -61px;
+    // right: -61px;
+    transform: unset;
+    left: unset;
+    right: 0;
   }
 }
 
@@ -1476,6 +1479,7 @@
     .header__search-wrapper{
       display: block;
       margin-bottom: 15px;
+      max-width: unset;
     }
   }
 

@@ -7,41 +7,48 @@
 
 const state = {
   allBlockchains:[
+    // {
+    //   label: 'Ethereum',
+    //   value: 'eth',
+    //   image: require('@/assets/images/blockchain-ethereum.svg')
+    // },
     {
-      label: 'Ethereum',
-      value: 'eth',
-      image: require('@/assets/images/blockchain-ethereum.svg')
+      label: 'Near',
+      value: 'near',
+      image: require('@/assets/images/blockchain-near-dark.svg'),
+      imageDark: require('@/assets/images/blockchain-near.svg')
     },
     {
       label: 'Immutable X',
       value: 'imux',
-      image: require('@/assets/images/blockchain-immux.svg')
+      image: require('@/assets/images/blockchain-immux.svg'),
     },
-    {
-      label: 'BSC',
-      value: 'bsc',
-      image: require('@/assets/images/blockchain-bsc.png'),
-    },
-    {
-      label: 'Polygon',
-      value: 'polygon',
-      image: require('@/assets/images/blockchain-polygon.svg')
-    },
-    {
-      label: 'Solana',
-      value: 'solana',
-      image: require('@/assets/images/blockchain-solana.svg')
-    },
-    {
-      label: 'Dfinity',
-      value: 'dfinity',
-      image: require('@/assets/images/blockchain-dfinity.png')
-    },
+    // {
+    //   label: 'BSC',
+    //   value: 'bsc',
+    //   image: require('@/assets/images/blockchain-bsc.png'),
+    // },
+    // {
+    //   label: 'Polygon',
+    //   value: 'polygon',
+    //   image: require('@/assets/images/blockchain-polygon.svg')
+    // },
+    // {
+    //   label: 'Solana',
+    //   value: 'solana',
+    //   image: require('@/assets/images/blockchain-solana.svg')
+    // },
+    // {
+    //   label: 'Dfinity',
+    //   value: 'dfinity',
+    //   image: require('@/assets/images/blockchain-dfinity.png')
+    // },
   ],
   currentBlockchain:{
-    value: 'eth',
-    label: 'Ethereum',
-    image: require('@/assets/images/blockchain-ethereum.svg')
+    label: 'Near',
+    value: 'near',
+    image: require('@/assets/images/blockchain-near.svg'),
+    imageDark: require('@/assets/images/blockchain-near-dark.svg')
   },
   allWallets:[
     {
