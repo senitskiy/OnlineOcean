@@ -105,7 +105,7 @@
           </div>
         </div>
         <app-button
-        title='Create art'
+        title='Create Generative Art'
         view='submit'
         @click='create()'
         ></app-button>
@@ -149,7 +149,7 @@ export default {
           },
         ],
         currency: [
-          'eth', 'btc', 'etc'
+          'near', 'imux'
         ],
         siteFee: '2.5%',
         previewText: 'Preview',

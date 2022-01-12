@@ -161,7 +161,7 @@ export default {
           },
         ],
         currency: [
-          'eth', 'btc', 'etc'
+          'near', 'imux'
         ],
         siteFee: '2.5%',
         previewText: 'Preview',
