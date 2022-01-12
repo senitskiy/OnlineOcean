@@ -161,7 +161,7 @@ export default {
           },
         ],
         currency: [
-          'near', 'imux'
+          'near', 'imx'
         ],
         siteFee: '2.5%',
         previewText: 'Preview',
