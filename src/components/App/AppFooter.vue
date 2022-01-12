@@ -5,7 +5,7 @@
         <div class="footer__info">
           <app-logo></app-logo>
           <p class="footer__descr">
-            Nft marketplace with the ability to create cases with a random prize.
+            Nft marketplace with the ability to create generative art
           </p>
         </div>
         <nav class="footer__navigation">

@@ -47,7 +47,7 @@ export default {
     return {
       create:{
         title: 'Create collectible',
-        info: 'Nft marketplace with the ability to create generative art',
+        info: 'Choose “Single” if you want your collectible to be one of a kind or “Multiple” if you want to sell one collectible multiple times',
         descr: 'We do not own your private keys and cannot access your funds without your confirmation',
       },
       cards:[
