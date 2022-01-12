@@ -52,6 +52,11 @@ export default {
       },
       cards:[
         {
+          label: 'Generative',
+          href: 'generative',
+          image: require('@/assets/images/create-box.svg'),
+        },
+        {
           label: 'Single',
           href: 'single',
           image: require('@/assets/images/create-single.svg'),

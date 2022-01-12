@@ -13,7 +13,7 @@
           </svg>
         </app-button>
         <div class="create-modal__imgwrapper">
-          <img src="@/assets/images/create-box.svg" alt="">
+          <img src="@/assets/images/create-single.svg" alt="">
         </div>
         <h1 class="create-modal__title">
           {{ info.title }}

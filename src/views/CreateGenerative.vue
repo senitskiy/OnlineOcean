@@ -13,7 +13,7 @@
           </svg>
         </app-button>
         <div class="create-modal__imgwrapper">
-          <img src="@/assets/images/create-multiple.svg" alt="">
+          <img src="@/assets/images/create-box.svg" alt="">
         </div>
         <h1 class="create-modal__title">
           {{ info.title }}
@@ -63,30 +63,19 @@
                 </span>
               </p>
             </div>
-            <div class="create-modal__info-inputs">
-              <app-input
-              descr='Royalties %'
-              placeholderText='Enter the royalties'
-              view='lined'
-              v-model.number='data.royalties'
-              ></app-input>
-              <span class="create-modal__error"
-              :class="priceErrors.royalties ? 'create-modal__error--active' : ''"
-              >
-                {{ priceErrors.royalties }}
-              </span>
-              <app-input
-              descr='Number of copies'
-              placeholderText='Write the number of copies'
-              view='lined'
-              v-model.number='data.copies'
-              ></app-input>
-              <span class="create-modal__error"
-              :class="priceErrors.copies ? 'create-modal__error--active' : ''"
-              >
-                {{ priceErrors.copies }}
-              </span>
-            </div>
+            <app-input
+            descr='Royalties %'
+            placeholderText='Enter the royalties'
+            view='lined'
+            v-model='data.royalties'
+            type='number'
+            inputMax="50"
+            ></app-input>
+            <span class="create-modal__error"
+            :class="priceErrors.royalties ? 'create-modal__error--active' : ''"
+            >
+              {{ priceErrors.royalties }}
+            </span>
           </div>
           <div class="create-modal__preview"
           :class='isEdit ? "" : "create-modal__preview--preview"'
@@ -135,17 +124,16 @@ import { mapGetters, mapMutations } from 'vuex';
 import axios from 'axios';
 
 export default {
-  title: 'Create Multiple Art',
+  title: 'Create Single Art',
   data() {
     return {
       isEdit: true,
       isActiveLink: false,
       priceErrors:{
         royalties: '',
-        copies: '',
       },
       info:{
-        title: 'Create Multiple Art',
+        title: 'Create Generative Art',
         chooses:[
           {
             text: 'Fixed price',
@@ -176,13 +164,12 @@ export default {
         price: '',
         willGet: '',
         blockchain: '',
-        type: 'multiple',
-        royalties: '',
-        copies: '',
+        type: 'generative',
         image:{
           src: '',
         },
         prevImage: null,
+        royalties: '',
       },
     }
   },
@@ -225,13 +212,7 @@ export default {
         this.priceErrors.royalties = ''
       }
 
-      if(this.data.copies < 2){
-        this.priceErrors.copies = 'Copies must be more than 1'
-      }else{
-        this.priceErrors.copies = ''
-      }
-
-      if(this.priceErrors.copies === '' && this.priceErrors.royalties === ''){
+      if(this.priceErrors.royalties === ''){
         axios.post('/create', this.data)
           .then( this.routePrev() )
       }

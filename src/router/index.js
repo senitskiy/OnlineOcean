@@ -10,6 +10,7 @@ const Art = () => import(/* webpackChunkName: "art" */'../views/Art.vue')
 
 const Create = () => import(/* webpackChunkName: "create" */'../views/Create.vue')
 const CreateSingle = () => import(/* webpackChunkName: "createSingle" */'../views/CreateSingle.vue')
+const CreateGenerative = () => import(/* webpackChunkName: "createGenerative" */'../views/CreateGenerative.vue')
 const CreateMultiple = () => import(/* webpackChunkName: "createMultiple" */'../views/CreateMultiple.vue')
 
 const Settings = () => import(/* webpackChunkName: "user" */'../views/Settings.vue')
@@ -63,6 +64,11 @@ const routes = [
     path: '/create',
     name: 'Create',
     component: Create
+  },
+  {
+    path: '/create/generative',
+    name: 'CreateGenerative',
+    component: CreateGenerative
   },
   {
     path: '/create/single',
