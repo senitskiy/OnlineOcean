@@ -47,15 +47,10 @@ export default {
     return {
       create:{
         title: 'Create collectible',
-        info: 'Choose “Single” if you want your collectible to be one of a kind or “Multiple” if you want to sell one collectible multiple times',
+        info: 'Nft marketplace with the ability to create generative art',
         descr: 'We do not own your private keys and cannot access your funds without your confirmation',
       },
       cards:[
-        {
-          label: 'Generative',
-          href: 'generative',
-          image: require('@/assets/images/create-box.svg'),
-        },
         {
           label: 'Single',
           href: 'single',
@@ -65,6 +60,11 @@ export default {
           label: 'Multiple',
           href: 'multiple',
           image: require('@/assets/images/create-multiple.svg'),
+        },
+        {
+          label: 'Generative',
+          href: 'generative',
+          image: require('@/assets/images/create-box.svg'),
         },
       ],
     }
