@@ -94,6 +94,11 @@ const routes = [
     name: 'Settings',
     component: Settings
   },
+  // leave this last to catch unmatched routes
+  {
+    path: '/:catchAll(.*)*',
+    component: Index,
+  },
 ]
 
 const router = createRouter({

@@ -7,9 +7,15 @@ import store from './store'
 
 import "normalize.css"
 
-// Libs
+// SDKs
+
+// import * as nearAPI from "near-api-js"
 
 const app = createApp(App)
+
+// Global Libraries
+
+// app.provide('near', nearAPI);
 
 // Global Components
 

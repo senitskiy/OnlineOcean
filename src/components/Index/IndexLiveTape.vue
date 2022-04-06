@@ -10,7 +10,7 @@
           </p>
         </div>
         <div class="live__items">
-          <app-art
+          <!-- <app-art
           artId='34'
           hasSlot
           ></app-art>
@@ -37,7 +37,7 @@
           <app-art
           artId='34'
           hasSlot
-          ></app-art>
+          ></app-art> -->
         </div>
       </div>
     </div>
@@ -45,11 +45,11 @@
 </template>
 
 <script>
-import AppArt from '@/components/App/AppArt.vue';
+// import AppArt from '@/components/App/AppArt.vue';
 
 export default {
   components: {
-    AppArt,
+    // AppArt,
   },
 }
 </script>

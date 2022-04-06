@@ -64,7 +64,7 @@
             </ul>
           </div>
           <h1 class="product-info__name">
-            {{ productName }}
+            {{ productName ?? 'name '}}
           </h1>
           <p class="product-info__descr">
             {{ descr }}
@@ -75,11 +75,11 @@
                 Current bid:
               </p>
               <p class="product-info__bid">
-                70.034 ETH
+                {{ price }}
               </p>
-              <p class="product-info__cost">
-                $ 48.85
-              </p>
+              <!-- <p class="product-info__cost">
+                $ 48.85 //TODO: convert to local currency
+              </p> -->
             </div>
             <div class="product-info__auction auction"
             v-show='auctionIsActive'
@@ -130,15 +130,16 @@
             link
             :href='boxOpenLink'
             ></app-button>
-            <app-button
+            <!-- <app-button
             title='Sell'
             view='yellow'
             big
-            ></app-button>
+            ></app-button> -->
             <app-button
             title='Buy'
             view='green'
             big
+            @click="buy"
             ></app-button>
           </div>
         </div>
@@ -153,6 +154,9 @@ import VueCountdown from '@chenfengyuan/vue-countdown';
 import AppProfile from '@/components/App/AppProfile.vue';
 import AppLikes from '@/components/App/AppLikes.vue';
 
+import * as nearAPI from "near-api-js";
+const { utils } = nearAPI;
+
 export default {
   props: {
     name: {
@@ -166,7 +170,15 @@ export default {
     box:{
       type: Boolean,
       default: false,
-    }
+    },
+    tokenId: {
+      type: String,
+      required: true, 
+    },
+    price: {
+      type: String,
+      required: true, 
+    },
   },
   data() {
     return {
@@ -231,8 +243,72 @@ export default {
     shareLinkHref(){
       return this.shareText + this.currPath
     },
+    yoktoNearPrice() {
+      return this.price.replace('NEAR', '');
+    }
   },
   methods: {
+    async buy() {
+      const { connect, keyStores, WalletConnection } = nearAPI;
+
+      const config = {
+        networkId: "testnet",
+        keyStore: new keyStores.BrowserLocalStorageKeyStore(),
+        nodeUrl: "https://rpc.testnet.near.org",
+        walletUrl: "https://wallet.testnet.near.org",
+        helperUrl: "https://helper.testnet.near.org",
+        explorerUrl: "https://explorer.testnet.near.org",
+      };
+
+      // // connect to NEAR
+      const near = await connect(config);
+
+      // // create wallet connection
+      const wallet = new WalletConnection(near);
+
+      // const missingAccount = JSON.parse(localStorage.getItem('undefined_wallet_auth_key'));
+      // const account = wallet.account(missingAccount.accountId);
+      const account = wallet.account();
+
+     // console.log('buy account: %o', account);
+
+      //load the contract //should this be load contract?!
+      const contract = new nearAPI.Contract(
+        account, // the account object that is connecting
+        "dev-1642413213650-29062548325851",
+        {
+          // name of contract you're connecting to
+          viewMethods: ["get_market", "check_access", "get_token_owner"], // view methods do not change state but usually return a value
+          changeMethods: ["buy"], // change methods modify state
+          sender: account.accountId, // account object to initialize and sign transactions.
+        }
+      );
+
+
+
+// console.log('accountId: %o', missingAccount.accountId);
+//       const contract = await near.loadContract(
+//         "dev-1642413213650-29062548325851",
+//         {
+//           // name of contract you're connecting to
+//           viewMethods: ["get_market", "check_access", "get_token_owner"], // view methods do not change state but usually return a value
+//           changeMethods: ["buy"], // change methods modify state
+//           sender: missingAccount.accountId, // account object to initialize and sign transactions.
+//         }
+//       );
+
+
+      const response = await contract.buy(
+        {
+          "token_id": this.tokenId
+        },
+        300000000000000, //attached gas
+        utils.format.parseNearAmount(this.yoktoNearPrice)  //attach deposit
+      );
+
+      console.log('response: %o', response);
+
+    },
     onTimerEnd() {
       this.auctionIsActive = false
     },

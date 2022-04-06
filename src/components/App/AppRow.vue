@@ -21,12 +21,14 @@
         >
           <splide-slide
           v-for='slide in items'
-          :key='slide'
+          :key='slide.tokenId'
           >
             <app-big-art
             @mouseenter="increaseIndex()"
             @mouseleave="reduceIndex()"
-            :artId='slide'
+            :artId='slide.tokenId'
+            :tokenId='slide.tokenId'
+            :price='slide.price'
             ></app-big-art>
           </splide-slide>
         </splide> 
@@ -42,6 +44,8 @@ import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 
 // import axios from 'axios';
+
+import * as nearAPI from "near-api-js";
 
 export default {
   props: {
@@ -109,13 +113,15 @@ export default {
     return {
       needHeight: null,
       items:[
-        44, 332, 344, 233, 444, 3, 7, 8  
+        //make this token id
+        //44, 332, 344, 233, 444, 3, 7, 8  
+       // 1,2,3,4,5,6,7,8
       ],
       windowWidth: window.innerWidth,
     }
   },
   mounted () {
-    // this.getItems()
+    this.getItems()
   },
   computed: {
     fireStatus() {
@@ -123,12 +129,49 @@ export default {
     }
   },
   methods: {
-    // getItems(){
-    //   axios.get('/getUserRow')
-    //     .then(function(response) {
-    //       this.items = response
-    //     })
-    // },
+    async getItems(){
+      
+      const { connect, keyStores, WalletConnection } = nearAPI;
+
+      const config = {
+        networkId: "testnet",
+        keyStore: new keyStores.BrowserLocalStorageKeyStore(),
+        nodeUrl: "https://rpc.testnet.near.org",
+        walletUrl: "https://wallet.testnet.near.org",
+        helperUrl: "https://helper.testnet.near.org",
+        explorerUrl: "https://explorer.testnet.near.org",
+      };
+
+      // connect to NEAR
+      const near = await connect(config);
+
+      // create wallet connection
+      const wallet = new WalletConnection(near);
+
+      const account = wallet.account();
+      // const account = await nearAPI.account("totalbanjo.testnet");
+
+      //load the contract
+      const contract = new nearAPI.Contract(
+        account, // the account object that is connecting
+        "dev-1642413213650-29062548325851",
+        {
+          // name of contract you're connecting to
+          viewMethods: ["get_market"], // view methods do not change state but usually return a value
+          changeMethods: ["mint_to"], // change methods modify state
+          sender: account, // account object to initialize and sign transactions.
+        }
+      );
+
+      const response = await contract.get_market({"start": 0, "end": 100});
+
+      //array of {tokenId: "2" , price: "1000000"}
+
+      console.log('response: %o', response);
+
+      this.items = response;
+
+    },
     increaseIndex(){
       this.$refs.parentRow.classList.add('row--hover')
     },

@@ -87,7 +87,9 @@ const getters = {
 
 const mutations = {
   setNewBlockchain(state, payload){
-    state.currentBlockchain = payload
+    state.currentBlockchain = payload;
+
+    console.log('payload: %o', payload);
     // axios.post('https://onlineocean-15690-default-rtdb.europe-west1.firebasedatabase.app', state.currentBlockchain)
     //   .then(function () {
     //     return null

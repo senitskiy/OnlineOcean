@@ -96,13 +96,13 @@ export default {
         if(this.data.currWallet.value === 'metamask'){
           return 'https://metamask.io/faqs.html'
         }
-        return 'https://near.org/'
+        return 'https://nearhelp.zendesk.com/hc/en-us'
       }
 
       if(this.currentWallet.value === 'metamask'){
         return 'https://metamask.io/faqs.html'
       }
-      return 'https://near.org/'
+      return 'https://nearhelp.zendesk.com/hc/en-us'
     },
   },
   methods: {

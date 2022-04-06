@@ -1,7 +1,11 @@
 <template>
-  <router-link class="row__slide" :to='"/art/" + this.artId'
-  :class='[likeState]'
+
+  <router-link
+    class="row__slide"
+    :to="{ name:'Art', params: { itemId: this.artId, tokenId: this.artId, price: this.formatPrice(price), name: 'nft name', description: 'nft description' }}"
+    :class='[likeState]'
   >
+
     <span class="row__slide-blocker"
     v-if='isActive !== true'
     @click.prevent
@@ -33,7 +37,7 @@
           {{ pretitle.bid }}
         </p>
         <p class="row__slide-price">
-          {{ custom ? custom.price + ' ' + custom.blockchain : content.bid }}
+          {{ formatPrice(price) }}
         </p>
       </span>
       <app-profile
@@ -50,6 +54,10 @@ import axios from 'axios';
 import AppProfile from '@/components/App/AppProfile.vue';
 import AppLikes from '@/components/App/AppLikes.vue';
 
+// converts yoctoNEAR (10^-24) amount into NEAR
+import * as nearAPI from "near-api-js";
+const { utils } = nearAPI;
+
 export default {
   props: {
     artId:{
@@ -63,6 +71,14 @@ export default {
     isActive:{
       type: Boolean,
       default: true,
+    },
+    price: {
+      type: Number,
+      required: false,
+    },
+    tokenId: {
+      type: String,
+      required: false,
     }
   },
   data() {
@@ -93,6 +109,9 @@ export default {
     this.loadCard()
   },
   methods:{
+    formatPrice(price) {
+      return `${utils.format.formatNearAmount(price)} NEAR`;
+    },
     loadCard(){
       // axios
       //   .get('https://google.com&=artId')
@@ -113,7 +132,7 @@ export default {
       this.content.likes.status = !this.content.likes.status
       axios.post('/favourite', this.artId)
         .then(function () {
-          // Раскоментировать 
+          // Uncomment 
           // if(this.content.likes.status === false){
           //   this.content.likes.count++
           // }else{

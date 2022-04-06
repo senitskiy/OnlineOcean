@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 
 import { mapGetters } from 'vuex';
 
@@ -116,10 +116,10 @@ export default {
   },
   methods: {
     getUser() {
-      axios.get('/user')
-        .then(function (response) {
-          this.user = response
-        })
+      // axios.get('/user')
+      //   .then(function (response) {
+      //     this.user = response
+      //   })
     }
   },
   computed: {
@@ -139,7 +139,7 @@ export default {
       return this.customName.length > 1 ? this.customName : this.user.name
     },
     linkToProfile() {
-      return '/user/' + this.user.username.replace(/@/i, '')
+      return ''//'/user/' + this.user.username.replace(/@/i, '')
     }
   },
 }
