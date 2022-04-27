@@ -60,11 +60,6 @@ const routes = [
     component: Art
   },
   {
-    path: '/create',
-    name: 'Create',
-    component: Create
-  },
-  {
     path: '/create/single',
     name: 'CreateSingle',
     component: CreateSingle
@@ -73,6 +68,11 @@ const routes = [
     path: '/create/multiple',
     name: 'CreateMultiple',
     component: CreateMultiple
+  },
+  {
+    path: '/create',
+    name: 'Create',
+    component: Create
   },
   {
     path: '/user/unlogged',

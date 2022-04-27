@@ -62,7 +62,7 @@ export default {
   props: {
     artId:{
       type: Number,
-      required: false,
+      default: 0,
     },
     custom:{
       type: Object,
