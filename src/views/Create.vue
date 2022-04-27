@@ -61,6 +61,11 @@ export default {
           href: 'multiple',
           image: require('@/assets/images/create-multiple.svg'),
         },
+        // {
+        //   label: 'Generative',
+        //   href: 'generative',
+        //   image: require('@/assets/images/create-box.svg'),
+        // },
       ],
     }
   },
