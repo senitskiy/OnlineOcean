@@ -100,51 +100,18 @@ const mutations = {
 
     const signIn = () => {
       wallet.requestSignIn(
-       // "totalbanjo_buyer.testnet", // contract requesting access
-       "dev-1642413213650-29062548325851",
-        //"OnlineOcean", // optional
-        // "http://localhost:8080/OnlineOcean/", // optional /success
-        // "http://localhost:8080/OnlineOcean/" // optional /failure
+        "totalbanjo_buyer.testnet", // contract requesting access
+        "dev-1642413213650-29062548325851",
+        "OnlineOcean", // optional
+        "http://localhost:8080/OnlineOcean/", // optional /success
+        "http://localhost:8080/OnlineOcean/" // optional /failure
       );
     };
 
     signIn();
-
-    // Раскоментировать
-  // connectWallet(state, payload){
-    // axios
-    //   .get('wallet/' + state.wallet.id)
-    //   .then(function(response){
-    //     if(response){
-    //       state.wallet.id = payload.wallet.id
-    //       state.wallet.connected = true
-    //       localStorage.setItem('wallet', state.wallet.id)
-    //       localStorage.setItem('walletConnected', state.wallet.connected)
-
-    //       state.user.logged = true
-    //       state.user.username = response.user.username
-    //       localStorage.setItem('userLogged', false)
-    //       localStorage.setItem('userUsername', state.user.username)
-
-    //       router.push({ name: 'User', params: { username: state.user.username }})
-    //     }else{
-    //       state.wallet.id = payload.wallet.id
-    //       state.wallet.connected = true
-    //       localStorage.setItem('wallet', state.wallet.id)
-    //       localStorage.setItem('walletConnected', state.wallet.connected)
     
-    //       router.push({ name: 'Register' })
-    //     }
-    //   })
-
-    // Убрать
-    state.wallet.id = '4b73hghjk4ljh2jk3hy956'
-    state.wallet.connected = true
-    localStorage.setItem('wallet', state.wallet.id)
-    localStorage.setItem('walletConnected', state.wallet.connected)
-
-    router.push({ name: 'Register' })
   },
+
   async quitWallet(state){
 
     // connect to NEAR
