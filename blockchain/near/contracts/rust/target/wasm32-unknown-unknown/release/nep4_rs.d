@@ -1,0 +1,1 @@
+/home/dmitriy/Projects/Near/onlineocean/blockchain/near/contracts/rust/target/wasm32-unknown-unknown/release/nep4_rs.wasm: /home/dmitriy/Projects/Near/onlineocean/blockchain/near/contracts/rust/src/lib.rs
