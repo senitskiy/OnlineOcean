@@ -102,7 +102,7 @@ const mutations = {
       wallet.requestSignIn(
         "totalbanjo_buyer.testnet", // contract requesting access
         "dev-1642413213650-29062548325851",
-        "OnlineOcean", // optional
+        "http://localhost:8080/OnlineOcean/", // optional
         "http://localhost:8080/OnlineOcean/", // optional /success
         "http://localhost:8080/OnlineOcean/" // optional /failure
       );
